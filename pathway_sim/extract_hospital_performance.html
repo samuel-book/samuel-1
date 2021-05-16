@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Extract hospital performance for pathway model &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stroke pathway simulation - validation and calibration" href="validation.html" />
+    <link rel="prev" title="Pathway code" href="pathway_code.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/pathway_sim/extract_hospital_performance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-hospital-performance">
+   Extract hospital performance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limit-full-data-to-units-with-at-least-300-admissions">
+     Limit full data to units with at least 300 admissions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#produce-results-for-day-night-and-weekday-weekend">
+     Produce results for day/night and weekday/weekend
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="extract-hospital-performance-for-pathway-model">
+<h1>Extract hospital performance for pathway model<a class="headerlink" href="#extract-hospital-performance-for-pathway-model" title="Permalink to this headline">¶</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Extract and save hospital performance for pathway simulation model</p></li>
+<li><p>Create breakdowns by weekend/weekday/day/night</p></li>
+</ul>
+</section>
+<section id="import-libraries">
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Load data</p></li>
+<li><p>Restrict data to fields necessary for pathway extraction</p></li>
+<li><p>Remove in-hospital admissions</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">data_loaded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;../data/2019-11-04-HQIP303-Exeter_MA.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Number of years data covers</span>
+<span class="n">data_years</span> <span class="o">=</span> <span class="mf">3.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict fields</span>
+<span class="n">used_fields</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;MoreEqual80y&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S1Gender&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S1OnsetInHospital&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S1AdmissionDay&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2StrokeType&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">]</span>
+
+<span class="n">data_loaded</span> <span class="o">=</span> <span class="n">data_loaded</span><span class="p">[</span><span class="n">used_fields</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove in hospital admissions</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_loaded</span><span class="p">[</span><span class="s1">&#39;S1OnsetInHospital&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;No&#39;</span>
+<span class="n">data_loaded</span> <span class="o">=</span> <span class="n">data_loaded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-hospital-performance">
+<h2>Extract hospital performance<a class="headerlink" href="#extract-hospital-performance" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">analyse_by_team</span><span class="p">(</span><span class="n">input_data</span><span class="p">):</span>
+    
+    <span class="c1"># Copy data</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># Set up results lists</span>
+    <span class="n">stroke_team</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">admissions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">age_80_plus</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">onset_known</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">known_arrival_within_4hrs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">onset_arrival_mins_mu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">onset_arrival_mins_sigma</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">scan_within_4_hrs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">arrival_scan_arrival_mins_mu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">arrival_scan_arrival_mins_sigma</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">onset_scan_4_hrs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">scan_needle_mins_mu</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">scan_needle_mins_sigma</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">thrombolysis_rate</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">eligible</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Split data by stroke team</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">)</span> <span class="c1"># creates a new object of groups of data</span>
+    <span class="n">group_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">group_df</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span> <span class="c1"># each group has an index + dataframe of data</span>
+        <span class="n">group_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Record stroke team</span>
+        <span class="n">stroke_team</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="c1"># Record admission numbers</span>
+        <span class="n">admissions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># Get thrombolysis rate</span>
+        <span class="n">thrombolysed</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+        <span class="n">thrombolysis_rate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thrombolysed</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+        <span class="c1"># Record onset known proportion and remove rest</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">onset_known</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">group_df</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="c1"># Record onset &lt;4 hours and remove rest</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+        <span class="n">known_arrival_within_4hrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">group_df</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="c1"># Calc proportion 80+ (of those arriving within 4 hours)</span>
+        <span class="n">age_filter</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;MoreEqual80y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+        <span class="n">age_80_plus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">age_filter</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+        <span class="c1"># Log mean/sd of onset to arrival</span>
+        <span class="n">ln_onset_to_arrival</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">])</span>
+        <span class="n">onset_arrival_mins_mu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln_onset_to_arrival</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">onset_arrival_mins_sigma</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln_onset_to_arrival</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+
+        <span class="c1"># Record scan within 4 hours of arrival (and remove the rest)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+        <span class="n">scan_within_4_hrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">group_df</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+        
+        <span class="c1"># Log mean/sd of arrival to scan</span>
+        <span class="n">ln_arrival_to_scan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">])</span>
+        <span class="n">arrival_scan_arrival_mins_mu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln_arrival_to_scan</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">arrival_scan_arrival_mins_sigma</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln_arrival_to_scan</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+        
+        <span class="c1"># Record onset to scan in 4 hours and remove rest</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">+</span> 
+                <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+        <span class="n">onset_scan_4_hrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">group_df</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+        <span class="c1"># Thrombolysis given (to remaining patients)</span>
+        <span class="n">thrombolysed</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+        <span class="n">eligible</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thrombolysed</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+        <span class="c1"># Scan to need (Replace any zero scan to needle times with 1)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">thrombolysed</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+        <span class="n">scan_to_needle</span> <span class="o">=</span> <span class="p">(</span><span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">]</span> <span class="o">-</span> 
+                          <span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">])</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">scan_to_needle</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">scan_to_needle</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">ln_scan_to_needle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">scan_to_needle</span><span class="p">)</span>
+        <span class="n">scan_needle_mins_mu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln_scan_to_needle</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        <span class="n">scan_needle_mins_sigma</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln_scan_to_needle</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+        
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stroke_team</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thrombolysis_rate</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">admissions</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">/</span><span class="n">data_years</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;80_plus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age_80_plus</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_known</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;known_arrival_within_4hrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">known_arrival_within_4hrs</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;onset_arrival_mins_mu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_arrival_mins_mu</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;onset_arrival_mins_sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_arrival_mins_sigma</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;scan_within_4_hrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_within_4_hrs</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;arrival_scan_arrival_mins_mu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrival_scan_arrival_mins_mu</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;arrival_scan_arrival_mins_sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrival_scan_arrival_mins_sigma</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;onset_scan_4_hrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_scan_4_hrs</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;eligable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eligible</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;scan_needle_mins_mu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_needle_mins_mu</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;scan_needle_mins_sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_needle_mins_sigma</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">data_loaded</span><span class="p">)</span>
+
+<span class="c1"># Limit to hosp with &gt; 100 admissions/year and &gt;10 thrombolysis in total</span>
+<span class="n">admissions</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span>
+<span class="n">thrombolysed</span> <span class="o">=</span> <span class="n">admissions</span> <span class="o">*</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">admissions</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">thrombolysed</span> <span class="o">&gt;=</span> <span class="mf">3.3333</span><span class="p">)</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Save</span>
+<span class="n">df_all</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;hosp_performance_output/hospital_performance.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Show data for five hopsitals</span>
+<span class="n">df_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>2</th>
+      <th>4</th>
+      <th>6</th>
+      <th>7</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>stroke_team</th>
+      <td>AGNOF1041H</td>
+      <td>AKCGO9726K</td>
+      <td>AOBTM3098N</td>
+      <td>APXEE8191H</td>
+      <td>ATDID5461S</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_rate</th>
+      <td>0.154839</td>
+      <td>0.158892</td>
+      <td>0.085885</td>
+      <td>0.098634</td>
+      <td>0.090689</td>
+    </tr>
+    <tr>
+      <th>admissions</th>
+      <td>671.666667</td>
+      <td>1143.333333</td>
+      <td>500.666667</td>
+      <td>439.333333</td>
+      <td>275.666667</td>
+    </tr>
+    <tr>
+      <th>80_plus</th>
+      <td>0.425459</td>
+      <td>0.395658</td>
+      <td>0.48547</td>
+      <td>0.515679</td>
+      <td>0.533546</td>
+    </tr>
+    <tr>
+      <th>onset_known</th>
+      <td>0.635236</td>
+      <td>0.970845</td>
+      <td>0.619174</td>
+      <td>0.716237</td>
+      <td>0.573156</td>
+    </tr>
+    <tr>
+      <th>known_arrival_within_4hrs</th>
+      <td>0.68125</td>
+      <td>0.428829</td>
+      <td>0.629032</td>
+      <td>0.608051</td>
+      <td>0.660338</td>
+    </tr>
+    <tr>
+      <th>onset_arrival_mins_mu</th>
+      <td>4.576874</td>
+      <td>4.625486</td>
+      <td>4.603918</td>
+      <td>4.590357</td>
+      <td>4.427826</td>
+    </tr>
+    <tr>
+      <th>onset_arrival_mins_sigma</th>
+      <td>0.557598</td>
+      <td>0.597451</td>
+      <td>0.584882</td>
+      <td>0.496452</td>
+      <td>0.591373</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs</th>
+      <td>0.965596</td>
+      <td>0.955882</td>
+      <td>0.935043</td>
+      <td>0.966899</td>
+      <td>0.878594</td>
+    </tr>
+    <tr>
+      <th>arrival_scan_arrival_mins_mu</th>
+      <td>1.6657</td>
+      <td>2.834183</td>
+      <td>3.471419</td>
+      <td>3.31293</td>
+      <td>4.12569</td>
+    </tr>
+    <tr>
+      <th>arrival_scan_arrival_mins_sigma</th>
+      <td>1.497966</td>
+      <td>0.999719</td>
+      <td>1.254744</td>
+      <td>0.714465</td>
+      <td>0.549301</td>
+    </tr>
+    <tr>
+      <th>onset_scan_4_hrs</th>
+      <td>0.935867</td>
+      <td>0.908425</td>
+      <td>0.846435</td>
+      <td>0.904505</td>
+      <td>0.865455</td>
+    </tr>
+    <tr>
+      <th>eligable</th>
+      <td>0.388325</td>
+      <td>0.419355</td>
+      <td>0.267819</td>
+      <td>0.258964</td>
+      <td>0.315126</td>
+    </tr>
+    <tr>
+      <th>scan_needle_mins_mu</th>
+      <td>3.669602</td>
+      <td>2.904479</td>
+      <td>3.694918</td>
+      <td>3.585094</td>
+      <td>3.497262</td>
+    </tr>
+    <tr>
+      <th>scan_needle_mins_sigma</th>
+      <td>0.664462</td>
+      <td>0.874818</td>
+      <td>0.518929</td>
+      <td>0.751204</td>
+      <td>0.608126</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="limit-full-data-to-units-with-at-least-300-admissions">
+<h3>Limit full data to units with at least 300 admissions<a class="headerlink" href="#limit-full-data-to-units-with-at-least-300-admissions" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units_with_300_admissions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]))</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_loaded</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">units_with_300_admissions</span><span class="p">)</span>
+<span class="n">data_restricted</span> <span class="o">=</span> <span class="n">data_loaded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="produce-results-for-day-night-and-weekday-weekend">
+<h3>Produce results for day/night and weekday/weekend<a class="headerlink" href="#produce-results-for-day-night-and-weekday-weekend" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day_time_values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;09:00 to 11:59&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00 to 14:59&#39;</span><span class="p">,</span> <span class="s1">&#39;15:00 to 17:59&#39;</span><span class="p">]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">day_time_values</span><span class="p">)</span>
+<span class="n">data_restricted</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">day_time</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weekdays</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;S1AdmissionDay&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">weekdays</span><span class="p">)</span>
+<span class="n">data_restricted</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">mon_fri</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Weekday</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;mon_fri&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance_weekday.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Weekday day</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;day_time&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;mon_fri&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance_weekday_day.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Weekday night</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;day_time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span> <span class="o">&amp;</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;mon_fri&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance_weekday_night.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Weekend</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;mon_fri&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance_weekend.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Weekend day</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;day_time&#39;</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;mon_fri&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance_weekend_day.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Weekend night</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;day_time&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data_restricted</span><span class="p">[</span><span class="s1">&#39;mon_fri&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_restricted</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analyse_by_team</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance_weekend_night.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./pathway_sim"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="pathway_code.html" title="previous page">Pathway code</a>
+    <a class='right-next' id="next-link" href="validation.html" title="next page">Stroke pathway simulation - validation and calibration</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

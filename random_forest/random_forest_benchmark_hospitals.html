@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Benchmark hospitals &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -20,10 +20,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,20 +35,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,14 +57,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?" href="random_forest_compare_highest_thrombolysing_with_benchmark.html" />
     <link rel="prev" title="Compare level of agreement in clinical decison making between hospitals using Random Forests models" href="random_forest_compare_hospital.html" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-    
+
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
@@ -72,30 +73,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL-1
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -107,22 +108,17 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../descriptive_stats/outline.html">
    Outline - what is in this section?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
      Descriptive analysis of stroke pathway data
@@ -164,24 +160,21 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
@@ -193,17 +186,14 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="outline.html">
    Random Forests
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
@@ -255,17 +245,14 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../neural_net/outline.html">
    Neural Networks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
@@ -297,6 +284,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
@@ -306,7 +298,14 @@
      Modular TensorFlow model with 2D embedding - analyse
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/model_accuracy.html">
@@ -314,8 +313,57 @@
   </a>
  </li>
 </ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -365,12 +413,12 @@
 
             <!-- Source interaction buttons -->
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -379,11 +427,12 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aims">
    Aims
@@ -448,7 +497,8 @@
  </li>
 </ul>
 
-            </nav>
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -457,9 +507,9 @@
         
               <div>
                 
-  <div class="section" id="benchmark-hospitals">
+  <section id="benchmark-hospitals">
 <h1>Benchmark hospitals<a class="headerlink" href="#benchmark-hospitals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Predict thrombolysis decisions for a 10k cohort of patients at all hospitals</p></li>
@@ -467,8 +517,8 @@
 <li><p>Predict decision of those benchmark set of hospitals for all patients at each hopsital. Use a majority vote to classify as whether the patient would receive thrombolysis or not.</p></li>
 <li><p>Compare actual thrombolysis use with thrombolysis use if decisions made by majority vote of benchmark hospitals.</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,8 +541,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
+</section>
+<section id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
 <h2>Load pre-trained hospital models into dictionary <em>hospital2model</em><a class="headerlink" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model" title="Permalink to this headline">¶</a></h2>
 <p>keys = hospitals</p>
 <p>values = trained_classifier, threshold, patients, outcomes</p>
@@ -505,8 +555,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="import-10k-cohort">
+</section>
+<section id="import-10k-cohort">
 <h2>Import 10k cohort<a class="headerlink" href="#import-10k-cohort" title="Permalink to this headline">¶</a></h2>
 <p>10k cohort all arrive at hospital within 4 hours of known stroke onset</p>
 <div class="cell docutils container">
@@ -516,8 +566,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="pass-cohort-through-all-hospital-models">
+</section>
+<section id="pass-cohort-through-all-hospital-models">
 <h2>Pass cohort through all hospital models<a class="headerlink" href="#pass-cohort-through-all-hospital-models" title="Permalink to this headline">¶</a></h2>
 <p>Allow for new analysis or used loaded resulkts from previous analysis.</p>
 <div class="cell docutils container">
@@ -872,7 +922,7 @@
 <p>10000 rows × 132 columns</p>
 </div></div></div>
 </div>
-<div class="section" id="summarise-results">
+<section id="summarise-results">
 <h3>Summarise results<a class="headerlink" href="#summarise-results" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,9 +1117,9 @@
 <img alt="../_images/random_forest_benchmark_hospitals_15_0.png" src="../_images/random_forest_benchmark_hospitals_15_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="take-majority-decision-of-benchmark-hospitals">
+</section>
+</section>
+<section id="take-majority-decision-of-benchmark-hospitals">
 <h2>Take majority decision of benchmark hospitals<a class="headerlink" href="#take-majority-decision-of-benchmark-hospitals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1134,7 +1184,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="repeat-analysis-just-for-patients-scanned-within-4-hours-of-onset">
+<section id="repeat-analysis-just-for-patients-scanned-within-4-hours-of-onset">
 <h3>Repeat analysis just for patients scanned within 4 hours of onset<a class="headerlink" href="#repeat-analysis-just-for-patients-scanned-within-4-hours-of-onset" title="Permalink to this headline">¶</a></h3>
 <p>This value is used in the pathway simulation model.</p>
 <div class="cell docutils container">
@@ -1375,8 +1425,8 @@
 <p>5 rows × 33 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="create-summary-pivot-table">
+</section>
+<section id="create-summary-pivot-table">
 <h3>Create summary pivot table<a class="headerlink" href="#create-summary-pivot-table" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1610,8 +1660,8 @@
 <img alt="../_images/random_forest_benchmark_hospitals_27_0.png" src="../_images/random_forest_benchmark_hospitals_27_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="calculated-weighted-average">
+</section>
+<section id="calculated-weighted-average">
 <h3>Calculated weighted average<a class="headerlink" href="#calculated-weighted-average" title="Permalink to this headline">¶</a></h3>
 <p>Weight thrombolysis by admission numbers</p>
 <div class="cell docutils container">
@@ -1661,17 +1711,17 @@ Benchmark thrombolysis ratio onset-to-scan of 4 hrs: 1.250
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>A ‘benchmark’ set of hospitals was created by identifying those 30 hospitals whith the highest predicted thrombolysis use in a set cohort of patients.</p></li>
 <li><p>The benchmark hospitals were not necessarily the top thrombolysing hospitals given their own patient populations.</p></li>
 <li><p>If decision to treat were made according to a majority vote of the benchmark set of hospitals then thrombolysis use (in those arriving within 4 hours of known stroke onset) would be expected to increase about 25%.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1720,8 +1770,9 @@ Benchmark thrombolysis ratio onset-to-scan of 4 hrs: 1.250
 
       </div>
     </div>
+
     
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
