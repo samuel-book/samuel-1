@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Analysis of alternative pathway scenarios &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,14 +52,14 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Stroke pathway simulation - generation of results from alternative scenarios" href="scenario_results_generation.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -72,30 +68,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL-1
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -107,17 +103,22 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../descriptive_stats/outline.html">
    Outline - what is in this section?
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
      Descriptive analysis of stroke pathway data
@@ -159,21 +160,24 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Machine Learning
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
@@ -185,14 +189,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../random_forest/outline.html">
    Random Forests
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
@@ -244,14 +251,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neural_net/outline.html">
    Neural Networks
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
@@ -283,11 +293,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
-     Aims
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
@@ -297,14 +302,7 @@
      Modular TensorFlow model with 2D embedding - analyse
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
-     Aims
-    </a>
-   </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/model_accuracy.html">
@@ -312,17 +310,22 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Pathway Simulation
  </span>
 </p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="outline_model.html">
    Model building and validation
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="pathway_code.html">
      Pathway code
@@ -339,14 +342,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="scenario_results_generation.html">
      Stroke pathway simulation - generation of results from alternative scenarios
@@ -358,11 +364,10 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -412,12 +417,12 @@
 
             <!-- Source interaction buttons -->
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -426,12 +431,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#load-libraries">
    Load libraries
@@ -453,27 +457,32 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-effect-of-speed">
-     Plot effect of speed
+    <a class="reference internal nav-link" href="#plot-changes-at-each-hospital">
+     Plot changes at each hospital
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-effect-of-speed">
+       Plot effect of speed
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-effect-of-onset-known">
+       Plot effect of onset-known
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-effect-of-benchmark-decisions">
+       Plot effect of benchmark decisions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-effect-of-all-changes">
+       Plot effect of all changes
+      </a>
+     </li>
+    </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-effect-of-onset-known">
-     Plot effect of onset-known
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-effect-of-benchmark-decisions">
-     Plot effect of benchmark decisions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-effect-of-all-sceanrio-changes">
-   Plot effect of all sceanrio changes
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit">
      Histogram of shift in distribution of thrombolysis use and benefit
@@ -493,8 +502,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -503,9 +511,9 @@
         
               <div>
                 
-  <section id="analysis-of-alternative-pathway-scenarios">
+  <div class="section" id="analysis-of-alternative-pathway-scenarios">
 <h1>Analysis of alternative pathway scenarios<a class="headerlink" href="#analysis-of-alternative-pathway-scenarios" title="Permalink to this headline">¶</a></h1>
-<section id="load-libraries">
+<div class="section" id="load-libraries">
 <h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -518,8 +526,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-data">
+</div>
+<div class="section" id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,8 +794,8 @@
 <p>132 rows × 15 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="collate-key-results">
+</div>
+<div class="section" id="collate-key-results">
 <h2>Collate key results<a class="headerlink" href="#collate-key-results" title="Permalink to this headline">¶</a></h2>
 <p>Collate key results together in a DataFrame.</p>
 <div class="cell docutils container">
@@ -976,8 +984,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="overall-results">
+</div>
+<div class="section" id="overall-results">
 <h2>Overall results<a class="headerlink" href="#overall-results" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1150,6 +1158,8 @@
 <img alt="../_images/scenario_analysis_13_0.png" src="../_images/scenario_analysis_13_0.png" />
 </div>
 </div>
+<div class="section" id="plot-changes-at-each-hospital">
+<h3>Plot changes at each hospital<a class="headerlink" href="#plot-changes-at-each-hospital" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_plot</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">test_rx</span><span class="p">,</span> <span class="n">base_benefit</span><span class="p">,</span> <span class="n">test_benefit</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -1204,8 +1214,8 @@
 </div>
 </div>
 </div>
-<section id="plot-effect-of-speed">
-<h3>Plot effect of speed<a class="headerlink" href="#plot-effect-of-speed" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="plot-effect-of-speed">
+<h4>Plot effect of speed<a class="headerlink" href="#plot-effect-of-speed" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -1223,9 +1233,9 @@
 <img alt="../_images/scenario_analysis_17_0.png" src="../_images/scenario_analysis_17_0.png" />
 </div>
 </div>
-</section>
-<section id="plot-effect-of-onset-known">
-<h3>Plot effect of onset-known<a class="headerlink" href="#plot-effect-of-onset-known" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="plot-effect-of-onset-known">
+<h4>Plot effect of onset-known<a class="headerlink" href="#plot-effect-of-onset-known" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -1243,9 +1253,9 @@
 <img alt="../_images/scenario_analysis_19_0.png" src="../_images/scenario_analysis_19_0.png" />
 </div>
 </div>
-</section>
-<section id="plot-effect-of-benchmark-decisions">
-<h3>Plot effect of benchmark decisions<a class="headerlink" href="#plot-effect-of-benchmark-decisions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="plot-effect-of-benchmark-decisions">
+<h4>Plot effect of benchmark decisions<a class="headerlink" href="#plot-effect-of-benchmark-decisions" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -1263,10 +1273,9 @@
 <img alt="../_images/scenario_analysis_21_0.png" src="../_images/scenario_analysis_21_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="plot-effect-of-all-sceanrio-changes">
-<h2>Plot effect of all sceanrio changes<a class="headerlink" href="#plot-effect-of-all-sceanrio-changes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="plot-effect-of-all-changes">
+<h4>Plot effect of all changes<a class="headerlink" href="#plot-effect-of-all-changes" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -1284,7 +1293,9 @@
 <img alt="../_images/scenario_analysis_23_0.png" src="../_images/scenario_analysis_23_0.png" />
 </div>
 </div>
-<section id="histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit">
+</div>
+</div>
+<div class="section" id="histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit">
 <h3>Histogram of shift in distribution of thrombolysis use and benefit<a class="headerlink" href="#histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1328,9 +1339,9 @@
 <img alt="../_images/scenario_analysis_25_0.png" src="../_images/scenario_analysis_25_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="bar-charts-of-individual-changes-at-all-hospitals">
+</div>
+</div>
+<div class="section" id="bar-charts-of-individual-changes-at-all-hospitals">
 <h2>Bar charts of individual changes at all hospitals<a class="headerlink" href="#bar-charts-of-individual-changes-at-all-hospitals" title="Permalink to this headline">¶</a></h2>
 <p>Here we summarise the effect of individual changes at each hospital.</p>
 <p>Note that actual combined changes will be more than additive, but these plots give an indication of what the most significant effects will be across all hospitals.</p>
@@ -1438,8 +1449,8 @@
 <img alt="../_images/scenario_analysis_29_0.png" src="../_images/scenario_analysis_29_0.png" />
 </div>
 </div>
-</section>
-<section id="results-for-individual-hospitals">
+</div>
+<div class="section" id="results-for-individual-hospitals">
 <h2>Results for individual hospitals<a class="headerlink" href="#results-for-individual-hospitals" title="Permalink to this headline">¶</a></h2>
 <p>We may plot more detailed results at an individual hospital level.</p>
 <div class="cell docutils container">
@@ -1532,8 +1543,8 @@
 <img alt="../_images/scenario_analysis_37_0.png" src="../_images/scenario_analysis_37_0.png" />
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1581,9 +1592,8 @@
 
       </div>
     </div>
-
     
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
 
     
