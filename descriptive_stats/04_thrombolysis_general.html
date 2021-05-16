@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Association between patient features on use of thrombolysis &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -20,10 +20,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,20 +35,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,14 +57,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Comparison of average values for patients who receive thrombolysis and those that do not" href="05_thrombolysis_comparison.html" />
     <link rel="prev" title="Descriptive analysis of stroke pathway data" href="01_descriptive.html" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-    
+
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
@@ -72,30 +73,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL-1
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -107,22 +108,17 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="outline.html">
    Outline - what is in this section?
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="01_descriptive.html">
      Descriptive analysis of stroke pathway data
@@ -164,158 +160,11 @@
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Machine Learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../logistic_regression/outline.html">
-   Logistic Regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
-     Logistic Regression Classifier - Fitting to all stroke teams together
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
-     Logistic Regression Classifier - Fitting hospital-specific models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../random_forest/outline.html">
-   Random Forests
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
-     Random Forest Classifier - Fitting to all stroke teams together
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
-     Random Forest Classifier - Fitting hospital-specific models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
-     Train and save hospital-level models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
-     Compare level of agreement in clinical decison making between hospitals using Random Forests models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
-     Benchmark hospitals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
-     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
-     Grouping hospitals by similarities in decision making
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
-     Patient level decisions at own hospital, and consensus decisions at other other hospitals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/vignettes.html">
-     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
-     Find similar patients who are treated differently within the same hospital
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../neural_net/outline.html">
-   Neural Networks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
-     Fully connected TensorFlow model - Check required training epochs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
-     Fully connected TensorFlow model - Train and save models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
-     Fully connected TensorFlow model - analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
-     Fully connected TensorFlow model - Learning curve
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
-     Modular TensorFlow model with 1D embedding - Train and save models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
-     Modular TensorFlow model with 1D embedding - analyse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
-     Modular TensorFlow model with 2D embedding - Train and save models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
-     Modular TensorFlow model with 2D embedding - analyse
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/model_accuracy.html">
-   A comparison of machine learning models
-  </a>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -365,12 +214,12 @@
 
             <!-- Source interaction buttons -->
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -379,11 +228,12 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aims">
    Aims
@@ -463,7 +313,8 @@
  </li>
 </ul>
 
-            </nav>
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -472,9 +323,9 @@
         
               <div>
                 
-  <div class="section" id="association-between-patient-features-on-use-of-thrombolysis">
+  <section id="association-between-patient-features-on-use-of-thrombolysis">
 <h1>Association between patient features on use of thrombolysis<a class="headerlink" href="#association-between-patient-features-on-use-of-thrombolysis" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Examine thrombolysis use (in all arrivals, and the subset of those who arrive within 4 hours of known onset) according to:</p>
 <ul class="simple">
@@ -489,8 +340,8 @@
 <p>Examine thrombolysis use in the absence and presence of co-morbidities.</p>
 <p>Note: The association of particular features with use of thrombolysis does not imply that these relationships are causal.</p>
 <p>Examine reasons given for not giving thrombolysis.</p>
-</div>
-<div class="section" id="import-libraries-and-data">
+</section>
+<section id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has been resticted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
 <div class="cell docutils container">
@@ -520,8 +371,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+</section>
+<section id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
 <h2>Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients<a class="headerlink" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,8 +408,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset">
+</section>
+<section id="get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset">
 <h2>Get out-of-hopsital stroke onset arrivals within 4 hours of known stroke onset<a class="headerlink" href="#get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -573,10 +424,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="breakdown-of-thrombolysis-use-by-feature">
+</section>
+<section id="breakdown-of-thrombolysis-use-by-feature">
 <h2>Breakdown of thrombolysis use by feature<a class="headerlink" href="#breakdown-of-thrombolysis-use-by-feature" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rankin-before-stroke">
+<section id="rankin-before-stroke">
 <h3>Rankin before stroke<a class="headerlink" href="#rankin-before-stroke" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,8 +542,8 @@
 <img alt="../_images/04_thrombolysis_general_12_0.png" src="../_images/04_thrombolysis_general_12_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="stroke-severity">
+</section>
+<section id="stroke-severity">
 <h3>Stroke severity<a class="headerlink" href="#stroke-severity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -989,8 +840,8 @@
 <img alt="../_images/04_thrombolysis_general_16_0.png" src="../_images/04_thrombolysis_general_16_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="gender">
+</section>
+<section id="gender">
 <h3>Gender<a class="headerlink" href="#gender" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,8 +909,8 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="ethnicity">
+</section>
+<section id="ethnicity">
 <h3>Ethnicity<a class="headerlink" href="#ethnicity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1142,8 +993,8 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="age-group">
+</section>
+<section id="age-group">
 <h3>Age group<a class="headerlink" href="#age-group" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1317,8 +1168,8 @@
 <img alt="../_images/04_thrombolysis_general_26_0.png" src="../_images/04_thrombolysis_general_26_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="onset-known">
+</section>
+<section id="onset-known">
 <h3>Onset known<a class="headerlink" href="#onset-known" title="Permalink to this headline">¶</a></h3>
 <p>Get fractions for each onset type</p>
 <div class="cell docutils container">
@@ -1410,8 +1261,8 @@ Name: StrokeTeam, dtype: float64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="arrival-by-ambulance">
+</section>
+<section id="arrival-by-ambulance">
 <h3>Arrival by ambulance<a class="headerlink" href="#arrival-by-ambulance" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1492,8 +1343,8 @@ Name: StrokeTeam, dtype: float64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="thrombolysis-use-by-comorbidities">
+</section>
+<section id="thrombolysis-use-by-comorbidities">
 <h3>Thrombolysis use by comorbidities<a class="headerlink" href="#thrombolysis-use-by-comorbidities" title="Permalink to this headline">¶</a></h3>
 <p>Only examine effect of comorbidity on thrombolysis use of those arriving within 4 hours of known onset.</p>
 <p>Analyse by comorbidity ‘Yes’ or ‘No’. Ignore ‘No but’.</p>
@@ -1636,9 +1487,9 @@ Name: StrokeTeam, dtype: float64
 <img alt="../_images/04_thrombolysis_general_38_0.png" src="../_images/04_thrombolysis_general_38_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="reasons-for-not-giving-thrombolysis">
+</section>
+</section>
+<section id="reasons-for-not-giving-thrombolysis">
 <h2>Reasons for not giving thrombolysis<a class="headerlink" href="#reasons-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h2>
 <p>Reasons given for not using thrombolysis (more than one may be ticked for each patient).</p>
 <p>Only examine reasons for those arriving within 4 hours of known onset.</p>
@@ -1701,8 +1552,8 @@ dtype: float64
 <img alt="../_images/04_thrombolysis_general_41_0.png" src="../_images/04_thrombolysis_general_41_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>Disability before stroke:</em> The higher the level of disability before stroke (as described by the modified Rankin Scale) the lower the use of thrombolysis. As a percentage of all out-of-hospital onset arrivals, thrombolysis use drops from 14.2% in those with no disability before stroke to 4.3% of those with a modified Rankin Scale of 5. As a percentage of out-of-hospital onset arrivals arriving within 4 hours of known stroke onset,  thrombolysis use drops from 34.9% in those with no disability before stroke to 9.8% of those with a modified Rankin Scale of 5.</p></li>
@@ -1715,8 +1566,8 @@ dtype: float64
 <li><p><em>Presence of co-morbidities</em>: The presence or absence of co-co-morbidities can be a strong indicator of the use of thrombolysis. For example those on anticoagulant therapies receive thrombolysis less than those who do not, but those on anti-platelet therapies receive it more.</p></li>
 <li><p><em>Stated reasons for not giving thrombolysis:</em>: Haemorrhagic stroke or a stroke that is too mild/sever are the most common causes (each present in 22% of those not treated). An improving condition is given as the reason for no treatment in 17% of non-treated patients. It is noteworthy that patient refusal is given as a reason for non-treatment in only 0.9% of untreated patients</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1765,8 +1616,9 @@ dtype: float64
 
       </div>
     </div>
+
     
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
