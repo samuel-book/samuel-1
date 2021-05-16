@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,11 +37,14 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -487,6 +490,23 @@
     <a class="reference internal nav-link" href="#histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit">
      Histogram of shift in distribution of thrombolysis use and benefit
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-which-change-makes-most-difference-in-each-hospital">
+     Find which change makes most difference in each hospital
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#best-thrombolysis-rate">
+       Best thrombolysis rate
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#best-outcomes">
+       Best outcomes
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -1340,6 +1360,66 @@
 </div>
 </div>
 </div>
+<div class="section" id="find-which-change-makes-most-difference-in-each-hospital">
+<h3>Find which change makes most difference in each hospital<a class="headerlink" href="#find-which-change-makes-most-difference-in-each-hospital" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="best-thrombolysis-rate">
+<h4>Best thrombolysis rate<a class="headerlink" href="#best-thrombolysis-rate" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pivot results</span>
+<span class="n">results_pivot</span> <span class="o">=</span> <span class="p">(</span><span class="n">key_results</span><span class="p">[[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;scenario&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke_team&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;scenario&#39;</span><span class="p">))</span>
+<span class="n">results_pivot</span> <span class="o">=</span> <span class="n">results_pivot</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span>
+<span class="c1"># Limit to single changes</span>
+<span class="n">cols_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;speed_benchmark&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">]</span>
+<span class="n">results_pivot</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">cols_to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Find largest effect</span>
+<span class="n">best_result</span> <span class="o">=</span> <span class="n">results_pivot</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Count</span>
+<span class="n">best_result</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark    81
+onset        40
+speed        10
+base          1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="best-outcomes">
+<h4>Best outcomes<a class="headerlink" href="#best-outcomes" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pivot results</span>
+<span class="n">results_pivot</span> <span class="o">=</span> <span class="p">(</span><span class="n">key_results</span><span class="p">[[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;scenario&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke_team&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;scenario&#39;</span><span class="p">))</span>
+<span class="n">results_pivot</span> <span class="o">=</span> <span class="n">results_pivot</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span>
+<span class="c1"># Limit to single changes</span>
+<span class="n">cols_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;speed_benchmark&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">]</span>
+<span class="n">results_pivot</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">cols_to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Find largest effect</span>
+<span class="n">best_result</span> <span class="o">=</span> <span class="n">results_pivot</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Count</span>
+<span class="n">best_result</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark    55
+speed        51
+onset        26
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="bar-charts-of-individual-changes-at-all-hospitals">
 <h2>Bar charts of individual changes at all hospitals<a class="headerlink" href="#bar-charts-of-individual-changes-at-all-hospitals" title="Permalink to this headline">¶</a></h2>
@@ -1396,7 +1476,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_28_0.png" src="../_images/scenario_analysis_28_0.png" />
+<img alt="../_images/scenario_analysis_33_0.png" src="../_images/scenario_analysis_33_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1446,7 +1526,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_29_0.png" src="../_images/scenario_analysis_29_0.png" />
+<img alt="../_images/scenario_analysis_34_0.png" src="../_images/scenario_analysis_34_0.png" />
 </div>
 </div>
 </div>
@@ -1518,7 +1598,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_33_0.png" src="../_images/scenario_analysis_33_0.png" />
+<img alt="../_images/scenario_analysis_38_0.png" src="../_images/scenario_analysis_38_0.png" />
 </div>
 </div>
 <p>An example where determining stroke onset time makes most difference.</p>
@@ -1529,7 +1609,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_35_0.png" src="../_images/scenario_analysis_35_0.png" />
+<img alt="../_images/scenario_analysis_40_0.png" src="../_images/scenario_analysis_40_0.png" />
 </div>
 </div>
 <p>An example where applying benchmark decion-making makes most difference.</p>
@@ -1540,7 +1620,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_37_0.png" src="../_images/scenario_analysis_37_0.png" />
+<img alt="../_images/scenario_analysis_42_0.png" src="../_images/scenario_analysis_42_0.png" />
 </div>
 </div>
 </div>
