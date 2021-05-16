@@ -1,0 +1,1079 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathway patterns throughout the day &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pathway patterns throughout the week" href="02b_weekly_patterns.html" />
+    <link rel="prev" title="Comparison of average values for patients who receive thrombolysis and those that do not" href="05_thrombolysis_comparison.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="outline.html">
+   Outline - what is in this section?
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/descriptive_stats/02a_daily_patterns.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries-and-data">
+   Import libraries and data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+   Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#group-by-time-of-day">
+   Group by time of day
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-summary-table-by-time-of-day">
+   Show summary table by time of day
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-summary-charts-of-key-metrics-by-time-of-day">
+   Show summary charts of key metrics by time of day
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pathway-patterns-throughout-the-day">
+<h1>Pathway patterns throughout the day<a class="headerlink" href="#pathway-patterns-throughout-the-day" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<p>Show key pathway statistics broken down by time of day (3 hour epochs).</p>
+</div>
+<div class="section" id="import-libraries-and-data">
+<h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
+<p>Data has been resticted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Display entire dataframes</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+
+<span class="c1"># import data</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./../data/2019-11-04-HQIP303-Exeter_MA.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headings</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">headings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;StrokeTeam&#39;, &#39;PatientUID&#39;, &#39;Pathway&#39;, &#39;S1AgeOnArrival&#39;, &#39;MoreEqual80y&#39;, &#39;S1Gender&#39;, &#39;S1Ethnicity&#39;, &#39;S1OnsetInHospital&#39;, &#39;S1OnsetToArrival_min&#39;, &#39;S1OnsetDateType&#39;, &#39;S1OnsetTimeType&#39;, &#39;S1ArriveByAmbulance&#39;, &#39;S1AdmissionHour&#39;, &#39;S1AdmissionDay&#39;, &#39;S1AdmissionQuarter&#39;, &#39;S1AdmissionYear&#39;, &#39;CongestiveHeartFailure&#39;, &#39;Hypertension&#39;, &#39;AtrialFibrillation&#39;, &#39;Diabetes&#39;, &#39;StrokeTIA&#39;, &#39;AFAntiplatelet&#39;, &#39;AFAnticoagulent&#39;, &#39;AFAnticoagulentVitK&#39;, &#39;AFAnticoagulentDOAC&#39;, &#39;AFAnticoagulentHeparin&#39;, &#39;S2INR&#39;, &#39;S2INRHigh&#39;, &#39;S2INRNK&#39;, &#39;S2NewAFDiagnosis&#39;, &#39;S2RankinBeforeStroke&#39;, &#39;Loc&#39;, &#39;LocQuestions&#39;, &#39;LocCommands&#39;, &#39;BestGaze&#39;, &#39;Visual&#39;, &#39;FacialPalsy&#39;, &#39;MotorArmLeft&#39;, &#39;MotorArmRight&#39;, &#39;MotorLegLeft&#39;, &#39;MotorLegRight&#39;, &#39;LimbAtaxia&#39;, &#39;Sensory&#39;, &#39;BestLanguage&#39;, &#39;Dysarthria&#39;, &#39;ExtinctionInattention&#39;, &#39;S2NihssArrival&#39;, &#39;S2BrainImagingTime_min&#39;, &#39;S2StrokeType&#39;, &#39;S2Thrombolysis&#39;, &#39;Haemorrhagic&#39;, &#39;TimeWindow&#39;, &#39;Comorbidity&#39;, &#39;Medication&#39;, &#39;Refusal&#39;, &#39;Age&#39;, &#39;Improving&#39;, &#39;TooMildSevere&#39;, &#39;TimeUnknownWakeUp&#39;, &#39;OtherMedical&#39;, &#39;S2ThrombolysisTime_min&#39;, &#39;S2TIAInLastMonth&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+<h2>Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients<a class="headerlink" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keep</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">)</span> <span class="c1"># creates a new object of groups of data</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">group_df</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span> <span class="c1"># each group has an index and a dataframe of data</span>
+    
+    <span class="c1"># Skip if total admissions less than 300 or total thrombolysis &lt; 10</span>
+    <span class="n">admissions</span> <span class="o">=</span> <span class="n">group_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">thrombolysis_received</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="n">admissions</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">thrombolysis_received</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="k">continue</span>
+    
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_df</span><span class="p">)</span>
+
+<span class="c1"># Concatenate output</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remove in-hospital onset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetInHospital&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;No&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="group-by-time-of-day">
+<h2>Group by time of day<a class="headerlink" href="#group-by-time-of-day" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Work on copy of data</span>
+<span class="n">data_time</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Set up results DataFrame</span>
+<span class="n">time_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Count arrivals</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;Arrivals&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get thrombolysis rate</span>
+<span class="n">thrombolysed</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thrombolysed</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;thrombolyse_all&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get proportion of strokes with known onset</span>
+<span class="n">onset_known</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">)</span> <span class="o">|</span> \
+    <span class="p">(</span><span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Precise&#39;</span><span class="p">)</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_known</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get proportion over 80</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;age_80_plus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;MoreEqual80y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;age_80_plus&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;age_80_plus&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get Rankin score</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;rankin_all&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get NIHSS</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;nihss_all&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get onset to arrival &lt;4hrs and then restrict data</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;4hr_arrival&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;4hr_arrival&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;4hr_arrival&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;4hr_arrival&#39;</span><span class="p">]</span>
+<span class="n">data_time</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Get Rankin score of arrivals within 4hrs onset</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;rankin_4hr&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get NIHSS of arrivals within 4hrs onset</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;nihss_4hr&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get onset to arrival (of those arriving within 4 hours)</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;onset_arrival&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get scan in four hours (and remove rest)</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;4hr_scan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;scan_4hrs&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;4hr_scan&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;4hr_scan&#39;</span><span class="p">]</span>
+<span class="n">data_time</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Get arrival to scan (of those arriving within 4 hours and scanned in 4hrs)</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;arrival_scan&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">]</span>
+
+<span class="c1"># Filter down to acanned within 4 hrs onset</span>
+<span class="n">onset_to_scan</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">])</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;onset_to_scan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_to_scan</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;onset_to_scan&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="n">data_time</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Get thrombolysis given and remove rest</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;thrombolyse_4hr&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get scan to needle</span>
+<span class="n">scan_to_needle</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">])</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;scan_needle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_to_needle</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;scan_to_needle&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;scan_needle&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get arrival to needle</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;arrival_to_needle&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get onset to needle </span>
+<span class="n">onset_to_needle</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">])</span>
+<span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;onset_to_needle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_to_needle</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;onset_to_needle&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data_time</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AdmissionHour&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;onset_to_needle&#39;</span><span class="p">]</span>
+
+<span class="c1"># Add short time start (string) column for plots</span>
+<span class="n">hour</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span> <span class="s1">&#39;19&#39;</span><span class="p">,</span> <span class="s1">&#39;21&#39;</span><span class="p">]</span>
+<span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="show-summary-table-by-time-of-day">
+<h2>Show summary table by time of day<a class="headerlink" href="#show-summary-table-by-time-of-day" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_summary</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>S1AdmissionHour</th>
+      <th>00:00 to 02:59</th>
+      <th>03:00 to 05:59</th>
+      <th>06:00 to 08:59</th>
+      <th>09:00 to 11:59</th>
+      <th>12:00 to 14:59</th>
+      <th>15:00 to 17:59</th>
+      <th>18:00 to 20:59</th>
+      <th>21:00 to 23:59</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Arrivals</th>
+      <td>9890</td>
+      <td>7367</td>
+      <td>15871</td>
+      <td>52049</td>
+      <td>48687</td>
+      <td>39838</td>
+      <td>32200</td>
+      <td>20918</td>
+    </tr>
+    <tr>
+      <th>thrombolyse_all</th>
+      <td>0.131446</td>
+      <td>0.0651554</td>
+      <td>0.109004</td>
+      <td>0.119464</td>
+      <td>0.118882</td>
+      <td>0.115945</td>
+      <td>0.119658</td>
+      <td>0.135338</td>
+    </tr>
+    <tr>
+      <th>onset_known</th>
+      <td>0.75996</td>
+      <td>0.679381</td>
+      <td>0.636633</td>
+      <td>0.63006</td>
+      <td>0.646004</td>
+      <td>0.658241</td>
+      <td>0.708571</td>
+      <td>0.75251</td>
+    </tr>
+    <tr>
+      <th>age_80_plus</th>
+      <td>0.378564</td>
+      <td>0.379938</td>
+      <td>0.387562</td>
+      <td>0.436589</td>
+      <td>0.423768</td>
+      <td>0.414027</td>
+      <td>0.411677</td>
+      <td>0.412037</td>
+    </tr>
+    <tr>
+      <th>rankin_all</th>
+      <td>1.02053</td>
+      <td>1.0566</td>
+      <td>1.05003</td>
+      <td>1.07894</td>
+      <td>1.03551</td>
+      <td>1.02995</td>
+      <td>1.03165</td>
+      <td>1.06062</td>
+    </tr>
+    <tr>
+      <th>nihss_all</th>
+      <td>7.94191</td>
+      <td>8.35454</td>
+      <td>8.80986</td>
+      <td>7.71318</td>
+      <td>7.0694</td>
+      <td>6.80621</td>
+      <td>7.38032</td>
+      <td>7.62235</td>
+    </tr>
+    <tr>
+      <th>4hr_arrival</th>
+      <td>0.464307</td>
+      <td>0.353197</td>
+      <td>0.388066</td>
+      <td>0.378778</td>
+      <td>0.36938</td>
+      <td>0.365304</td>
+      <td>0.423137</td>
+      <td>0.46362</td>
+    </tr>
+    <tr>
+      <th>rankin_4hr</th>
+      <td>0.93162</td>
+      <td>1.04343</td>
+      <td>1.01153</td>
+      <td>1.13178</td>
+      <td>1.06611</td>
+      <td>1.02185</td>
+      <td>1.07134</td>
+      <td>1.03722</td>
+    </tr>
+    <tr>
+      <th>nihss_4hr</th>
+      <td>9.47393</td>
+      <td>9.53222</td>
+      <td>10.0548</td>
+      <td>9.30759</td>
+      <td>8.91874</td>
+      <td>8.91479</td>
+      <td>9.32159</td>
+      <td>9.1475</td>
+    </tr>
+    <tr>
+      <th>onset_arrival</th>
+      <td>122.127</td>
+      <td>115.238</td>
+      <td>102.11</td>
+      <td>108.779</td>
+      <td>113.879</td>
+      <td>111.436</td>
+      <td>110.78</td>
+      <td>112.673</td>
+    </tr>
+    <tr>
+      <th>scan_4hrs</th>
+      <td>0.922474</td>
+      <td>0.895465</td>
+      <td>0.958597</td>
+      <td>0.95861</td>
+      <td>0.95863</td>
+      <td>0.954786</td>
+      <td>0.939523</td>
+      <td>0.926892</td>
+    </tr>
+    <tr>
+      <th>arrival_scan</th>
+      <td>40.8057</td>
+      <td>47.2502</td>
+      <td>44.7102</td>
+      <td>41.357</td>
+      <td>42.0989</td>
+      <td>40.9557</td>
+      <td>42.8849</td>
+      <td>41.8893</td>
+    </tr>
+    <tr>
+      <th>thrombolyse_4hr</th>
+      <td>0.334958</td>
+      <td>0.223671</td>
+      <td>0.310397</td>
+      <td>0.360533</td>
+      <td>0.373564</td>
+      <td>0.366626</td>
+      <td>0.333631</td>
+      <td>0.349285</td>
+    </tr>
+    <tr>
+      <th>scan_to_needle</th>
+      <td>44.0687</td>
+      <td>44.2937</td>
+      <td>39.3118</td>
+      <td>31.7291</td>
+      <td>32.1522</td>
+      <td>33.7953</td>
+      <td>40.7675</td>
+      <td>44.3519</td>
+    </tr>
+    <tr>
+      <th>arrival_to_needle</th>
+      <td>68.2312</td>
+      <td>68.0112</td>
+      <td>63.5706</td>
+      <td>53.7009</td>
+      <td>53.7034</td>
+      <td>55.1399</td>
+      <td>63.8725</td>
+      <td>69.2026</td>
+    </tr>
+    <tr>
+      <th>onset_to_needle</th>
+      <td>177.516</td>
+      <td>175.269</td>
+      <td>150.697</td>
+      <td>146.731</td>
+      <td>150.852</td>
+      <td>149.811</td>
+      <td>158.123</td>
+      <td>165.162</td>
+    </tr>
+    <tr>
+      <th>hour</th>
+      <td>0</td>
+      <td>3</td>
+      <td>6</td>
+      <td>9</td>
+      <td>12</td>
+      <td>15</td>
+      <td>19</td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="show-summary-charts-of-key-metrics-by-time-of-day">
+<h2>Show summary charts of key metrics by time of day<a class="headerlink" href="#show-summary-charts-of-key-metrics-by-time-of-day" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="c1"># Subplot 1: Arrivals</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;Arrivals&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;Arrivals&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">8</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># Add line at 1</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># must be after plot method</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normlalised arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Arrivals</span><span class="se">\n</span><span class="s1">(normalised to average)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 2: Thrombolysis</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;thrombolyse_all&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis (%)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use</span><span class="se">\n</span><span class="s1">(all arrivals)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 3: Known onset</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Onset known (%)&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion with known onset&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 4: age_80_plus </span>
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;age_80_plus&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Aged 80+&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion aged 80+&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 5: Rankin (all arrivals)</span>
+<span class="n">ax5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;rankin_all&#39;</span><span class="p">]</span> 
+<span class="n">ax5</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rankin (mean)&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean pre-stroke</span><span class="se">\n</span><span class="s1">modified Rankin</span><span class="se">\n</span><span class="s1">(all arrivals)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 6: NIHSS (all arrivals)</span>
+<span class="n">ax6</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;nihss_all&#39;</span><span class="p">]</span> 
+<span class="n">ax6</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;NIHSS (mean)&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean NIH Stroke Scale</span><span class="se">\n</span><span class="s1">(all arrivals)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 7: 4hr_arrival</span>
+<span class="n">ax7</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;4hr_arrival&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Arrive within 4hrs of onset (%)&#39;</span><span class="p">)</span>
+<span class="n">ax7</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion arriving within</span><span class="se">\n</span><span class="s1">4hrs of known onset&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 8: Rankin (4hr arrivals)</span>
+<span class="n">ax8</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;rankin_4hr&#39;</span><span class="p">]</span> 
+<span class="n">ax8</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rankin (mean)&#39;</span><span class="p">)</span>
+<span class="n">ax8</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean pre-stroke</span><span class="se">\n</span><span class="s1">modified Rankin</span><span class="se">\n</span><span class="s1">(arrivals 4hrs from onset)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 9: NIHSS (4hr arrivals)</span>
+<span class="n">ax9</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;nihss_4hr&#39;</span><span class="p">]</span> 
+<span class="n">ax9</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax9</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax9</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;NIHSS (mean)&#39;</span><span class="p">)</span>
+<span class="n">ax9</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean NIH Stroke Scale</span><span class="se">\n</span><span class="s1">(arrivals 4hrs from onset)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 10: onset_arrival (4hr arrivals)</span>
+<span class="n">ax10</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;onset_arrival&#39;</span><span class="p">]</span> 
+<span class="n">ax10</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax10</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax10</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Onset to arrival (minutes, mean)&#39;</span><span class="p">)</span>
+<span class="n">ax10</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean onset to arrival</span><span class="se">\n</span><span class="s1">(arrivals 4hrs from onset)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 11: scan_4hrs (4hr arrivals)</span>
+<span class="n">ax11</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;scan_4hrs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ax11</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax11</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax11</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion scanned within 4hrs (%)&#39;</span><span class="p">)</span>
+<span class="n">ax11</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion scanned within</span><span class="se">\n</span><span class="s1">4hrs of arrival</span><span class="se">\n</span><span class="s1">(arrivals 4hrs from onset)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 12: arrival_scan (4hr scan)</span>
+<span class="n">ax12</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;arrival_scan&#39;</span><span class="p">]</span> 
+<span class="n">ax12</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax12</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax12</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Arrival to scan (minutes, mean)&#39;</span><span class="p">)</span>
+<span class="n">ax12</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean arrival to scan</span><span class="se">\n</span><span class="s1">(scanned 4hrs from onset)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 13: thrombolysis (4hr scan)</span>
+<span class="n">ax13</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;thrombolyse_4hr&#39;</span><span class="p">]</span>  <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ax13</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax13</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax13</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolsyis(%)&#39;</span><span class="p">)</span>
+<span class="n">ax13</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use</span><span class="se">\n</span><span class="s1">(scanned 4hrs from onset)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 14: scan_to_needle</span>
+<span class="n">ax14</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;scan_to_needle&#39;</span><span class="p">]</span> 
+<span class="n">ax14</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax14</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax14</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Scan to needle (minutes, mean)&#39;</span><span class="p">)</span>
+<span class="n">ax14</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean scan to needle&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 15: arrival_to_needle</span>
+<span class="n">ax15</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;arrival_to_needle&#39;</span><span class="p">]</span> 
+<span class="n">ax15</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax15</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax15</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Arrival to needle (minutes, mean)&#39;</span><span class="p">)</span>
+<span class="n">ax15</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean arrival to needle&#39;</span><span class="p">)</span>
+
+<span class="c1"># Subplot 16: onset_to_needle</span>
+<span class="n">ax16</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">time_summary</span><span class="p">[</span><span class="s1">&#39;onset_to_needle&#39;</span><span class="p">]</span> 
+<span class="n">ax16</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax16</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time of day&#39;</span><span class="p">)</span>
+<span class="n">ax16</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Onset to needle (minutes, mean)&#39;</span><span class="p">)</span>
+<span class="n">ax16</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean onset to needle&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save and show</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/stats_by_time_of_day.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02a_daily_patterns_13_0.png" src="../_images/02a_daily_patterns_13_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Arrivals peak between 9am and 3pm, and then drop steadily to a low between 3am and 6pm.</p></li>
+<li><p>Thrombolysis use is significantly lower in the 3am to 6am epoch, but only 3% of admissions occur in this period.</p></li>
+<li><p>Arrival-to-scan time is higher 3am to 9am, but reasonably stable for the rest oif the day.</p></li>
+<li><p>Scan-to-needle is approximately 10 minutes slower at night (9pm to 9am) than during the day (9am to 9pm).</p></li>
+<li><p>The lowest proportion of arrivals with known stroke onset occurs during the day (6am to 6pm).</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./descriptive_stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="05_thrombolysis_comparison.html" title="previous page">Comparison of average values for patients who receive thrombolysis and those that do not</a>
+    <a class='right-next' id="next-link" href="02b_weekly_patterns.html" title="next page">Pathway patterns throughout the week</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+    
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+
+    
+  </body>
+</html>
