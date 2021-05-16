@@ -1,0 +1,4973 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Comparison of average values for patients who receive thrombolysis and those that do not &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pathway patterns throughout the day" href="02a_daily_patterns.html" />
+    <link rel="prev" title="Association between patient features on use of thrombolysis" href="04_thrombolysis_general.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/descriptive_stats/05_thrombolysis_comparison.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-and-analyse-data">
+   Load and analyse data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarise-all-4-hour-admissions">
+   Summarise all 4 hour admissions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarise-4-hour-admissions-who-receive-thrombolysis">
+   Summarise 4 hour admissions who receive thrombolysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarise-4-hour-admissions-who-do-not-receive-thrombolysis">
+   Summarise 4 hour admissions who do not receive thrombolysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-summary-of-all-groups">
+   Show summary of all groups
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="comparison-of-average-values-for-patients-who-receive-thrombolysis-and-those-that-do-not">
+<h1>Comparison of average values for patients who receive thrombolysis and those that do not<a class="headerlink" href="#comparison-of-average-values-for-patients-who-receive-thrombolysis-and-those-that-do-not" title="Permalink to this headline">¶</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<p>Compare feature means for patients who receive thrombolysis and those that do not.</p>
+<p>This analysis is for only those patients arriving within 4 hours of known stroke onset, and is on data that has been coded and, where necessary, imputed.The data used in this analysis is the data used for machine learning.</p>
+</section>
+<section id="load-and-analyse-data">
+<h2>Load and analyse data<a class="headerlink" href="#load-and-analyse-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Set up results DataFrame</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Display entire dataframes</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s2">&quot;display.max_columns&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+
+<span class="c1"># Import data (concenate training and test set used in machine learning)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./../data/10k_training_test/cohort_10000_train.csv&#39;</span><span class="p">),</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)])</span>
+
+<span class="c1"># Add columns for scanned within 4 hours of arrival and onset</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;scan_within_4_hrs_arrival&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;scan_within_4_hrs_onset&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="c1"># Convert boolean to integer</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;scan_within_4_hrs_arrival&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">1</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;scan_within_4_hrs_onset&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StrokeTeam                                         object
+S1AgeOnArrival                                    float64
+S1OnsetToArrival_min                              float64
+S2RankinBeforeStroke                                int64
+Loc                                                 int64
+LocQuestions                                      float64
+LocCommands                                       float64
+BestGaze                                          float64
+Visual                                            float64
+FacialPalsy                                       float64
+MotorArmLeft                                      float64
+MotorArmRight                                     float64
+MotorLegLeft                                      float64
+MotorLegRight                                     float64
+LimbAtaxia                                        float64
+Sensory                                           float64
+BestLanguage                                      float64
+Dysarthria                                        float64
+ExtinctionInattention                             float64
+S2NihssArrival                                    float64
+S2BrainImagingTime_min                            float64
+MoreEqual80y_No                                     int64
+MoreEqual80y_Yes                                    int64
+S1Gender_Female                                     int64
+S1Gender_Male                                       int64
+S1Ethnicity_Asian                                   int64
+S1Ethnicity_Black                                   int64
+S1Ethnicity_Mixed                                   int64
+S1Ethnicity_Other                                   int64
+S1Ethnicity_White                                   int64
+S1OnsetInHospital_No                                int64
+S1OnsetInHospital_Yes                               int64
+S1OnsetDateType_Best estimate                       int64
+S1OnsetDateType_Precise                             int64
+S1OnsetDateType_Stroke during sleep                 int64
+S1OnsetTimeType_Best estimate                       int64
+S1OnsetTimeType_Not known                           int64
+S1OnsetTimeType_Precise                             int64
+S1ArriveByAmbulance_No                              int64
+S1ArriveByAmbulance_Yes                             int64
+S1ArriveByAmbulance_missing                         int64
+S1AdmissionHour_00:00 to 02:59                      int64
+S1AdmissionHour_03:00 to 05:59                      int64
+S1AdmissionHour_06:00 to 08:59                      int64
+S1AdmissionHour_09:00 to 11:59                      int64
+S1AdmissionHour_12:00 to 14:59                      int64
+S1AdmissionHour_15:00 to 17:59                      int64
+S1AdmissionHour_18:00 to 20:59                      int64
+S1AdmissionHour_21:00 to 23:59                      int64
+S1AdmissionDay_Friday                               int64
+S1AdmissionDay_Monday                               int64
+S1AdmissionDay_Saturday                             int64
+S1AdmissionDay_Sunday                               int64
+S1AdmissionDay_Thursday                             int64
+S1AdmissionDay_Tuesday                              int64
+S1AdmissionDay_Wednesday                            int64
+S1AdmissionQuarter_Q1                               int64
+S1AdmissionQuarter_Q2                               int64
+S1AdmissionQuarter_Q3                               int64
+S1AdmissionQuarter_Q4                               int64
+S1AdmissionYear_2016                                int64
+S1AdmissionYear_2017                                int64
+S1AdmissionYear_2018                                int64
+CongestiveHeartFailure_No                           int64
+CongestiveHeartFailure_Yes                          int64
+Hypertension_No                                     int64
+Hypertension_Yes                                    int64
+AtrialFibrillation_No                               int64
+AtrialFibrillation_Yes                              int64
+Diabetes_No                                         int64
+Diabetes_Yes                                        int64
+StrokeTIA_No                                        int64
+StrokeTIA_Yes                                       int64
+AFAntiplatelet_No                                   int64
+AFAntiplatelet_No but                               int64
+AFAntiplatelet_Yes                                  int64
+AFAntiplatelet_missing                              int64
+AFAnticoagulent_No                                  int64
+AFAnticoagulent_No but                              int64
+AFAnticoagulent_Yes                                 int64
+AFAnticoagulent_missing                             int64
+AFAnticoagulentVitK_No                              int64
+AFAnticoagulentVitK_Yes                             int64
+AFAnticoagulentVitK_missing                         int64
+AFAnticoagulentDOAC_No                              int64
+AFAnticoagulentDOAC_Yes                             int64
+AFAnticoagulentDOAC_missing                         int64
+AFAnticoagulentHeparin_No                           int64
+AFAnticoagulentHeparin_Yes                          int64
+AFAnticoagulentHeparin_missing                      int64
+S2NewAFDiagnosis_No                                 int64
+S2NewAFDiagnosis_Yes                                int64
+S2NewAFDiagnosis_missing                            int64
+S2StrokeType_Infarction                             int64
+S2StrokeType_Primary Intracerebral Haemorrhage      int64
+S2StrokeType_missing                                int64
+S2TIAInLastMonth_No                                 int64
+S2TIAInLastMonth_No but                             int64
+S2TIAInLastMonth_Yes                                int64
+S2TIAInLastMonth_missing                            int64
+S2Thrombolysis                                      int64
+scan_within_4_hrs_arrival                           int64
+scan_within_4_hrs_onset                             int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summarise-all-4-hour-admissions">
+<h2>Summarise all 4 hour admissions<a class="headerlink" href="#summarise-all-4-hour-admissions" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_4hr_admissions_summary</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_4hr_admissions_summary</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<span class="n">all_4hr_admissions_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>88928.0</td>
+      <td>75.135447</td>
+      <td>13.825420</td>
+      <td>17.5</td>
+      <td>67.5</td>
+      <td>77.5</td>
+      <td>87.5</td>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>88928.0</td>
+      <td>111.392722</td>
+      <td>52.729071</td>
+      <td>1.0</td>
+      <td>71.0</td>
+      <td>100.0</td>
+      <td>146.0</td>
+      <td>240.0</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>88928.0</td>
+      <td>1.059689</td>
+      <td>1.420161</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Loc</th>
+      <td>88928.0</td>
+      <td>0.275178</td>
+      <td>0.667914</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>LocQuestions</th>
+      <td>88928.0</td>
+      <td>0.675198</td>
+      <td>0.892330</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>LocCommands</th>
+      <td>88928.0</td>
+      <td>0.372133</td>
+      <td>0.719221</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BestGaze</th>
+      <td>88928.0</td>
+      <td>0.354253</td>
+      <td>0.669124</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Visual</th>
+      <td>88928.0</td>
+      <td>0.506016</td>
+      <td>0.844272</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>FacialPalsy</th>
+      <td>88928.0</td>
+      <td>0.885717</td>
+      <td>0.880693</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>MotorArmLeft</th>
+      <td>88928.0</td>
+      <td>0.869546</td>
+      <td>1.377068</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorArmRight</th>
+      <td>88928.0</td>
+      <td>0.823531</td>
+      <td>1.369822</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorLegLeft</th>
+      <td>88928.0</td>
+      <td>0.869962</td>
+      <td>1.348570</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorLegRight</th>
+      <td>88928.0</td>
+      <td>0.834034</td>
+      <td>1.355595</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>LimbAtaxia</th>
+      <td>88928.0</td>
+      <td>0.252339</td>
+      <td>0.560923</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Sensory</th>
+      <td>88928.0</td>
+      <td>0.517745</td>
+      <td>0.733587</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BestLanguage</th>
+      <td>88928.0</td>
+      <td>0.835777</td>
+      <td>1.099479</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Dysarthria</th>
+      <td>88928.0</td>
+      <td>0.746537</td>
+      <td>0.766312</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>ExtinctionInattention</th>
+      <td>88928.0</td>
+      <td>0.492207</td>
+      <td>0.761407</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>88928.0</td>
+      <td>9.310172</td>
+      <td>8.173508</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>7.0</td>
+      <td>14.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>88928.0</td>
+      <td>117.212959</td>
+      <td>921.060766</td>
+      <td>1.0</td>
+      <td>15.0</td>
+      <td>28.0</td>
+      <td>57.0</td>
+      <td>85060.0</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>88928.0</td>
+      <td>0.576781</td>
+      <td>0.494072</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_Yes</th>
+      <td>88928.0</td>
+      <td>0.423219</td>
+      <td>0.494072</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Female</th>
+      <td>88928.0</td>
+      <td>0.482188</td>
+      <td>0.499685</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Male</th>
+      <td>88928.0</td>
+      <td>0.517812</td>
+      <td>0.499685</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Asian</th>
+      <td>88928.0</td>
+      <td>0.030677</td>
+      <td>0.172441</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Black</th>
+      <td>88928.0</td>
+      <td>0.011774</td>
+      <td>0.107866</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Mixed</th>
+      <td>88928.0</td>
+      <td>0.003340</td>
+      <td>0.057695</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Other</th>
+      <td>88928.0</td>
+      <td>0.071237</td>
+      <td>0.257222</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_White</th>
+      <td>88928.0</td>
+      <td>0.882973</td>
+      <td>0.321455</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_No</th>
+      <td>88928.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_Yes</th>
+      <td>88928.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Best estimate</th>
+      <td>88928.0</td>
+      <td>0.056934</td>
+      <td>0.231717</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Precise</th>
+      <td>88928.0</td>
+      <td>0.897411</td>
+      <td>0.303423</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Stroke during sleep</th>
+      <td>88928.0</td>
+      <td>0.045655</td>
+      <td>0.208737</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Best estimate</th>
+      <td>88928.0</td>
+      <td>0.379599</td>
+      <td>0.485290</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>88928.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Precise</th>
+      <td>88928.0</td>
+      <td>0.620401</td>
+      <td>0.485290</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_No</th>
+      <td>88928.0</td>
+      <td>0.082381</td>
+      <td>0.274946</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_Yes</th>
+      <td>88928.0</td>
+      <td>0.917619</td>
+      <td>0.274946</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>88928.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_00:00 to 02:59</th>
+      <td>88928.0</td>
+      <td>0.051637</td>
+      <td>0.221295</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_03:00 to 05:59</th>
+      <td>88928.0</td>
+      <td>0.029260</td>
+      <td>0.168534</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_06:00 to 08:59</th>
+      <td>88928.0</td>
+      <td>0.069258</td>
+      <td>0.253894</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_09:00 to 11:59</th>
+      <td>88928.0</td>
+      <td>0.221696</td>
+      <td>0.415390</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_12:00 to 14:59</th>
+      <td>88928.0</td>
+      <td>0.202231</td>
+      <td>0.401666</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_15:00 to 17:59</th>
+      <td>88928.0</td>
+      <td>0.163649</td>
+      <td>0.369959</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_18:00 to 20:59</th>
+      <td>88928.0</td>
+      <td>0.153214</td>
+      <td>0.360196</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_21:00 to 23:59</th>
+      <td>88928.0</td>
+      <td>0.109055</td>
+      <td>0.311709</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Friday</th>
+      <td>88928.0</td>
+      <td>0.143802</td>
+      <td>0.350891</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Monday</th>
+      <td>88928.0</td>
+      <td>0.146624</td>
+      <td>0.353733</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Saturday</th>
+      <td>88928.0</td>
+      <td>0.137561</td>
+      <td>0.344440</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Sunday</th>
+      <td>88928.0</td>
+      <td>0.136594</td>
+      <td>0.343420</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Thursday</th>
+      <td>88928.0</td>
+      <td>0.143959</td>
+      <td>0.351050</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Tuesday</th>
+      <td>88928.0</td>
+      <td>0.144746</td>
+      <td>0.351847</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Wednesday</th>
+      <td>88928.0</td>
+      <td>0.146714</td>
+      <td>0.353823</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q1</th>
+      <td>88928.0</td>
+      <td>0.251181</td>
+      <td>0.433695</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q2</th>
+      <td>88928.0</td>
+      <td>0.251428</td>
+      <td>0.433837</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q3</th>
+      <td>88928.0</td>
+      <td>0.244760</td>
+      <td>0.429947</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q4</th>
+      <td>88928.0</td>
+      <td>0.252631</td>
+      <td>0.434524</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2016</th>
+      <td>88928.0</td>
+      <td>0.331021</td>
+      <td>0.470583</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2017</th>
+      <td>88928.0</td>
+      <td>0.335800</td>
+      <td>0.472272</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>88928.0</td>
+      <td>0.333180</td>
+      <td>0.471353</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_No</th>
+      <td>88928.0</td>
+      <td>0.949555</td>
+      <td>0.218863</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>88928.0</td>
+      <td>0.050445</td>
+      <td>0.218863</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Hypertension_No</th>
+      <td>88928.0</td>
+      <td>0.465174</td>
+      <td>0.498788</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Hypertension_Yes</th>
+      <td>88928.0</td>
+      <td>0.534826</td>
+      <td>0.498788</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>88928.0</td>
+      <td>0.792765</td>
+      <td>0.405328</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>88928.0</td>
+      <td>0.207235</td>
+      <td>0.405328</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Diabetes_No</th>
+      <td>88928.0</td>
+      <td>0.809037</td>
+      <td>0.393063</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Diabetes_Yes</th>
+      <td>88928.0</td>
+      <td>0.190963</td>
+      <td>0.393063</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_No</th>
+      <td>88928.0</td>
+      <td>0.727847</td>
+      <td>0.445071</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_Yes</th>
+      <td>88928.0</td>
+      <td>0.272153</td>
+      <td>0.445071</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>88928.0</td>
+      <td>0.135267</td>
+      <td>0.342010</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No but</th>
+      <td>88928.0</td>
+      <td>0.029619</td>
+      <td>0.169536</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_Yes</th>
+      <td>88928.0</td>
+      <td>0.042349</td>
+      <td>0.201385</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>88928.0</td>
+      <td>0.792765</td>
+      <td>0.405328</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No</th>
+      <td>88928.0</td>
+      <td>0.326062</td>
+      <td>0.468773</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No but</th>
+      <td>88928.0</td>
+      <td>0.046757</td>
+      <td>0.211119</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_Yes</th>
+      <td>88928.0</td>
+      <td>0.121525</td>
+      <td>0.326739</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_missing</th>
+      <td>88928.0</td>
+      <td>0.505656</td>
+      <td>0.499971</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>88928.0</td>
+      <td>0.355895</td>
+      <td>0.478786</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_Yes</th>
+      <td>88928.0</td>
+      <td>0.019398</td>
+      <td>0.137919</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>88928.0</td>
+      <td>0.624708</td>
+      <td>0.484201</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>88928.0</td>
+      <td>0.343795</td>
+      <td>0.474976</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_Yes</th>
+      <td>88928.0</td>
+      <td>0.031497</td>
+      <td>0.174659</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>88928.0</td>
+      <td>0.624708</td>
+      <td>0.484201</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>88928.0</td>
+      <td>0.374550</td>
+      <td>0.484009</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_Yes</th>
+      <td>88928.0</td>
+      <td>0.000742</td>
+      <td>0.027233</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>88928.0</td>
+      <td>0.624708</td>
+      <td>0.484201</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>88928.0</td>
+      <td>0.256713</td>
+      <td>0.436822</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_Yes</th>
+      <td>88928.0</td>
+      <td>0.023311</td>
+      <td>0.150890</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>88928.0</td>
+      <td>0.719976</td>
+      <td>0.449013</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Infarction</th>
+      <td>88928.0</td>
+      <td>0.849552</td>
+      <td>0.357512</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>88928.0</td>
+      <td>0.148918</td>
+      <td>0.356010</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_missing</th>
+      <td>88928.0</td>
+      <td>0.001529</td>
+      <td>0.039077</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No</th>
+      <td>88928.0</td>
+      <td>0.074442</td>
+      <td>0.262491</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No but</th>
+      <td>88928.0</td>
+      <td>0.010896</td>
+      <td>0.103816</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_Yes</th>
+      <td>88928.0</td>
+      <td>0.004408</td>
+      <td>0.066247</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_missing</th>
+      <td>88928.0</td>
+      <td>0.910253</td>
+      <td>0.285820</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2Thrombolysis</th>
+      <td>88928.0</td>
+      <td>0.295261</td>
+      <td>0.456163</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_arrival</th>
+      <td>88928.0</td>
+      <td>0.947890</td>
+      <td>0.222249</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_onset</th>
+      <td>88928.0</td>
+      <td>0.830357</td>
+      <td>0.375321</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summarise-4-hour-admissions-who-receive-thrombolysis">
+<h2>Summarise 4 hour admissions who receive thrombolysis<a class="headerlink" href="#summarise-4-hour-admissions-who-receive-thrombolysis" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">thrombolysis_admissions</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">thrombolysis_admissions_summary</span> <span class="o">=</span> <span class="n">thrombolysis_admissions</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thrombolysis_admissions_summary</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<span class="n">thrombolysis_admissions_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>26257.0</td>
+      <td>73.092318</td>
+      <td>13.964103</td>
+      <td>17.5</td>
+      <td>62.5</td>
+      <td>77.5</td>
+      <td>82.5</td>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>26257.0</td>
+      <td>96.968808</td>
+      <td>45.638922</td>
+      <td>1.0</td>
+      <td>64.0</td>
+      <td>87.0</td>
+      <td>122.0</td>
+      <td>240.0</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>26257.0</td>
+      <td>0.727806</td>
+      <td>1.184651</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Loc</th>
+      <td>26257.0</td>
+      <td>0.206650</td>
+      <td>0.509833</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>LocQuestions</th>
+      <td>26257.0</td>
+      <td>0.801653</td>
+      <td>0.921942</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>LocCommands</th>
+      <td>26257.0</td>
+      <td>0.405263</td>
+      <td>0.727145</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BestGaze</th>
+      <td>26257.0</td>
+      <td>0.467266</td>
+      <td>0.720925</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Visual</th>
+      <td>26257.0</td>
+      <td>0.678829</td>
+      <td>0.899433</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>FacialPalsy</th>
+      <td>26257.0</td>
+      <td>1.193548</td>
+      <td>0.878565</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>MotorArmLeft</th>
+      <td>26257.0</td>
+      <td>1.069886</td>
+      <td>1.486363</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorArmRight</th>
+      <td>26257.0</td>
+      <td>1.031763</td>
+      <td>1.478511</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorLegLeft</th>
+      <td>26257.0</td>
+      <td>1.040332</td>
+      <td>1.420773</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorLegRight</th>
+      <td>26257.0</td>
+      <td>1.011121</td>
+      <td>1.436217</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>LimbAtaxia</th>
+      <td>26257.0</td>
+      <td>0.291998</td>
+      <td>0.598986</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Sensory</th>
+      <td>26257.0</td>
+      <td>0.685036</td>
+      <td>0.777973</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BestLanguage</th>
+      <td>26257.0</td>
+      <td>1.070610</td>
+      <td>1.132034</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Dysarthria</th>
+      <td>26257.0</td>
+      <td>0.950489</td>
+      <td>0.755430</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>ExtinctionInattention</th>
+      <td>26257.0</td>
+      <td>0.682370</td>
+      <td>0.818104</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>26257.0</td>
+      <td>11.586815</td>
+      <td>7.016364</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>10.0</td>
+      <td>17.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>26257.0</td>
+      <td>22.984195</td>
+      <td>19.822777</td>
+      <td>1.0</td>
+      <td>11.0</td>
+      <td>19.0</td>
+      <td>29.0</td>
+      <td>492.0</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>26257.0</td>
+      <td>0.643409</td>
+      <td>0.479002</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_Yes</th>
+      <td>26257.0</td>
+      <td>0.356591</td>
+      <td>0.479002</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Female</th>
+      <td>26257.0</td>
+      <td>0.460220</td>
+      <td>0.498425</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Male</th>
+      <td>26257.0</td>
+      <td>0.539780</td>
+      <td>0.498425</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Asian</th>
+      <td>26257.0</td>
+      <td>0.031154</td>
+      <td>0.173736</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Black</th>
+      <td>26257.0</td>
+      <td>0.011654</td>
+      <td>0.107325</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Mixed</th>
+      <td>26257.0</td>
+      <td>0.003656</td>
+      <td>0.060357</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Other</th>
+      <td>26257.0</td>
+      <td>0.082873</td>
+      <td>0.275696</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_White</th>
+      <td>26257.0</td>
+      <td>0.870663</td>
+      <td>0.335579</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_No</th>
+      <td>26257.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_Yes</th>
+      <td>26257.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Best estimate</th>
+      <td>26257.0</td>
+      <td>0.021975</td>
+      <td>0.146605</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Precise</th>
+      <td>26257.0</td>
+      <td>0.972807</td>
+      <td>0.162648</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Stroke during sleep</th>
+      <td>26257.0</td>
+      <td>0.005218</td>
+      <td>0.072046</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Best estimate</th>
+      <td>26257.0</td>
+      <td>0.180104</td>
+      <td>0.384282</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>26257.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Precise</th>
+      <td>26257.0</td>
+      <td>0.819896</td>
+      <td>0.384282</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_No</th>
+      <td>26257.0</td>
+      <td>0.059603</td>
+      <td>0.236755</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_Yes</th>
+      <td>26257.0</td>
+      <td>0.940397</td>
+      <td>0.236755</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>26257.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_00:00 to 02:59</th>
+      <td>26257.0</td>
+      <td>0.048292</td>
+      <td>0.214386</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_03:00 to 05:59</th>
+      <td>26257.0</td>
+      <td>0.017405</td>
+      <td>0.130777</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_06:00 to 08:59</th>
+      <td>26257.0</td>
+      <td>0.063297</td>
+      <td>0.243502</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_09:00 to 11:59</th>
+      <td>26257.0</td>
+      <td>0.232548</td>
+      <td>0.422464</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_12:00 to 14:59</th>
+      <td>26257.0</td>
+      <td>0.215942</td>
+      <td>0.411482</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_15:00 to 17:59</th>
+      <td>26257.0</td>
+      <td>0.172183</td>
+      <td>0.377546</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_18:00 to 20:59</th>
+      <td>26257.0</td>
+      <td>0.143885</td>
+      <td>0.350980</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_21:00 to 23:59</th>
+      <td>26257.0</td>
+      <td>0.106448</td>
+      <td>0.308416</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Friday</th>
+      <td>26257.0</td>
+      <td>0.147008</td>
+      <td>0.354121</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Monday</th>
+      <td>26257.0</td>
+      <td>0.148151</td>
+      <td>0.355256</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Saturday</th>
+      <td>26257.0</td>
+      <td>0.132765</td>
+      <td>0.339327</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Sunday</th>
+      <td>26257.0</td>
+      <td>0.139658</td>
+      <td>0.346638</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Thursday</th>
+      <td>26257.0</td>
+      <td>0.144952</td>
+      <td>0.352059</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Tuesday</th>
+      <td>26257.0</td>
+      <td>0.141715</td>
+      <td>0.348764</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Wednesday</th>
+      <td>26257.0</td>
+      <td>0.145752</td>
+      <td>0.352864</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q1</th>
+      <td>26257.0</td>
+      <td>0.245078</td>
+      <td>0.430141</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q2</th>
+      <td>26257.0</td>
+      <td>0.256427</td>
+      <td>0.436669</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q3</th>
+      <td>26257.0</td>
+      <td>0.248353</td>
+      <td>0.432066</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q4</th>
+      <td>26257.0</td>
+      <td>0.250143</td>
+      <td>0.433103</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2016</th>
+      <td>26257.0</td>
+      <td>0.325209</td>
+      <td>0.468462</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2017</th>
+      <td>26257.0</td>
+      <td>0.336291</td>
+      <td>0.472449</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>26257.0</td>
+      <td>0.338500</td>
+      <td>0.473209</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_No</th>
+      <td>26257.0</td>
+      <td>0.955440</td>
+      <td>0.206339</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>26257.0</td>
+      <td>0.044560</td>
+      <td>0.206339</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Hypertension_No</th>
+      <td>26257.0</td>
+      <td>0.477854</td>
+      <td>0.499519</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Hypertension_Yes</th>
+      <td>26257.0</td>
+      <td>0.522146</td>
+      <td>0.499519</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>26257.0</td>
+      <td>0.860113</td>
+      <td>0.346876</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>26257.0</td>
+      <td>0.139887</td>
+      <td>0.346876</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Diabetes_No</th>
+      <td>26257.0</td>
+      <td>0.823818</td>
+      <td>0.380982</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Diabetes_Yes</th>
+      <td>26257.0</td>
+      <td>0.176182</td>
+      <td>0.380982</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_No</th>
+      <td>26257.0</td>
+      <td>0.792551</td>
+      <td>0.405488</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_Yes</th>
+      <td>26257.0</td>
+      <td>0.207449</td>
+      <td>0.405488</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>26257.0</td>
+      <td>0.084549</td>
+      <td>0.278215</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No but</th>
+      <td>26257.0</td>
+      <td>0.014091</td>
+      <td>0.117870</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_Yes</th>
+      <td>26257.0</td>
+      <td>0.041246</td>
+      <td>0.198863</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>26257.0</td>
+      <td>0.860113</td>
+      <td>0.346876</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No</th>
+      <td>26257.0</td>
+      <td>0.378261</td>
+      <td>0.484962</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No but</th>
+      <td>26257.0</td>
+      <td>0.046845</td>
+      <td>0.211310</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_Yes</th>
+      <td>26257.0</td>
+      <td>0.036943</td>
+      <td>0.188624</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_missing</th>
+      <td>26257.0</td>
+      <td>0.537952</td>
+      <td>0.498567</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>26257.0</td>
+      <td>0.373767</td>
+      <td>0.483812</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_Yes</th>
+      <td>26257.0</td>
+      <td>0.007846</td>
+      <td>0.088229</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>26257.0</td>
+      <td>0.618387</td>
+      <td>0.485792</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>26257.0</td>
+      <td>0.375557</td>
+      <td>0.484276</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_Yes</th>
+      <td>26257.0</td>
+      <td>0.006056</td>
+      <td>0.077583</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>26257.0</td>
+      <td>0.618387</td>
+      <td>0.485792</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>26257.0</td>
+      <td>0.381422</td>
+      <td>0.485745</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_Yes</th>
+      <td>26257.0</td>
+      <td>0.000190</td>
+      <td>0.013798</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>26257.0</td>
+      <td>0.618387</td>
+      <td>0.485792</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>26257.0</td>
+      <td>0.277145</td>
+      <td>0.447597</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_Yes</th>
+      <td>26257.0</td>
+      <td>0.036828</td>
+      <td>0.188344</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>26257.0</td>
+      <td>0.686027</td>
+      <td>0.464115</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Infarction</th>
+      <td>26257.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>26257.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_missing</th>
+      <td>26257.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No</th>
+      <td>26257.0</td>
+      <td>0.059222</td>
+      <td>0.236045</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No but</th>
+      <td>26257.0</td>
+      <td>0.007960</td>
+      <td>0.088864</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_Yes</th>
+      <td>26257.0</td>
+      <td>0.003199</td>
+      <td>0.056472</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_missing</th>
+      <td>26257.0</td>
+      <td>0.929619</td>
+      <td>0.255793</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2Thrombolysis</th>
+      <td>26257.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_arrival</th>
+      <td>26257.0</td>
+      <td>0.999581</td>
+      <td>0.020464</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_onset</th>
+      <td>26257.0</td>
+      <td>0.985185</td>
+      <td>0.120815</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summarise-4-hour-admissions-who-do-not-receive-thrombolysis">
+<h2>Summarise 4 hour admissions who do not receive thrombolysis<a class="headerlink" href="#summarise-4-hour-admissions-who-do-not-receive-thrombolysis" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">no_thrombolysis_admissions</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">no_thrombolysis_admissions_summary</span> <span class="o">=</span> <span class="n">no_thrombolysis_admissions</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;no_thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">no_thrombolysis_admissions_summary</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<span class="n">no_thrombolysis_admissions_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>62671.0</td>
+      <td>75.991447</td>
+      <td>13.676585</td>
+      <td>17.5</td>
+      <td>67.5</td>
+      <td>77.5</td>
+      <td>87.5</td>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>62671.0</td>
+      <td>117.435848</td>
+      <td>54.303876</td>
+      <td>1.0</td>
+      <td>75.0</td>
+      <td>107.0</td>
+      <td>156.0</td>
+      <td>240.0</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>62671.0</td>
+      <td>1.198736</td>
+      <td>1.486076</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Loc</th>
+      <td>62671.0</td>
+      <td>0.303889</td>
+      <td>0.722028</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>LocQuestions</th>
+      <td>62671.0</td>
+      <td>0.622218</td>
+      <td>0.874215</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>LocCommands</th>
+      <td>62671.0</td>
+      <td>0.358252</td>
+      <td>0.715425</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BestGaze</th>
+      <td>62671.0</td>
+      <td>0.306904</td>
+      <td>0.640291</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Visual</th>
+      <td>62671.0</td>
+      <td>0.433614</td>
+      <td>0.809170</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>FacialPalsy</th>
+      <td>62671.0</td>
+      <td>0.756746</td>
+      <td>0.849037</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>MotorArmLeft</th>
+      <td>62671.0</td>
+      <td>0.785611</td>
+      <td>1.319609</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorArmRight</th>
+      <td>62671.0</td>
+      <td>0.736290</td>
+      <td>1.311854</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorLegLeft</th>
+      <td>62671.0</td>
+      <td>0.798583</td>
+      <td>1.310588</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>MotorLegRight</th>
+      <td>62671.0</td>
+      <td>0.759841</td>
+      <td>1.313287</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>LimbAtaxia</th>
+      <td>62671.0</td>
+      <td>0.235723</td>
+      <td>0.543330</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Sensory</th>
+      <td>62671.0</td>
+      <td>0.447655</td>
+      <td>0.702432</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BestLanguage</th>
+      <td>62671.0</td>
+      <td>0.737390</td>
+      <td>1.070351</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Dysarthria</th>
+      <td>62671.0</td>
+      <td>0.661087</td>
+      <td>0.754620</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>ExtinctionInattention</th>
+      <td>62671.0</td>
+      <td>0.412535</td>
+      <td>0.721618</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>62671.0</td>
+      <td>8.356337</td>
+      <td>8.431479</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>13.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>62671.0</td>
+      <td>156.691580</td>
+      <td>1094.689958</td>
+      <td>1.0</td>
+      <td>19.0</td>
+      <td>35.0</td>
+      <td>81.0</td>
+      <td>85060.0</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>62671.0</td>
+      <td>0.548866</td>
+      <td>0.497610</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_Yes</th>
+      <td>62671.0</td>
+      <td>0.451134</td>
+      <td>0.497610</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Female</th>
+      <td>62671.0</td>
+      <td>0.491392</td>
+      <td>0.499930</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Male</th>
+      <td>62671.0</td>
+      <td>0.508608</td>
+      <td>0.499930</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Asian</th>
+      <td>62671.0</td>
+      <td>0.030477</td>
+      <td>0.171896</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Black</th>
+      <td>62671.0</td>
+      <td>0.011824</td>
+      <td>0.108093</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Mixed</th>
+      <td>62671.0</td>
+      <td>0.003207</td>
+      <td>0.056542</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Other</th>
+      <td>62671.0</td>
+      <td>0.066362</td>
+      <td>0.248917</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_White</th>
+      <td>62671.0</td>
+      <td>0.888130</td>
+      <td>0.315209</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_No</th>
+      <td>62671.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_Yes</th>
+      <td>62671.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Best estimate</th>
+      <td>62671.0</td>
+      <td>0.071580</td>
+      <td>0.257794</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Precise</th>
+      <td>62671.0</td>
+      <td>0.865823</td>
+      <td>0.340845</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Stroke during sleep</th>
+      <td>62671.0</td>
+      <td>0.062597</td>
+      <td>0.242238</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Best estimate</th>
+      <td>62671.0</td>
+      <td>0.463181</td>
+      <td>0.498646</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>62671.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Precise</th>
+      <td>62671.0</td>
+      <td>0.536819</td>
+      <td>0.498646</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_No</th>
+      <td>62671.0</td>
+      <td>0.091924</td>
+      <td>0.288922</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_Yes</th>
+      <td>62671.0</td>
+      <td>0.908076</td>
+      <td>0.288922</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>62671.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_00:00 to 02:59</th>
+      <td>62671.0</td>
+      <td>0.053039</td>
+      <td>0.224113</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_03:00 to 05:59</th>
+      <td>62671.0</td>
+      <td>0.034226</td>
+      <td>0.181812</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_06:00 to 08:59</th>
+      <td>62671.0</td>
+      <td>0.071756</td>
+      <td>0.258085</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_09:00 to 11:59</th>
+      <td>62671.0</td>
+      <td>0.217150</td>
+      <td>0.412309</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_12:00 to 14:59</th>
+      <td>62671.0</td>
+      <td>0.196486</td>
+      <td>0.397344</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_15:00 to 17:59</th>
+      <td>62671.0</td>
+      <td>0.160074</td>
+      <td>0.366678</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_18:00 to 20:59</th>
+      <td>62671.0</td>
+      <td>0.157122</td>
+      <td>0.363919</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_21:00 to 23:59</th>
+      <td>62671.0</td>
+      <td>0.110147</td>
+      <td>0.313075</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Friday</th>
+      <td>62671.0</td>
+      <td>0.142458</td>
+      <td>0.349522</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Monday</th>
+      <td>62671.0</td>
+      <td>0.145985</td>
+      <td>0.353094</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Saturday</th>
+      <td>62671.0</td>
+      <td>0.139570</td>
+      <td>0.346543</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Sunday</th>
+      <td>62671.0</td>
+      <td>0.135310</td>
+      <td>0.342057</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Thursday</th>
+      <td>62671.0</td>
+      <td>0.143543</td>
+      <td>0.350629</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Tuesday</th>
+      <td>62671.0</td>
+      <td>0.146016</td>
+      <td>0.353126</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Wednesday</th>
+      <td>62671.0</td>
+      <td>0.147117</td>
+      <td>0.354226</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q1</th>
+      <td>62671.0</td>
+      <td>0.253738</td>
+      <td>0.435153</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q2</th>
+      <td>62671.0</td>
+      <td>0.249334</td>
+      <td>0.432631</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q3</th>
+      <td>62671.0</td>
+      <td>0.243254</td>
+      <td>0.429051</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q4</th>
+      <td>62671.0</td>
+      <td>0.253674</td>
+      <td>0.435117</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2016</th>
+      <td>62671.0</td>
+      <td>0.333456</td>
+      <td>0.471452</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2017</th>
+      <td>62671.0</td>
+      <td>0.335594</td>
+      <td>0.472201</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>62671.0</td>
+      <td>0.330951</td>
+      <td>0.470559</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_No</th>
+      <td>62671.0</td>
+      <td>0.947089</td>
+      <td>0.223858</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>62671.0</td>
+      <td>0.052911</td>
+      <td>0.223858</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Hypertension_No</th>
+      <td>62671.0</td>
+      <td>0.459862</td>
+      <td>0.498390</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Hypertension_Yes</th>
+      <td>62671.0</td>
+      <td>0.540138</td>
+      <td>0.498390</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>62671.0</td>
+      <td>0.764548</td>
+      <td>0.424284</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>62671.0</td>
+      <td>0.235452</td>
+      <td>0.424284</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Diabetes_No</th>
+      <td>62671.0</td>
+      <td>0.802843</td>
+      <td>0.397855</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Diabetes_Yes</th>
+      <td>62671.0</td>
+      <td>0.197157</td>
+      <td>0.397855</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_No</th>
+      <td>62671.0</td>
+      <td>0.700739</td>
+      <td>0.457938</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_Yes</th>
+      <td>62671.0</td>
+      <td>0.299261</td>
+      <td>0.457938</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>62671.0</td>
+      <td>0.156516</td>
+      <td>0.363347</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No but</th>
+      <td>62671.0</td>
+      <td>0.036125</td>
+      <td>0.186603</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_Yes</th>
+      <td>62671.0</td>
+      <td>0.042811</td>
+      <td>0.202432</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>62671.0</td>
+      <td>0.764548</td>
+      <td>0.424284</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No</th>
+      <td>62671.0</td>
+      <td>0.304192</td>
+      <td>0.460068</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No but</th>
+      <td>62671.0</td>
+      <td>0.046720</td>
+      <td>0.211041</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_Yes</th>
+      <td>62671.0</td>
+      <td>0.156963</td>
+      <td>0.363768</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_missing</th>
+      <td>62671.0</td>
+      <td>0.492126</td>
+      <td>0.499942</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>62671.0</td>
+      <td>0.348407</td>
+      <td>0.476469</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_Yes</th>
+      <td>62671.0</td>
+      <td>0.024238</td>
+      <td>0.153788</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>62671.0</td>
+      <td>0.627356</td>
+      <td>0.483512</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>62671.0</td>
+      <td>0.330488</td>
+      <td>0.470393</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_Yes</th>
+      <td>62671.0</td>
+      <td>0.042157</td>
+      <td>0.200948</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>62671.0</td>
+      <td>0.627356</td>
+      <td>0.483512</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>62671.0</td>
+      <td>0.371671</td>
+      <td>0.483255</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_Yes</th>
+      <td>62671.0</td>
+      <td>0.000973</td>
+      <td>0.031183</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>62671.0</td>
+      <td>0.627356</td>
+      <td>0.483512</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>62671.0</td>
+      <td>0.248153</td>
+      <td>0.431945</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_Yes</th>
+      <td>62671.0</td>
+      <td>0.017648</td>
+      <td>0.131668</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>62671.0</td>
+      <td>0.734199</td>
+      <td>0.441762</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Infarction</th>
+      <td>62671.0</td>
+      <td>0.786520</td>
+      <td>0.409767</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>62671.0</td>
+      <td>0.211310</td>
+      <td>0.408241</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_missing</th>
+      <td>62671.0</td>
+      <td>0.002170</td>
+      <td>0.046534</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No</th>
+      <td>62671.0</td>
+      <td>0.080819</td>
+      <td>0.272559</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No but</th>
+      <td>62671.0</td>
+      <td>0.012127</td>
+      <td>0.109453</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_Yes</th>
+      <td>62671.0</td>
+      <td>0.004915</td>
+      <td>0.069932</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_missing</th>
+      <td>62671.0</td>
+      <td>0.902140</td>
+      <td>0.297128</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S2Thrombolysis</th>
+      <td>62671.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_arrival</th>
+      <td>62671.0</td>
+      <td>0.926234</td>
+      <td>0.261392</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_onset</th>
+      <td>62671.0</td>
+      <td>0.765490</td>
+      <td>0.423696</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="show-summary-of-all-groups">
+<h2>Show summary of all groups<a class="headerlink" href="#show-summary-of-all-groups" title="Permalink to this headline">¶</a></h2>
+<p>Add ratio of yes/no thrombolysis (and sort by ratio), and save.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;no_thrombolysis&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;ratio&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;output/thrombolse_yes_no_means.csv&#39;</span><span class="p">)</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>all</th>
+      <th>thrombolysis</th>
+      <th>no_thrombolysis</th>
+      <th>ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>0.148918</td>
+      <td>0.000000</td>
+      <td>0.211310</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_missing</th>
+      <td>0.001529</td>
+      <td>0.000000</td>
+      <td>0.002170</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Stroke during sleep</th>
+      <td>0.045655</td>
+      <td>0.005218</td>
+      <td>0.062597</td>
+      <td>0.083353</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_Yes</th>
+      <td>0.031497</td>
+      <td>0.006056</td>
+      <td>0.042157</td>
+      <td>0.143643</td>
+    </tr>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>117.212959</td>
+      <td>22.984195</td>
+      <td>156.691580</td>
+      <td>0.146684</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_Yes</th>
+      <td>0.000742</td>
+      <td>0.000190</td>
+      <td>0.000973</td>
+      <td>0.195642</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_Yes</th>
+      <td>0.121525</td>
+      <td>0.036943</td>
+      <td>0.156963</td>
+      <td>0.235359</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Best estimate</th>
+      <td>0.056934</td>
+      <td>0.021975</td>
+      <td>0.071580</td>
+      <td>0.307000</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_Yes</th>
+      <td>0.019398</td>
+      <td>0.007846</td>
+      <td>0.024238</td>
+      <td>0.323691</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Best estimate</th>
+      <td>0.379599</td>
+      <td>0.180104</td>
+      <td>0.463181</td>
+      <td>0.388842</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No but</th>
+      <td>0.029619</td>
+      <td>0.014091</td>
+      <td>0.036125</td>
+      <td>0.390074</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_03:00 to 05:59</th>
+      <td>0.029260</td>
+      <td>0.017405</td>
+      <td>0.034226</td>
+      <td>0.508523</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>0.135267</td>
+      <td>0.084549</td>
+      <td>0.156516</td>
+      <td>0.540194</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>0.207235</td>
+      <td>0.139887</td>
+      <td>0.235452</td>
+      <td>0.594119</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>1.059689</td>
+      <td>0.727806</td>
+      <td>1.198736</td>
+      <td>0.607144</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_No</th>
+      <td>0.082381</td>
+      <td>0.059603</td>
+      <td>0.091924</td>
+      <td>0.648393</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_Yes</th>
+      <td>0.004408</td>
+      <td>0.003199</td>
+      <td>0.004915</td>
+      <td>0.650954</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No but</th>
+      <td>0.010896</td>
+      <td>0.007960</td>
+      <td>0.012127</td>
+      <td>0.656378</td>
+    </tr>
+    <tr>
+      <th>Loc</th>
+      <td>0.275178</td>
+      <td>0.206650</td>
+      <td>0.303889</td>
+      <td>0.680018</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_Yes</th>
+      <td>0.272153</td>
+      <td>0.207449</td>
+      <td>0.299261</td>
+      <td>0.693205</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No</th>
+      <td>0.074442</td>
+      <td>0.059222</td>
+      <td>0.080819</td>
+      <td>0.732778</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_Yes</th>
+      <td>0.423219</td>
+      <td>0.356591</td>
+      <td>0.451134</td>
+      <td>0.790432</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>111.392722</td>
+      <td>96.968808</td>
+      <td>117.435848</td>
+      <td>0.825717</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>0.050445</td>
+      <td>0.044560</td>
+      <td>0.052911</td>
+      <td>0.842157</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_06:00 to 08:59</th>
+      <td>0.069258</td>
+      <td>0.063297</td>
+      <td>0.071756</td>
+      <td>0.882124</td>
+    </tr>
+    <tr>
+      <th>Diabetes_Yes</th>
+      <td>0.190963</td>
+      <td>0.176182</td>
+      <td>0.197157</td>
+      <td>0.893613</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_00:00 to 02:59</th>
+      <td>0.051637</td>
+      <td>0.048292</td>
+      <td>0.053039</td>
+      <td>0.910500</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_18:00 to 20:59</th>
+      <td>0.153214</td>
+      <td>0.143885</td>
+      <td>0.157122</td>
+      <td>0.915756</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>0.719976</td>
+      <td>0.686027</td>
+      <td>0.734199</td>
+      <td>0.934387</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Female</th>
+      <td>0.482188</td>
+      <td>0.460220</td>
+      <td>0.491392</td>
+      <td>0.936565</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Saturday</th>
+      <td>0.137561</td>
+      <td>0.132765</td>
+      <td>0.139570</td>
+      <td>0.951239</td>
+    </tr>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>75.135447</td>
+      <td>73.092318</td>
+      <td>75.991447</td>
+      <td>0.961849</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_Yes</th>
+      <td>0.042349</td>
+      <td>0.041246</td>
+      <td>0.042811</td>
+      <td>0.963450</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q1</th>
+      <td>0.251181</td>
+      <td>0.245078</td>
+      <td>0.253738</td>
+      <td>0.965869</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_21:00 to 23:59</th>
+      <td>0.109055</td>
+      <td>0.106448</td>
+      <td>0.110147</td>
+      <td>0.966419</td>
+    </tr>
+    <tr>
+      <th>Hypertension_Yes</th>
+      <td>0.534826</td>
+      <td>0.522146</td>
+      <td>0.540138</td>
+      <td>0.966691</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Tuesday</th>
+      <td>0.144746</td>
+      <td>0.141715</td>
+      <td>0.146016</td>
+      <td>0.970538</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2016</th>
+      <td>0.331021</td>
+      <td>0.325209</td>
+      <td>0.333456</td>
+      <td>0.975268</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_White</th>
+      <td>0.882973</td>
+      <td>0.870663</td>
+      <td>0.888130</td>
+      <td>0.980333</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Black</th>
+      <td>0.011774</td>
+      <td>0.011654</td>
+      <td>0.011824</td>
+      <td>0.985655</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>0.624708</td>
+      <td>0.618387</td>
+      <td>0.627356</td>
+      <td>0.985705</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>0.624708</td>
+      <td>0.618387</td>
+      <td>0.627356</td>
+      <td>0.985705</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>0.624708</td>
+      <td>0.618387</td>
+      <td>0.627356</td>
+      <td>0.985705</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q4</th>
+      <td>0.252631</td>
+      <td>0.250143</td>
+      <td>0.253674</td>
+      <td>0.986080</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Wednesday</th>
+      <td>0.146714</td>
+      <td>0.145752</td>
+      <td>0.147117</td>
+      <td>0.990716</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_No</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2017</th>
+      <td>0.335800</td>
+      <td>0.336291</td>
+      <td>0.335594</td>
+      <td>1.002078</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No but</th>
+      <td>0.046757</td>
+      <td>0.046845</td>
+      <td>0.046720</td>
+      <td>1.002664</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_No</th>
+      <td>0.949555</td>
+      <td>0.955440</td>
+      <td>0.947089</td>
+      <td>1.008818</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Thursday</th>
+      <td>0.143959</td>
+      <td>0.144952</td>
+      <td>0.143543</td>
+      <td>1.009813</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Monday</th>
+      <td>0.146624</td>
+      <td>0.148151</td>
+      <td>0.145985</td>
+      <td>1.014840</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q3</th>
+      <td>0.244760</td>
+      <td>0.248353</td>
+      <td>0.243254</td>
+      <td>1.020959</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Asian</th>
+      <td>0.030677</td>
+      <td>0.031154</td>
+      <td>0.030477</td>
+      <td>1.022213</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>0.333180</td>
+      <td>0.338500</td>
+      <td>0.330951</td>
+      <td>1.022812</td>
+    </tr>
+    <tr>
+      <th>Diabetes_No</th>
+      <td>0.809037</td>
+      <td>0.823818</td>
+      <td>0.802843</td>
+      <td>1.026126</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>0.374550</td>
+      <td>0.381422</td>
+      <td>0.371671</td>
+      <td>1.026236</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionQuarter_Q2</th>
+      <td>0.251428</td>
+      <td>0.256427</td>
+      <td>0.249334</td>
+      <td>1.028448</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_missing</th>
+      <td>0.910253</td>
+      <td>0.929619</td>
+      <td>0.902140</td>
+      <td>1.030460</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Friday</th>
+      <td>0.143802</td>
+      <td>0.147008</td>
+      <td>0.142458</td>
+      <td>1.031940</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionDay_Sunday</th>
+      <td>0.136594</td>
+      <td>0.139658</td>
+      <td>0.135310</td>
+      <td>1.032135</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_Yes</th>
+      <td>0.917619</td>
+      <td>0.940397</td>
+      <td>0.908076</td>
+      <td>1.035593</td>
+    </tr>
+    <tr>
+      <th>Hypertension_No</th>
+      <td>0.465174</td>
+      <td>0.477854</td>
+      <td>0.459862</td>
+      <td>1.039124</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Male</th>
+      <td>0.517812</td>
+      <td>0.539780</td>
+      <td>0.508608</td>
+      <td>1.061288</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_09:00 to 11:59</th>
+      <td>0.221696</td>
+      <td>0.232548</td>
+      <td>0.217150</td>
+      <td>1.070908</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>0.355895</td>
+      <td>0.373767</td>
+      <td>0.348407</td>
+      <td>1.072789</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_15:00 to 17:59</th>
+      <td>0.163649</td>
+      <td>0.172183</td>
+      <td>0.160074</td>
+      <td>1.075644</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_arrival</th>
+      <td>0.947890</td>
+      <td>0.999581</td>
+      <td>0.926234</td>
+      <td>1.079189</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_missing</th>
+      <td>0.505656</td>
+      <td>0.537952</td>
+      <td>0.492126</td>
+      <td>1.093119</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionHour_12:00 to 14:59</th>
+      <td>0.202231</td>
+      <td>0.215942</td>
+      <td>0.196486</td>
+      <td>1.099020</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>0.256713</td>
+      <td>0.277145</td>
+      <td>0.248153</td>
+      <td>1.116831</td>
+    </tr>
+    <tr>
+      <th>S1OnsetDateType_Precise</th>
+      <td>0.897411</td>
+      <td>0.972807</td>
+      <td>0.865823</td>
+      <td>1.123564</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>0.792765</td>
+      <td>0.860113</td>
+      <td>0.764548</td>
+      <td>1.124996</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>0.792765</td>
+      <td>0.860113</td>
+      <td>0.764548</td>
+      <td>1.124996</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_No</th>
+      <td>0.727847</td>
+      <td>0.792551</td>
+      <td>0.700739</td>
+      <td>1.131021</td>
+    </tr>
+    <tr>
+      <th>LocCommands</th>
+      <td>0.372133</td>
+      <td>0.405263</td>
+      <td>0.358252</td>
+      <td>1.131225</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>0.343795</td>
+      <td>0.375557</td>
+      <td>0.330488</td>
+      <td>1.136372</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Mixed</th>
+      <td>0.003340</td>
+      <td>0.003656</td>
+      <td>0.003207</td>
+      <td>1.139979</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>0.576781</td>
+      <td>0.643409</td>
+      <td>0.548866</td>
+      <td>1.172252</td>
+    </tr>
+    <tr>
+      <th>LimbAtaxia</th>
+      <td>0.252339</td>
+      <td>0.291998</td>
+      <td>0.235723</td>
+      <td>1.238735</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No</th>
+      <td>0.326062</td>
+      <td>0.378261</td>
+      <td>0.304192</td>
+      <td>1.243495</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Other</th>
+      <td>0.071237</td>
+      <td>0.082873</td>
+      <td>0.066362</td>
+      <td>1.248796</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Infarction</th>
+      <td>0.849552</td>
+      <td>1.000000</td>
+      <td>0.786520</td>
+      <td>1.271423</td>
+    </tr>
+    <tr>
+      <th>scan_within_4_hrs_onset</th>
+      <td>0.830357</td>
+      <td>0.985185</td>
+      <td>0.765490</td>
+      <td>1.287000</td>
+    </tr>
+    <tr>
+      <th>LocQuestions</th>
+      <td>0.675198</td>
+      <td>0.801653</td>
+      <td>0.622218</td>
+      <td>1.288380</td>
+    </tr>
+    <tr>
+      <th>MotorLegLeft</th>
+      <td>0.869962</td>
+      <td>1.040332</td>
+      <td>0.798583</td>
+      <td>1.302722</td>
+    </tr>
+    <tr>
+      <th>MotorLegRight</th>
+      <td>0.834034</td>
+      <td>1.011121</td>
+      <td>0.759841</td>
+      <td>1.330700</td>
+    </tr>
+    <tr>
+      <th>MotorArmLeft</th>
+      <td>0.869546</td>
+      <td>1.069886</td>
+      <td>0.785611</td>
+      <td>1.361853</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>9.310172</td>
+      <td>11.586815</td>
+      <td>8.356337</td>
+      <td>1.386590</td>
+    </tr>
+    <tr>
+      <th>MotorArmRight</th>
+      <td>0.823531</td>
+      <td>1.031763</td>
+      <td>0.736290</td>
+      <td>1.401301</td>
+    </tr>
+    <tr>
+      <th>Dysarthria</th>
+      <td>0.746537</td>
+      <td>0.950489</td>
+      <td>0.661087</td>
+      <td>1.437767</td>
+    </tr>
+    <tr>
+      <th>BestLanguage</th>
+      <td>0.835777</td>
+      <td>1.070610</td>
+      <td>0.737390</td>
+      <td>1.451890</td>
+    </tr>
+    <tr>
+      <th>BestGaze</th>
+      <td>0.354253</td>
+      <td>0.467266</td>
+      <td>0.306904</td>
+      <td>1.522513</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Precise</th>
+      <td>0.620401</td>
+      <td>0.819896</td>
+      <td>0.536819</td>
+      <td>1.527322</td>
+    </tr>
+    <tr>
+      <th>Sensory</th>
+      <td>0.517745</td>
+      <td>0.685036</td>
+      <td>0.447655</td>
+      <td>1.530277</td>
+    </tr>
+    <tr>
+      <th>Visual</th>
+      <td>0.506016</td>
+      <td>0.678829</td>
+      <td>0.433614</td>
+      <td>1.565515</td>
+    </tr>
+    <tr>
+      <th>FacialPalsy</th>
+      <td>0.885717</td>
+      <td>1.193548</td>
+      <td>0.756746</td>
+      <td>1.577212</td>
+    </tr>
+    <tr>
+      <th>ExtinctionInattention</th>
+      <td>0.492207</td>
+      <td>0.682370</td>
+      <td>0.412535</td>
+      <td>1.654090</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_Yes</th>
+      <td>0.023311</td>
+      <td>0.036828</td>
+      <td>0.017648</td>
+      <td>2.086858</td>
+    </tr>
+    <tr>
+      <th>S2Thrombolysis</th>
+      <td>0.295261</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>inf</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_Yes</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<p>For patients arriving within 4 hours of known stroke onset, compared to those that do not receive thrombolysis, patients who receive thrombolysis:</p>
+<ul class="simple">
+<li><p>Have a confirmed ischaemic stroke</p></li>
+<li><p>Do not have stroke onset during sleep</p></li>
+<li><p>Arrive outside of the hours 3am to 6am</p></li>
+<li><p>Are younger (mean age 73 vs 76)</p></li>
+<li><p>Arrive sooner (mean onset to arrival 97 vs 117 minutes)</p></li>
+<li><p>Have higher stroke severity (mean NIHSS 11.6 vs 8.4)</p></li>
+<li><p>Are scanned within 4 hours of arrival (100% vs 93%) and 4 hours of onset (99% vs 77%)</p></li>
+<li><p>Are more likely to have a precisely determined stroke onset time (97% vs 87%)</p></li>
+<li><p>Have arrived by ambulance (94% vs 91%)</p></li>
+<li><p>Not have atrial fibrillation (14% vs 24% having AF)</p></li>
+<li><p>Not have a history of TIA (21% vs 30% having had TIA)</p></li>
+<li><p>Not be on anticoagulant</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./descriptive_stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="04_thrombolysis_general.html" title="previous page">Association between patient features on use of thrombolysis</a>
+    <a class='right-next' id="next-link" href="02a_daily_patterns.html" title="next page">Pathway patterns throughout the day</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

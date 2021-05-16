@@ -1,0 +1,1591 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Analysis of alternative pathway scenarios &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Stroke pathway simulation - generation of results from alternative scenarios" href="scenario_results_generation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/pathway_sim/scenario_analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-libraries">
+   Load libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data">
+   Load data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#collate-key-results">
+   Collate key results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overall-results">
+   Overall results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-effect-of-speed">
+     Plot effect of speed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-effect-of-onset-known">
+     Plot effect of onset-known
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-effect-of-benchmark-decisions">
+     Plot effect of benchmark decisions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-effect-of-all-sceanrio-changes">
+   Plot effect of all sceanrio changes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit">
+     Histogram of shift in distribution of thrombolysis use and benefit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bar-charts-of-individual-changes-at-all-hospitals">
+   Bar charts of individual changes at all hospitals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results-for-individual-hospitals">
+   Results for individual hospitals
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="analysis-of-alternative-pathway-scenarios">
+<h1>Analysis of alternative pathway scenarios<a class="headerlink" href="#analysis-of-alternative-pathway-scenarios" title="Permalink to this headline">¶</a></h1>
+<section id="load-libraries">
+<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">FormatStrFormatter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scenario results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/scenario_results.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Pathway performance paramters used in scenarios</span>
+<span class="n">performance_base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_base.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_speed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_speed.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_onset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_onset.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_speed_onset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_speed_onset.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_speed_benchmark</span> <span class="o">=</span> \
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_speed_benchmark.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_onset_benchmark</span> <span class="o">=</span> \
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_onset_benchmark.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_speed_onset_benchmark</span> <span class="o">=</span> \
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_speed_onset_benchmark.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">performance_base</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stroke_team</th>
+      <th>thrombolysis_rate</th>
+      <th>admissions</th>
+      <th>80_plus</th>
+      <th>onset_known</th>
+      <th>known_arrival_within_4hrs</th>
+      <th>onset_arrival_mins_mu</th>
+      <th>onset_arrival_mins_sigma</th>
+      <th>scan_within_4_hrs</th>
+      <th>arrival_scan_arrival_mins_mu</th>
+      <th>arrival_scan_arrival_mins_sigma</th>
+      <th>onset_scan_4_hrs</th>
+      <th>eligable</th>
+      <th>scan_needle_mins_mu</th>
+      <th>scan_needle_mins_sigma</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AGNOF1041H</td>
+      <td>0.154839</td>
+      <td>671.666667</td>
+      <td>0.425459</td>
+      <td>0.635236</td>
+      <td>0.681250</td>
+      <td>4.576874</td>
+      <td>0.557598</td>
+      <td>0.965596</td>
+      <td>1.665700</td>
+      <td>1.497966</td>
+      <td>0.935867</td>
+      <td>0.388325</td>
+      <td>3.669602</td>
+      <td>0.664462</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AKCGO9726K</td>
+      <td>0.158892</td>
+      <td>1143.333333</td>
+      <td>0.395658</td>
+      <td>0.970845</td>
+      <td>0.428829</td>
+      <td>4.625486</td>
+      <td>0.597451</td>
+      <td>0.955882</td>
+      <td>2.834183</td>
+      <td>0.999719</td>
+      <td>0.908425</td>
+      <td>0.419355</td>
+      <td>2.904479</td>
+      <td>0.874818</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AOBTM3098N</td>
+      <td>0.085885</td>
+      <td>500.666667</td>
+      <td>0.485470</td>
+      <td>0.619174</td>
+      <td>0.629032</td>
+      <td>4.603918</td>
+      <td>0.584882</td>
+      <td>0.935043</td>
+      <td>3.471419</td>
+      <td>1.254744</td>
+      <td>0.846435</td>
+      <td>0.267819</td>
+      <td>3.694918</td>
+      <td>0.518929</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>APXEE8191H</td>
+      <td>0.098634</td>
+      <td>439.333333</td>
+      <td>0.515679</td>
+      <td>0.716237</td>
+      <td>0.608051</td>
+      <td>4.590357</td>
+      <td>0.496452</td>
+      <td>0.966899</td>
+      <td>3.312930</td>
+      <td>0.714465</td>
+      <td>0.904505</td>
+      <td>0.258964</td>
+      <td>3.585094</td>
+      <td>0.751204</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ATDID5461S</td>
+      <td>0.090689</td>
+      <td>275.666667</td>
+      <td>0.533546</td>
+      <td>0.573156</td>
+      <td>0.660338</td>
+      <td>4.427826</td>
+      <td>0.591373</td>
+      <td>0.878594</td>
+      <td>4.125690</td>
+      <td>0.549301</td>
+      <td>0.865455</td>
+      <td>0.315126</td>
+      <td>3.497262</td>
+      <td>0.608126</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>YPKYH1768F</td>
+      <td>0.105193</td>
+      <td>250.333333</td>
+      <td>0.321767</td>
+      <td>0.585885</td>
+      <td>0.720455</td>
+      <td>4.436404</td>
+      <td>0.569248</td>
+      <td>0.952681</td>
+      <td>3.779215</td>
+      <td>0.872809</td>
+      <td>0.844371</td>
+      <td>0.305882</td>
+      <td>3.982100</td>
+      <td>0.683223</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>YQMZV4284N</td>
+      <td>0.104186</td>
+      <td>358.333333</td>
+      <td>0.508511</td>
+      <td>0.945116</td>
+      <td>0.462598</td>
+      <td>4.664536</td>
+      <td>0.494740</td>
+      <td>0.948936</td>
+      <td>3.574735</td>
+      <td>0.912298</td>
+      <td>0.798206</td>
+      <td>0.308989</td>
+      <td>3.285165</td>
+      <td>0.463749</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>ZBVSO0975W</td>
+      <td>0.081602</td>
+      <td>449.333333</td>
+      <td>0.442130</td>
+      <td>0.465134</td>
+      <td>0.688995</td>
+      <td>4.562051</td>
+      <td>0.510524</td>
+      <td>0.972222</td>
+      <td>2.860226</td>
+      <td>0.990966</td>
+      <td>0.930952</td>
+      <td>0.273657</td>
+      <td>3.606046</td>
+      <td>0.575788</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>ZHCLE1578P</td>
+      <td>0.112647</td>
+      <td>796.000000</td>
+      <td>0.484694</td>
+      <td>0.733668</td>
+      <td>0.671233</td>
+      <td>4.606557</td>
+      <td>0.546648</td>
+      <td>0.949830</td>
+      <td>3.306916</td>
+      <td>0.842940</td>
+      <td>0.892569</td>
+      <td>0.262788</td>
+      <td>3.276043</td>
+      <td>0.795401</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>ZRRCV7012C</td>
+      <td>0.063058</td>
+      <td>597.333333</td>
+      <td>0.469504</td>
+      <td>0.779576</td>
+      <td>0.504653</td>
+      <td>4.636283</td>
+      <td>0.485394</td>
+      <td>0.977305</td>
+      <td>3.743456</td>
+      <td>0.662710</td>
+      <td>0.851959</td>
+      <td>0.189097</td>
+      <td>3.261270</td>
+      <td>0.803624</td>
+    </tr>
+  </tbody>
+</table>
+<p>132 rows × 15 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="collate-key-results">
+<h2>Collate key results<a class="headerlink" href="#collate-key-results" title="Permalink to this headline">¶</a></h2>
+<p>Collate key results together in a DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add admission numbers to results</span>
+<span class="n">admissions</span> <span class="o">=</span> <span class="n">performance_base</span><span class="p">[[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="s1">&#39;admissions&#39;</span><span class="p">]]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">admissions</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate numbers thrombolysed</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Percent_Thrombolysis_(mean)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+
+<span class="c1"># Calculate additional good outcomes</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">*</span> 
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Additional_good_outcomes_per_1000_patients_(mean)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Get key results</span>
+<span class="n">key_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Percent_Thrombolysis_(mean)&#39;</span><span class="p">]</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Additional_good_outcomes_per_1000_patients_(mean)&#39;</span><span class="p">]</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;patients_receiving_thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span>
+<span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stroke_team</th>
+      <th>scenario</th>
+      <th>admissions</th>
+      <th>thrombolysis_rate</th>
+      <th>additional_good_outcomes_per_1000_patients</th>
+      <th>patients_receiving_thrombolysis</th>
+      <th>add_good_outcomes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AGNOF1041H</td>
+      <td>base</td>
+      <td>671.666667</td>
+      <td>15.36</td>
+      <td>12.97</td>
+      <td>103.168000</td>
+      <td>8.711517</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AKCGO9726K</td>
+      <td>base</td>
+      <td>1143.333333</td>
+      <td>15.17</td>
+      <td>13.42</td>
+      <td>173.443667</td>
+      <td>15.343533</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AOBTM3098N</td>
+      <td>base</td>
+      <td>500.666667</td>
+      <td>7.90</td>
+      <td>5.74</td>
+      <td>39.552667</td>
+      <td>2.873827</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>APXEE8191H</td>
+      <td>base</td>
+      <td>439.333333</td>
+      <td>10.00</td>
+      <td>7.23</td>
+      <td>43.933333</td>
+      <td>3.176380</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ATDID5461S</td>
+      <td>base</td>
+      <td>275.666667</td>
+      <td>9.22</td>
+      <td>6.33</td>
+      <td>25.416467</td>
+      <td>1.744970</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1051</th>
+      <td>YPKYH1768F</td>
+      <td>speed_onset_benchmark</td>
+      <td>250.333333</td>
+      <td>21.76</td>
+      <td>23.10</td>
+      <td>54.472533</td>
+      <td>5.782700</td>
+    </tr>
+    <tr>
+      <th>1052</th>
+      <td>YQMZV4284N</td>
+      <td>speed_onset_benchmark</td>
+      <td>358.333333</td>
+      <td>13.92</td>
+      <td>12.27</td>
+      <td>49.880000</td>
+      <td>4.396750</td>
+    </tr>
+    <tr>
+      <th>1053</th>
+      <td>ZBVSO0975W</td>
+      <td>speed_onset_benchmark</td>
+      <td>449.333333</td>
+      <td>21.27</td>
+      <td>20.40</td>
+      <td>95.573200</td>
+      <td>9.166400</td>
+    </tr>
+    <tr>
+      <th>1054</th>
+      <td>ZHCLE1578P</td>
+      <td>speed_onset_benchmark</td>
+      <td>796.000000</td>
+      <td>14.08</td>
+      <td>12.94</td>
+      <td>112.076800</td>
+      <td>10.300240</td>
+    </tr>
+    <tr>
+      <th>1055</th>
+      <td>ZRRCV7012C</td>
+      <td>speed_onset_benchmark</td>
+      <td>597.333333</td>
+      <td>12.33</td>
+      <td>11.31</td>
+      <td>73.651200</td>
+      <td>6.755840</td>
+    </tr>
+  </tbody>
+</table>
+<p>1056 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/key_scenario_results.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="overall-results">
+<h2>Overall results<a class="headerlink" href="#overall-results" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">,</span> <span class="s1">&#39;patients_receiving_thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">key_results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;scenario&#39;</span><span class="p">)[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span>
+    <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;patients_receiving_thrombolysis&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">])</span>
+<span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000</span> <span class="o">*</span>
+    <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-order</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<span class="n">df_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+<span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_order</span>
+<span class="n">summary_stats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Select cols of interest</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]]</span>
+
+<span class="n">base_thrombolysis</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span>
+<span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;Percent increase thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">base_thrombolysis</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">base_add_good_outcomes</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span>
+<span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;Percent increase good_outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span>
+    <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">base_add_good_outcomes</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">summary_stats</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/summary_net_results.csv&#39;</span><span class="p">)</span>
+
+<span class="n">summary_stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>percent_thrombolysis</th>
+      <th>add_good_outcomes_per_1000</th>
+      <th>Percent increase thrombolysis</th>
+      <th>Percent increase good_outcomes</th>
+    </tr>
+    <tr>
+      <th>scenario</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>base</th>
+      <td>11.61</td>
+      <td>9.41</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>speed</th>
+      <td>12.33</td>
+      <td>11.86</td>
+      <td>6.26</td>
+      <td>26.00</td>
+    </tr>
+    <tr>
+      <th>onset</th>
+      <td>13.68</td>
+      <td>11.09</td>
+      <td>17.85</td>
+      <td>17.81</td>
+    </tr>
+    <tr>
+      <th>benchmark</th>
+      <td>14.51</td>
+      <td>11.70</td>
+      <td>25.04</td>
+      <td>24.28</td>
+    </tr>
+    <tr>
+      <th>speed_onset</th>
+      <td>14.53</td>
+      <td>13.99</td>
+      <td>25.16</td>
+      <td>48.62</td>
+    </tr>
+    <tr>
+      <th>speed_benchmark</th>
+      <td>15.44</td>
+      <td>14.82</td>
+      <td>33.00</td>
+      <td>57.49</td>
+    </tr>
+    <tr>
+      <th>onset_benchmark</th>
+      <td>17.18</td>
+      <td>13.86</td>
+      <td>48.06</td>
+      <td>47.22</td>
+    </tr>
+    <tr>
+      <th>speed_onset_benchmark</th>
+      <td>18.26</td>
+      <td>17.55</td>
+      <td>57.35</td>
+      <td>86.49</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Additional good outcomes</span><span class="se">\n</span><span class="s1">per 1,000 admissions&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Additional good outcomes</span><span class="se">\n</span><span class="s1">per 1,000 admissions&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/global_change.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_13_0.png" src="../_images/scenario_analysis_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_plot</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">test_rx</span><span class="p">,</span> <span class="n">base_benefit</span><span class="p">,</span> <span class="n">test_benefit</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    
+    <span class="c1"># Set up sublot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    
+    <span class="c1"># Thrombolysis use    </span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">base_rx</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">test_rx</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="s1">&#39;g-o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Base thrombolysis use (%)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Scenario thrombolysis use (%)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Benefit</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">base_benefit</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">test_benefit</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="s1">&#39;g-o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="s1">&#39;r-o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Base benefit&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Scenario benefit&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Clinical benefit</span><span class="se">\n</span><span class="s1">(additional good outcomes for 1,000 admissions)&#39;</span><span class="p">)</span>
+    
+    
+    <span class="c1"># Make axes places consistent</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.0f</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.0f</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.0f</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.0f</span><span class="s1">&#39;</span><span class="p">))</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-effect-of-speed">
+<h3>Plot effect of speed<a class="headerlink" href="#plot-effect-of-speed" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;speed&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">base_benfit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_benefit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;speed&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+<span class="n">compare_plot</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">scenario_rx</span><span class="p">,</span> <span class="n">base_benfit</span><span class="p">,</span> <span class="n">scenario_benefit</span><span class="p">,</span>
+                     <span class="s1">&#39;./output/hospitals_speed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_17_0.png" src="../_images/scenario_analysis_17_0.png" />
+</div>
+</div>
+</section>
+<section id="plot-effect-of-onset-known">
+<h3>Plot effect of onset-known<a class="headerlink" href="#plot-effect-of-onset-known" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;onset&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">base_benfit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_benefit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;onset&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+<span class="n">compare_plot</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">scenario_rx</span><span class="p">,</span> <span class="n">base_benfit</span><span class="p">,</span> <span class="n">scenario_benefit</span><span class="p">,</span>
+                     <span class="s1">&#39;./output/hospitals_onset&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_19_0.png" src="../_images/scenario_analysis_19_0.png" />
+</div>
+</div>
+</section>
+<section id="plot-effect-of-benchmark-decisions">
+<h3>Plot effect of benchmark decisions<a class="headerlink" href="#plot-effect-of-benchmark-decisions" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">base_benfit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_benefit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+<span class="n">compare_plot</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">scenario_rx</span><span class="p">,</span> <span class="n">base_benfit</span><span class="p">,</span> <span class="n">scenario_benefit</span><span class="p">,</span>
+                     <span class="s1">&#39;./output/hospitals_benchmark&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_21_0.png" src="../_images/scenario_analysis_21_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="plot-effect-of-all-sceanrio-changes">
+<h2>Plot effect of all sceanrio changes<a class="headerlink" href="#plot-effect-of-all-sceanrio-changes" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">base_benfit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_benefit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+<span class="n">compare_plot</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">scenario_rx</span><span class="p">,</span> <span class="n">base_benfit</span><span class="p">,</span> <span class="n">scenario_benefit</span><span class="p">,</span>
+                     <span class="s1">&#39;./output/hospitals_speed_onset_benchmark&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_23_0.png" src="../_images/scenario_analysis_23_0.png" />
+</div>
+</div>
+<section id="histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit">
+<h3>Histogram of shift in distribution of thrombolysis use and benefit<a class="headerlink" href="#histogram-of-shift-in-distribution-of-thrombolysis-use-and-benefit" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_rx</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">][</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">base_benfit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scenario_benefit</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">][</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">base_rx</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">scenario_rx</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;all in-hospital changes&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">base_benfit</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">scenario_benefit</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;all in-hospital changes&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Clincial benefit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Clincial benefit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/histograms.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_25_0.png" src="../_images/scenario_analysis_25_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="bar-charts-of-individual-changes-at-all-hospitals">
+<h2>Bar charts of individual changes at all hospitals<a class="headerlink" href="#bar-charts-of-individual-changes-at-all-hospitals" title="Permalink to this headline">¶</a></h2>
+<p>Here we summarise the effect of individual changes at each hospital.</p>
+<p>Note that actual combined changes will be more than additive, but these plots give an indication of what the most significant effects will be across all hospitals.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pivot results by scenario type</span>
+<span class="n">results_pivot</span> <span class="o">=</span> <span class="n">key_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;scenario&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hosp_per_chart</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">results_pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Thrombolysis chart</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># 4 subplots</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
+    <span class="c1"># Get subgroup of data for plot</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hosp_per_chart</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hosp_per_chart</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">subgroup</span> <span class="o">=</span> <span class="n">results_pivot</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    <span class="c1"># Get effect of speed (avoid negatives)</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">][</span><span class="s1">&#39;speed&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">][</span><span class="s1">&#39;base&#39;</span><span class="p">]</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">speed</span><span class="p">))</span>
+    <span class="c1"># Get effect of known onset (avoid negatives)</span>
+    <span class="n">onset</span> <span class="o">=</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">][</span><span class="s1">&#39;onset&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">][</span><span class="s1">&#39;base&#39;</span><span class="p">]</span>
+    <span class="n">onset</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">onset</span><span class="p">))</span>
+    <span class="c1"># Get effect of decision (avoid negatives)</span>
+    <span class="n">eligible</span> <span class="o">=</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">][</span><span class="s1">&#39;benchmark&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">][</span><span class="s1">&#39;base&#39;</span><span class="p">]</span>
+    <span class="n">eligible</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">eligible</span><span class="p">))</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">subgroup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Speed&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">onset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="n">speed</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Onset known&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">eligible</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">onset</span><span class="p">),</span>
+           <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Benchmark decision&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Hospital&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Increase in thrombolysis use (percentage points)&#39;</span><span class="p">)</span>
+    <span class="c1"># Put y tick label son all charts</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+      
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/all_hosp_bar_thrombolysis.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_28_0.png" src="../_images/scenario_analysis_28_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hosp_per_chart</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">results_pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Outcomes chart</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># 4 subplots</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
+    <span class="c1"># Get subgroup of data for plot</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hosp_per_chart</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hosp_per_chart</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">subgroup</span> <span class="o">=</span> <span class="n">results_pivot</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    
+    <span class="c1"># Get effect of speed (avoid negatives)</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">][</span><span class="s1">&#39;speed&#39;</span><span class="p">]</span> <span class="o">-</span> \
+        <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">][</span><span class="s1">&#39;base&#39;</span><span class="p">]</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">speed</span><span class="p">))</span>
+    <span class="c1"># Get effect of known onset (avoid negatives)</span>
+    <span class="n">onset</span> <span class="o">=</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">][</span><span class="s1">&#39;onset&#39;</span><span class="p">]</span> <span class="o">-</span> \
+        <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">][</span><span class="s1">&#39;base&#39;</span><span class="p">]</span>
+    <span class="n">onset</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">onset</span><span class="p">))</span>
+    <span class="c1"># Get effect of decision (avoid negatives)</span>
+    <span class="n">eligible</span> <span class="o">=</span> <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">][</span><span class="s1">&#39;benchmark&#39;</span><span class="p">]</span> <span class="o">-</span> \
+        <span class="n">subgroup</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">][</span><span class="s1">&#39;base&#39;</span><span class="p">]</span>
+    <span class="n">eligible</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">),</span> <span class="n">eligible</span><span class="p">))</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">subgroup</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Speed&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">onset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="n">speed</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Onset known&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">eligible</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">onset</span><span class="p">),</span>
+           <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Benchmark decision&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Hospital&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Increase in good outcomes (per 1,000 admissions)&#39;</span><span class="p">)</span>
+    <span class="c1"># Put y tick label son all charts</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+      
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/all_hosp_bar_outcomes.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_29_0.png" src="../_images/scenario_analysis_29_0.png" />
+</div>
+</div>
+</section>
+<section id="results-for-individual-hospitals">
+<h2>Results for individual hospitals<a class="headerlink" href="#results-for-individual-hospitals" title="Permalink to this headline">¶</a></h2>
+<p>We may plot more detailed results at an individual hospital level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_hospital</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    
+    <span class="n">hospital_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+    
+    <span class="n">max_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                  <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    
+    <span class="n">max_val</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_val</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
+    
+    <span class="n">team</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="o">.</span><span class="n">name</span>
+    
+    <span class="c1"># Sort results</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+    <span class="n">df_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_order</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   
+    
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_val</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;outcomes&#39;</span><span class="p">]</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Additional good outcomes</span><span class="se">\n</span><span class="s1">per 1,000 admissions&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Additional good outcomes</span><span class="se">\n</span><span class="s1">per 1,000 admissions&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_val</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Scenario results for team: </span><span class="si">{</span><span class="n">team</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./output/hosp_results_</span><span class="si">{</span><span class="n">team</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An example where speed makes most difference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">103</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_33_0.png" src="../_images/scenario_analysis_33_0.png" />
+</div>
+</div>
+<p>An example where determining stroke onset time makes most difference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_35_0.png" src="../_images/scenario_analysis_35_0.png" />
+</div>
+</div>
+<p>An example where applying benchmark decion-making makes most difference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">54</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_37_0.png" src="../_images/scenario_analysis_37_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./pathway_sim"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="scenario_results_generation.html" title="previous page">Stroke pathway simulation - generation of results from alternative scenarios</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1970 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Find similar patients who are treated differently within the same hospital &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Neural Networks" href="../neural_net/outline.html" />
+    <link rel="prev" title="Thrombolysis hospital vs. benchmark diagrams and patient vignettes" href="vignettes.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline.html">
+   Random Forests
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/random_forest/within_hospital_variability.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-libraries">
+     Import libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model">
+     Load pre-trained hospital models into dictionary
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       hospital2model
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-a-hospital-for-investigation">
+     Select a hospital for investigation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-test-cohort-and-extract-hospital-patients">
+     Load test cohort and extract hospital patients
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misclassifications">
+   Misclassifications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-misclassified-patients-in-test-cohort">
+     Find misclassified patients in test cohort
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#posterior-probability-distribution">
+     Posterior probability distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#similarity-metric">
+   Similarity Metric
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#node-weights">
+       Node weights
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caclulate-similarity">
+       Caclulate Similarity
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-hospital">
+     Example hospital
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pairwise-similarity">
+     Pairwise similarity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#most-similar-patients-with-a-different-outcome">
+   Most similar patients with a different outcome
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identify-patients-with-a-predicted-outcome-different-to-their-true-outcome">
+     Identify patients with a predicted outcome different to their true outcome
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set">
+     For each patient, find 5 most similar patients with a different outcome in training set
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-feature-importances-for-hospital">
+     Get feature importances for hospital
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-where-thrombolysis-was-given-when-not-expected">
+   Example where thrombolysis was given when not expected
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-dataframe-for-patient">
+     Create dataframe for patient
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sort-dataframe-according-to-feature-importance">
+     Sort dataframe according to feature importance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rescale">
+     Rescale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot">
+     Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Example where thrombolysis was given when not expected
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="find-similar-patients-who-are-treated-differently-within-the-same-hospital">
+<h1>Find similar patients who are treated differently within the same hospital<a class="headerlink" href="#find-similar-patients-who-are-treated-differently-within-the-same-hospital" title="Permalink to this headline">¶</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Investigate the number of misclassifications within a hospital</p></li>
+<li><p>Define a similarity measure using the decision tree structure of a random forest classifier</p></li>
+<li><p>For patients with a predicted outcome different to their true outcome, find similar patients that were treated differently</p></li>
+</ul>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pickle</span> <span class="k">as</span> <span class="nn">pkl</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">sklearn</span> <span class="k">as</span> <span class="nn">sk</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="c1"># Turn warnings off to keep notebook tidy</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
+<h3>Load pre-trained hospital models into dictionary <code class="docutils literal notranslate"><span class="pre">hospital2model</span></code><a class="headerlink" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model" title="Permalink to this headline">¶</a></h3>
+<p>keys = hospitals</p>
+<p>values = trained_classifier, threshold, patients, outcomes</p>
+<p>Note: patients is a numpy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="s1">&#39;./models/trained_hospital_models_for _cohort.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    
+    <span class="n">hospital2model</span> <span class="o">=</span> <span class="n">pkl</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-a-hospital-for-investigation">
+<h3>Select a hospital for investigation<a class="headerlink" href="#select-a-hospital-for-investigation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospital2model</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">hospital</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;TPFFP4410O&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-test-cohort-and-extract-hospital-patients">
+<h3>Load test cohort and extract hospital patients<a class="headerlink" href="#load-test-cohort-and-extract-hospital-patients" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohort</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)</span>
+
+<span class="n">test_patients_df</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cohort</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">hospital</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_patients_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StrokeTeam</th>
+      <th>S1AgeOnArrival</th>
+      <th>S1OnsetToArrival_min</th>
+      <th>S2RankinBeforeStroke</th>
+      <th>Loc</th>
+      <th>LocQuestions</th>
+      <th>LocCommands</th>
+      <th>BestGaze</th>
+      <th>Visual</th>
+      <th>FacialPalsy</th>
+      <th>...</th>
+      <th>S2NewAFDiagnosis_Yes</th>
+      <th>S2NewAFDiagnosis_missing</th>
+      <th>S2StrokeType_Infarction</th>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <th>S2StrokeType_missing</th>
+      <th>S2TIAInLastMonth_No</th>
+      <th>S2TIAInLastMonth_No but</th>
+      <th>S2TIAInLastMonth_Yes</th>
+      <th>S2TIAInLastMonth_missing</th>
+      <th>S2Thrombolysis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>105</th>
+      <td>TPFFP4410O</td>
+      <td>72.5</td>
+      <td>68.0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>720</th>
+      <td>TPFFP4410O</td>
+      <td>87.5</td>
+      <td>108.0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>759</th>
+      <td>TPFFP4410O</td>
+      <td>82.5</td>
+      <td>131.0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>779</th>
+      <td>TPFFP4410O</td>
+      <td>57.5</td>
+      <td>145.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>898</th>
+      <td>TPFFP4410O</td>
+      <td>67.5</td>
+      <td>162.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 101 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="misclassifications">
+<h2>Misclassifications<a class="headerlink" href="#misclassifications" title="Permalink to this headline">¶</a></h2>
+<p>If a patient is misclassified by the hospital model for the hospital that they attended, this suggests there is a patient in the data set used to train the model that is similar yet was treated differently</p>
+<section id="find-misclassified-patients-in-test-cohort">
+<h3>Find misclassified patients in test cohort<a class="headerlink" href="#find-misclassified-patients-in-test-cohort" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forest</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hospital2model</span><span class="p">[</span><span class="n">hospital</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="n">test_patients_df</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test_patients_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">y_prob</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">y_prob</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">misclassified</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_pred</span><span class="o">!=</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">misclassified</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 8, 16, 17, 20, 21, 22, 33, 39])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="posterior-probability-distribution">
+<h3>Posterior probability distribution<a class="headerlink" href="#posterior-probability-distribution" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probs</span> <span class="o">=</span> <span class="n">y_prob</span><span class="p">[</span><span class="n">misclassified</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/within_hospital_variability_19_0.png" src="../_images/within_hospital_variability_19_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="similarity-metric">
+<h2>Similarity Metric<a class="headerlink" href="#similarity-metric" title="Permalink to this headline">¶</a></h2>
+<p>When a decision tree is fit to the training data, each internal node in the tree will be split into two further nodes based on the feature that maximises the information gain (or minimises the entropy). Once a split results in two nodes that are pure (only containing samples from a single class) no further information gain is possible: the two nodes are leaves, representing the ends of two paths through the tree. As each patient can take only one path through the decision tree, and all patients start in the same node (the root node), we can use these paths to find the similarity between any pair of patients:</p>
+<p>$<span class="math notranslate nohighlight">\(S(i,j) = \frac{P(i,j)}{\sqrt{P(i)P(j)}}\)</span>$.</p>
+<p>Here, <span class="math notranslate nohighlight">\(S(i,j)\)</span> represents the simailarity between patient <span class="math notranslate nohighlight">\(i\)</span> and patient <span class="math notranslate nohighlight">\(j\)</span> as a function of each patient’s path, <span class="math notranslate nohighlight">\(P\)</span>, through the decision tree, where <span class="math notranslate nohighlight">\(P(i)\)</span> correspond to the path length of patient <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(P(j)\)</span> the path length of <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(P(i,j)\)</span> the length of the shared path of <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>Path length is measured using the information gain (change in entropy) at each split. Consider patient <span class="math notranslate nohighlight">\(z\)</span>, who takes a path through the decision tree which is comprised of a set of <span class="math notranslate nohighlight">\(N\)</span> nodes, each passed sequentially and with index <span class="math notranslate nohighlight">\(n \in [1,N]\)</span>, where <span class="math notranslate nohighlight">\(n=1\)</span> represents the root node and <span class="math notranslate nohighlight">\(n=N\)</span> the leaf node. If each node with index <span class="math notranslate nohighlight">\(n\)</span> has <span class="math notranslate nohighlight">\(X_n\)</span> patients passing through it, the length of the path of patient <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(P(z)\)</span>, is given by:</p>
+<p>$<span class="math notranslate nohighlight">\(P(z)= \sum_{n=1}^{N-1} X_{n+1} (H_n - H_{n+1} \frac{X_{n+1}}{X_n})\)</span>$,</p>
+<p>where <span class="math notranslate nohighlight">\(H_n\)</span> is the entropy at node <span class="math notranslate nohighlight">\(n\)</span> and the information gain at each split has been weighted by <span class="math notranslate nohighlight">\(X_{n+1}\)</span>, the total number of patients that move from node <span class="math notranslate nohighlight">\(n\)</span> to node <span class="math notranslate nohighlight">\(n+1\)</span>.</p>
+<p>From the second equation it is clear that if patients <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> take exactly the same path through the decision tree their path lengths are equal: <span class="math notranslate nohighlight">\(P(i) = P(j) = P(i,j)\)</span>. Substituting this into the first equation it is clear that if two patients take identical paths the similarity between them is one. Conversely, if patients <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> diverge at the root node (<span class="math notranslate nohighlight">\(n=1\)</span>), their shared path contains only this node: <span class="math notranslate nohighlight">\(P(i,j) = 0\)</span> and hence the similarity between them is equal to zero.</p>
+<p>As a random forest is composed of many decision trees, for each pair of patients we take the distance between them as the average over all trees in the forest. Using this measure of similarity, for each patient in each hospital we found the most similar patients that are treated differently.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<section id="node-weights">
+<h4>Node weights<a class="headerlink" href="#node-weights" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_information_gain</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to find the information gain for each branch in a tree</span>
+<span class="sd">    </span>
+<span class="sd">    Input</span>
+<span class="sd">    </span>
+<span class="sd">    X_train: (numpy array) features used to train the DecisionTree classifier</span>
+<span class="sd">    y_train: (numpy array) target used to train the DecisionTree classifier</span>
+<span class="sd">    estimator: (sklearn model) trained DecisionTree classifier</span>
+<span class="sd">    </span>
+<span class="sd">    Output</span>
+<span class="sd">    </span>
+<span class="sd">    info_gain: (numpy array) information gain associated with move to child </span>
+<span class="sd">                             node (node i) from parent node.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    
+    <span class="c1"># claculate the entropy of each node</span>
+    
+    <span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_train</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y_false</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_train</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">X_true</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">y_true</span><span class="p">]</span>
+    <span class="n">X_false</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">y_false</span><span class="p">]</span>
+    
+    <span class="n">node_indicator_false</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">decision_path</span><span class="p">(</span><span class="n">X_false</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="n">node_indicator_true</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">decision_path</span><span class="p">(</span><span class="n">X_true</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    
+    <span class="n">total_passing_true</span> <span class="o">=</span> <span class="n">node_indicator_true</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">total_passing_false</span> <span class="o">=</span> <span class="n">node_indicator_false</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">n_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_passing_true</span><span class="p">)</span>
+    
+    <span class="n">entropies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">)</span>
+    
+    <span class="n">left_child</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_left</span>
+    <span class="n">right_child</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_right</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">):</span>
+        
+        <span class="n">true</span> <span class="o">=</span> <span class="n">total_passing_true</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">false</span> <span class="o">=</span> <span class="n">total_passing_false</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">true</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">false</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Node Not Passed&#39;</span><span class="p">)</span>
+            
+            <span class="k">continue</span>
+            
+        <span class="k">if</span> <span class="n">true</span><span class="o">==</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">false</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            
+            <span class="n">entropies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            
+            <span class="n">entropies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">true</span><span class="o">/</span><span class="p">(</span><span class="n">true</span><span class="o">+</span><span class="n">false</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">true</span><span class="o">/</span><span class="p">(</span><span class="n">true</span><span class="o">+</span><span class="n">false</span><span class="p">))</span> \
+                            <span class="o">-</span> <span class="p">(</span><span class="n">false</span><span class="o">/</span><span class="p">(</span><span class="n">true</span><span class="o">+</span><span class="n">false</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">false</span><span class="o">/</span><span class="p">(</span><span class="n">true</span><span class="o">+</span><span class="n">false</span><span class="p">))</span>
+        
+
+            
+    <span class="c1"># use the entropy to calculate the information gain for each node</span>
+            
+    <span class="n">info_gain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">)</span>
+    
+    
+    <span class="n">total_passing</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">decision_path</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_nodes</span><span class="p">):</span>
+        
+
+        <span class="n">loc_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">left_child</span><span class="o">==</span><span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">loc_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">right_child</span><span class="o">==</span><span class="n">i</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">loc_left</span><span class="o">==</span><span class="mi">1</span><span class="p">):</span>
+            
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">loc_left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            
+            
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">loc_right</span><span class="o">==</span><span class="mi">1</span><span class="p">):</span>
+            
+            <span class="n">parent</span> <span class="o">=</span> <span class="n">loc_right</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cant find parent&quot;</span><span class="p">)</span>
+            
+            
+        <span class="n">info_gain</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">entropies</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span> <span class="o">-</span> \
+                        <span class="n">total_passing</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">entropies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">total_passing</span><span class="p">[</span><span class="n">parent</span><span class="p">]</span>
+
+    
+        
+    <span class="k">return</span> <span class="n">info_gain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_node_weight</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to find the weight of a node. Weight is defined as the product</span>
+<span class="sd">    of the number of data points passing the node (flow) and the information</span>
+<span class="sd">    gain at the node.</span>
+<span class="sd">    </span>
+<span class="sd">    Input</span>
+<span class="sd">    </span>
+<span class="sd">    X_train: (numpy array) features used to train the DecisionTree classifier</span>
+<span class="sd">    y_train: (numpy array) target used to train the DecisionTree classifier</span>
+<span class="sd">    estimator: (sklearn model) trained DecisionTree classifier</span>
+<span class="sd">    </span>
+<span class="sd">    Output</span>
+<span class="sd">    </span>
+<span class="sd">    weight: (numpy array) weight (flows * info_gain) of each node</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">node_indicator</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">decision_path</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    
+    <span class="n">flows</span> <span class="o">=</span> <span class="n">node_indicator</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">info_gain</span> <span class="o">=</span> <span class="n">find_information_gain</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">flows</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">info_gain</span><span class="p">):</span>
+        
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Length mismatch&quot;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">flows</span><span class="o">*</span><span class="n">info_gain</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_forest_weight</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">forest</span><span class="p">):</span>
+    
+    <span class="n">trees</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">estimators_</span>
+    
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">estimator</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trees</span><span class="p">):</span>
+        
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">find_node_weight</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="p">)</span>
+        
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="caclulate-similarity">
+<h4>Caclulate Similarity<a class="headerlink" href="#caclulate-similarity" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_similar_patients_tree</span><span class="p">(</span><span class="n">patient</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to calculate the similarity between a single patient and all other</span>
+<span class="sd">    patients in a data set using a single DecisionTree classifier</span>
+<span class="sd">    </span>
+<span class="sd">    Input</span>
+<span class="sd">    </span>
+<span class="sd">    patient:    index of comparison patient in test_set</span>
+<span class="sd">    test_set:   sub-set of n data points unseen by estimator. Must include </span>
+<span class="sd">                patient</span>
+<span class="sd">    estimator:  trained sklearn DecisionTreeClassifier</span>
+<span class="sd">    weights:    array of length n-nodes. </span>
+<span class="sd">    </span>
+<span class="sd">    Output</span>
+<span class="sd">    </span>
+<span class="sd">    similarity: (n-dim array) index of patients and similarity</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">similarity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">test_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="n">paths</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">decision_path</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
+    
+    <span class="n">patient_nodes</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">toarray</span><span class="p">()[</span><span class="n">patient</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">test_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        
+        <span class="n">sample_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">patient</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+        
+        <span class="n">patient_paths</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">toarray</span><span class="p">()[</span><span class="n">sample_ids</span><span class="p">]</span>
+    
+        <span class="n">common_nodes</span> <span class="o">=</span> <span class="p">(</span><span class="n">patient_paths</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">sample_ids</span><span class="p">))</span>
+        
+        <span class="n">common_node_weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">common_nodes</span><span class="p">]</span>
+        
+        <span class="n">path_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">common_node_weights</span><span class="p">)</span>
+        
+        <span class="n">p0_path_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">patient_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">weights</span><span class="p">)</span>
+        <span class="n">p1_path_length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">patient_paths</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">weights</span><span class="p">)</span>
+        
+        <span class="n">similar</span> <span class="o">=</span> <span class="n">path_length</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p0_path_length</span><span class="o">*</span><span class="n">p1_path_length</span><span class="p">)</span>
+        
+        <span class="n">similarity</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">similar</span>
+        
+    <span class="k">return</span> <span class="n">similarity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_similar_patients</span><span class="p">(</span><span class="n">patient</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">forest</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to calculate the similarity between a single patient and all other</span>
+<span class="sd">    patients in a data set using a RandomForest classifier</span>
+<span class="sd">    </span>
+<span class="sd">    Input</span>
+<span class="sd">    </span>
+<span class="sd">    patient:    index of comparison patient in test_set</span>
+<span class="sd">    test_set:   sub-set of n data points unseen by estimator. Must include </span>
+<span class="sd">                patient</span>
+<span class="sd">    forest:     trained sklearn RandomForestClassifier</span>
+<span class="sd">    weights:    array of length n-nodes. </span>
+<span class="sd">    </span>
+<span class="sd">    Output</span>
+<span class="sd">    </span>
+<span class="sd">    results: (n-dim array) similarity between patient and test_set for each tree</span>
+<span class="sd">                           in the RandomForest classifier  </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">trees</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">estimators_</span>
+    
+    <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">trees</span><span class="p">),</span> <span class="n">test_set</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">estimator</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trees</span><span class="p">):</span>
+        
+        <span class="n">similarity</span> <span class="o">=</span> <span class="n">find_similar_patients_tree</span><span class="p">(</span><span class="n">patient</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        
+        <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">similarity</span>
+        
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-hospital">
+<h3>Example hospital<a class="headerlink" href="#example-hospital" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forest</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">train_patients</span><span class="p">,</span> <span class="n">train_outcomes</span> <span class="o">=</span> <span class="n">hospital2model</span><span class="p">[</span><span class="n">hospital</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">find_forest_weight</span><span class="p">(</span><span class="n">train_patients</span><span class="p">,</span> <span class="n">train_outcomes</span><span class="p">,</span> <span class="n">forest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pairwise-similarity">
+<h3>Pairwise similarity<a class="headerlink" href="#pairwise-similarity" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_patients</span> <span class="o">=</span> <span class="n">test_patients_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">test_outcomes</span> <span class="o">=</span> <span class="n">test_patients_df</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity</span> <span class="o">=</span> <span class="n">find_similar_patients</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">test_patients</span><span class="p">,</span> <span class="n">forest</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">similarity</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 42)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">similarity</span></code> contains one row for each decision tree in the random forest classifier. Each row contains the pairwise similarity between <code class="docutils literal notranslate"><span class="pre">patient</span></code> and all other patients.</p>
+<p>Note that the similarity between <code class="docutils literal notranslate"><span class="pre">patient</span></code> and itself (in this case, element <code class="docutils literal notranslate"><span class="pre">0</span></code> of each row) is always equal to 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># average similarity across all trees</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">similarity</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.41878349, 0.41385524, 0.30315102, 0.28188906,
+       0.31645625, 0.44306756, 0.17333223, 0.35602158, 0.46386653,
+       0.2490115 , 0.33010815, 0.50437351, 0.12329451, 0.17538473,
+       0.19784455, 0.35274581, 0.29956862, 0.29864365, 0.2882998 ,
+       0.18215119, 0.39094488, 0.35923549, 0.39327842, 0.41762123,
+       0.48577199, 0.11948557, 0.21997094, 0.40880923, 0.50791922,
+       0.38785235, 0.30787927, 0.53550742, 0.42006776, 0.23841425,
+       0.3628097 , 0.20345056, 0.33015945, 0.16756539, 0.24487966,
+       0.16356513, 0.29071159])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="most-similar-patients-with-a-different-outcome">
+<h2>Most similar patients with a different outcome<a class="headerlink" href="#most-similar-patients-with-a-different-outcome" title="Permalink to this headline">¶</a></h2>
+<section id="identify-patients-with-a-predicted-outcome-different-to-their-true-outcome">
+<h3>Identify patients with a predicted outcome different to their true outcome<a class="headerlink" href="#identify-patients-with-a-predicted-outcome-different-to-their-true-outcome" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_outcome</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_patients</span><span class="p">)</span>
+
+<span class="n">patient_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">predicted_outcome</span><span class="o">!=</span><span class="n">test_outcomes</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 8, 17, 20, 29, 39])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Show actual outcomes for patients:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">test_outcomes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">patient_index</span><span class="p">]</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Actual:&#39;</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Actual: [0, 1, 1, 1, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set">
+<h3>For each patient, find 5 most similar patients with a different outcome in training set<a class="headerlink" href="#for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">most_similar</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">patient_index</span><span class="p">:</span>
+    
+    <span class="n">patient</span> <span class="o">=</span> <span class="n">test_patients</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="n">outcome</span> <span class="o">=</span> <span class="n">test_outcomes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="n">opposite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">train_outcomes</span> <span class="o">!=</span> <span class="n">outcome</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">patient</span><span class="p">,</span> <span class="n">train_patients</span><span class="p">[</span><span class="n">opposite</span><span class="p">]))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="n">outcome</span><span class="p">],</span> <span class="n">train_outcomes</span><span class="p">[</span><span class="n">opposite</span><span class="p">]))</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">find_similar_patients</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">forest</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+            
+    <span class="n">summed_results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#remove similarity between patient and itself</span>
+            
+    <span class="n">five_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argpartition</span><span class="p">(</span><span class="n">summed_results</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+
+    <span class="n">similar_patients</span> <span class="o">=</span> <span class="n">train_patients</span><span class="p">[</span><span class="n">opposite</span><span class="p">][</span><span class="n">five_indices</span><span class="p">]</span>
+
+    <span class="n">S</span> <span class="o">=</span> <span class="n">summed_results</span><span class="p">[</span><span class="n">five_indices</span><span class="p">]</span>
+
+    <span class="n">most_similar</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">S</span><span class="p">,</span> <span class="n">summed_results</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">patient</span><span class="p">,</span> <span class="n">similar_patients</span><span class="p">])</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.37 s, sys: 0 ns, total: 7.37 s
+Wall time: 7.37 s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-feature-importances-for-hospital">
+<h3>Get feature importances for hospital<a class="headerlink" href="#get-feature-importances-for-hospital" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">feature_importances_</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="example-where-thrombolysis-was-given-when-not-expected">
+<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#example-where-thrombolysis-was-given-when-not-expected" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_of_interest</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="create-dataframe-for-patient">
+<h3>Create dataframe for patient<a class="headerlink" href="#create-dataframe-for-patient" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">patient</span><span class="p">,</span> <span class="n">similar_patients</span> <span class="o">=</span> <span class="n">most_similar</span><span class="p">[</span><span class="n">patient_of_interest</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">S_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 3, 4, 2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+<span class="n">patient_df</span><span class="p">[</span><span class="s1">&#39;Importance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">importances</span>
+<span class="n">patient_df</span><span class="p">[</span><span class="s1">&#39;Patient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patient</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">S_index</span><span class="p">):</span>
+    
+    <span class="n">patient_df</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">similar_patients</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sort-dataframe-according-to-feature-importance">
+<h3>Sort dataframe according to feature importance<a class="headerlink" href="#sort-dataframe-according-to-feature-importance" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_df</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">patient_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Importance&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">patient_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Patient</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>23.0</td>
+      <td>19.0</td>
+      <td>11.0</td>
+      <td>33.0</td>
+      <td>30.0</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>9.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>83.0</td>
+      <td>149.0</td>
+      <td>134.0</td>
+      <td>121.0</td>
+      <td>79.0</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_Yes</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_Yes</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_No</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Mixed</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>99 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="rescale">
+<h3>Rescale<a class="headerlink" href="#rescale" title="Permalink to this headline">¶</a></h3>
+<p>As some features, such as stroke to arrival time and age, have a much larger range than other features, we rescale them so that all features can be visualised on one axis</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rescale</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        
+        <span class="n">rescaled</span><span class="o">=</span><span class="n">vals</span>
+        
+    <span class="k">if</span> <span class="n">time</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        
+        <span class="n">rescaled</span><span class="o">=</span><span class="n">vals</span><span class="o">/</span><span class="mi">60</span>
+        
+    <span class="k">elif</span> <span class="n">age</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        
+        <span class="n">rescaled</span><span class="o">=</span><span class="n">vals</span><span class="o">/</span><span class="mi">10</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#rescaled = [(v - vals[0]) for v in vals]</span>
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">vals</span>
+    
+    <span class="k">return</span> <span class="n">rescaled</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rescaled_results</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">indx_list</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rescaled_results</span><span class="p">)):</span>
+    
+    <span class="n">indx</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">indx</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]:</span><span class="c1">#, &#39;S2BrainImagingTime_min&#39;]:</span>
+        
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">rescaled_results</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">indx_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">indx</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;_hours&#39;</span>
+        
+    <span class="k">elif</span> <span class="n">indx</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;S1AgeOnArrival&#39;</span><span class="p">]:</span>
+        
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">rescaled_results</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">indx_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">indx</span> <span class="o">+</span> <span class="s1">&#39;_decades&#39;</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">rescaled_results</span><span class="p">)</span>
+    
+    <span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span><span class="o">=</span><span class="n">rescaled</span>
+    
+<span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">indx_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot">
+<h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>  
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mf">10.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/within_hospital_variability/5_similar_bar_patient_not_treated.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/within_hospital_variability_64_0.png" src="../_images/within_hospital_variability_64_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">xvals</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">pvals</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="p">[</span><span class="s1">&#39;Patient&#39;</span><span class="p">]</span>
+<span class="n">mvals</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">lvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">hvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">mvals</span><span class="p">,</span> <span class="s1">&#39;r*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">lvals</span><span class="p">,</span> <span class="s1">&#39;b*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Low&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">hvals</span><span class="p">,</span> <span class="s1">&#39;y*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">pvals</span><span class="p">,</span> <span class="s1">&#39;k*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Patient&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">lvals</span><span class="p">,</span> <span class="n">hvals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">10.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/within_hospital_variability/5_similar_range_patient_not_treated.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/within_hospital_variability_65_0.png" src="../_images/within_hospital_variability_65_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_of_interest</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">S</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">patient</span><span class="p">,</span> <span class="n">similar_patients</span> <span class="o">=</span> <span class="n">most_similar</span><span class="p">[</span><span class="n">patient_of_interest</span><span class="p">]</span>
+<span class="n">S_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">S_index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">features</span><span class="p">)</span>
+<span class="n">patient_df</span><span class="p">[</span><span class="s1">&#39;Importance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">importances</span>
+<span class="n">patient_df</span><span class="p">[</span><span class="s1">&#39;Patient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patient</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">S_index</span><span class="p">):</span>
+    <span class="n">patient_df</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">similar_patients</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    
+<span class="n">patient_df</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">patient_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Importance&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">patient_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Patient</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>40.0</td>
+      <td>88.0</td>
+      <td>40.0</td>
+      <td>27.0</td>
+      <td>51.0</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>9.0</td>
+      <td>11.0</td>
+      <td>10.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>105.0</td>
+      <td>67.0</td>
+      <td>122.0</td>
+      <td>83.0</td>
+      <td>75.0</td>
+      <td>160.0</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_Yes</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_Yes</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetInHospital_No</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Mixed</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>99 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Rescale:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rescaled_results</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">indx_list</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rescaled_results</span><span class="p">)):</span>
+    
+    <span class="n">indx</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">indx</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]:</span><span class="c1">#, &#39;S2BrainImagingTime_min&#39;]:</span>
+        
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">rescaled_results</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">indx_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">indx</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;_hours&#39;</span>
+        
+    <span class="k">elif</span> <span class="n">indx</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;S1AgeOnArrival&#39;</span><span class="p">]:</span>
+        
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">rescaled_results</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">indx_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">indx</span> <span class="o">+</span> <span class="s1">&#39;_decades&#39;</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">rescaled_results</span><span class="p">)</span>
+    
+    <span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">indx</span><span class="p">]</span><span class="o">=</span><span class="n">rescaled</span>
+    
+<span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">indx_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>  
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mf">10.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/within_hospital_variability/5_similar_bar_patient_treated.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/within_hospital_variability_72_0.png" src="../_images/within_hospital_variability_72_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">xvals</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<span class="n">pvals</span> <span class="o">=</span> <span class="n">rescaled_results</span><span class="p">[</span><span class="s1">&#39;Patient&#39;</span><span class="p">]</span>
+<span class="n">mvals</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">lvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">hvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">rescaled_results</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">mvals</span><span class="p">,</span> <span class="s1">&#39;r*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">lvals</span><span class="p">,</span> <span class="s1">&#39;b*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Low&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">hvals</span><span class="p">,</span> <span class="s1">&#39;y*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">pvals</span><span class="p">,</span> <span class="s1">&#39;k*&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Patient&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">lvals</span><span class="p">,</span> <span class="n">hvals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">10.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/within_hospital_variability/5_similar_range_patient_treated.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/within_hospital_variability_73_0.png" src="../_images/within_hospital_variability_73_0.png" />
+</div>
+</div>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Misclassifications indicate that there is variablilty in clinical decision making within a hospital</p></li>
+<li><p>We can use the sturcture of the Random Forest classifier to define a similarity metric</p></li>
+<li><p>For patients that are incorrectly classified, we can find similar patients that were treated differently, further demonstrating variation in decision making within a hospital</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./random_forest"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="vignettes.html" title="previous page">Thrombolysis hospital vs. benchmark diagrams and patient vignettes</a>
+    <a class='right-next' id="next-link" href="../neural_net/outline.html" title="next page">Neural Networks</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

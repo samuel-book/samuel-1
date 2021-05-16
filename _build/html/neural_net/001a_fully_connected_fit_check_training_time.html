@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Fully connected TensorFlow model - Check required training epochs &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fully connected TensorFlow model - Train and save models" href="001b_fully_connected_fit.html" />
+    <link rel="prev" title="Neural Networks" href="outline.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline.html">
+   Neural Networks
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/neural_net/001a_fully_connected_fit_check_training_time.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-methodology">
+   Basic methodology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-modules">
+   Load modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#function-to-scale-data-minmax-scaling">
+   Function to scale data (minmax scaling)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-neural-net">
+   Define neural net
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fit-models">
+   Fit models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="fully-connected-tensorflow-model-check-required-training-epochs">
+<h1>Fully connected TensorFlow model - Check required training epochs<a class="headerlink" href="#fully-connected-tensorflow-model-check-required-training-epochs" title="Permalink to this headline">¶</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Ascertain how many training epochs are needed to train a fully connected TensFlow neural net. This will be used in future training.</p></li>
+</ul>
+</section>
+<section id="basic-methodology">
+<h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Models are fitted to previously split training and test data sets.</p></li>
+<li><p>MinMax scaling is used (all features are scaled 0-1 based on the fature min/max).</p></li>
+<li><p>Model has two hidden layers, each with the number of neurones being 2x the number of features. Prior studies show performance of the network is similar across all models with this complexity or more. A dropout value of 0.5 is used based on previous exploration.</p></li>
+<li><p>A batch size of 32 is used (“Friends don’t let friends use minibatches larger than 32”. Yan LeCun on paper: <a class="reference external" href="http://arxiv.org/abs/1804.07612">arxiv.org/abs/1804.07612</a>)</p></li>
+</ul>
+<p>Model structure:</p>
+<ul class="simple">
+<li><p>Input layer</p></li>
+<li><p>Dense layer (# neurones = 2x features, ReLu activation)</p></li>
+<li><p>Batch normalisation</p></li>
+<li><p>Dropout layer</p></li>
+<li><p>Dense layer (# neurones = 2x features, ReLu activation)</p></li>
+<li><p>Batch normalisation</p></li>
+<li><p>Dropout layer</p></li>
+<li><p>Output layer (single sigmoid activation)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turn warnings off to keep notebook tidy</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-modules">
+<h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># sklearn for pre-processing</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># TensorFlow api model</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.losses</span> <span class="kn">import</span> <span class="n">binary_crossentropy</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="function-to-scale-data-minmax-scaling">
+<h2>Function to scale data (minmax scaling)<a class="headerlink" href="#function-to-scale-data-minmax-scaling" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Scale data 0-1 based on min and max in training set&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Initialise a new scaling object for normalising input data</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+    <span class="c1"># Set up the scaler just on the training set</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+    <span class="c1"># Apply the scaler to the training and test sets</span>
+    <span class="n">train_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">test_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">train_sc</span><span class="p">,</span> <span class="n">test_sc</span>    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-neural-net">
+<h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_net</span><span class="p">(</span><span class="n">number_features</span><span class="p">,</span> <span class="n">expansion</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    
+    <span class="c1"># Clear Tensorflow</span>
+    <span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+    
+    <span class="c1"># Input layer</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">number_features</span><span class="p">)</span>
+    
+    <span class="c1"># Dense layer 1</span>
+    <span class="n">dense_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">number_features</span> <span class="o">*</span> <span class="n">expansion</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">norm_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">dense_1</span><span class="p">)</span>
+    <span class="n">dropout_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">norm_1</span><span class="p">)</span>
+    
+    <span class="c1"># Dense layer 2</span>
+    <span class="n">dense_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">number_features</span> <span class="o">*</span> <span class="n">expansion</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">dropout_1</span><span class="p">)</span>
+    <span class="n">norm_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">dense_2</span><span class="p">)</span>
+    <span class="n">dropout_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">norm_2</span><span class="p">)</span>    
+ 
+    <span class="c1"># Outpout (single sigmoid)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)(</span><span class="n">dropout_2</span><span class="p">)</span>
+    
+    <span class="c1"># Build net</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+    
+    <span class="c1"># Compiling model</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">net</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fit-models">
+<h2>Fit models<a class="headerlink" href="#fit-models" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop through 5 k-folds</span>
+<span class="n">test_acc</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    
+    <span class="c1"># Load data</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/kfold_5fold/train_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/kfold_5fold/test_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># OneHot encode stroke team</span>
+    <span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">test</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Split into X, y</span>
+    <span class="n">X_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">y_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span>
+    <span class="n">X_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">y_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> 
+        
+    <span class="c1"># Convert to NumPy</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test_df</span><span class="o">.</span><span class="n">values</span>
+    
+    <span class="c1"># Scale data</span>
+    <span class="n">X_train_sc</span><span class="p">,</span> <span class="n">X_test_sc</span> <span class="o">=</span> <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="c1"># Define network</span>
+    <span class="n">number_features</span> <span class="o">=</span> <span class="n">X_train_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">make_net</span><span class="p">(</span><span class="n">number_features</span><span class="p">)</span>
+    
+    <span class="c1"># Define save checkpoint callback (only save if new best validation results)</span>
+    <span class="n">checkpoint_cb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
+        <span class="s1">&#39;model_checkpoint.h5&#39;</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Define early stopping callback: Stop when no validation improvement</span>
+    <span class="c1"># Restore weights to best validation accuracy</span>
+    <span class="n">early_stopping_cb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+        <span class="n">patience</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Train model (including class weights)</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_sc</span><span class="p">,</span>
+                        <span class="n">y_train</span><span class="p">,</span>
+                        <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                        <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+                        <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test_sc</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
+                        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1">#                   callbacks=[checkpoint_cb, early_stopping_cb]</span>
+    
+    <span class="c1">### Test model</span>
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_sc</span><span class="p">)</span>
+    <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+    <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">y_pred_train</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">accuracy_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Model </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">: Accuracy train </span><span class="si">{</span><span class="n">accuracy_train</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_sc</span><span class="p">)</span>
+    <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+    <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">y_pred_test</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">accuracy_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy test </span><span class="si">{</span><span class="n">accuracy_test</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Plot training accuracy</span>
+    <span class="n">history_dict</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span>
+
+    <span class="n">acc_values</span> <span class="o">=</span> <span class="n">history_dict</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+    <span class="n">val_acc_values</span> <span class="o">=</span> <span class="n">history_dict</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]</span>
+    <span class="n">test_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_acc_values</span><span class="p">)</span>
+    <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">acc_values</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc_values</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training acc&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc_values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test accuracy&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and validation accuracy&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="c1"># Remove model</span>
+    <span class="k">del</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 0: Accuracy train 0.878 Accuracy test 0.846
+</pre></div>
+</div>
+<img alt="../_images/001a_fully_connected_fit_check_training_time_9_1.png" src="../_images/001a_fully_connected_fit_check_training_time_9_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 1: Accuracy train 0.879 Accuracy test 0.842
+</pre></div>
+</div>
+<img alt="../_images/001a_fully_connected_fit_check_training_time_9_3.png" src="../_images/001a_fully_connected_fit_check_training_time_9_3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 2: Accuracy train 0.873 Accuracy test 0.838
+</pre></div>
+</div>
+<img alt="../_images/001a_fully_connected_fit_check_training_time_9_5.png" src="../_images/001a_fully_connected_fit_check_training_time_9_5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 3: Accuracy train 0.875 Accuracy test 0.846
+</pre></div>
+</div>
+<img alt="../_images/001a_fully_connected_fit_check_training_time_9_7.png" src="../_images/001a_fully_connected_fit_check_training_time_9_7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 4: Accuracy train 0.874 Accuracy test 0.840
+</pre></div>
+</div>
+<img alt="../_images/001a_fully_connected_fit_check_training_time_9_9.png" src="../_images/001a_fully_connected_fit_check_training_time_9_9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_acc</span><span class="p">)</span>
+<span class="n">mean_results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">mean_results</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean validation accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/001a_fully_connected_fit_check_training_time_11_0.png" src="../_images/001a_fully_connected_fit_check_training_time_11_0.png" />
+</div>
+</div>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Training set accuracy continues to increase throughout the training period of the experiment.</p></li>
+<li><p>Test set accuracy rises, plateaus, and then declines over the training period of the experiment. The plateau occurs between approximately 25 and 70 epochs.</p></li>
+<li><p>A training period of 30 epcohs (minibatch size 32) will be used in furture experiments using this model structure.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./neural_net"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="outline.html" title="previous page">Neural Networks</a>
+    <a class='right-next' id="next-link" href="001b_fully_connected_fit.html" title="next page">Fully connected TensorFlow model - Train and save models</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

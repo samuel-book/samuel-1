@@ -1,0 +1,1721 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Modular TensorFlow model with 1D embedding - analyse &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modular TensorFlow model with 2D embedding - Train and save models" href="003a_2d_modular_fit.html" />
+    <link rel="prev" title="Modular TensorFlow model with 1D embedding - Train and save models" href="002b_1d_modular_fit.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline.html">
+   Neural Networks
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/neural_net/002c_1d_modular_analyse.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modular TensorFlow model with 1D embedding - analyse
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-libraries">
+     Import libraries
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-data">
+     Import data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-function-to-scale-data">
+     Define function to scale data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-function-for-accuracy">
+     Define function for accuracy
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-function-for-line-intersect">
+     Define function for line intersect
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-neural-net">
+     Define neural net
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-trained-models-to-predict-outcome-of-test-data-sets">
+     Use trained models to predict outcome of test data sets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves">
+     Receiver Operator Characteristic (ROC) Curve and Sensitivity-Specificity Curves
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#identify-cross-over-of-sensitivity-and-specificity">
+       Identify cross-over of sensitivity and specificity
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collate-and-save-results">
+     Collate and save results
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+     Calibration and assessment of accuracy when model has high confidence
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observations">
+     Observations
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="modular-tensorflow-model-with-1d-embedding-analyse">
+<h1>Modular TensorFlow model with 1D embedding - analyse<a class="headerlink" href="#modular-tensorflow-model-with-1d-embedding-analyse" title="Permalink to this headline">¶</a></h1>
+<p><em>Embedding</em> converts a categorical variable into a projection onto n-dimensional space [1], and has been shown to be an effective way to train neural network when using categorical data, while also allowing a measure of similarity/distance between different values of the categorical data, Here we use embedding for hospital ID. We also convert patient data and pathway data into an embedded vector (this may also be known as <em>encoding</em> the data in a vector with fewer dimensions than the original data set for those groups of features).</p>
+<p>[1] Guo C, &amp; Berkhahn F. (2016) Entity Embeddings of Categorical Variables. arXiv:160406737 [cs] <a class="reference external" href="http://arxiv.org/abs/1604.06737">http://arxiv.org/abs/1604.06737</a></p>
+<p>Preloaded models from 002b_1d_modular_fit.ipynb
+Model are fitted to previously spli training and test data sets.</p>
+</section>
+<section id="aims">
+<h1>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h1>
+<p>Test performance of model using subnets for:</p>
+<ol class="simple">
+<li><p><em>Patient clinical data</em>: Age, gender, ethnicity, disability before stroke, stroke scale data. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
+<li><p><em>Pathway process data</em>: Times of arrival and scan, time of day, day of week. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
+<li><p><em>Hospital ID</em> (one-hot encoded): Connect input directly to single neuron with sigmoid activation.</p></li>
+</ol>
+<p>The three subnet outputs are then past to a single neurone with sigmoid activation for final output.</p>
+<p>Note: In this experiment the output of each subnet is a vector with a single value (a 1D output), but the model is structured to allow for more neurons(dimensions) for each subnet, e.g. to allow for encoding of hospitals that allow more coplex interactions with patients (which may also have &gt;1 dimension output).</p>
+<p><img alt="" src="../_images/subnets_1.png" /></p>
+<section id="import-libraries">
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./saved_models/1d_modular/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turn warnings off to keep notebook tidy</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># sklearn for pre-processing</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">auc</span>
+
+<span class="c1"># TensorFlow api model</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.losses</span> <span class="kn">import</span> <span class="n">binary_crossentropy</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-data">
+<h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">data_loc</span> <span class="o">=</span> <span class="s1">&#39;../data/kfold_5fold/&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    
+    <span class="n">train_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_loc</span> <span class="o">+</span> <span class="s1">&#39;train_</span><span class="si">{0}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+    <span class="n">test_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_loc</span> <span class="o">+</span> <span class="s1">&#39;test_</span><span class="si">{0}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-function-to-scale-data">
+<h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Scale data 0-1 based on min and max in training set&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Initialise a new scaling object for normalising input data</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+    <span class="c1"># Set up the scaler just on the training set</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+    <span class="c1"># Apply the scaler to the training and test sets</span>
+    <span class="n">train_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">test_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">train_sc</span><span class="p">,</span> <span class="n">test_sc</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-function-for-accuracy">
+<h2>Define function for accuracy<a class="headerlink" href="#define-function-for-accuracy" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">observed</span><span class="p">,</span> <span class="n">predicted</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates a range of accuracy scores from observed and predicted classes.</span>
+<span class="sd">    </span>
+<span class="sd">    Takes two list or NumPy arrays (observed class values, and predicted class </span>
+<span class="sd">    values), and returns a dictionary of results.</span>
+<span class="sd">    </span>
+<span class="sd">     1) observed positive rate: proportion of observed cases that are +ve</span>
+<span class="sd">     2) Predicted positive rate: proportion of predicted cases that are +ve</span>
+<span class="sd">     3) observed negative rate: proportion of observed cases that are -ve</span>
+<span class="sd">     4) Predicted negative rate: proportion of predicted cases that are -ve  </span>
+<span class="sd">     5) accuracy: proportion of predicted results that are correct    </span>
+<span class="sd">     6) precision: proportion of predicted +ve that are correct</span>
+<span class="sd">     7) recall: proportion of true +ve correctly identified</span>
+<span class="sd">     8) f1: harmonic mean of precision and recall</span>
+<span class="sd">     9) sensitivity: Same as recall</span>
+<span class="sd">    10) specificity: Proportion of true -ve identified:        </span>
+<span class="sd">    11) positive likelihood: increased probability of true +ve if test +ve</span>
+<span class="sd">    12) negative likelihood: reduced probability of true +ve if test -ve</span>
+<span class="sd">    13) false positive rate: proportion of false +ves in true -ve patients</span>
+<span class="sd">    14) false negative rate: proportion of false -ves in true +ve patients</span>
+<span class="sd">    15) true positive rate: Same as recall</span>
+<span class="sd">    16) true negative rate</span>
+<span class="sd">    17) positive predictive value: chance of true +ve if test +ve</span>
+<span class="sd">    18) negative predictive value: chance of true -ve if test -ve</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Converts list to NumPy arrays</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">observed</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">observed</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">predicted</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate accuracy scores</span>
+    <span class="n">observed_positives</span> <span class="o">=</span> <span class="n">observed</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">observed_negatives</span> <span class="o">=</span> <span class="n">observed</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">predicted_positives</span> <span class="o">=</span> <span class="n">predicted</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">predicted_negatives</span> <span class="o">=</span> <span class="n">predicted</span> <span class="o">==</span> <span class="mi">0</span>
+    
+    <span class="n">true_positives</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_positives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">observed_positives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">false_positives</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_positives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">observed_positives</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">true_negatives</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_negatives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">observed_negatives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">observed</span><span class="p">)</span>
+    
+    <span class="n">precision</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span>
+                 <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_positives</span><span class="p">)))</span>
+        
+    <span class="n">recall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_positives</span><span class="p">)</span>
+    
+    <span class="n">sensitivity</span> <span class="o">=</span> <span class="n">recall</span>
+    
+    <span class="n">f1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">((</span><span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">precision</span> <span class="o">+</span> <span class="n">recall</span><span class="p">))</span>
+    
+    <span class="n">specificity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_negatives</span><span class="p">)</span>
+    
+    <span class="n">positive_likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">specificity</span><span class="p">)</span>
+    
+    <span class="n">negative_likelihood</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sensitivity</span><span class="p">)</span> <span class="o">/</span> <span class="n">specificity</span>
+    
+    <span class="n">false_positive_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">specificity</span>
+    
+    <span class="n">false_negative_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">sensitivity</span>
+    
+    <span class="n">true_positive_rate</span> <span class="o">=</span> <span class="n">sensitivity</span>
+    
+    <span class="n">true_negative_rate</span> <span class="o">=</span> <span class="n">specificity</span>
+    
+    <span class="n">positive_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span> 
+                                 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_positives</span><span class="p">))</span>
+    
+    <span class="n">negative_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">/</span> 
+                                  <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_negatives</span><span class="p">))</span>
+    
+    <span class="c1"># Create dictionary for results, and add results</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;observed_positive_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">observed_positives</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;observed_negative_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">observed_negatives</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;predicted_positive_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predicted_positives</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;predicted_negative_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predicted_negatives</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">precision</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;recall&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">recall</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;f1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensitivity</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;specificity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">specificity</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;positive_likelihood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">positive_likelihood</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;negative_likelihood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">negative_likelihood</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;false_positive_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">false_positive_rate</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;false_negative_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">false_negative_rate</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;true_positive_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">true_positive_rate</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;true_negative_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">true_negative_rate</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;positive_predictive_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">positive_predictive_value</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;negative_predictive_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">negative_predictive_value</span>
+    
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-function-for-line-intersect">
+<h2>Define function for line intersect<a class="headerlink" href="#define-function-for-line-intersect" title="Permalink to this headline">¶</a></h2>
+<p>Used to find point of sensitivity-specificty curve where sensitivity = specificity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_intersect</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Returns the point of intersection of the lines passing through a2,a1 and b2,b1.</span>
+<span class="sd">    a1: [x, y] a point on the first line</span>
+<span class="sd">    a2: [x, y] another point on the first line</span>
+<span class="sd">    b1: [x, y] a point on the second line</span>
+<span class="sd">    b2: [x, y] another point on the second line</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">b1</span><span class="p">,</span><span class="n">b2</span><span class="p">])</span>        <span class="c1"># s for stacked</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))))</span> <span class="c1"># h for homogeneous</span>
+    <span class="n">l1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>           <span class="c1"># get first line</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>           <span class="c1"># get second line</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>          <span class="c1"># point of intersection</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>                          <span class="c1"># lines are parallel</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="o">/</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-neural-net">
+<h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_net</span><span class="p">(</span><span class="n">number_features_patient</span><span class="p">,</span>
+             <span class="n">number_features_pathway</span><span class="p">,</span>
+             <span class="n">number_features_hospital</span><span class="p">,</span> 
+             <span class="n">patient_encoding_neurones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">pathway_encoding_neurones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">hospital_encoding_neurones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">expansion</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+             <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span> 
+             <span class="n">dropout</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
+    
+    <span class="c1"># Clear Tensorflow</span>
+    <span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+    
+    <span class="c1"># Patient (clinical data) encoding layers</span>
+    <span class="n">input_patient</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">number_features_patient</span><span class="p">)</span>
+    
+    <span class="c1"># Patient dense layer 1</span>
+    <span class="n">patient_dense_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">number_features_patient</span> <span class="o">*</span> <span class="n">expansion</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">input_patient</span><span class="p">)</span>
+    <span class="n">patient_norm_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">patient_dense_1</span><span class="p">)</span>
+    <span class="n">patient_dropout_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">patient_norm_1</span><span class="p">)</span>
+    
+    <span class="c1"># Patient encoding layer</span>
+    <span class="n">patient_encoding</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">patient_encoding_neurones</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> 
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;patient_encode&#39;</span><span class="p">)(</span><span class="n">patient_dropout_1</span><span class="p">)</span>
+    
+    
+    <span class="c1"># Pathway encoding layers</span>
+    <span class="n">input_pathway</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">number_features_pathway</span><span class="p">)</span>
+    
+    <span class="c1"># pathway dense layer 1</span>
+    <span class="n">pathway_dense_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">number_features_pathway</span> <span class="o">*</span> <span class="n">expansion</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">input_pathway</span><span class="p">)</span>
+    <span class="n">pathway_norm_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">pathway_dense_1</span><span class="p">)</span>
+    <span class="n">pathway_dropout_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">pathway_norm_1</span><span class="p">)</span>
+    
+    <span class="c1"># pathway encoding layer</span>
+    <span class="n">pathway_encoding</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">pathway_encoding_neurones</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> 
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pathway_encode&#39;</span><span class="p">)(</span><span class="n">pathway_dropout_1</span><span class="p">)</span>
+    
+    
+    <span class="c1"># hospital encoding layers</span>
+    <span class="n">input_hospital</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">number_features_hospital</span><span class="p">)</span>
+    
+    <span class="c1"># hospital encoding layer</span>
+    <span class="n">hospital_encoding</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
+        <span class="n">hospital_encoding_neurones</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> 
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;hospital_encode&#39;</span><span class="p">)(</span><span class="n">input_hospital</span><span class="p">)</span>    
+    
+    <span class="c1"># Concatenation layer</span>
+    <span class="n">concat</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Concatenate</span><span class="p">()(</span>
+        <span class="p">[</span><span class="n">patient_encoding</span><span class="p">,</span> <span class="n">pathway_encoding</span><span class="p">,</span> <span class="n">hospital_encoding</span><span class="p">])</span>
+    
+    <span class="c1"># Outpout (single sigmoid)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)(</span><span class="n">concat</span><span class="p">)</span>
+    
+    <span class="c1"># Build net</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">input_patient</span><span class="p">,</span> <span class="n">input_pathway</span><span class="p">,</span> <span class="n">input_hospital</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+    
+    <span class="c1"># Compiling model</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">net</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="use-trained-models-to-predict-outcome-of-test-data-sets">
+<h2>Use trained models to predict outcome of test data sets<a class="headerlink" href="#use-trained-models-to-predict-outcome-of-test-data-sets" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up lists for accuracies and ROC data</span>
+<span class="n">accuracies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">roc_fpr</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">roc_tpr</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Set up lists for observed and predicted</span>
+<span class="n">observed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">predicted_proba</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Get data subgroups</span>
+<span class="n">subgroups</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/subnet.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Item&#39;</span><span class="p">)</span>
+<span class="c1"># Get list of clinical items</span>
+<span class="n">clinical_subgroup</span> <span class="o">=</span> <span class="n">subgroups</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">subgroups</span><span class="p">[</span><span class="s1">&#39;Subnet&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;clinical&#39;</span><span class="p">]</span>
+<span class="n">clinical_subgroup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clinical_subgroup</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># Get list of pathway items</span>
+<span class="n">pathway_subgroup</span> <span class="o">=</span> <span class="n">subgroups</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">subgroups</span><span class="p">[</span><span class="s1">&#39;Subnet&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;pathway&#39;</span><span class="p">]</span>
+<span class="n">pathway_subgroup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pathway_subgroup</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># Get list of hospital items</span>
+<span class="n">hospital_subgroup</span> <span class="o">=</span> <span class="n">subgroups</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">subgroups</span><span class="p">[</span><span class="s1">&#39;Subnet&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;hospital&#39;</span><span class="p">]</span>
+<span class="n">hospital_subgroup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospital_subgroup</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># Loop through 5 k-folds</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    
+    <span class="c1"># Load data</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/kfold_5fold/train_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/kfold_5fold/test_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># OneHot encode stroke team</span>
+    <span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">test</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Split into X, y</span>
+    <span class="n">X_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">y_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span>
+    <span class="n">X_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">y_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> 
+    
+    <span class="c1"># Split train and test data by subgroups</span>
+    <span class="n">X_train_patients</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">clinical_subgroup</span><span class="p">]</span>
+    <span class="n">X_test_patients</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">clinical_subgroup</span><span class="p">]</span>
+    <span class="n">X_train_pathway</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">pathway_subgroup</span><span class="p">]</span>
+    <span class="n">X_test_pathway</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">pathway_subgroup</span><span class="p">]</span>
+    <span class="n">X_train_hospitals</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">hospital_subgroup</span><span class="p">]</span>
+    <span class="n">X_test_hospitals</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">hospital_subgroup</span><span class="p">]</span>
+            
+    <span class="c1"># Convert to NumPy</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test_df</span><span class="o">.</span><span class="n">values</span>
+    
+    <span class="c1"># Scale data</span>
+    <span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_test_patients_sc</span> <span class="o">=</span> \
+        <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_patients</span><span class="p">,</span> <span class="n">X_test_patients</span><span class="p">)</span>
+
+    <span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span> <span class="o">=</span> \
+        <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_pathway</span><span class="p">,</span> <span class="n">X_test_pathway</span><span class="p">)</span>
+
+    <span class="n">X_train_hospitals_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span> <span class="o">=</span> \
+        <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_hospitals</span><span class="p">,</span> <span class="n">X_test_hospitals</span><span class="p">)</span>
+
+    <span class="c1"># Define network</span>
+    <span class="n">number_features_patient</span> <span class="o">=</span> <span class="n">X_train_patients_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">number_features_pathway</span> <span class="o">=</span> <span class="n">X_train_pathway_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">number_features_hospital</span> <span class="o">=</span> <span class="n">X_train_hospitals_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">make_net</span><span class="p">(</span>
+        <span class="n">number_features_patient</span><span class="p">,</span> 
+        <span class="n">number_features_pathway</span><span class="p">,</span> 
+        <span class="n">number_features_hospital</span><span class="p">)</span>
+    
+    <span class="c1"># Load model parameters</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">model_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="s1">.h5&#39;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="c1"># Get and store probablity</span>
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">])</span>
+    <span class="n">observed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+    <span class="n">predicted_proba</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">probability</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    
+    <span class="c1"># Get and store class</span>
+    <span class="n">y_pred_class</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+    <span class="n">y_pred_class</span> <span class="o">=</span> <span class="n">y_pred_class</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">predicted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_pred_class</span><span class="p">)</span>
+    
+    <span class="c1"># Get accuracy measurements</span>
+    <span class="n">accuracy_dict</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_class</span><span class="p">)</span>
+    <span class="n">accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_dict</span><span class="p">)</span>
+    
+    <span class="c1"># ROC</span>
+    <span class="n">curve_fpr</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># false positive rate</span>
+    <span class="n">curve_tpr</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># true positive rate</span>
+
+    <span class="c1"># Loop through increments in probability of survival</span>
+    <span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">cutoff</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span> <span class="c1">#  loop 0 --&gt; 1 on steps of 0.1</span>
+        <span class="c1"># Get whether passengers survive using cutoff</span>
+        <span class="n">predicted_class</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="n">cutoff</span>
+        <span class="n">predicted_class</span> <span class="o">=</span> <span class="n">predicted_class</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.0</span>
+        <span class="c1"># Call accuracy measures function</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted_class</span><span class="p">)</span>
+        <span class="c1"># Add accuracy scores to lists</span>
+        <span class="n">curve_fpr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy</span><span class="p">[</span><span class="s1">&#39;false_positive_rate&#39;</span><span class="p">])</span>
+        <span class="n">curve_tpr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy</span><span class="p">[</span><span class="s1">&#39;true_positive_rate&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># Add roc to overall lists</span>
+    <span class="n">roc_fpr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curve_fpr</span><span class="p">)</span>
+    <span class="n">roc_tpr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curve_tpr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">accuracies</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>observed_positive_rate</th>
+      <td>5.0</td>
+      <td>0.295261</td>
+      <td>0.000146</td>
+      <td>0.295080</td>
+      <td>0.295176</td>
+      <td>0.295232</td>
+      <td>0.295401</td>
+      <td>0.295417</td>
+    </tr>
+    <tr>
+      <th>observed_negative_rate</th>
+      <td>5.0</td>
+      <td>0.704739</td>
+      <td>0.000146</td>
+      <td>0.704583</td>
+      <td>0.704599</td>
+      <td>0.704768</td>
+      <td>0.704824</td>
+      <td>0.704920</td>
+    </tr>
+    <tr>
+      <th>predicted_positive_rate</th>
+      <td>5.0</td>
+      <td>0.301188</td>
+      <td>0.009075</td>
+      <td>0.291690</td>
+      <td>0.292309</td>
+      <td>0.301810</td>
+      <td>0.308968</td>
+      <td>0.311161</td>
+    </tr>
+    <tr>
+      <th>predicted_negative_rate</th>
+      <td>5.0</td>
+      <td>0.698812</td>
+      <td>0.009075</td>
+      <td>0.688839</td>
+      <td>0.691032</td>
+      <td>0.698190</td>
+      <td>0.707691</td>
+      <td>0.708310</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>5.0</td>
+      <td>0.854500</td>
+      <td>0.000281</td>
+      <td>0.854091</td>
+      <td>0.854324</td>
+      <td>0.854661</td>
+      <td>0.854709</td>
+      <td>0.854717</td>
+    </tr>
+    <tr>
+      <th>precision</th>
+      <td>5.0</td>
+      <td>0.748799</td>
+      <td>0.007519</td>
+      <td>0.741236</td>
+      <td>0.741401</td>
+      <td>0.748696</td>
+      <td>0.755722</td>
+      <td>0.756939</td>
+    </tr>
+    <tr>
+      <th>recall</th>
+      <td>5.0</td>
+      <td>0.763643</td>
+      <td>0.015298</td>
+      <td>0.747858</td>
+      <td>0.748381</td>
+      <td>0.764941</td>
+      <td>0.776296</td>
+      <td>0.780738</td>
+    </tr>
+    <tr>
+      <th>f1</th>
+      <td>5.0</td>
+      <td>0.756012</td>
+      <td>0.003723</td>
+      <td>0.752034</td>
+      <td>0.752371</td>
+      <td>0.756731</td>
+      <td>0.758447</td>
+      <td>0.760475</td>
+    </tr>
+    <tr>
+      <th>sensitivity</th>
+      <td>5.0</td>
+      <td>0.763643</td>
+      <td>0.015298</td>
+      <td>0.747858</td>
+      <td>0.748381</td>
+      <td>0.764941</td>
+      <td>0.776296</td>
+      <td>0.780738</td>
+    </tr>
+    <tr>
+      <th>specificity</th>
+      <td>5.0</td>
+      <td>0.892566</td>
+      <td>0.006443</td>
+      <td>0.885723</td>
+      <td>0.886655</td>
+      <td>0.892356</td>
+      <td>0.898692</td>
+      <td>0.899402</td>
+    </tr>
+    <tr>
+      <th>positive_likelihood</th>
+      <td>5.0</td>
+      <td>7.121689</td>
+      <td>0.285743</td>
+      <td>6.832007</td>
+      <td>6.848993</td>
+      <td>7.106183</td>
+      <td>7.387168</td>
+      <td>7.434095</td>
+    </tr>
+    <tr>
+      <th>negative_likelihood</th>
+      <td>5.0</td>
+      <td>0.264719</td>
+      <td>0.015230</td>
+      <td>0.247551</td>
+      <td>0.252301</td>
+      <td>0.263414</td>
+      <td>0.279984</td>
+      <td>0.280345</td>
+    </tr>
+    <tr>
+      <th>false_positive_rate</th>
+      <td>5.0</td>
+      <td>0.107434</td>
+      <td>0.006443</td>
+      <td>0.100598</td>
+      <td>0.101308</td>
+      <td>0.107644</td>
+      <td>0.113345</td>
+      <td>0.114277</td>
+    </tr>
+    <tr>
+      <th>false_negative_rate</th>
+      <td>5.0</td>
+      <td>0.236357</td>
+      <td>0.015298</td>
+      <td>0.219262</td>
+      <td>0.223704</td>
+      <td>0.235059</td>
+      <td>0.251619</td>
+      <td>0.252142</td>
+    </tr>
+    <tr>
+      <th>true_positive_rate</th>
+      <td>5.0</td>
+      <td>0.763643</td>
+      <td>0.015298</td>
+      <td>0.747858</td>
+      <td>0.748381</td>
+      <td>0.764941</td>
+      <td>0.776296</td>
+      <td>0.780738</td>
+    </tr>
+    <tr>
+      <th>true_negative_rate</th>
+      <td>5.0</td>
+      <td>0.892566</td>
+      <td>0.006443</td>
+      <td>0.885723</td>
+      <td>0.886655</td>
+      <td>0.892356</td>
+      <td>0.898692</td>
+      <td>0.899402</td>
+    </tr>
+    <tr>
+      <th>positive_predictive_value</th>
+      <td>5.0</td>
+      <td>0.763643</td>
+      <td>0.015298</td>
+      <td>0.747858</td>
+      <td>0.748381</td>
+      <td>0.764941</td>
+      <td>0.776296</td>
+      <td>0.780738</td>
+    </tr>
+    <tr>
+      <th>negative_predictive_value</th>
+      <td>5.0</td>
+      <td>0.892566</td>
+      <td>0.006443</td>
+      <td>0.885723</td>
+      <td>0.886655</td>
+      <td>0.892356</td>
+      <td>0.898692</td>
+      <td>0.899402</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves">
+<h2>Receiver Operator Characteristic (ROC) Curve and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h2>
+<p>Calulcate areas of ROC curves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_fold_auc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Get AUC</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">roc_fpr</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">roc_tpr</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ROC AUC: </span><span class="si">{</span><span class="n">area</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">k_fold_auc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
+
+<span class="c1"># Show mean area under curve  </span>
+<span class="n">mean_auc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k_fold_auc</span><span class="p">)</span>
+<span class="n">sd_auc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">k_fold_auc</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mean AUC: </span><span class="si">{</span><span class="n">mean_auc</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SD AUC: </span><span class="si">{</span><span class="n">sd_auc</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC: 0.921
+ROC AUC: 0.922
+ROC AUC: 0.919
+ROC AUC: 0.921
+ROC AUC: 0.922
+
+Mean AUC: 0.9211
+SD AUC: 0.0011
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot Receiver Operator Characteristic Curve</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">roc_fpr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">roc_tpr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate (1 - Specificity)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate (Sensitivity)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Mean AUC: </span><span class="si">{</span><span class="n">mean_auc</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> 
+        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;1d_roc.jpg&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/002c_1d_modular_analyse_21_0.png" src="../_images/002c_1d_modular_analyse_21_0.png" />
+</div>
+</div>
+<p>Plot Sensitivity-Specificity Curve alongside Receiver Operator Characteristic Curve</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_fold_sensitivity</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_fold_specificity</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Get classificiation probabilities for k-fold replicate</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">observed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">proba</span> <span class="o">=</span> <span class="n">predicted_proba</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="c1"># Set up list for accuracy measures</span>
+    <span class="n">sensitivity</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">specificity</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Loop through increments in probability of survival</span>
+    <span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">cutoff</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span> <span class="c1">#  loop 0 --&gt; 1 on steps of 0.1</span>
+        <span class="c1"># Get whether passengers survive using cutoff</span>
+        <span class="n">predicted_class</span> <span class="o">=</span> <span class="n">proba</span> <span class="o">&gt;=</span> <span class="n">cutoff</span>
+        <span class="n">predicted_class</span> <span class="o">=</span> <span class="n">predicted_class</span> <span class="o">*</span> <span class="mf">1.0</span>
+        <span class="c1"># Call accuracy measures function</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">predicted_class</span><span class="p">)</span>
+        <span class="c1"># Add accuracy scores to lists</span>
+        <span class="n">sensitivity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy</span><span class="p">[</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">])</span>
+        <span class="n">specificity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy</span><span class="p">[</span><span class="s1">&#39;specificity&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># Add replicate to lists</span>
+    <span class="n">k_fold_sensitivity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sensitivity</span><span class="p">)</span>
+    <span class="n">k_fold_specificity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">specificity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot ROC</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">roc_fpr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">roc_tpr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Receiver Operator Characteristic Curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot sensitivity-specificity</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_fold_sensitivity</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">k_fold_specificity</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sensitivity&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Specificity&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sensitivity-Specificity Curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/nn_1d_roc_sens_spec.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/002c_1d_modular_analyse_24_0.png" src="../_images/002c_1d_modular_analyse_24_0.png" />
+</div>
+</div>
+<section id="identify-cross-over-of-sensitivity-and-specificity">
+<h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_fold_sensitivity</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_fold_specificity</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sens</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;specificity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;spec greater sens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span> <span class="o">&gt;</span> <span class="n">sens</span>
+
+<span class="c1"># find last index for senitivity being greater than specificity </span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;spec greater sens&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">last_id_sens_greater_spec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">locs</span> <span class="o">=</span> <span class="p">[</span><span class="n">last_id_sens_greater_spec</span><span class="p">,</span> <span class="n">last_id_sens_greater_spec</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">locs</span><span class="p">][[</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">,</span> <span class="s1">&#39;specificity&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Get intersetction with line of x=y</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">intersect</span> <span class="o">=</span> <span class="n">get_intersect</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Intersect: </span><span class="si">{</span><span class="n">intersect</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intersect: 0.845
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="collate-and-save-results">
+<h2>Collate and save results<a class="headerlink" href="#collate-and-save-results" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">kfold_result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">threshold_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">observed_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">prob_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">predicted_results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">hospital_results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">]))</span>
+    <span class="n">kfold_result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))))</span>
+    <span class="n">threshold_results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">thresholds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="n">i</span><span class="p">]))))</span>
+    <span class="n">observed_results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">observed</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">prob_results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">predicted_proba</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">predicted_results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>    
+    
+<span class="n">model_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;hospital&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_results</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;observed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">observed_results</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;prob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob_results</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;predicted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predicted_results</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;k_fold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kfold_result</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">threshold_results</span>
+<span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;correct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;observed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">model_results</span><span class="p">[</span><span class="s1">&#39;predicted&#39;</span><span class="p">]</span>
+
+<span class="c1"># Save</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;./predictions/nn_1d_k_fold.csv&#39;</span>
+<span class="n">model_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+<h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Collate results in Dataframe</span>
+<span class="n">reliability_collated</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Loop through k fold predictions</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    
+    <span class="c1"># Get observed class and predicted probability</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">observed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">predicted_proba</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="c1"># Bin data with numpy digitize (this will assign a bin to each case)</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mf">0.10</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+    <span class="n">digitized</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+        
+    <span class="c1"># Put single fold data in DataFrame</span>
+    <span class="n">reliability</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">reliability</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">digitized</span>
+    <span class="n">reliability</span><span class="p">[</span><span class="s1">&#39;probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prob</span>
+    <span class="n">reliability</span><span class="p">[</span><span class="s1">&#39;observed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obs</span>
+    <span class="n">classification</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">prob</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="p">)</span>
+    <span class="n">reliability</span><span class="p">[</span><span class="s1">&#39;correct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">obs</span> <span class="o">==</span> <span class="n">classification</span>
+    <span class="n">reliability</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="c1"># Summarise data by bin in new dataframe</span>
+    <span class="n">reliability_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="c1"># Add bins and k-fold to summary</span>
+    <span class="n">reliability_summary</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span>
+    <span class="n">reliability_summary</span><span class="p">[</span><span class="s1">&#39;k-fold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="c1"># Calculate mean of predicted probability of thrombolysis in each bin</span>
+    <span class="n">reliability_summary</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">reliability</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;probability&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Calculate the proportion of patients who receive thrombolysis</span>
+    <span class="n">reliability_summary</span><span class="p">[</span><span class="s1">&#39;fraction_positive&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">reliability</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;observed&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate proportion correct in each bin</span>
+    <span class="n">reliability_summary</span><span class="p">[</span><span class="s1">&#39;fraction_correct&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">reliability</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;correct&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate fraction of results in each bin</span>
+    <span class="n">reliability_summary</span><span class="p">[</span><span class="s1">&#39;fraction_results&#39;</span><span class="p">]</span> <span class="o">=</span> \
+        <span class="n">reliability</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">reliability</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   
+    
+    <span class="c1"># Add k-fold results to DatafRame collation</span>
+    <span class="n">reliability_collated</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reliability_summary</span><span class="p">)</span>
+    
+<span class="c1"># Get mean results</span>
+<span class="n">reliability_summary</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">reliability_summary</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;k-fold&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reliability_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>confidence</th>
+      <th>fraction_positive</th>
+      <th>fraction_correct</th>
+      <th>fraction_results</th>
+    </tr>
+    <tr>
+      <th>bin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.1</th>
+      <td>0.023090</td>
+      <td>0.018403</td>
+      <td>0.981597</td>
+      <td>0.462070</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>0.145258</td>
+      <td>0.139055</td>
+      <td>0.860945</td>
+      <td>0.082392</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>0.247580</td>
+      <td>0.232161</td>
+      <td>0.767839</td>
+      <td>0.056360</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>0.349330</td>
+      <td>0.324901</td>
+      <td>0.675099</td>
+      <td>0.050277</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>0.450219</td>
+      <td>0.427628</td>
+      <td>0.572372</td>
+      <td>0.047713</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>0.550560</td>
+      <td>0.558217</td>
+      <td>0.558217</td>
+      <td>0.053223</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>0.651588</td>
+      <td>0.650801</td>
+      <td>0.650801</td>
+      <td>0.063130</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>0.751653</td>
+      <td>0.786995</td>
+      <td>0.786995</td>
+      <td>0.077625</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>0.847036</td>
+      <td>0.862959</td>
+      <td>0.862959</td>
+      <td>0.085721</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>0.922530</td>
+      <td>0.912524</td>
+      <td>0.912524</td>
+      <td>0.021489</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+
+<span class="c1"># Plot predicted prob vs fraction psotive</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Loop through k-fold reliability results</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="p">[</span><span class="s1">&#39;k-fold&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span>
+    <span class="n">k_fold_result</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">k_fold_result</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">k_fold_result</span><span class="p">[</span><span class="s1">&#39;fraction_positive&#39;</span><span class="p">]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="c1"># Add 1:1 line</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="c1"># Refine plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Model probability&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction positive&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># Plot accuracy vs probability</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Loop through k-fold reliability results</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="p">[</span><span class="s1">&#39;k-fold&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span>
+    <span class="n">k_fold_result</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">k_fold_result</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">k_fold_result</span><span class="p">[</span><span class="s1">&#39;fraction_correct&#39;</span><span class="p">]</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="c1"># Refine plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Model probability&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction correct&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>  <span class="c1"># instantiate a second axes that shares the same x-axis</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="p">[</span><span class="s1">&#39;k-fold&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span>
+    <span class="n">k_fold_result</span> <span class="o">=</span> <span class="n">reliability_collated</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">k_fold_result</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">k_fold_result</span><span class="p">[</span><span class="s1">&#39;fraction_results&#39;</span><span class="p">]</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of samples&#39;</span><span class="p">)</span>
+
+<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Fraction correct&#39;</span><span class="p">,</span> <span class="s1">&#39;Fraction of samples&#39;</span><span class="p">],</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/nn_1d_reliability.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/002c_1d_modular_analyse_32_0.png" src="../_images/002c_1d_modular_analyse_32_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">reliability_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bins</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;fraction_correct&#39;</span><span class="p">]</span>
+<span class="n">frac</span> <span class="o">=</span> <span class="n">reliability_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bins</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;fraction_results&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;For samples with at least 80</span><span class="si">% c</span><span class="s1">onfidence:&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of all samples: </span><span class="si">{</span><span class="n">frac</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For samples with at least 80% confidence:
+Proportion of all samples: 0.652
+Accuracy: 0.905
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Overall accuracy = 85.5% (90.5% for those 65% samples with at least 80% confidence of model)</p></li>
+<li><p>Using nominal threshold (50% probability), specificity (89%) is greater than sensitivity (76%)</p></li>
+<li><p>The model can achieve 84.5% sensitivity and specificity simultaneously</p></li>
+<li><p>ROC AUC = 0.921</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./neural_net"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="002b_1d_modular_fit.html" title="previous page">Modular TensorFlow model with 1D embedding - Train and save models</a>
+    <a class='right-next' id="next-link" href="003a_2d_modular_fit.html" title="next page">Modular TensorFlow model with 2D embedding - Train and save models</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1825 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Association between patient features on use of thrombolysis &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comparison of average values for patients who receive thrombolysis and those that do not" href="05_thrombolysis_comparison.html" />
+    <link rel="prev" title="Descriptive analysis of stroke pathway data" href="01_descriptive.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL-1 Stroke Audit Machine Learning</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL-1
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="outline.html">
+   Outline - what is in this section?
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/model_accuracy.html">
+   A comparison of machine learning models
+  </a>
+ </li>
+</ul>
+<p>
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/descriptive_stats/04_thrombolysis_general.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries-and-data">
+   Import libraries and data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+   Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset">
+   Get out-of-hopsital stroke onset arrivals within 4 hours of known stroke onset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breakdown-of-thrombolysis-use-by-feature">
+   Breakdown of thrombolysis use by feature
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rankin-before-stroke">
+     Rankin before stroke
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stroke-severity">
+     Stroke severity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gender">
+     Gender
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ethnicity">
+     Ethnicity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#age-group">
+     Age group
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#onset-known">
+     Onset known
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrival-by-ambulance">
+     Arrival by ambulance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thrombolysis-use-by-comorbidities">
+     Thrombolysis use by comorbidities
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reasons-for-not-giving-thrombolysis">
+   Reasons for not giving thrombolysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="association-between-patient-features-on-use-of-thrombolysis">
+<h1>Association between patient features on use of thrombolysis<a class="headerlink" href="#association-between-patient-features-on-use-of-thrombolysis" title="Permalink to this headline">¶</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<p>Examine thrombolysis use (in all arrivals, and the subset of those who arrive within 4 hours of known onset) according to:</p>
+<ul class="simple">
+<li><p>Disability (Rankin) before stroke</p></li>
+<li><p>Stroke severity (NIHSS)</p></li>
+<li><p>Gender</p></li>
+<li><p>Ethnicity</p></li>
+<li><p>Age group</p></li>
+<li><p>Onset known</p></li>
+<li><p>Arrival by ambulance</p></li>
+</ul>
+<p>Examine thrombolysis use in the absence and presence of co-morbidities.</p>
+<p>Note: The association of particular features with use of thrombolysis does not imply that these relationships are causal.</p>
+<p>Examine reasons given for not giving thrombolysis.</p>
+</section>
+<section id="import-libraries-and-data">
+<h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
+<p>Data has been resticted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># import data</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;./../data/2019-11-04-HQIP303-Exeter_MA.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headings</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">headings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;StrokeTeam&#39;, &#39;PatientUID&#39;, &#39;Pathway&#39;, &#39;S1AgeOnArrival&#39;, &#39;MoreEqual80y&#39;, &#39;S1Gender&#39;, &#39;S1Ethnicity&#39;, &#39;S1OnsetInHospital&#39;, &#39;S1OnsetToArrival_min&#39;, &#39;S1OnsetDateType&#39;, &#39;S1OnsetTimeType&#39;, &#39;S1ArriveByAmbulance&#39;, &#39;S1AdmissionHour&#39;, &#39;S1AdmissionDay&#39;, &#39;S1AdmissionQuarter&#39;, &#39;S1AdmissionYear&#39;, &#39;CongestiveHeartFailure&#39;, &#39;Hypertension&#39;, &#39;AtrialFibrillation&#39;, &#39;Diabetes&#39;, &#39;StrokeTIA&#39;, &#39;AFAntiplatelet&#39;, &#39;AFAnticoagulent&#39;, &#39;AFAnticoagulentVitK&#39;, &#39;AFAnticoagulentDOAC&#39;, &#39;AFAnticoagulentHeparin&#39;, &#39;S2INR&#39;, &#39;S2INRHigh&#39;, &#39;S2INRNK&#39;, &#39;S2NewAFDiagnosis&#39;, &#39;S2RankinBeforeStroke&#39;, &#39;Loc&#39;, &#39;LocQuestions&#39;, &#39;LocCommands&#39;, &#39;BestGaze&#39;, &#39;Visual&#39;, &#39;FacialPalsy&#39;, &#39;MotorArmLeft&#39;, &#39;MotorArmRight&#39;, &#39;MotorLegLeft&#39;, &#39;MotorLegRight&#39;, &#39;LimbAtaxia&#39;, &#39;Sensory&#39;, &#39;BestLanguage&#39;, &#39;Dysarthria&#39;, &#39;ExtinctionInattention&#39;, &#39;S2NihssArrival&#39;, &#39;S2BrainImagingTime_min&#39;, &#39;S2StrokeType&#39;, &#39;S2Thrombolysis&#39;, &#39;Haemorrhagic&#39;, &#39;TimeWindow&#39;, &#39;Comorbidity&#39;, &#39;Medication&#39;, &#39;Refusal&#39;, &#39;Age&#39;, &#39;Improving&#39;, &#39;TooMildSevere&#39;, &#39;TimeUnknownWakeUp&#39;, &#39;OtherMedical&#39;, &#39;S2ThrombolysisTime_min&#39;, &#39;S2TIAInLastMonth&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+<h2>Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients<a class="headerlink" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keep</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">)</span> <span class="c1"># creates a new object of groups of data</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">group_df</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span> <span class="c1"># each group has an index and a dataframe of data</span>
+    
+    <span class="c1"># Skip if total admissions less than 300 or total thrombolysis &lt; 10</span>
+    <span class="n">admissions</span> <span class="o">=</span> <span class="n">group_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">thrombolysis_received</span> <span class="o">=</span> <span class="n">group_df</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="n">admissions</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">thrombolysis_received</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="k">continue</span>
+    
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_df</span><span class="p">)</span>
+
+<span class="c1"># Concatenate output</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
+
+<span class="c1"># Convert thromboilysis to boolean</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(239505, 63)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset">
+<h2>Get out-of-hopsital stroke onset arrivals within 4 hours of known stroke onset<a class="headerlink" href="#get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get out of hospital arrivals</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetInHospital&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;No&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Get arrivals within 4 hours of known stroke onset</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="n">data_4hr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="breakdown-of-thrombolysis-use-by-feature">
+<h2>Breakdown of thrombolysis use by feature<a class="headerlink" href="#breakdown-of-thrombolysis-use-by-feature" title="Permalink to this headline">¶</a></h2>
+<section id="rankin-before-stroke">
+<h3>Rankin before stroke<a class="headerlink" href="#rankin-before-stroke" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">rankin_before_stroke_all</span> <span class="o">=</span> \
+    <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">rankin_before_stroke_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">rankin_before_stroke_4hr</span> <span class="o">=</span> \
+    <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">rankin_before_stroke_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">rankin_before_stroke</span> <span class="o">=</span> \
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">rankin_before_stroke_all</span><span class="p">,</span> <span class="n">rankin_before_stroke_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rankin_before_stroke</span> <span class="o">=</span> <span class="n">rankin_before_stroke</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">rankin_before_stroke</span> <span class="o">*=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rankin_before_stroke</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14.2</td>
+      <td>34.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.8</td>
+      <td>28.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.7</td>
+      <td>21.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.5</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.3</td>
+      <td>9.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rankin_before_stroke</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">rankin_before_stroke</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">rankin_before_stroke</span><span class="p">[</span><span class="s1">&#39;4hr&#39;</span><span class="p">]</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4 Hour arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Disability (Rankin) before stroke&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/thrombolysis_use_by_rankin_before_stroke.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_thrombolysis_general_12_0.png" src="../_images/04_thrombolysis_general_12_0.png" />
+</div>
+</div>
+</section>
+<section id="stroke-severity">
+<h3>Stroke severity<a class="headerlink" href="#stroke-severity" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">NIHSS_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">NIHSS_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">NIHSS_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">NIHSS_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">NIHSS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">NIHSS_all</span><span class="p">,</span> <span class="n">NIHSS_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">NIHSS</span> <span class="o">=</span> <span class="n">NIHSS</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NIHSS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>0.6</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>1.1</td>
+      <td>3.8</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>2.5</td>
+      <td>8.3</td>
+    </tr>
+    <tr>
+      <th>3.0</th>
+      <td>4.9</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>4.0</th>
+      <td>9.7</td>
+      <td>28.7</td>
+    </tr>
+    <tr>
+      <th>5.0</th>
+      <td>14.0</td>
+      <td>36.8</td>
+    </tr>
+    <tr>
+      <th>6.0</th>
+      <td>16.4</td>
+      <td>39.9</td>
+    </tr>
+    <tr>
+      <th>7.0</th>
+      <td>18.8</td>
+      <td>42.4</td>
+    </tr>
+    <tr>
+      <th>8.0</th>
+      <td>21.0</td>
+      <td>44.7</td>
+    </tr>
+    <tr>
+      <th>9.0</th>
+      <td>21.6</td>
+      <td>44.2</td>
+    </tr>
+    <tr>
+      <th>10.0</th>
+      <td>21.9</td>
+      <td>43.4</td>
+    </tr>
+    <tr>
+      <th>11.0</th>
+      <td>24.0</td>
+      <td>46.1</td>
+    </tr>
+    <tr>
+      <th>12.0</th>
+      <td>23.9</td>
+      <td>43.8</td>
+    </tr>
+    <tr>
+      <th>13.0</th>
+      <td>24.7</td>
+      <td>43.9</td>
+    </tr>
+    <tr>
+      <th>14.0</th>
+      <td>25.9</td>
+      <td>45.9</td>
+    </tr>
+    <tr>
+      <th>15.0</th>
+      <td>25.9</td>
+      <td>45.0</td>
+    </tr>
+    <tr>
+      <th>16.0</th>
+      <td>26.4</td>
+      <td>44.4</td>
+    </tr>
+    <tr>
+      <th>17.0</th>
+      <td>26.2</td>
+      <td>44.3</td>
+    </tr>
+    <tr>
+      <th>18.0</th>
+      <td>26.6</td>
+      <td>45.1</td>
+    </tr>
+    <tr>
+      <th>19.0</th>
+      <td>26.7</td>
+      <td>46.2</td>
+    </tr>
+    <tr>
+      <th>20.0</th>
+      <td>23.7</td>
+      <td>42.3</td>
+    </tr>
+    <tr>
+      <th>21.0</th>
+      <td>24.3</td>
+      <td>42.6</td>
+    </tr>
+    <tr>
+      <th>22.0</th>
+      <td>24.1</td>
+      <td>41.4</td>
+    </tr>
+    <tr>
+      <th>23.0</th>
+      <td>25.0</td>
+      <td>44.2</td>
+    </tr>
+    <tr>
+      <th>24.0</th>
+      <td>24.7</td>
+      <td>42.7</td>
+    </tr>
+    <tr>
+      <th>25.0</th>
+      <td>22.2</td>
+      <td>39.3</td>
+    </tr>
+    <tr>
+      <th>26.0</th>
+      <td>17.5</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>27.0</th>
+      <td>17.6</td>
+      <td>31.8</td>
+    </tr>
+    <tr>
+      <th>28.0</th>
+      <td>12.5</td>
+      <td>24.1</td>
+    </tr>
+    <tr>
+      <th>29.0</th>
+      <td>12.6</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>30.0</th>
+      <td>9.8</td>
+      <td>19.4</td>
+    </tr>
+    <tr>
+      <th>31.0</th>
+      <td>8.9</td>
+      <td>18.1</td>
+    </tr>
+    <tr>
+      <th>32.0</th>
+      <td>8.3</td>
+      <td>16.5</td>
+    </tr>
+    <tr>
+      <th>33.0</th>
+      <td>6.0</td>
+      <td>12.7</td>
+    </tr>
+    <tr>
+      <th>34.0</th>
+      <td>4.9</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>35.0</th>
+      <td>4.2</td>
+      <td>7.7</td>
+    </tr>
+    <tr>
+      <th>36.0</th>
+      <td>2.4</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>37.0</th>
+      <td>3.6</td>
+      <td>6.8</td>
+    </tr>
+    <tr>
+      <th>38.0</th>
+      <td>5.7</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>39.0</th>
+      <td>6.5</td>
+      <td>11.4</td>
+    </tr>
+    <tr>
+      <th>40.0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>41.0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>42.0</th>
+      <td>1.6</td>
+      <td>2.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">NIHSS</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">NIHSS</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">NIHSS</span><span class="p">[</span><span class="s1">&#39;4hr&#39;</span><span class="p">]</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4 Hour arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Stroke severity (NIHSS) on arrival&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/thrombolysis_use_by_arrival_nihss.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_thrombolysis_general_16_0.png" src="../_images/04_thrombolysis_general_16_0.png" />
+</div>
+</div>
+</section>
+<section id="gender">
+<h3>Gender<a class="headerlink" href="#gender" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">gender_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1Gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">gender_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">gender_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1Gender&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">gender_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">gender</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gender_all</span><span class="p">,</span> <span class="n">gender_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gender</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+    <tr>
+      <th>S1Gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Female</th>
+      <td>11.3</td>
+      <td>28.2</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>12.3</td>
+      <td>30.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="ethnicity">
+<h3>Ethnicity<a class="headerlink" href="#ethnicity" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">ethnicity_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1Ethnicity&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">ethnicity_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">ethnicity_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1Ethnicity&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">ethnicity_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">ethnicity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ethnicity_all</span><span class="p">,</span> <span class="n">ethnicity_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ethnicity</span> <span class="o">=</span> <span class="n">ethnicity</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ethnicity</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+    <tr>
+      <th>S1Ethnicity</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Asian</th>
+      <td>12.1</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>Black</th>
+      <td>10.2</td>
+      <td>29.2</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>11.7</td>
+      <td>32.3</td>
+    </tr>
+    <tr>
+      <th>Other</th>
+      <td>14.4</td>
+      <td>34.3</td>
+    </tr>
+    <tr>
+      <th>White</th>
+      <td>11.6</td>
+      <td>29.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="age-group">
+<h3>Age group<a class="headerlink" href="#age-group" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">age_group_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AgeOnArrival&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">age_group_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">age_group_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1AgeOnArrival&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">age_group_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">age_group</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">age_group_all</span><span class="p">,</span> <span class="n">age_group_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">age_group</span> <span class="o">=</span> <span class="n">age_group</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Re-order</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;[15,20)&#39;</span><span class="p">,</span> <span class="s1">&#39;[20,25)&#39;</span><span class="p">,</span> <span class="s1">&#39;[25,30)&#39;</span><span class="p">,</span> <span class="s1">&#39;[30,35)&#39;</span><span class="p">,</span> <span class="s1">&#39;[35,40)&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;[40,45)&#39;</span><span class="p">,</span> <span class="s1">&#39;[45,50)&#39;</span><span class="p">,</span> <span class="s1">&#39;[50,55)&#39;</span><span class="p">,</span> <span class="s1">&#39;[55,60)&#39;</span><span class="p">,</span> <span class="s1">&#39;[60,65)&#39;</span><span class="p">,</span> <span class="s1">&#39;[65,70)&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;[70,75)&#39;</span><span class="p">,</span> <span class="s1">&#39;[75,80)&#39;</span><span class="p">,</span> <span class="s1">&#39;[80,85)&#39;</span><span class="p">,</span> <span class="s1">&#39;[85,90)&#39;</span><span class="p">,</span> <span class="s1">&#39;[90,95)&#39;</span><span class="p">,</span> <span class="s1">&#39;[95,100)&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;[100,120]&#39;</span><span class="p">]</span>
+<span class="n">age_group</span> <span class="o">=</span> <span class="n">age_group</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+<span class="n">age_group</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_group</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>17.470</td>
+      <td>42.029</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>13.402</td>
+      <td>33.621</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>15.371</td>
+      <td>37.229</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>14.624</td>
+      <td>36.164</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>15.697</td>
+      <td>36.794</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>15.274</td>
+      <td>37.671</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>14.863</td>
+      <td>36.277</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>14.189</td>
+      <td>36.692</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>13.091</td>
+      <td>34.348</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>12.642</td>
+      <td>33.238</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>12.843</td>
+      <td>32.862</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>12.999</td>
+      <td>32.381</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>12.314</td>
+      <td>30.396</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>11.298</td>
+      <td>28.106</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>9.958</td>
+      <td>24.600</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>8.510</td>
+      <td>20.752</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>8.630</td>
+      <td>20.101</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>7.929</td>
+      <td>17.883</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">age_group</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">age_group</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">age_group</span><span class="p">[</span><span class="s1">&#39;4hr&#39;</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;4 Hour arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age band (lower bound)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/thrombolysis_use_by_age.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_thrombolysis_general_26_0.png" src="../_images/04_thrombolysis_general_26_0.png" />
+</div>
+</div>
+</section>
+<section id="onset-known">
+<h3>Onset known<a class="headerlink" href="#onset-known" title="Permalink to this headline">¶</a></h3>
+<p>Get fractions for each onset type</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">]</span>
+<span class="n">fractions</span> <span class="o">=</span> <span class="n">counts</span><span class="o">/</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">fractions</span> <span class="o">=</span> <span class="n">fractions</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fractions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S1OnsetTimeType
+Best estimate    33.7
+Not known        33.1
+Precise          33.1
+Name: StrokeTeam, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">onset_known_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">onset_known_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">onset_known_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">onset_known_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">onset_known</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">onset_known_all</span><span class="p">,</span> <span class="n">onset_known_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">onset_known</span> <span class="o">=</span> <span class="n">onset_known</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Re-order</span>
+<span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Not known&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">,</span> <span class="s1">&#39;Precise&#39;</span><span class="p">]</span>
+<span class="n">onset_known</span> <span class="o">=</span> <span class="n">onset_known</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">onset_known</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Not known</th>
+      <td>0.4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Best estimate</th>
+      <td>6.3</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>Precise</th>
+      <td>28.8</td>
+      <td>39.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="arrival-by-ambulance">
+<h3>Arrival by ambulance<a class="headerlink" href="#arrival-by-ambulance" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arrive_by_ambo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1ArriveByAmbulance&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent arriving by ambulance: </span><span class="si">{</span><span class="n">arrive_by_ambo</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent arriving by ambulance: 81.4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All admissions</span>
+<span class="n">ambulance_all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1ArriveByAmbulance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">ambulance_all</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Admissions within 4 hours of arrival</span>
+<span class="n">ambulance_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S1ArriveByAmbulance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+<span class="n">ambulance_4hr</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;4hr&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Combine</span>
+<span class="n">ambulance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ambulance_all</span><span class="p">,</span> <span class="n">ambulance_4hr</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">ambulance</span> <span class="o">=</span> <span class="n">ambulance</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ambulance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>All</th>
+      <th>4hr</th>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>No</th>
+      <td>3.8</td>
+      <td>21.4</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>13.7</td>
+      <td>30.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="thrombolysis-use-by-comorbidities">
+<h3>Thrombolysis use by comorbidities<a class="headerlink" href="#thrombolysis-use-by-comorbidities" title="Permalink to this headline">¶</a></h3>
+<p>Only examine effect of comorbidity on thrombolysis use of those arriving within 4 hours of known onset.</p>
+<p>Analyse by comorbidity ‘Yes’ or ‘No’. Ignore ‘No but’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CongestiveHeartFailure&#39;</span><span class="p">,</span> <span class="s1">&#39;Hypertension&#39;</span><span class="p">,</span> <span class="s1">&#39;AtrialFibrillation&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;StrokeTIA&#39;</span><span class="p">,</span> <span class="s1">&#39;AFAntiplatelet&#39;</span><span class="p">,</span> <span class="s1">&#39;AFAnticoagulent&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;AFAnticoagulentVitK&#39;</span><span class="p">,</span> <span class="s1">&#39;AFAnticoagulentDOAC&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;AFAnticoagulentHeparin&#39;</span><span class="p">]</span>
+
+<span class="c1"># Loop through comorbidities and get results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">comord</span> <span class="ow">in</span> <span class="n">comords</span><span class="p">:</span> 
+    <span class="n">result</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">comord</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;No&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;No&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> 
+                    <span class="s1">&#39;Yes&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">})</span>
+    
+<span class="n">comord_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">comords</span><span class="p">)</span>
+<span class="n">comord_df</span><span class="p">[</span><span class="s1">&#39;Ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comord_df</span><span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">comord_df</span><span class="p">[</span><span class="s1">&#39;No&#39;</span><span class="p">]</span>
+<span class="n">comord_df</span> <span class="o">=</span> <span class="n">comord_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comord_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>No</th>
+      <th>Yes</th>
+      <th>Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CongestiveHeartFailure</th>
+      <td>29.709</td>
+      <td>26.081</td>
+      <td>0.878</td>
+    </tr>
+    <tr>
+      <th>Hypertension</th>
+      <td>30.331</td>
+      <td>28.826</td>
+      <td>0.950</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation</th>
+      <td>32.034</td>
+      <td>19.931</td>
+      <td>0.622</td>
+    </tr>
+    <tr>
+      <th>Diabetes</th>
+      <td>30.066</td>
+      <td>27.241</td>
+      <td>0.906</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA</th>
+      <td>32.151</td>
+      <td>22.506</td>
+      <td>0.700</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet</th>
+      <td>18.455</td>
+      <td>28.757</td>
+      <td>1.558</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent</th>
+      <td>34.253</td>
+      <td>8.976</td>
+      <td>0.262</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK</th>
+      <td>31.009</td>
+      <td>11.942</td>
+      <td>0.385</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC</th>
+      <td>32.254</td>
+      <td>5.677</td>
+      <td>0.176</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin</th>
+      <td>30.068</td>
+      <td>7.576</td>
+      <td>0.252</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">comord_df</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">comord_df</span><span class="p">[</span><span class="s1">&#39;Ratio&#39;</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span>
+    <span class="s1">&#39;Ratio of thrombolysis use</span><span class="se">\n</span><span class="s1">(co-morbidity present / comorbidity absent)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/thrombolysis_use_by_comorbidity.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_thrombolysis_general_38_0.png" src="../_images/04_thrombolysis_general_38_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="reasons-for-not-giving-thrombolysis">
+<h2>Reasons for not giving thrombolysis<a class="headerlink" href="#reasons-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h2>
+<p>Reasons given for not using thrombolysis (more than one may be ticked for each patient).</p>
+<p>Only examine reasons for those arriving within 4 hours of known onset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reasons</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Haemorrhagic&#39;</span><span class="p">,</span> <span class="s1">&#39;TimeWindow&#39;</span><span class="p">,</span> <span class="s1">&#39;Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;Medication&#39;</span><span class="p">,</span> <span class="s1">&#39;Refusal&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Improving&#39;</span><span class="p">,</span> <span class="s1">&#39;TooMildSevere&#39;</span><span class="p">,</span> <span class="s1">&#39;TimeUnknownWakeUp&#39;</span><span class="p">,</span> 
+           <span class="s1">&#39;OtherMedical&#39;</span><span class="p">]</span>
+
+<span class="c1"># Restrict data to non-thrombolysed patients</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="p">[</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">no_thromolysis_4hr</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="c1"># Convert Yes/No in reasons to boolean</span>
+<span class="n">reasons_boolean</span> <span class="o">=</span> <span class="n">no_thromolysis_4hr</span><span class="p">[</span><span class="n">reasons</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span>
+<span class="c1"># Get average of &#39;Yes&#39; values as percentage</span>
+<span class="n">reasons</span> <span class="o">=</span> <span class="n">reasons_boolean</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">reasons</span> <span class="o">=</span> <span class="n">reasons</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Sort by value</span>
+<span class="n">reasons</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">reasons</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Refusal               0.9
+Age                   1.2
+TimeWindow            7.1
+Medication            7.7
+Comorbidity           9.9
+OtherMedical         15.2
+TimeUnknownWakeUp    17.5
+Improving            17.8
+Haemorrhagic         21.7
+TooMildSevere        22.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">reasons</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">reasons</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Presence of reason for no thrombolysis (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/thrombolysis_non_use_reasons.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_thrombolysis_general_41_0.png" src="../_images/04_thrombolysis_general_41_0.png" />
+</div>
+</div>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>Disability before stroke:</em> The higher the level of disability before stroke (as described by the modified Rankin Scale) the lower the use of thrombolysis. As a percentage of all out-of-hospital onset arrivals, thrombolysis use drops from 14.2% in those with no disability before stroke to 4.3% of those with a modified Rankin Scale of 5. As a percentage of out-of-hospital onset arrivals arriving within 4 hours of known stroke onset,  thrombolysis use drops from 34.9% in those with no disability before stroke to 9.8% of those with a modified Rankin Scale of 5.</p></li>
+<li><p><em>Stroke severity:</em> The use of thrombolysis varies very significantly with stroke severity (NIHSS) on arrival (Figure 2). Thrombolysis use is very low at extreme NIHSS, withy a plateau of use between NIHSS of approximately 6 to 25.</p></li>
+<li><p><em>Gender:</em> There is a small association between gender on use of thrombolysis. 12.3% of all male arrivals receive thrombolysis, compared with 11.3% for females. Of those arriving within 4 hours of known stroke onset 30.8% of all male arrivals receive thrombolysis, compared with 28.2% for females.</p></li>
+<li><p><em>Ethnicity</em>: There is some association between ethnicity on thrombolysis use in all arrivals, with black people having the lowest use of thrombolysis (10.2% vs 11.6% - 12.1% for white, asian and mixed race people), but little variation in use of thrombolysis in those arriving within 4 hours of known stroke onset, suggesting the cause of  lower use of thrombolysis is likely to be the lower proportion of black people arriving at hospital within 4 hours of known stroke onset.</p></li>
+<li><p><em>Age:</em> Thrombolysis use declines with age. For ages 25-55, thrombolysis use is about 15% of all arrivals and 35% of those arriving within 4 hours of known stroke onset. Above this age there is a decline in use, for example in the age band 85-89, use is about 10% of all arrivals and 25% of those arriving within 4 hours of known stroke onset</p></li>
+<li><p><em>Knowledge of time of onset:</em> Knowledge of onset is split almost evenly (33% to 34% each) for ‘not known’, ‘best estimate’, and ‘precise’. Type of knowledge of stroke onset shoes a significant association with use of thrombolysis. Of those arriving within 4 hours of known onset, 39.0% receive thrombolysis if the time is recorded as being known precisely, compared with 14.0% receiving thrombolysis if the time is a best estimate.</p></li>
+<li><p><em>Arrival by ambulance:</em> 8.4% of arrivals are by ambulance. There is a significant effect arrival model on use of thrombolysis. For all arrivals, use of thrombolysis is 13.7% for arrivals by ambulance, and 3.8% for other arrivals.</p></li>
+<li><p><em>Presence of co-morbidities</em>: The presence or absence of co-co-morbidities can be a strong indicator of the use of thrombolysis. For example those on anticoagulant therapies receive thrombolysis less than those who do not, but those on anti-platelet therapies receive it more.</p></li>
+<li><p><em>Stated reasons for not giving thrombolysis:</em>: Haemorrhagic stroke or a stroke that is too mild/sever are the most common causes (each present in 22% of those not treated). An improving condition is given as the reason for no treatment in 17% of non-treated patients. It is noteworthy that patient refusal is given as a reason for non-treatment in only 0.9% of untreated patients</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./descriptive_stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="01_descriptive.html" title="previous page">Descriptive analysis of stroke pathway data</a>
+    <a class='right-next' id="next-link" href="05_thrombolysis_comparison.html" title="next page">Comparison of average values for patients who receive thrombolysis and those that do not</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Charlotte James & Michael Allen<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
