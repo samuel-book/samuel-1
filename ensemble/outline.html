@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A comparison of machine learning models &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    <title>Ensemble Models &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,7 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model building and validation" href="../pathway_sim/outline_model.html" />
+    <link rel="next" title="Ensemble model fitting - generate probabilities" href="ensemble_generate_probabilities.html" />
     <link rel="prev" title="Modular TensorFlow model with 2D embedding - analyse" href="../neural_net/003b_2d_modular_analyse.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -85,7 +85,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
+  <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL-1
   </a>
  </li>
@@ -97,12 +97,12 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="data.html">
+  <a class="reference internal" href="../introduction/data.html">
    Data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="software.html">
+  <a class="reference internal" href="../introduction/software.html">
    Software
   </a>
  </li>
@@ -308,10 +308,42 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   A comparison of machine learning models
+   Ensemble Models
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_generate_probabilities.html">
+     Ensemble model fitting - generate probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compare_model_outputs.html">
+     Comparison of model outputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_with_logistic_regression.html">
+     Ensemble combine with logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_with_random_forests.html">
+     Ensemble combine with random forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_with_neural_network.html">
+     Ensemble combine with logistic regression
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -324,8 +356,8 @@
   <a class="reference internal" href="../pathway_sim/outline_model.html">
    Model building and validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -351,8 +383,8 @@
   <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -410,7 +442,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/introduction/model_accuracy.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ensemble/outline.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -443,53 +475,11 @@
         
               <div>
                 
-  <div class="section" id="a-comparison-of-machine-learning-models">
-<h1>A comparison of machine learning models<a class="headerlink" href="#a-comparison-of-machine-learning-models" title="Permalink to this headline">¶</a></h1>
-<p>The table below provides a summary of key accuracy statistics for the machine learning models.</p>
-<p>While the accuracy is better when all data is used to train a single model (using one-hot encoding of hospitals), there is an advantage in simplicity of understanding/communication of having separate models for different hospitals.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Model*</p></th>
-<th class="head"><p>Accuracy (%)</p></th>
-<th class="head"><p>ROC-AUC</p></th>
-<th class="head"><p>Max Sens=Spec (%) [1]</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Logistic regression single model</p></td>
-<td><p>83.2</p></td>
-<td><p>0.904</p></td>
-<td><p>82.0</p></td>
-</tr>
-<tr class="row-odd"><td><p>Logistic regression hospital-level models</p></td>
-<td><p>77.5</p></td>
-<td><p>0.815</p></td>
-<td><p>74.0</p></td>
-</tr>
-<tr class="row-even"><td><p>Random forest single model</p></td>
-<td><p>84.6</p></td>
-<td><p>0.914</p></td>
-<td><p>83.7</p></td>
-</tr>
-<tr class="row-odd"><td><p>Random forest hospital-level models</p></td>
-<td><p>81.4</p></td>
-<td><p>0.854</p></td>
-<td><p>78.1</p></td>
-</tr>
-<tr class="row-even"><td><p>Fully-connected neural net single model</p></td>
-<td><p>84.4</p></td>
-<td><p>0.913</p></td>
-<td><p>83.3</p></td>
-</tr>
-<tr class="row-odd"><td><p>Embedding neural net single model</p></td>
-<td><p>85.5</p></td>
-<td><p>0.921</p></td>
-<td><p>84.5</p></td>
-</tr>
-</tbody>
-</table>
-<p>* Single model fits use one-hot encoding for hospitals. Hospital-level models fit a model to each hospital independently. Embedding neural nets encode hospital id, pathway data, and clinical data into a single value vector each.</p>
-<p>[1] The maximum value where sensitivity matches specificity.</p>
+  <div class="section" id="ensemble-models">
+<h1>Ensemble Models<a class="headerlink" href="#ensemble-models" title="Permalink to this headline">¶</a></h1>
+<p>This section describes experiments using ensemble models that combine the probability outputs from logistic regression, random forests, and neural net models, and use those either as the sole inputs for a new model, or alongside the normal features in the trainign and test set.</p>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -505,7 +495,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./introduction"
+            path: "./ensemble"
         },
         predefinedOutput: true
     }
@@ -518,7 +508,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="../neural_net/003b_2d_modular_analyse.html" title="previous page">Modular TensorFlow model with 2D embedding - analyse</a>
-    <a class='right-next' id="next-link" href="../pathway_sim/outline_model.html" title="next page">Model building and validation</a>
+    <a class='right-next' id="next-link" href="ensemble_generate_probabilities.html" title="next page">Ensemble model fitting - generate probabilities</a>
 
         </div>
         
