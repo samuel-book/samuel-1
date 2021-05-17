@@ -483,6 +483,16 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-cutoff-for-classification">
+   Define the cutoff for classification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-function-to-set-the-colour-for-each-point-on-the-plot">
+   Define function to set the colour for each point on the plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compare-probababilties">
    Compare probababilties
   </a>
@@ -533,64 +543,137 @@
 </div>
 </div>
 </div>
+<div class="section" id="define-the-cutoff-for-classification">
+<h2>Define the cutoff for classification<a class="headerlink" href="#define-the-cutoff-for-classification" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cut_off</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-function-to-set-the-colour-for-each-point-on-the-plot">
+<h2>Define function to set the colour for each point on the plot<a class="headerlink" href="#define-function-to-set-the-colour-for-each-point-on-the-plot" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_point_colour</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">cut_off</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    s1 and s2 are series containing each model output for a number of instances</span>
+<span class="sd">    cut_off is a float to classify each instance</span>
+<span class="sd">    Returns series with a colour per instance to define whether there is a </span>
+<span class="sd">    match in the classification between the two models</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># the classifications</span>
+    <span class="n">mask1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">&gt;=</span> <span class="n">cut_off</span>    
+    <span class="n">mask2</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">&gt;=</span> <span class="n">cut_off</span>
+    <span class="n">mask3</span> <span class="o">=</span> <span class="n">mask1</span> <span class="o">==</span> <span class="n">mask2</span>
+    
+    <span class="c1"># initialise series with size the number of instances</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># initialise with value &#39;r&#39;</span>
+    <span class="n">c</span><span class="p">[:]</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
+    <span class="c1"># value &#39;g&#39; for those that match classification</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">mask3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="compare-probababilties">
 <h2>Compare probababilties<a class="headerlink" href="#compare-probababilties" title="Permalink to this headline">¶</a></h2>
+<p>Colour the points depending on whether the two models agree in their prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-
-
 
 <span class="c1"># Random Forests vs. Logistic Regression</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">r_square</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;logistic_regression&#39;</span><span class="p">],</span>
            <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
-
+<span class="n">c</span> <span class="o">=</span> <span class="n">set_point_colour</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;logistic_regression&#39;</span><span class="p">],</span>
+                     <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
+                     <span class="n">cut_off</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;logistic_regression&#39;</span><span class="p">],</span>
-           <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
-           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;logistic regression&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;random forests&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Random Forests vs. Logistic Regression&#39;</span><span class="p">)</span>
 <span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;R-squared: </span><span class="si">{</span><span class="n">r_square</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.97</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="c1"># add a footnote below and to the right side of the chart about the count of </span>
+<span class="c1"># instance with matching classification</span>
+<span class="n">count_c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Number of instances matching classification: </span><span class="si">{</span><span class="n">count_c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
+             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Number of instances not matching classification: </span><span class="si">{</span><span class="n">count_c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
+             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
 
 <span class="c1"># Neural network vs. Logistic Regression</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
 <span class="n">r_square</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;logistic_regression&#39;</span><span class="p">],</span>
            <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
-
+<span class="n">c</span> <span class="o">=</span> <span class="n">set_point_colour</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;logistic_regression&#39;</span><span class="p">],</span>
+                     <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">],</span>
+                     <span class="n">cut_off</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;logistic_regression&#39;</span><span class="p">],</span>
-           <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">],</span>
-           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">],</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;logistic regression&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;neural network&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Neural Network vs. Logistic Regression&#39;</span><span class="p">)</span>
 <span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;R-squared: </span><span class="si">{</span><span class="n">r_square</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="c1"># add a footnote below and to the right side of the chart about the count of </span>
+<span class="c1"># instance with matching classification</span>
+<span class="n">count_c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Number of instances matching classification: </span><span class="si">{</span><span class="n">count_c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
+             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Number of instances not matching classification: </span><span class="si">{</span><span class="n">count_c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
+             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
 
 <span class="c1"># Neural Network vs. Random Forests</span>
 <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
 <span class="n">r_square</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
            <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
-
+<span class="n">c</span> <span class="o">=</span> <span class="n">set_point_colour</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">],</span>
+                     <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
+                     <span class="n">cut_off</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
            <span class="n">model_probs_test</span><span class="p">[</span><span class="s1">&#39;neural_net&#39;</span><span class="p">],</span>
-           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;random forests&#39;</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;neural network&#39;</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Neural Network vs. Random Forests&#39;</span><span class="p">)</span>
 <span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;R-squared: </span><span class="si">{</span><span class="n">r_square</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+<span class="c1"># add a footnote below and to the right side of the chart about the count of </span>
+<span class="c1"># instance with matching classification</span>
+<span class="n">count_c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Number of instances matching classification: </span><span class="si">{</span><span class="n">count_c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;g&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
+             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Number of instances not matching classification: </span><span class="si">{</span><span class="n">count_c</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s2">&quot;r&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
+             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./ensemble_output/model_fits_scatter.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./ensemble_output/model_fits_scatter.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/compare_model_outputs_6_0.png" src="../_images/compare_model_outputs_6_0.png" />
+<img alt="../_images/compare_model_outputs_10_0.png" src="../_images/compare_model_outputs_10_0.png" />
 </div>
 </div>
 </div>
@@ -598,7 +681,7 @@
 <h2>Compare classification<a class="headerlink" href="#compare-classification" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification</span> <span class="o">=</span> <span class="n">model_probs_test</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification</span> <span class="o">=</span> <span class="n">model_probs_test</span> <span class="o">&gt;=</span> <span class="n">cut_off</span>
 </pre></div>
 </div>
 </div>
@@ -626,7 +709,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9175
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9136
 </pre></div>
 </div>
 </div>
@@ -640,7 +723,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9262
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9269
 </pre></div>
 </div>
 </div>
@@ -655,7 +738,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8681
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8665
 </pre></div>
 </div>
 </div>
