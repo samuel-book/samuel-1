@@ -32,6 +32,11 @@ The notebooks are:
 
 * *Modular TensorFlow model with 2D embedding - analyse*: Analyses the saved models for: 1) Various accuracy scores, 2) Receiver-Operator Characteristic Curve, 3) Sensitivity-Specificity Curve, and 4) model calibration.
 
+* *Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset*: Train a model on all data exluding a 10k test set (the train and test set are balanced for thrombolysis use across each hospital).
+
+* *Investigating the output of neural net embedding subnets*:  Investigate the output of the hospital and clinical subnets of the embedding neural network. 1) Examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hopsital moodels. 2) Examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output.
+
+
 
 
 
