@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,11 +37,14 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -313,6 +316,16 @@
      Investigating the output of neural net embedding subnets
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="005a_generate_2d_nets_for_10k.html">
+     Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="005b_analyse_10k_2d_modular.html">
+     Investigating the output of neural net embedding subnets - with 2D subnet output
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -526,6 +539,8 @@
 <li><p><em>Modular TensorFlow model with 2D embedding - analyse</em>: Analyses the saved models for: 1) Various accuracy scores, 2) Receiver-Operator Characteristic Curve, 3) Sensitivity-Specificity Curve, and 4) model calibration.</p></li>
 <li><p><em>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset</em>: Train a model on all data exluding a 10k test set (the train and test set are balanced for thrombolysis use across each hospital).</p></li>
 <li><p><em>Investigating the output of neural net embedding subnets</em>:  Investigate the output of the hospital and clinical subnets of the embedding neural network. 1) Examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hopsital moodels. 2) Examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output.</p></li>
+<li><p><em># Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset</em>: Repeat of above but with 2D subnet output.</p></li>
+<li><p>Investigating the output of neural net embedding subnets - with 2D subnet output*: Repeat of above but with 2D subnet output.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>

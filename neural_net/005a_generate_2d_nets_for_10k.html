@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modular TensorFlow model with 1D embedding - Train and save models &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    <title>Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modular TensorFlow model with 1D embedding - analyse" href="002c_1d_modular_analyse.html" />
-    <link rel="prev" title="Fully connected TensorFlow model - Learning curve" href="001d_learning_curve.html" />
+    <link rel="next" title="Investigating the output of neural net embedding subnets - with 2D subnet output" href="005b_analyse_10k_2d_modular.html" />
+    <link rel="prev" title="Investigating the output of neural net embedding subnets" href="004b_analyse_10k_1d_modular.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -286,8 +286,8 @@
      Fully connected TensorFlow model - Learning curve
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="002b_1d_modular_fit.html">
      Modular TensorFlow model with 1D embedding - Train and save models
     </a>
    </li>
@@ -316,8 +316,8 @@
      Investigating the output of neural net embedding subnets
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="005a_generate_2d_nets_for_10k.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset
     </a>
    </li>
@@ -462,7 +462,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/neural_net/002b_1d_modular_fit.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/neural_net/005a_generate_2d_nets_for_10k.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -503,23 +503,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-modules">
-   Load modules
+  <a class="reference internal nav-link" href="#set-up">
+   Set up
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#function-to-scale-data-minmax-scaling">
-   Function to scale data (minmax scaling)
+  <a class="reference internal nav-link" href="#define-function-to-scale-data">
+   Define function to scale data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-neural-net">
-   Define neural net
+  <a class="reference internal nav-link" href="#set-up-neural-net">
+   Set up neural net
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fit-models">
-   Fit models
+  <a class="reference internal nav-link" href="#train-model">
+   Train model
   </a>
  </li>
 </ul>
@@ -533,20 +533,20 @@
         
               <div>
                 
-  <div class="section" id="modular-tensorflow-model-with-1d-embedding-train-and-save-models">
-<h1>Modular TensorFlow model with 1D embedding - Train and save models<a class="headerlink" href="#modular-tensorflow-model-with-1d-embedding-train-and-save-models" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="modular-tensorflow-model-with-2d-embedding-train-and-save-model-for-10k-patient-subset">
+<h1>Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset<a class="headerlink" href="#modular-tensorflow-model-with-2d-embedding-train-and-save-model-for-10k-patient-subset" title="Permalink to this headline">¶</a></h1>
 <p><em>Embedding</em> converts a categorical variable into a projection onto n-dimensional space [1], and has been shown to be an effective way to train neural network when using categorical data, while also allowing a measure of similarity/distance between different values of the categorical data, Here we use embedding for hospital ID. We also convert patient data and pathway data into an embedded vector (this may also be known as <em>encoding</em> the data in a vector with fewer dimensions than the original data set for those groups of features).</p>
 <p>[1] Guo C, &amp; Berkhahn F. (2016) Entity Embeddings of Categorical Variables. arXiv:160406737 [cs] <a class="reference external" href="http://arxiv.org/abs/1604.06737">http://arxiv.org/abs/1604.06737</a></p>
 <div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>To train and save fully connected models for the 5-fold training/test data sets</p></li>
+<li><p>To train and save fully connected models for 10k patient subset</p></li>
 </ul>
 </div>
 <div class="section" id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <p>Models are fitted to previously split training and test data sets.</p>
-<p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 1D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
+<p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
 <ol class="simple">
 <li><p><em>Patient clinical data</em>: Age, gender, ethnicity, disability before stroke, stroke scale data. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
 <li><p><em>Pathway process data</em>: Times of arrival and scan, time of day, day of week. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
@@ -556,9 +556,12 @@
 <p><img alt="" src="../_images/subnets_1.png" /></p>
 <p>Models are fitted with Keras ‘early-stopping’. This monitors accuracy of the test set and stops when there has been no improvement in <em>n</em> epochs (this is the ‘patience’, and is set to 100 epohs here).</p>
 <p>NOTE: In the training charts below you will see that test accuracy is higher than training accuracy. This may seem surprising; it is due to keras returuning the ccruracy of the training set during training when droput is used (and no droput is used for the test set).</p>
+</div>
+<div class="section" id="set-up">
+<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./saved_models/1d_modular/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./saved_models/2d_for_10k/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -572,18 +575,15 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-modules">
-<h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># sklearn for pre-processing</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
 
 <span class="c1"># TensorFlow api model</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
@@ -597,8 +597,9 @@
 </div>
 </div>
 </div>
-<div class="section" id="function-to-scale-data-minmax-scaling">
-<h2>Function to scale data (minmax scaling)<a class="headerlink" href="#function-to-scale-data-minmax-scaling" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="define-function-to-scale-data">
+<h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
+<p>In neural networks it is common to to scale input data 0-1 rather than use standardisation (subtracting mean and dividing by standard deviation) of each feature).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">):</span>
@@ -614,22 +615,22 @@
     <span class="n">train_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
     <span class="n">test_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">train_sc</span><span class="p">,</span> <span class="n">test_sc</span>    
+    <span class="k">return</span> <span class="n">train_sc</span><span class="p">,</span> <span class="n">test_sc</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="define-neural-net">
-<h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="set-up-neural-net">
+<h2>Set up neural net<a class="headerlink" href="#set-up-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_net</span><span class="p">(</span><span class="n">number_features_patient</span><span class="p">,</span>
              <span class="n">number_features_pathway</span><span class="p">,</span>
              <span class="n">number_features_hospital</span><span class="p">,</span> 
-             <span class="n">patient_encoding_neurones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-             <span class="n">pathway_encoding_neurones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-             <span class="n">hospital_encoding_neurones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">patient_encoding_neurones</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">pathway_encoding_neurones</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+             <span class="n">hospital_encoding_neurones</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
              <span class="n">expansion</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
              <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span> 
              <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
@@ -697,8 +698,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="fit-models">
-<h2>Fit models<a class="headerlink" href="#fit-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="train-model">
+<h2>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get data subgroups</span>
@@ -713,146 +714,122 @@
 <span class="n">hospital_subgroup</span> <span class="o">=</span> <span class="n">subgroups</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">subgroups</span><span class="p">[</span><span class="s1">&#39;Subnet&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;hospital&#39;</span><span class="p">]</span>
 <span class="n">hospital_subgroup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospital_subgroup</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
-<span class="c1"># Loop through 5 k-folds</span>
-<span class="n">test_acc</span> <span class="o">=</span> <span class="p">[]</span>
+    
+<span class="c1"># Load data</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_train.csv&#39;</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    
-    <span class="c1"># Load data</span>
-    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/kfold_5fold/train_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
-    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/kfold_5fold/test_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
-        
-    <span class="c1"># OneHot encode stroke team</span>
-    <span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
-    <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
-    <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">test</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="c1"># Split into X, y</span>
-    <span class="n">X_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
-    <span class="n">y_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span>
-    <span class="n">X_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
-    <span class="n">y_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> 
-    
-    <span class="c1"># Split train and test data by subgroups</span>
-    <span class="n">X_train_patients</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">clinical_subgroup</span><span class="p">]</span>
-    <span class="n">X_test_patients</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">clinical_subgroup</span><span class="p">]</span>
-    <span class="n">X_train_pathway</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">pathway_subgroup</span><span class="p">]</span>
-    <span class="n">X_test_pathway</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">pathway_subgroup</span><span class="p">]</span>
-    <span class="n">X_train_hospitals</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">hospital_subgroup</span><span class="p">]</span>
-    <span class="n">X_test_hospitals</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">hospital_subgroup</span><span class="p">]</span>
-            
-    <span class="c1"># Convert to NumPy</span>
-    <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_df</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test_df</span><span class="o">.</span><span class="n">values</span>
-    
-    <span class="c1"># Scale data</span>
-    <span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_test_patients_sc</span> <span class="o">=</span> \
-        <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_patients</span><span class="p">,</span> <span class="n">X_test_patients</span><span class="p">)</span>
+<span class="c1"># OneHot encode stroke team</span>
+<span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">coded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">])</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">test</span><span class="p">,</span> <span class="n">coded</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span> <span class="o">=</span> \
-        <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_pathway</span><span class="p">,</span> <span class="n">X_test_pathway</span><span class="p">)</span>
+<span class="c1"># Split into X, y</span>
+<span class="n">X_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">y_train_df</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span>
+<span class="n">X_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">y_test_df</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> 
 
-    <span class="n">X_train_hospitals_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span> <span class="o">=</span> \
-        <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_hospitals</span><span class="p">,</span> <span class="n">X_test_hospitals</span><span class="p">)</span>
+<span class="c1"># Split train and test data by subgroups</span>
+<span class="n">X_train_patients</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">clinical_subgroup</span><span class="p">]</span>
+<span class="n">X_test_patients</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">clinical_subgroup</span><span class="p">]</span>
+<span class="n">X_train_pathway</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">pathway_subgroup</span><span class="p">]</span>
+<span class="n">X_test_pathway</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">pathway_subgroup</span><span class="p">]</span>
+<span class="n">X_train_hospitals</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="p">[</span><span class="n">hospital_subgroup</span><span class="p">]</span>
+<span class="n">X_test_hospitals</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="p">[</span><span class="n">hospital_subgroup</span><span class="p">]</span>
 
-    <span class="c1"># Define network</span>
-    <span class="n">number_features_patient</span> <span class="o">=</span> <span class="n">X_train_patients_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">number_features_pathway</span> <span class="o">=</span> <span class="n">X_train_pathway_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">number_features_hospital</span> <span class="o">=</span> <span class="n">X_train_hospitals_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Convert to NumPy</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_df</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test_df</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_df</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test_df</span><span class="o">.</span><span class="n">values</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">make_net</span><span class="p">(</span>
-        <span class="n">number_features_patient</span><span class="p">,</span> 
-        <span class="n">number_features_pathway</span><span class="p">,</span> 
-        <span class="n">number_features_hospital</span><span class="p">)</span>
-    
-    <span class="c1"># Define save checkpoint callback (only save if new best validation results)</span>
-    <span class="n">checkpoint_cb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
-        <span class="s1">&#39;model_checkpoint_1d.h5&#39;</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
-    <span class="c1"># Define early stopping callback: Stop when no validation improvement</span>
-    <span class="c1"># Restore weights to best validation accuracy</span>
-    <span class="n">early_stopping_cb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
-        <span class="n">patience</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
-    <span class="c1"># Train model (including class weights)</span>
-    <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_train_hospitals_sc</span><span class="p">],</span>
-        <span class="n">y_train</span><span class="p">,</span>
-        <span class="n">epochs</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
-        <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">],</span> 
-            <span class="n">y_test</span><span class="p">),</span>
-        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpoint_cb</span><span class="p">,</span> <span class="n">early_stopping_cb</span><span class="p">])</span>
-    
-    <span class="c1">### Test model</span>
-    <span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_train_hospitals_sc</span><span class="p">])</span>
-    <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
-    <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">y_pred_train</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">accuracy_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Model </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">: Accuracy train </span><span class="si">{</span><span class="n">accuracy_train</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    
-    <span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">])</span>
-    <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
-    <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">y_pred_test</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">accuracy_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy test </span><span class="si">{</span><span class="n">accuracy_test</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># save model</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">model_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="s1">.h5&#39;</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
-    
-    <span class="c1"># Plot training accuracy</span>
-    <span class="n">history_dict</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span>
+<span class="c1"># Scale data</span>
+<span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_test_patients_sc</span> <span class="o">=</span> \
+    <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_patients</span><span class="p">,</span> <span class="n">X_test_patients</span><span class="p">)</span>
 
-    <span class="n">acc_values</span> <span class="o">=</span> <span class="n">history_dict</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
-    <span class="n">val_acc_values</span> <span class="o">=</span> <span class="n">history_dict</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]</span>
-    <span class="n">test_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_acc_values</span><span class="p">)</span>
-    <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">acc_values</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span> <span class="o">=</span> \
+    <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_pathway</span><span class="p">,</span> <span class="n">X_test_pathway</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc_values</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training acc&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc_values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test accuracy&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and validation accuracy&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">X_train_hospitals_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span> <span class="o">=</span> \
+    <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_hospitals</span><span class="p">,</span> <span class="n">X_test_hospitals</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-    <span class="c1"># Remove model</span>
-    <span class="k">del</span> <span class="n">model</span>
+<span class="c1"># Define network</span>
+<span class="n">number_features_patient</span> <span class="o">=</span> <span class="n">X_train_patients_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">number_features_pathway</span> <span class="o">=</span> <span class="n">X_train_pathway_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">number_features_hospital</span> <span class="o">=</span> <span class="n">X_train_hospitals_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">make_net</span><span class="p">(</span>
+    <span class="n">number_features_patient</span><span class="p">,</span> 
+    <span class="n">number_features_pathway</span><span class="p">,</span> 
+    <span class="n">number_features_hospital</span><span class="p">)</span>
+
+<span class="c1"># Define save checkpoint callback (only save if new best validation results)</span>
+<span class="n">checkpoint_cb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span>
+    <span class="s1">&#39;model_checkpoint_2d.h5&#39;</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Define early stopping callback: Stop when no validation improvement</span>
+<span class="c1"># Restore weights to best validation accuracy</span>
+<span class="n">early_stopping_cb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+    <span class="n">patience</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Train model (including class weights)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_train_hospitals_sc</span><span class="p">],</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">],</span> 
+        <span class="n">y_test</span><span class="p">),</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1">#callbacks=[checkpoint_cb, early_stopping_cb])</span>
+
+<span class="c1">### Test model</span>
+<span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">X_train_patients_sc</span><span class="p">,</span> <span class="n">X_train_pathway_sc</span><span class="p">,</span> <span class="n">X_train_hospitals_sc</span><span class="p">])</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">y_pred_train</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">accuracy_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_train</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy train </span><span class="si">{</span><span class="n">accuracy_train</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+<span class="n">probability</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">])</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">y_pred_test</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">accuracy_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy test </span><span class="si">{</span><span class="n">accuracy_test</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># save model</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">model.h5&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+
+<span class="c1"># Plot training accuracy</span>
+<span class="n">history_dict</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span>
+
+<span class="n">acc_values</span> <span class="o">=</span> <span class="n">history_dict</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="n">val_acc_values</span> <span class="o">=</span> <span class="n">history_dict</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">]</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">acc_values</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc_values</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training acc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc_values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and validation accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epochs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 0: Accuracy train 0.858 Accuracy test 0.855
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy train 0.858 Accuracy test 0.843
 </pre></div>
 </div>
-<img alt="../_images/002b_1d_modular_fit_10_1.png" src="../_images/002b_1d_modular_fit_10_1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 1: Accuracy train 0.860 Accuracy test 0.855
-</pre></div>
-</div>
-<img alt="../_images/002b_1d_modular_fit_10_3.png" src="../_images/002b_1d_modular_fit_10_3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 2: Accuracy train 0.859 Accuracy test 0.854
-</pre></div>
-</div>
-<img alt="../_images/002b_1d_modular_fit_10_5.png" src="../_images/002b_1d_modular_fit_10_5.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 3: Accuracy train 0.857 Accuracy test 0.854
-</pre></div>
-</div>
-<img alt="../_images/002b_1d_modular_fit_10_7.png" src="../_images/002b_1d_modular_fit_10_7.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model 4: Accuracy train 0.858 Accuracy test 0.855
-</pre></div>
-</div>
-<img alt="../_images/002b_1d_modular_fit_10_9.png" src="../_images/002b_1d_modular_fit_10_9.png" />
+<img alt="../_images/005a_generate_2d_nets_for_10k_10_1.png" src="../_images/005a_generate_2d_nets_for_10k_10_1.png" />
 </div>
 </div>
 </div>
@@ -883,8 +860,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="001d_learning_curve.html" title="previous page">Fully connected TensorFlow model - Learning curve</a>
-    <a class='right-next' id="next-link" href="002c_1d_modular_analyse.html" title="next page">Modular TensorFlow model with 1D embedding - analyse</a>
+    <a class='left-prev' id="prev-link" href="004b_analyse_10k_1d_modular.html" title="previous page">Investigating the output of neural net embedding subnets</a>
+    <a class='right-next' id="next-link" href="005b_analyse_10k_2d_modular.html" title="next page">Investigating the output of neural net embedding subnets - with 2D subnet output</a>
 
         </div>
         

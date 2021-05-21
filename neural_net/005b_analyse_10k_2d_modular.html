@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Investigating the output of neural net embedding subnets &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    <title>Investigating the output of neural net embedding subnets - with 2D subnet output &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset" href="005a_generate_2d_nets_for_10k.html" />
-    <link rel="prev" title="Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset" href="004a_generate_1d_nets_for_10k.html" />
+    <link rel="next" title="Ensemble Models" href="../ensemble/outline.html" />
+    <link rel="prev" title="Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset" href="005a_generate_2d_nets_for_10k.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -311,8 +311,8 @@
      Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="004b_analyse_10k_1d_modular.html">
      Investigating the output of neural net embedding subnets
     </a>
    </li>
@@ -321,8 +321,8 @@
      Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="005b_analyse_10k_2d_modular.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Investigating the output of neural net embedding subnets - with 2D subnet output
     </a>
    </li>
@@ -462,7 +462,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/neural_net/004b_analyse_10k_1d_modular.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/neural_net/005b_analyse_10k_2d_modular.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -528,8 +528,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comparing-hospital-subnet-activation-with-actual-thrombolysis-use-and-predicted-thrombolysis-use-in-10k-set-of-patients-attending-each-hospital">
-   Comparing hospital subnet activation with actual thrombolysis use and predicted thrombolysis use in 10k set of patients attending each hospital
+  <a class="reference internal nav-link" href="#get-subnet-outputs">
+   Get subnet outputs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -538,60 +538,38 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-actual-thrombolysis-at-hospitals-in-10k-test-set">
-     Add actual thrombolysis at hospitals in 10k test set
+    <a class="reference internal nav-link" href="#get-patient-subnet-output">
+     Get patient subnet output
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#show-relationship-betwen-subnet-outout-and-predicted-thrombolysis-use-in-the-10k-patient-set">
-     Show relationship betwen subnet outout and predicted thrombolysis use in the 10k patient set
+    <a class="reference internal nav-link" href="#get-pathway-subnet-output">
+     Get pathway subnet output
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examine-clinical-subnet-output">
-   Examine clinical subnet output
+  <a class="reference internal nav-link" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
+   Comparing hospital subnet activation with thrombolysis use at each hospital
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
+   Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#get-clincial-subnet-output-for-10k-patients">
-     Get clincial subnet output for 10k patients
+    <a class="reference internal nav-link" href="#analysis-by-stroke-type">
+     Analysis by stroke type
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#show-relationship-between-clinical-subnet-output-and-proportion-of-patients-receiving-thrombolysis">
-     Show relationship between clinical subnet output and proportion of patients receiving thrombolysis
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#show-some-clinical-subnet-outputs-by-patient-type">
-     Show some clinical subnet outputs by patient type
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#show-patient-subnet-output-by-stroke-type">
-       Show patient_subnet_output by stroke type
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#show-patient-subnet-output-by-age-group">
-       Show patient_subnet_output by age group
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#show-relationship-between-nihss-arrival-and-clinical-subnet-output">
-       Show relationship between NIHSS arrival and clinical_subnet_output
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#show-relationship-between-modifed-rankin-scale-and-clinical-subnet-output">
-       Show relationship between modifed Rankin Scale and clinical_subnet_output
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarise-patients-in-corners-of-chart">
+   Summarise patients in corners of chart
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#observations">
@@ -609,8 +587,8 @@
         
               <div>
                 
-  <div class="section" id="investigating-the-output-of-neural-net-embedding-subnets">
-<h1>Investigating the output of neural net embedding subnets<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
+<h1>Investigating the output of neural net embedding subnets - with 2D subnet output<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -621,7 +599,7 @@
 </div>
 <div class="section" id="neural-network-structure">
 <h2>Neural Network structure<a class="headerlink" href="#neural-network-structure" title="Permalink to this headline">¶</a></h2>
-<p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 1D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
+<p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
 <ol class="simple">
 <li><p><em>Patient clinical data</em>: Age, gender, ethnicity, disability before stroke, stroke scale data. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
 <li><p><em>Pathway process data</em>: Times of arrival and scan, time of day, day of week. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
@@ -695,6 +673,8 @@
 <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_train.csv&#39;</span><span class="p">)</span>
 <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)</span>
 
+<span class="n">all_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
 <span class="c1"># Get data subgroups</span>
 <span class="n">subgroups</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/subnet.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Item&#39;</span><span class="p">)</span>
 <span class="c1"># Get list of clinical items</span>
@@ -746,7 +726,7 @@
     <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train_hospitals</span><span class="p">,</span> <span class="n">X_test_hospitals</span><span class="p">)</span>
 
 <span class="c1"># Load model</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./saved_models/1d_for_10k/&#39;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./saved_models/2d_for_10k/&#39;</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">model.h5&#39;</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
@@ -757,11 +737,14 @@
 <span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">y_pred_test</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 <span class="n">accuracy_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_test</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy test </span><span class="si">{</span><span class="n">accuracy_test</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;model_prob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">probability</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred_test</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy test 0.849
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy test 0.843
 </pre></div>
 </div>
 </div>
@@ -778,7 +761,7 @@
 <span class="n">num_hospitals</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test_hospitals_sc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="c1"># Create test array for changing hospital ID</span>
 <span class="n">X_hospitals_alter</span> <span class="o">=</span> <span class="n">X_test_hospitals_sc</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="c1"># Get classification for all patients at all hospials</span>
+<span class="c1"># List for all patient classifications at each hospital</span>
 <span class="n">patient_results</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Loop through setting hospital</span>
@@ -793,10 +776,10 @@
         <span class="p">[</span><span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_hospitals_alter</span><span class="p">])</span>
     <span class="c1"># Classify</span>
     <span class="n">classified</span> <span class="o">=</span> <span class="n">probability</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
-    <span class="n">patient_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">classified</span><span class="p">)</span>
     <span class="c1"># Get average thrombolysis (we are not stroring all individual results)</span>
     <span class="n">thrombolysis</span> <span class="o">=</span> <span class="n">classified</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">hospital_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thrombolysis</span><span class="p">)</span>
+    <span class="n">patient_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">classified</span><span class="p">)</span>
 
 <span class="c1"># Put results in DataFrame </span>
 <span class="n">predicted_thrombolysis</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -835,27 +818,27 @@
     <tr>
       <th>0</th>
       <td>AGNOF1041H</td>
-      <td>0.2684</td>
+      <td>0.2886</td>
     </tr>
     <tr>
       <th>1</th>
       <td>AKCGO9726K</td>
-      <td>0.3893</td>
+      <td>0.3829</td>
     </tr>
     <tr>
       <th>2</th>
       <td>AOBTM3098N</td>
-      <td>0.2130</td>
+      <td>0.2320</td>
     </tr>
     <tr>
       <th>3</th>
       <td>APXEE8191H</td>
-      <td>0.2734</td>
+      <td>0.2909</td>
     </tr>
     <tr>
       <th>4</th>
       <td>ATDID5461S</td>
-      <td>0.2557</td>
+      <td>0.2728</td>
     </tr>
     <tr>
       <th>...</th>
@@ -865,83 +848,38 @@
     <tr>
       <th>127</th>
       <td>YPKYH1768F</td>
-      <td>0.2473</td>
+      <td>0.2620</td>
     </tr>
     <tr>
       <th>128</th>
       <td>YQMZV4284N</td>
-      <td>0.3347</td>
+      <td>0.3341</td>
     </tr>
     <tr>
       <th>129</th>
       <td>ZBVSO0975W</td>
-      <td>0.2076</td>
+      <td>0.2301</td>
     </tr>
     <tr>
       <th>130</th>
       <td>ZHCLE1578P</td>
-      <td>0.2862</td>
+      <td>0.3126</td>
     </tr>
     <tr>
       <th>131</th>
       <td>ZRRCV7012C</td>
-      <td>0.1538</td>
+      <td>0.1883</td>
     </tr>
   </tbody>
 </table>
 <p>132 rows × 2 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="comparing-hospital-subnet-activation-with-actual-thrombolysis-use-and-predicted-thrombolysis-use-in-10k-set-of-patients-attending-each-hospital">
-<h2>Comparing hospital subnet activation with actual thrombolysis use and predicted thrombolysis use in 10k set of patients attending each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-actual-thrombolysis-use-and-predicted-thrombolysis-use-in-10k-set-of-patients-attending-each-hospital" title="Permalink to this headline">¶</a></h2>
-<p>The hospital subnet outputs a single value (in the range 0-1) for each hospital.</p>
-<p>Here we compare the hospital subnet output for each hospital with:</p>
-<ol class="simple">
-<li><p>The actual use of thrombolysis for 10k test-set patients at their own hospital only.</p></li>
-<li><p>The expected use of thrombolysis in the 10k test-set for each hospital. The 10k patient data set is passed through all hospital models (by changing the one-hot hospital encoding).</p></li>
-</ol>
-<div class="section" id="get-hospital-subnet-output">
-<h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">¶</a></h3>
-<p>This code gets the output directly from the hospital subnet in the neural network. We add this to our results DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">hosp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_hospitals</span><span class="p">):</span>
-    <span class="c1"># Set all hospitals to zero</span>
-    <span class="n">X_hospitals_alter</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1"># Set test hospital to 1</span>
-    <span class="n">X_hospitals_alter</span><span class="p">[:,</span><span class="n">hosp</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1"># Get hospital subnet output</span>
-    <span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;hospital_encode&#39;</span>
-    <span class="n">hospital_encode_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
-        <span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-    <span class="n">hospital_encode_output</span> <span class="o">=</span> <span class="n">hospital_encode_model</span><span class="p">([</span>
-        <span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_hospitals_alter</span><span class="p">])</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hospital_encode_output</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))</span>
-    
-<span class="c1"># Add to DataFrame</span>
-<span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;hosp_subnet_output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="add-actual-thrombolysis-at-hospitals-in-10k-test-set">
-<h3>Add actual thrombolysis at hospitals in 10k test set<a class="headerlink" href="#add-actual-thrombolysis-at-hospitals-in-10k-test-set" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)</span>
-<span class="n">actual_thrombolysis</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span>
-<span class="c1"># Add to DataFrame</span>
-<span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;actual_thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">actual_thrombolysis</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_thrombolysis</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_thromb_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">patient_results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;num_hosp_thrombolysing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patient_thromb_results</span>
+<span class="n">all_test</span>
 </pre></div>
 </div>
 </div>
@@ -964,47 +902,915 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>hospital</th>
-      <th>10k_thrombolysis</th>
-      <th>hosp_subnet_output</th>
-      <th>actual_thrombolysis</th>
+      <th>StrokeTeam</th>
+      <th>S1AgeOnArrival</th>
+      <th>S1OnsetToArrival_min</th>
+      <th>S2RankinBeforeStroke</th>
+      <th>Loc</th>
+      <th>LocQuestions</th>
+      <th>LocCommands</th>
+      <th>BestGaze</th>
+      <th>Visual</th>
+      <th>FacialPalsy</th>
+      <th>...</th>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <th>S2StrokeType_missing</th>
+      <th>S2TIAInLastMonth_No</th>
+      <th>S2TIAInLastMonth_No but</th>
+      <th>S2TIAInLastMonth_Yes</th>
+      <th>S2TIAInLastMonth_missing</th>
+      <th>S2Thrombolysis</th>
+      <th>model_prob</th>
+      <th>prediction</th>
+      <th>num_hosp_thrombolysing</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>AGNOF1041H</td>
-      <td>0.2684</td>
-      <td>0.824581</td>
-      <td>0.353535</td>
+      <td>LGNPK4211W</td>
+      <td>67.5</td>
+      <td>193.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.000038</td>
+      <td>False</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AKCGO9726K</td>
-      <td>0.3893</td>
-      <td>0.600438</td>
-      <td>0.368750</td>
+      <td>LZGVG8257A</td>
+      <td>62.5</td>
+      <td>54.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.455021</td>
+      <td>False</td>
+      <td>36</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AOBTM3098N</td>
-      <td>0.2130</td>
-      <td>0.909647</td>
-      <td>0.215385</td>
+      <td>DNOYM6465G</td>
+      <td>82.5</td>
+      <td>173.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.074149</td>
+      <td>False</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>APXEE8191H</td>
-      <td>0.2734</td>
-      <td>0.817232</td>
-      <td>0.230769</td>
+      <td>ISIZF6614O</td>
+      <td>72.5</td>
+      <td>159.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.556605</td>
+      <td>True</td>
+      <td>113</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>ATDID5461S</td>
-      <td>0.2557</td>
-      <td>0.843878</td>
-      <td>0.228571</td>
+      <td>NGKDE7265L</td>
+      <td>87.5</td>
+      <td>145.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.137400</td>
+      <td>False</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9995</th>
+      <td>NFBUF0424E</td>
+      <td>57.5</td>
+      <td>99.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.002355</td>
+      <td>False</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9996</th>
+      <td>UJETD9177J</td>
+      <td>87.5</td>
+      <td>159.0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.214499</td>
+      <td>False</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9997</th>
+      <td>BICAW1125K</td>
+      <td>67.5</td>
+      <td>142.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.730262</td>
+      <td>True</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>9998</th>
+      <td>CYVHC2532V</td>
+      <td>72.5</td>
+      <td>101.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.000762</td>
+      <td>False</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9999</th>
+      <td>FCCJC8768V</td>
+      <td>87.5</td>
+      <td>106.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.005808</td>
+      <td>False</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 104 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="get-subnet-outputs">
+<h2>Get subnet outputs<a class="headerlink" href="#get-subnet-outputs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-hospital-subnet-output">
+<h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">hosp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_hospitals</span><span class="p">):</span>
+    <span class="c1"># Set all hospitals to zero</span>
+    <span class="n">X_hospitals_alter</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Set test hospital to 1</span>
+    <span class="n">X_hospitals_alter</span><span class="p">[:,</span><span class="n">hosp</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># Get hospital subnet output</span>
+    <span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;hospital_encode&#39;</span>
+    <span class="n">hospital_encode_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+    <span class="n">hospital_encode_output</span> <span class="o">=</span> <span class="n">hospital_encode_model</span><span class="p">([</span>
+        <span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_hospitals_alter</span><span class="p">])</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">hospital_encode_output</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">hospital_encoding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">hospital_subgroup</span><span class="p">)</span>
+<span class="n">hospital_encoding</span><span class="p">[</span><span class="s1">&#39;hosp_encode_x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">hospital_encoding</span><span class="p">[</span><span class="s1">&#39;hosp_encode_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">all_test</span> <span class="o">=</span> <span class="n">all_test</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">hospital_encoding</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-patient-subnet-output">
+<h3>Get patient subnet output<a class="headerlink" href="#get-patient-subnet-output" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get patient subnet output</span>
+<span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;patient_encode&#39;</span>
+<span class="n">patient_encode_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+<span class="n">patient_encode_output</span> <span class="o">=</span> <span class="n">patient_encode_model</span><span class="p">([</span>
+    <span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">])</span>
+<span class="n">patient_encode_output</span> <span class="o">=</span> <span class="n">patient_encode_output</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_encode_output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.9715982 , 0.0169461 ],
+       [0.28645337, 0.6916805 ],
+       [0.22771867, 0.24591173],
+       ...,
+       [0.14738613, 0.97659886],
+       [0.910986  , 0.4587859 ],
+       [0.9470407 , 0.01368953]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patient_encode_output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patient_encode_output</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-pathway-subnet-output">
+<h3>Get pathway subnet output<a class="headerlink" href="#get-pathway-subnet-output" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get patient subnet output</span>
+<span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;pathway_encode&#39;</span>
+<span class="n">pathway_encode_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+<span class="n">pathway_encode_output</span> <span class="o">=</span> <span class="n">pathway_encode_model</span><span class="p">([</span>
+    <span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">])</span>
+<span class="n">pathway_encode_output</span> <span class="o">=</span> <span class="n">pathway_encode_output</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">pathway_encode_output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9.0462186e-30, 4.6191800e-02],
+       [1.0000000e+00, 9.1275048e-01],
+       [4.0270866e-23, 8.5490012e-01],
+       ...,
+       [1.0000000e+00, 9.2618495e-01],
+       [1.8072895e-21, 2.0514728e-01],
+       [1.0000000e+00, 9.5640117e-01]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;pathway_encode_x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pathway_encode_output</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;pathway_encode_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pathway_encode_output</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">all_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/2d_outputs.csv&#39;</span><span class="p">)</span>
+<span class="n">all_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StrokeTeam</th>
+      <th>S1AgeOnArrival</th>
+      <th>S1OnsetToArrival_min</th>
+      <th>S2RankinBeforeStroke</th>
+      <th>Loc</th>
+      <th>LocQuestions</th>
+      <th>LocCommands</th>
+      <th>BestGaze</th>
+      <th>Visual</th>
+      <th>FacialPalsy</th>
+      <th>...</th>
+      <th>S2Thrombolysis</th>
+      <th>model_prob</th>
+      <th>prediction</th>
+      <th>num_hosp_thrombolysing</th>
+      <th>hosp_encode_x</th>
+      <th>hosp_encode_y</th>
+      <th>patient_encode_x</th>
+      <th>patient_encode_y</th>
+      <th>pathway_encode_x</th>
+      <th>pathway_encode_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LGNPK4211W</td>
+      <td>67.5</td>
+      <td>193.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.000038</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.994444</td>
+      <td>0.999999</td>
+      <td>0.971598</td>
+      <td>0.016946</td>
+      <td>9.046219e-30</td>
+      <td>0.046192</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LZGVG8257A</td>
+      <td>62.5</td>
+      <td>54.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.455021</td>
+      <td>False</td>
+      <td>36</td>
+      <td>0.054258</td>
+      <td>0.999681</td>
+      <td>0.286453</td>
+      <td>0.691680</td>
+      <td>1.000000e+00</td>
+      <td>0.912750</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>DNOYM6465G</td>
+      <td>82.5</td>
+      <td>173.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.074149</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.000313</td>
+      <td>0.962226</td>
+      <td>0.227719</td>
+      <td>0.245912</td>
+      <td>4.027087e-23</td>
+      <td>0.854900</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ISIZF6614O</td>
+      <td>72.5</td>
+      <td>159.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.556605</td>
+      <td>True</td>
+      <td>113</td>
+      <td>0.359619</td>
+      <td>0.999920</td>
+      <td>0.134090</td>
+      <td>0.811445</td>
+      <td>1.000000e+00</td>
+      <td>0.839783</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NGKDE7265L</td>
+      <td>87.5</td>
+      <td>145.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.137400</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.000113</td>
+      <td>0.842160</td>
+      <td>0.935024</td>
+      <td>0.970843</td>
+      <td>1.000000e+00</td>
+      <td>0.926450</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9995</th>
+      <td>NFBUF0424E</td>
+      <td>57.5</td>
+      <td>99.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.002355</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.679200</td>
+      <td>0.999900</td>
+      <td>0.973709</td>
+      <td>0.005022</td>
+      <td>1.000000e+00</td>
+      <td>0.846838</td>
+    </tr>
+    <tr>
+      <th>9996</th>
+      <td>UJETD9177J</td>
+      <td>87.5</td>
+      <td>159.0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0.214499</td>
+      <td>False</td>
+      <td>1</td>
+      <td>0.000235</td>
+      <td>0.951178</td>
+      <td>0.063271</td>
+      <td>0.441744</td>
+      <td>5.232738e-21</td>
+      <td>0.836204</td>
+    </tr>
+    <tr>
+      <th>9997</th>
+      <td>BICAW1125K</td>
+      <td>67.5</td>
+      <td>142.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.730262</td>
+      <td>True</td>
+      <td>132</td>
+      <td>0.277610</td>
+      <td>0.999906</td>
+      <td>0.147386</td>
+      <td>0.976599</td>
+      <td>1.000000e+00</td>
+      <td>0.926185</td>
+    </tr>
+    <tr>
+      <th>9998</th>
+      <td>CYVHC2532V</td>
+      <td>72.5</td>
+      <td>101.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.000762</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.147991</td>
+      <td>0.999695</td>
+      <td>0.910986</td>
+      <td>0.458786</td>
+      <td>1.807289e-21</td>
+      <td>0.205147</td>
+    </tr>
+    <tr>
+      <th>9999</th>
+      <td>FCCJC8768V</td>
+      <td>87.5</td>
+      <td>106.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0.005808</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.323247</td>
+      <td>0.999919</td>
+      <td>0.947041</td>
+      <td>0.013690</td>
+      <td>1.000000e+00</td>
+      <td>0.956401</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 110 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
+<h2>Comparing hospital subnet activation with thrombolysis use at each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital" title="Permalink to this headline">¶</a></h2>
+<p>The hospital subnet outputs a single value (in the range 0-1) for each hospital.</p>
+<p>Here we compare the hospital subnet output for each hospital with:</p>
+<ol class="simple">
+<li><p>The actual use of thrombolysis for 10k test-set patients at their own hospital only.</p></li>
+<li><p>The expected use of thrombolysis in the 10k test-set for each hospital. The 10k patient data set is passed through all hospital models (by changing the one-hot hospital encoding).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: actual vs subnet</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+<span class="n">min_val</span> <span class="o">=</span> <span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;10k_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">max_val</span> <span class="o">=</span> <span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;10k_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hospital_encoding</span><span class="p">[</span><span class="s1">&#39;hosp_encode_x&#39;</span><span class="p">],</span>
+            <span class="n">hospital_encoding</span><span class="p">[</span><span class="s1">&#39;hosp_encode_y&#39;</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;10k_thrombolysis&#39;</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="n">min_val</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">max_val</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Hospital thrombolysis use&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Hospital subnet output 1&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Hospital subnet output 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/hospital_subnet_scatter.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/005b_analyse_10k_2d_modular_21_0.png" src="../_images/005b_analyse_10k_2d_modular_21_0.png" />
+</div>
+</div>
+<p>In this output, all hospitals appear to sit on <span class="math notranslate nohighlight">\(x=0\)</span> or <span class="math notranslate nohighlight">\(y=1\)</span>, with use of thrombolysis in the hospital increasing along the <span class="math notranslate nohighlight">\(y\)</span> axis and then the <span class="math notranslate nohighlight">\(x\)</span> axis.</p>
+</div>
+<div class="section" id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
+<h2>Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient<a class="headerlink" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: actual vs subnet</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">],</span>
+            <span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;num_hosp_thrombolysing&#39;</span><span class="p">],</span>
+            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">132</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Number of hospitals predicted to give thrombolysis&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Clinical subnet output 1&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Clinical subnet output 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/clinical_subnet_scatter.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/005b_analyse_10k_2d_modular_24_0.png" src="../_images/005b_analyse_10k_2d_modular_24_0.png" />
+</div>
+</div>
+<p>The patients most likey to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of therombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clincal subnet output.</p>
+<p>Patients appear to cluster mostly towards the edges of the plot.</p>
+<p>In the following analysis, we will look at the characteristics of patients in different parts of the scatter plot.</p>
+<div class="section" id="analysis-by-stroke-type">
+<h3>Analysis by stroke type<a class="headerlink" href="#analysis-by-stroke-type" title="Permalink to this headline">¶</a></h3>
+<p>Plot the location of stroke type by haemorrhage (red) or infarction (blue).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bleed</span> <span class="o">=</span> <span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;S2StrokeType_Primary Intracerebral Haemorrhage&#39;</span><span class="p">]</span> 
+
+<span class="c1"># Set up figure</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">bwr</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: actual vs subnet</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">],</span>
+           <span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">],</span>
+           <span class="n">c</span><span class="o">=</span><span class="n">bleed</span><span class="p">,</span>
+        <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#plt.colorbar(im, ax=ax1)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Clinical subnet output 1&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Clinical subnet output 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/clinical_subnet_scatter_stroke_type.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/005b_analyse_10k_2d_modular_27_0.png" src="../_images/005b_analyse_10k_2d_modular_27_0.png" />
+</div>
+</div>
+<p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similirity between patients (driven by reasons to give or not give thrombolysis).</p>
+</div>
+</div>
+<div class="section" id="summarise-patients-in-corners-of-chart">
+<h2>Summarise patients in corners of chart<a class="headerlink" href="#summarise-patients-in-corners-of-chart" title="Permalink to this headline">¶</a></h2>
+<p>Summarise key characteristics of patients in the four corners of the chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paient_encode_regions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Low x and low y</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">paient_encode_regions</span><span class="p">[</span><span class="s1">&#39;low_x_low_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_test</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Low x and high y</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">paient_encode_regions</span><span class="p">[</span><span class="s1">&#39;low_x_high_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_test</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># High x and low y</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">]</span> <span class="o">&lt;</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">paient_encode_regions</span><span class="p">[</span><span class="s1">&#39;high_x_low_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_test</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># High x and high y</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_x&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_test</span><span class="p">[</span><span class="s1">&#39;patient_encode_y&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">paient_encode_regions</span><span class="p">[</span><span class="s1">&#39;high_x_high_y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_test</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paient_encode_regions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>low_x_low_y</th>
+      <th>low_x_high_y</th>
+      <th>high_x_low_y</th>
+      <th>high_x_high_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>83.731767</td>
+      <td>70.882673</td>
+      <td>75.556063</td>
+      <td>71.761321</td>
+    </tr>
+    <tr>
+      <th>S1OnsetToArrival_min</th>
+      <td>108.585089</td>
+      <td>103.129677</td>
+      <td>109.464960</td>
+      <td>122.270973</td>
+    </tr>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>2.871961</td>
+      <td>0.241918</td>
+      <td>1.139549</td>
+      <td>0.493690</td>
+    </tr>
+    <tr>
+      <th>Loc</th>
+      <td>0.769854</td>
+      <td>0.157646</td>
+      <td>0.671542</td>
+      <td>0.007424</td>
+    </tr>
+    <tr>
+      <th>LocQuestions</th>
+      <td>1.520259</td>
+      <td>0.779876</td>
+      <td>0.840951</td>
+      <td>0.030438</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1014,275 +1820,134 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>127</th>
-      <td>YPKYH1768F</td>
-      <td>0.2473</td>
-      <td>0.857318</td>
-      <td>0.250000</td>
+      <th>hosp_encode_y</th>
+      <td>0.912189</td>
+      <td>0.909141</td>
+      <td>0.917274</td>
+      <td>0.906201</td>
     </tr>
     <tr>
-      <th>128</th>
-      <td>YQMZV4284N</td>
-      <td>0.3347</td>
-      <td>0.712575</td>
-      <td>0.230769</td>
+      <th>patient_encode_x</th>
+      <td>0.066940</td>
+      <td>0.048527</td>
+      <td>0.966237</td>
+      <td>0.939780</td>
     </tr>
     <tr>
-      <th>129</th>
-      <td>ZBVSO0975W</td>
-      <td>0.2076</td>
-      <td>0.917475</td>
-      <td>0.250000</td>
+      <th>patient_encode_y</th>
+      <td>0.072550</td>
+      <td>0.937993</td>
+      <td>0.029484</td>
+      <td>0.947498</td>
     </tr>
     <tr>
-      <th>130</th>
-      <td>ZHCLE1578P</td>
-      <td>0.2862</td>
-      <td>0.795291</td>
-      <td>0.225564</td>
+      <th>pathway_encode_x</th>
+      <td>0.541331</td>
+      <td>0.716123</td>
+      <td>0.574025</td>
+      <td>0.598690</td>
     </tr>
     <tr>
-      <th>131</th>
-      <td>ZRRCV7012C</td>
-      <td>0.1538</td>
-      <td>0.999946</td>
-      <td>0.151899</td>
+      <th>pathway_encode_y</th>
+      <td>0.744999</td>
+      <td>0.814333</td>
+      <td>0.744484</td>
+      <td>0.593244</td>
     </tr>
   </tbody>
 </table>
-<p>132 rows × 4 columns</p>
+<p>109 rows × 4 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="show-relationship-betwen-subnet-outout-and-predicted-thrombolysis-use-in-the-10k-patient-set">
-<h3>Show relationship betwen subnet outout and predicted thrombolysis use in the 10k patient set<a class="headerlink" href="#show-relationship-betwen-subnet-outout-and-predicted-thrombolysis-use-in-the-10k-patient-set" title="Permalink to this headline">¶</a></h3>
-<p>Here we plot the relationship between the hospital subnet output for each hospital and 1) actual thrombolysis use in the test set at each hospital, the predicted thrombolysis use of the wjole 10k pateint set attended each hospital.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paient_encode_regions</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/paient_encode_regions.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Show specific rows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows_to_show</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2StrokeType_Primary Intracerebral Haemorrhage&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;num_hosp_thrombolysing&#39;</span><span class="p">]</span>
 
-<span class="c1"># Plot 1: actual vs subnet</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;hosp_subnet_output&#39;</span><span class="p">],</span>
-           <span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;actual_thrombolysis&#39;</span><span class="p">])</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Hospital subnet activation&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis (actual)&#39;</span><span class="p">)</span>
-<span class="n">correlation</span> <span class="o">=</span> <span class="n">predicted_thrombolysis</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-<span class="n">r_square_model</span> <span class="o">=</span> \
-    <span class="n">correlation</span><span class="p">[</span><span class="s1">&#39;hosp_subnet_output&#39;</span><span class="p">][</span><span class="s1">&#39;actual_thrombolysis&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;R-squared: </span><span class="si">{</span><span class="n">r_square_model</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Actual thrombolysis vs.</span><span class="se">\n</span><span class="s1">hospital subnet output&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-
-<span class="c1"># Plot 2: 10k vs subnet</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;hosp_subnet_output&#39;</span><span class="p">],</span>
-           <span class="n">predicted_thrombolysis</span><span class="p">[</span><span class="s1">&#39;10k_thrombolysis&#39;</span><span class="p">])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Hospital subnet activation&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis (reference set)&#39;</span><span class="p">)</span>
-<span class="n">correlation</span> <span class="o">=</span> <span class="n">predicted_thrombolysis</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-<span class="n">r_square_model</span> <span class="o">=</span> \
-    <span class="n">correlation</span><span class="p">[</span><span class="s1">&#39;hosp_subnet_output&#39;</span><span class="p">][</span><span class="s1">&#39;10k_thrombolysis&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;R-squared: </span><span class="si">{</span><span class="n">r_square_model</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Predicted 10k thrombolysis vs.</span><span class="se">\n</span><span class="s1">hospital subnet output&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/hospital_reference_thrombolysis.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">paient_encode_regions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows_to_show</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/004b_analyse_10k_1d_modular_16_0.png" src="../_images/004b_analyse_10k_1d_modular_16_0.png" />
-</div>
-</div>
-<p>We can see that the hospital subnet output correlatates with the actuaol use of thrombolysis at each hospital (R-Squared 0.669), but with some scatter. The scatter will be due to factors other than hospital thrombolysis decision making effectig final thrombolysis use (such as differences in patient populations attenending each hospital). When subnet activation is compared to predicted thrombolysis use of the same patients passing through all hospitals, the correlation betyween hospital subnet activation (which is embedded in the model during training, and is not effected by the test patients) is virtually perfect (R-Squared 0.996).</p>
-<p>The results show:</p>
-<ol class="simple">
-<li><p>Hospital subnet output, fixed during network training, is very closely correlated with the thrombolysis use of a fixed set of patients passed through all hospitals. Hospital subnet output may therefore be used as a measure of “tendenacy to thrombolyse”, with hospitals ranked in tendency to use thrombolysis by this subnet output value.</p></li>
-<li><p>Hospital subnet output (hospital-level decision-making) explains a signficant proportion, but not all, of the inter-hospital variation in use of thrombolysis.</p></li>
-</ol>
-<p>NOTE: Here the subnet activation is inversally proportional to the use of thrombolysis. This may seem counter-intuitive, but it is due to the way neural networks optimise. There is no need for networks to optimise to have direct proportionality throughout the networks; the direction of relationship may be switched at each layer.</p>
-</div>
-</div>
-<div class="section" id="examine-clinical-subnet-output">
-<h2>Examine clinical subnet output<a class="headerlink" href="#examine-clinical-subnet-output" title="Permalink to this headline">¶</a></h2>
-<p>In this section we examine the output of the clinical subnet. This subnet is patient-specific, but expludes pathway data (such as day/time of arrival, time since stroke, time of scan, etc).The output is therefore dependent on patient clinical characteristics, but is not dependent on which hopsital a patient attended or dependent on pathway data.</p>
-<div class="section" id="get-clincial-subnet-output-for-10k-patients">
-<h3>Get clincial subnet output for 10k patients<a class="headerlink" href="#get-clincial-subnet-output-for-10k-patients" title="Permalink to this headline">¶</a></h3>
-<p>This code gets the output directly from the clinical subnet in the neural network. We store this with all patient characteristics (the loaded test set data).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get patient subnet output</span>
-<span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;patient_encode&#39;</span>
-<span class="n">patient_encode_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span><span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-<span class="n">patient_encode_output</span> <span class="o">=</span> <span class="n">patient_encode_model</span><span class="p">([</span>
-    <span class="n">X_test_patients_sc</span><span class="p">,</span> <span class="n">X_test_pathway_sc</span><span class="p">,</span> <span class="n">X_test_hospitals_sc</span><span class="p">])</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1"># Put in DataFrame with all patient characteristics (X)</span>
-<span class="n">clinical_subnet_output</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">patient_encode_output</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;num_hosp_thrombolysising&#39;</span><span class="p">]</span> <span class="o">=</span> \
-    <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">patient_results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-
-<span class="c1"># Sort by patient_subnet_output</span>
-<span class="n">clinical_subnet_output</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>low_x_low_y</th>
+      <th>low_x_high_y</th>
+      <th>high_x_low_y</th>
+      <th>high_x_high_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>S2RankinBeforeStroke</th>
+      <td>2.87</td>
+      <td>0.24</td>
+      <td>1.14</td>
+      <td>0.49</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>18.30</td>
+      <td>11.81</td>
+      <td>12.55</td>
+      <td>0.94</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.95</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>num_hosp_thrombolysing</th>
+      <td>3.91</td>
+      <td>102.04</td>
+      <td>0.00</td>
+      <td>0.01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="show-relationship-between-clinical-subnet-output-and-proportion-of-patients-receiving-thrombolysis">
-<h3>Show relationship between clinical subnet output and proportion of patients receiving thrombolysis<a class="headerlink" href="#show-relationship-between-clinical-subnet-output-and-proportion-of-patients-receiving-thrombolysis" title="Permalink to this headline">¶</a></h3>
-<p>Here we test the relationship between the output of the clinical subnet and the actual use of thrombolysis. We do this by binning the output of the clincial subnets into 10 bins (each representing a range of 0.1 in the clinical subnet output), and taking the avergae use of thrombolysis in that bin.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subnet_values</span> <span class="o">=</span> <span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">subnet_values</span> <span class="o">=</span> <span class="n">subnet_values</span> <span class="o">*</span> <span class="mi">10</span>
-<span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;subnet_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subnet_values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span> <span class="o">+</span> <span class="mf">0.05</span>
-
-
-<span class="n">rx</span> <span class="o">=</span> <span class="n">clinical_subnet_output</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;subnet_bin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rx</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rx</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Patient subnet output (binned)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Prop receiving thrombolysis&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/clinical_subnet_thrombolysis.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/004b_analyse_10k_1d_modular_22_0.png" src="../_images/004b_analyse_10k_1d_modular_22_0.png" />
-</div>
-</div>
-<p>We observe a clear realtionship between the clinical subnet output and the use of thrombolysis - those patients with the highest clinical subnet output have a little over 70% use of thrombolysis.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_thromb_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">patient_results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="c1"># Set up figure</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">)</span>
-<span class="c1"># Plot 1: actual vs subnet</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">],</span>
-                 <span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;num_hosp_thrombolysising&#39;</span><span class="p">]</span> <span class="p">,</span>
-                 <span class="n">c</span><span class="o">=</span><span class="n">clinical_subnet_output</span><span class="p">[</span><span class="s1">&#39;num_hosp_thrombolysising&#39;</span><span class="p">]</span> <span class="p">,</span>
-                 <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">132</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Patient subnet output&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of hospitals predicted to give thrombolysis&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/clinical_subnet_thrombolysis.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/004b_analyse_10k_1d_modular_24_0.png" src="../_images/004b_analyse_10k_1d_modular_24_0.png" />
-</div>
-</div>
-</div>
-<div class="section" id="show-some-clinical-subnet-outputs-by-patient-type">
-<h3>Show some clinical subnet outputs by patient type<a class="headerlink" href="#show-some-clinical-subnet-outputs-by-patient-type" title="Permalink to this headline">¶</a></h3>
-<p>Here we look at the relationships between some clinical features and the clinical subnet output.</p>
-<p>Unsuprising, those patients who receive thrombolysis have a higher</p>
-<div class="section" id="show-patient-subnet-output-by-stroke-type">
-<h4>Show patient_subnet_output by stroke type<a class="headerlink" href="#show-patient-subnet-output-by-stroke-type" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clinical_subnet_output</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2StrokeType_Infarction&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S2StrokeType_Infarction
-0    0.034192
-1    0.634489
-Name: patient_subnet_output, dtype: float32
-</pre></div>
-</div>
-</div>
-</div>
-<p>Those patients with an infarction (clot) have, on average, a much higher clinical subnet output than those without infarction (bleed, or type-unkown).</p>
-</div>
-<div class="section" id="show-patient-subnet-output-by-age-group">
-<h4>Show patient_subnet_output by age group<a class="headerlink" href="#show-patient-subnet-output-by-age-group" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clinical_subnet_output</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;MoreEqual80y_Yes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MoreEqual80y_Yes
-0    0.561819
-1    0.509975
-Name: patient_subnet_output, dtype: float32
-</pre></div>
-</div>
-</div>
-</div>
-<p>Those patients aged 80 or over have a little lower clinical subnet output than those aged under 80.</p>
-</div>
-<div class="section" id="show-relationship-between-nihss-arrival-and-clinical-subnet-output">
-<h4>Show relationship between NIHSS arrival and clinical_subnet_output<a class="headerlink" href="#show-relationship-between-nihss-arrival-and-clinical-subnet-output" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nihss</span> <span class="o">=</span> <span class="n">clinical_subnet_output</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">]</span>
-<span class="c1"># Limit plot to NIHSS of 30 or less, as less than 20 in each group above this</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">nihss</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;=</span><span class="mi">30</span>
-<span class="n">nihss</span> <span class="o">=</span> <span class="n">nihss</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nihss</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">nihss</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;NIHSS on arrival&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Patient subnet activation&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/clinical_subnet_nihss.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/004b_analyse_10k_1d_modular_34_0.png" src="../_images/004b_analyse_10k_1d_modular_34_0.png" />
-</div>
-</div>
-<p>Clinical subnet output is low for patients with low or high NIHSS on arrival.</p>
-</div>
-<div class="section" id="show-relationship-between-modifed-rankin-scale-and-clinical-subnet-output">
-<h4>Show relationship between modifed Rankin Scale and clinical_subnet_output<a class="headerlink" href="#show-relationship-between-modifed-rankin-scale-and-clinical-subnet-output" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rankin</span> <span class="o">=</span> <span class="n">clinical_subnet_output</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;patient_subnet_output&#39;</span><span class="p">]</span>
-<span class="c1"># Limit plot to NIHSS of 30 or less, as less than 20 in each group above this</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rankin</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rankin</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;modied Rankin Scale before stroke&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Patient subnet activation&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/clinical_subnet_rankin.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/004b_analyse_10k_1d_modular_37_0.png" src="../_images/004b_analyse_10k_1d_modular_37_0.png" />
-</div>
-</div>
-<p>Clinical subnet output falls with increasing disability before stroke.</p>
-</div>
-</div>
+<p>We see different types of patients in different quadrants of the clinical subnet output scatter chart:</p>
+<ul class="simple">
+<li><p><em>Low x and low y</em>: Largely non-thrombolysed patients with infarction stroke, and severe stroke and/or higher disability before stroke.</p></li>
+<li><p><em>Low x and high y</em>: Largely thrombolysed patients.</p></li>
+<li><p><em>High x and low y</em>: Largely non-thrombolysed patients with haemorrhagic stroke.</p></li>
+<li><p><em>High x and high y</em>: Largely non-thrombolysed patients with infarction stroke and very mild stroke.</p></li>
+</ul>
 </div>
 <div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
-<p>Using subnets for different types of data incrased model accuracy (previously described). But subnets also provide insight into both hospitals and patients. The subnets allow ranking of hospitals in likelihood to use thrombolysis (independent of patients) and allow ranking of patient clinical characteristics in suitability for thrombolysis.</p>
+<p>2D clinical subnet analysis allows leads to potentially useful embedding/encoding of patients whereby similar patients are clustered together.</p>
 </div>
 </div>
 
@@ -1311,8 +1976,8 @@ Name: patient_subnet_output, dtype: float32
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="004a_generate_1d_nets_for_10k.html" title="previous page">Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset</a>
-    <a class='right-next' id="next-link" href="005a_generate_2d_nets_for_10k.html" title="next page">Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset</a>
+    <a class='left-prev' id="prev-link" href="005a_generate_2d_nets_for_10k.html" title="previous page">Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset</a>
+    <a class='right-next' id="next-link" href="../ensemble/outline.html" title="next page">Ensemble Models</a>
 
         </div>
         
