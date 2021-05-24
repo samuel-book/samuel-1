@@ -602,8 +602,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-where-thrombolysis-was-given-when-not-expected">
-   Example where thrombolysis was given when not expected
+  <a class="reference internal nav-link" href="#example-where-thrombolysis-was-not-given-when-expected">
+   Example where thrombolysis was not given when expected
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -629,7 +629,7 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#example-where-thrombolysis-was-given-when-not-expected">
    Example where thrombolysis was given when not expected
   </a>
  </li>
@@ -962,10 +962,10 @@
 <div class="section" id="similarity-metric">
 <h2>Similarity Metric<a class="headerlink" href="#similarity-metric" title="Permalink to this headline">¶</a></h2>
 <p>When a decision tree is fit to the training data, each internal node in the tree will be split into two further nodes based on the feature that maximises the information gain (or minimises the entropy). Once a split results in two nodes that are pure (only containing samples from a single class) no further information gain is possible: the two nodes are leaves, representing the ends of two paths through the tree. As each patient can take only one path through the decision tree, and all patients start in the same node (the root node), we can use these paths to find the similarity between any pair of patients:</p>
-<p>$<span class="math notranslate nohighlight">\(S(i,j) = \frac{P(i,j)}{\sqrt{P(i)P(j)}}\)</span>$.</p>
+<p><span class="math notranslate nohighlight">\(S(i,j) = \frac{P(i,j)}{\sqrt{P(i)P(j)}}\)</span>.</p>
 <p>Here, <span class="math notranslate nohighlight">\(S(i,j)\)</span> represents the simailarity between patient <span class="math notranslate nohighlight">\(i\)</span> and patient <span class="math notranslate nohighlight">\(j\)</span> as a function of each patient’s path, <span class="math notranslate nohighlight">\(P\)</span>, through the decision tree, where <span class="math notranslate nohighlight">\(P(i)\)</span> correspond to the path length of patient <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(P(j)\)</span> the path length of <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(P(i,j)\)</span> the length of the shared path of <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <p>Path length is measured using the information gain (change in entropy) at each split. Consider patient <span class="math notranslate nohighlight">\(z\)</span>, who takes a path through the decision tree which is comprised of a set of <span class="math notranslate nohighlight">\(N\)</span> nodes, each passed sequentially and with index <span class="math notranslate nohighlight">\(n \in [1,N]\)</span>, where <span class="math notranslate nohighlight">\(n=1\)</span> represents the root node and <span class="math notranslate nohighlight">\(n=N\)</span> the leaf node. If each node with index <span class="math notranslate nohighlight">\(n\)</span> has <span class="math notranslate nohighlight">\(X_n\)</span> patients passing through it, the length of the path of patient <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(P(z)\)</span>, is given by:</p>
-<p>$<span class="math notranslate nohighlight">\(P(z)= \sum_{n=1}^{N-1} X_{n+1} (H_n - H_{n+1} \frac{X_{n+1}}{X_n})\)</span>$,</p>
+<p><span class="math notranslate nohighlight">\(P(z)= \sum_{n=1}^{N-1} X_{n+1} (H_n - H_{n+1} \frac{X_{n+1}}{X_n})\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(H_n\)</span> is the entropy at node <span class="math notranslate nohighlight">\(n\)</span> and the information gain at each split has been weighted by <span class="math notranslate nohighlight">\(X_{n+1}\)</span>, the total number of patients that move from node <span class="math notranslate nohighlight">\(n\)</span> to node <span class="math notranslate nohighlight">\(n+1\)</span>.</p>
 <p>From the second equation it is clear that if patients <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> take exactly the same path through the decision tree their path lengths are equal: <span class="math notranslate nohighlight">\(P(i) = P(j) = P(i,j)\)</span>. Substituting this into the first equation it is clear that if two patients take identical paths the similarity between them is one. Conversely, if patients <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> diverge at the root node (<span class="math notranslate nohighlight">\(n=1\)</span>), their shared path contains only this node: <span class="math notranslate nohighlight">\(P(i,j) = 0\)</span> and hence the similarity between them is equal to zero.</p>
 <p>As a random forest is composed of many decision trees, for each pair of patients we take the distance between them as the average over all trees in the forest. Using this measure of similarity, for each patient in each hospital we found the most similar patients that are treated differently.</p>
@@ -1390,8 +1390,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.37 s, sys: 0 ns, total: 7.37 s
-Wall time: 7.37 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.68 s, sys: 4.15 ms, total: 4.69 s
+Wall time: 4.69 s
 </pre></div>
 </div>
 </div>
@@ -1409,8 +1409,8 @@ Wall time: 7.37 s
 </div>
 </div>
 </div>
-<div class="section" id="example-where-thrombolysis-was-given-when-not-expected">
-<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#example-where-thrombolysis-was-given-when-not-expected" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-where-thrombolysis-was-not-given-when-expected">
+<h2>Example where thrombolysis was not given when expected<a class="headerlink" href="#example-where-thrombolysis-was-not-given-when-expected" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_of_interest</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1460,6 +1460,7 @@ Wall time: 7.37 s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_df</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">patient_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Importance&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">patient_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/similar_patients_treated_differently_1.csv&#39;</span><span class="p">)</span>
 
 <span class="n">patient_df</span>
 </pre></div>
@@ -1711,8 +1712,8 @@ Wall time: 7.37 s
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-where-thrombolysis-was-given-when-not-expected">
+<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#example-where-thrombolysis-was-given-when-not-expected" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_of_interest</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1740,6 +1741,7 @@ Wall time: 7.37 s
     
 <span class="n">patient_df</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">patient_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Importance&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">patient_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/similar_patients_treated_differently_2.csv&#39;</span><span class="p">)</span>
 
 <span class="n">patient_df</span>
 </pre></div>
