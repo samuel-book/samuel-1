@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,14 +37,11 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -1979,7 +1976,7 @@
 <div class="section" id="hospital-with-low-treatment-of-patients-with-mild-stroke">
 <h3>Hospital with low treatment of patients with mild stroke<a class="headerlink" href="#hospital-with-low-treatment-of-patients-with-mild-stroke" title="Permalink to this headline">¶</a></h3>
 <p>Find a patient from a hospital that has a low thrombolysis rate in patients with minor strokes who had a minor stroke and wasn’t thrombolysed but benchmark hospitals would have.</p>
-<p>Load table of previosuly calulated use and ratios by stroke severity and prioirt disability.</p>
+<p>Load table of previosuly calulated use and ratios by stroke severity and prioirt disability. This table provides use opf thrombolysis in mils troke (NIHSS 0-4) and modertae to sever stroke (NIHSS 16-20), and use in patients with no prior disabillity (modified Rankin Scale 0-1) and with prior disability (modified Rankin Scale 2+), and the rations between those groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ratios</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/thrombolysis_ratios.csv&#39;</span><span class="p">)</span>
@@ -2126,6 +2123,8 @@
 </table>
 </div></div></div>
 </div>
+<p>The average use of thrombolysis in mild stroke (NIHSS 0-4) across hospitals is 12.9% of patients arriving within 4 hours of known stroke onset. This rate is, on average, 33% that of moderate to severe stroke (NIHSS 16-20).</p>
+<p>LFPMM4706C is a stroke team that uses thrombolysis in 0.6% of mild stroke, 4% of the use rate in moderate to severe stroke in the same hospital.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minor</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">minor_hospital</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">)</span> \
@@ -3271,7 +3270,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_33_0.png" src="../_images/vignettes_33_0.png" />
+<img alt="../_images/vignettes_34_0.png" src="../_images/vignettes_34_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3283,7 +3282,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_34_0.png" src="../_images/vignettes_34_0.png" />
+<img alt="../_images/vignettes_35_0.png" src="../_images/vignettes_35_0.png" />
 </div>
 </div>
 <p>Create vignette for a mild stroke patient at a hospital with low thrombolysis use in mild strokes</p>
@@ -4459,7 +4458,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_39_0.png" src="../_images/vignettes_39_0.png" />
+<img alt="../_images/vignettes_40_0.png" src="../_images/vignettes_40_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5296,6 +5295,8 @@
 </table>
 </div></div></div>
 </div>
+<p>The average use of thrombolysis in patients with prior disability (mRS 2+) is 18.9% of patients arriving within 4 hours of known stroke onset. This rate is, on average, 58% that of patients with no prior disability (mRS 0-1).</p>
+<p>OUXUZ1084Q is a stroke team that uses thrombolysis in 2.3% of patients with prior disability, 10% of the use rate in patients with no prior disability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_venn</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">disability_hospital</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -5303,7 +5304,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_46_0.png" src="../_images/vignettes_46_0.png" />
+<img alt="../_images/vignettes_48_0.png" src="../_images/vignettes_48_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5315,7 +5316,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_47_0.png" src="../_images/vignettes_47_0.png" />
+<img alt="../_images/vignettes_49_0.png" src="../_images/vignettes_49_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -6164,7 +6165,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_51_0.png" src="../_images/vignettes_51_0.png" />
+<img alt="../_images/vignettes_53_0.png" src="../_images/vignettes_53_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -7691,7 +7692,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_59_0.png" src="../_images/vignettes_59_0.png" />
+<img alt="../_images/vignettes_61_0.png" src="../_images/vignettes_61_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -7704,7 +7705,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/vignettes_60_0.png" src="../_images/vignettes_60_0.png" />
+<img alt="../_images/vignettes_62_0.png" src="../_images/vignettes_62_0.png" />
 </div>
 </div>
 </div>
@@ -7769,10 +7770,9 @@
 
       </div>
     </div>
-    
+  
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
-    
+  
   </body>
 </html>
