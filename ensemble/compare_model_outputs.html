@@ -534,6 +534,11 @@
    Confusion matrix for models vs actual
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -547,7 +552,12 @@
                 
   <div class="section" id="comparison-of-model-outputs">
 <h1>Comparison of model outputs<a class="headerlink" href="#comparison-of-model-outputs" title="Permalink to this headline">¶</a></h1>
-<p>Aims: Compare probability predictions from logistic regression, random forests, and neural networks</p>
+<p>Aims:</p>
+<ul class="simple">
+<li><p>Compare probability predictions between logistic regression, random forests, and neural networks</p></li>
+<li><p>Compare classifcations between logistic regression, random forests, and neural networks</p></li>
+<li><p>Compare classifcations between logistic regression, random forests neural networks, and actual classification (whether thrombolysis was given).</p></li>
+</ul>
 <div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -1005,6 +1015,13 @@ Invert the y axis so that it has the same order as the scatter plots above (i.e.
 <img alt="../_images/compare_model_outputs_38_0.png" src="../_images/compare_model_outputs_38_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>There is high agreement in prediction between different model types, with random forests and neural networks having the highest agreement.</p></li>
+<li><p>There is greater agreement bewteen the different model types than between the models and reality.</p></li>
+</ul>
 </div>
 </div>
 
