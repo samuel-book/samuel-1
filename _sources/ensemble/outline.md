@@ -14,4 +14,6 @@ This section contains the following notebooks (all experiemnts are performed wit
 
 * *Ensemble combine with neural network*: combine output from logistic regression, random forests, and neural network models in a single neural network model, with or without original data features.
 
+* *Summary of resuts from ensemble models*: summary of ensemble model accuracies.
+
 
