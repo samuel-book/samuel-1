@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
+    <title>Summary of resuts from ensemble models &#8212; SAMueL-1 Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Software" href="software.html" />
-    <link rel="prev" title="Introduction to SAMueL-1" href="intro.html" />
+    <link rel="next" title="Model building and validation" href="../pathway_sim/outline_model.html" />
+    <link rel="prev" title="Ensemble combine with a neural network" href="ensemble_with_neural_network.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -82,7 +82,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
+  <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL-1
   </a>
  </li>
@@ -92,14 +92,14 @@
   Data and software
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
    Data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="software.html">
+  <a class="reference internal" href="../introduction/software.html">
    Software
   </a>
  </li>
@@ -168,7 +168,7 @@
   Machine Learning
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
@@ -325,43 +325,43 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/outline.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="outline.html">
    Ensemble Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
+    <a class="reference internal" href="ensemble_generate_probabilities.html">
      Ensemble model fitting - generate probabilities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/compare_model_outputs.html">
+    <a class="reference internal" href="compare_model_outputs.html">
      Comparison of model outputs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_with_logistic_regression.html">
+    <a class="reference internal" href="ensemble_with_logistic_regression.html">
      Ensemble combine with logistic regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_with_random_forests.html">
+    <a class="reference internal" href="ensemble_with_random_forests.html">
      Ensemble combine with random forests
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_with_neural_network.html">
+    <a class="reference internal" href="ensemble_with_neural_network.html">
      Ensemble combine with a neural network
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_summary.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Summary of resuts from ensemble models
     </a>
    </li>
@@ -464,7 +464,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/introduction/data.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ensemble/ensemble_summary.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -489,66 +489,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-access">
-   Data access
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-fields">
-   Data Fields
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stroke-team">
-     Stroke Team
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-general">
-     Patient – general
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-pathway-information">
-     Patient – pathway information
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-comorbidities">
-     Patient – comorbidities
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-nih-stroke-scale">
-     Patient – NIH Stroke Scale
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-other-clinical-features">
-     Patient – other clinical features
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-thrombolysis-given">
-     Patient – thrombolysis given
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#patient-reason-stated-for-not-giving-thrombolysis">
-     Patient – Reason stated for not giving thrombolysis
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -557,122 +497,35 @@
         
               <div>
                 
-  <div class="section" id="data">
-<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="data-access">
-<h2>Data access<a class="headerlink" href="#data-access" title="Permalink to this headline">¶</a></h2>
-<p>Data was obtained from the Sentinel Stroke National Audit (SSNAP [1]), managed through the Healthcare Quality Improvement Partnership (HQIP [2]). SSNAP has near-complete coverage of all acute stroke admissions in the UK (outside Scotland). All hospitals admitting acute stroke participate in the audit, and year-on-year comparison with Hospital Episode Statistics [3] confirms estimated case ascertainment of 95% of coded cases of acute stroke.</p>
-<p>The NHS Health Research Authority decision tool [4] was used to confirm that ethical approval was not required to access the data. Data access was authorised by HQIP (reference HQIP303).</p>
-<p>Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams in England and Wales between 2016 and 2018 (three full years).</p>
-<p>[1] <a class="reference external" href="https://www.strokeaudit.org/">https://www.strokeaudit.org/</a></p>
-<p>[2] <a class="reference external" href="https://www.hqip.org.uk/">https://www.hqip.org.uk/</a></p>
-<p>[3] <a class="reference external" href="https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics">https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics</a></p>
-<p>[4] <a class="reference external" href="http://www.hra-decisiontools.org.uk/research/">http://www.hra-decisiontools.org.uk/research/</a></p>
-</div>
-<div class="section" id="data-fields">
-<h2>Data Fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="stroke-team">
-<h3>Stroke Team<a class="headerlink" href="#stroke-team" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>StrokeTeam: Pseudonymised SSNAP ‘routinely admitting team‘ unique identifier. For emergency care it is expected that each hospital has one stroke team (though post-72 hour care may be reported under a different team at that hospital).PatientUID: Pseudonymised patient unique identifier</p></li>
-</ul>
-</div>
-<div class="section" id="patient-general">
-<h3>Patient – general<a class="headerlink" href="#patient-general" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Pathway: Total number of team transfers, excluding community teams</p></li>
-<li><p>S1AgeOnArrival: Age on arrival aggregated to 5 year bands</p></li>
-<li><p>MoreEqual80y: Whether the patient is &gt;= 80 years old at the moment of the stroke</p></li>
-<li><p>S1Gender: Gender</p></li>
-<li><p>S1Ethnicity: Patient Ethnicity. Aggregated to White, Black, Mixed, Asian and Other</p></li>
-</ul>
-</div>
-<div class="section" id="patient-pathway-information">
-<h3>Patient – pathway information<a class="headerlink" href="#patient-pathway-information" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>S1OnsetInHospital: Whether the patient was already an inpatient at the time of stroke</p></li>
-<li><p>S1OnsetToArrival_min: Time from symptom onset to arrival at hospital in minutes, where known and if out of hospital stroke</p></li>
-<li><p>S1OnsetDateType: Whether the date of onset given is precise, best estimate or if the stroke occurred while sleep</p></li>
-<li><p>S1OnsetTimeType: Whether the time of symptom onset given is precise, best estimate, not known</p></li>
-<li><p>S1ArriveByAmbulance: Whether the patient arrived by ambulance</p></li>
-<li><p>S1AdmissionHour: Hour of arrival, aggregates to 3 hour epochs</p></li>
-<li><p>S1AdmissionDay: Day of week at the moment of admission</p></li>
-<li><p>S1AdmissionQuarter: Year quarter (Q1: Jan-Mar; Q2:April-Jun; Q3: Jul-Sept; Q4: Oct-Dec)</p></li>
-<li><p>S1AdmissionYear: Year of admission</p></li>
-<li><p>S2BrainImagingTime_min: Time from Clock Start to brain scan. In minutes. “Clock Start” is used throughout SSNAP reporting to refer to the date and time of arrival at first hospital for newly arrived patients, or to the date and time of symptom onset if patient already in hospital at the time of their stroke.</p></li>
-<li><p>S2ThrombolysisTime_min: Time from Clock Start to thrombolysis. In minutes. “Clock Start” is used throughout SSNAP reporting to refer to the date and time of arrival at first hospital for newly arrived patients, or to the date and time of symptom onset if patient already in hospital at the time of their stroke.</p></li>
-</ul>
-</div>
-<div class="section" id="patient-comorbidities">
-<h3>Patient – comorbidities<a class="headerlink" href="#patient-comorbidities" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>CongestiveHeartFailure: Pre-Stroke Congestive Heart Failure</p></li>
-<li><p>Hypertension: Pre-Stroke Systemic Hypertension</p></li>
-<li><p>AtrialFibrillation: Pre-Stroke Atrial Fibrillation (persistent, permanent, or paroxysmal)</p></li>
-<li><p>Diabetes: Comorbidities: Pre-Stroke Diabetes Mellitus</p></li>
-<li><p>StrokeTIA: Pre-Stroke history of stroke or Transient Ischaemic Attack (TIA)</p></li>
-<li><p>AFAntiplatelet: Only available if “Yes” to Atrial Fibrillation comorbidity. Whether the patient was on antiplatelet medication prior to admission</p></li>
-<li><p>AFAnticoagulent: Prior to 01-Dec-2017: Only available if “Yes” to Atrial Fibrillation comorbidity; From 01-Dec-2017: available even if patient is not in Atrial Fibrillation prior to admission. Whether the patient was on anticoagulant medication prior to admission</p></li>
-<li><p>AFAnticoagulentVitK: If the patient was receiving anticoagulant medication, was it vitamin K antagonists</p></li>
-<li><p>AFAnticoagulentDOAC: If the patient was receiving anticoagulant medication, was it direct oral anticoagulants (DOACs)</p></li>
-<li><p>AFAnticoagulentHeparin: If the patient was receiving anticoagulant medication, was it Heparin</p></li>
-</ul>
-</div>
-<div class="section" id="patient-nih-stroke-scale">
-<h3>Patient – NIH Stroke Scale<a class="headerlink" href="#patient-nih-stroke-scale" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>S2NihssArrival: National Institutes of Health Stroke Scale score on arrival at hospital</p></li>
-<li><p>BestGaze: National Institutes of Health Stroke Scale Item 2 Best Gaze (higher values indicate more severe deficit)</p></li>
-<li><p>BestLanguage: National Institutes of Health Stroke Scale Item 9 Best Language (higher values indicate more severe deficit)</p></li>
-<li><p>Dysarthria: National Institutes of Health Stroke Scale Item 10 Dysarthria (higher values indicate more severe deficit)</p></li>
-<li><p>ExtinctionInattention: National Institutes of Health Stroke Scale Item 11 Extinction and Inattention (higher values indicate more severe deficit)</p></li>
-<li><p>FacialPalsy: National Institutes of Health Stroke Scale Item 4 Facial Paresis (higher values indicate more severe deficit)</p></li>
-<li><p>LimbAtaxia: National Institutes of Health Stroke Scale Item 7 Limb Ataxia (higher values indicate more severe deficit)</p></li>
-<li><p>Loc: National Institutes of Health Stroke Scale Item 1a Level of Consciousness (higher values indicate more severe deficit)</p></li>
-<li><p>LocCommands: National Institutes of Health Stroke Scale Item 1c Level of Consciousness Commands (higher values indicate more severe deficit)</p></li>
-<li><p>LocQuestions: National Institutes of Health Stroke Scale Item 1b Level of Consciousness Questions (higher values indicate more severe deficit)</p></li>
-<li><p>MotorArmLeft: National Institutes of Health Stroke Scale Item 5a Motor Arm - Left (higher values indicate more severe deficit)</p></li>
-<li><p>MotorArmRight: National Institutes of Health Stroke Scale Item 5b Motor Arm - Right (higher values indicate more severe deficit)</p></li>
-<li><p>MotorLegLeft: National Institutes of Health Stroke Scale Item 6a Motor Leg - Left (higher values indicate more severe deficit)</p></li>
-<li><p>MotorLegRight: National Institutes of Health Stroke Scale Item 6b Motor Leg - Right (higher values indicate more severe deficit)</p></li>
-<li><p>Sensory: National Institutes of Health Stroke Scale Item 8 Sensory (higher values indicate more severe deficit)</p></li>
-<li><p>Visual: National Institutes of Health Stroke Scale Item 3 Visual Fields (higher values indicate more severe deficit)</p></li>
-</ul>
-</div>
-<div class="section" id="patient-other-clinical-features">
-<h3>Patient – other clinical features<a class="headerlink" href="#patient-other-clinical-features" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>S2INR: Patient’s International Normalised ratio (INR) on arrival at hospital (available since 01-Dec-2017)</p></li>
-<li><p>S2INRHigh: INR was greater than 10 on arrival at hospital (available since 01-Dec-2017)</p></li>
-<li><p>S2INRNK: INR not checked (available since 01-Dec-2017)</p></li>
-<li><p>S2NewAFDiagnosis: Whether a new diagnosis of Atrial Fibrillation was made on admission</p></li>
-<li><p>S2RankinBeforeStroke: Patient’s modified Rankin Scale score before this stroke (Higher values indicate more disability)</p></li>
-<li><p>S2StrokeType: Whether the stroke type was infarction or primary intracerebral haemorrhage</p></li>
-<li><p>S2TIAInLastMonth: Whether the patient had a Transient Ischaemic Attack during the last month. Item from the SSNAP comprehensive dataset questions (not mandatory)</p></li>
-</ul>
-</div>
-<div class="section" id="patient-thrombolysis-given">
-<h3>Patient – thrombolysis given<a class="headerlink" href="#patient-thrombolysis-given" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>S2Thrombolysis: Whether the patient was given thrombolysis (clot busting medication)</p></li>
-</ul>
-</div>
-<div class="section" id="patient-reason-stated-for-not-giving-thrombolysis">
-<h3>Patient – Reason stated for not giving thrombolysis<a class="headerlink" href="#patient-reason-stated-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Age: If the answer to thrombolysis given was “no but”, the reason was Age</p></li>
-<li><p>Comorbidity: If the answer to thrombolysis given was “no but”, the reason was Co-morbidity</p></li>
-<li><p>Haemorrhagic: If the answer to thrombolysis given was “no but”, the reason was Haemorrhagic stroke</p></li>
-<li><p>Improving: If the answer to thrombolysis given was “no but”, the reason was Symptoms Improving</p></li>
-<li><p>Medication: If the answer to thrombolysis given was “no but”, the reason was Medication</p></li>
-<li><p>OtherMedical: If the answer to thrombolysis given was “no but”, the reason was Other medical reason</p></li>
-<li><p>Refusal: If the answer to thrombolysis given was “no but”, the reason was Refusal</p></li>
-<li><p>TimeUnknownWakeUp: If the answer to thrombolysis given was “no but”, the reason was Symptom onset time unknown/wake-up stroke</p></li>
-<li><p>TimeWindow: If the answer to thrombolysis given was “no but”, the reason was Age</p></li>
-<li><p>TooMildSevere: If the answer to thrombolysis given was “no but”, the reason was Stroke too mild or too severe</p></li>
-</ul>
-</div>
-</div>
+  <div class="section" id="summary-of-resuts-from-ensemble-models">
+<h1>Summary of resuts from ensemble models<a class="headerlink" href="#summary-of-resuts-from-ensemble-models" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data used</strong></p></th>
+<th class="head"><p><strong>Logistic regression</strong></p></th>
+<th class="head"><p><strong>Random forests</strong></p></th>
+<th class="head"><p><strong>Neural network (fully connected)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Use original patient data only</p></td>
+<td><p>83.2%</p></td>
+<td><p>84.2%</p></td>
+<td><p>83.4%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Model probability output only</p></td>
+<td><p>83.6%</p></td>
+<td><p>83.8%</p></td>
+<td><p>83.5%</p></td>
+</tr>
+<tr class="row-even"><td><p>Original patient data + model probability output</p></td>
+<td><p>83.0%</p></td>
+<td><p>84.2%</p></td>
+<td><p>83.0%</p></td>
+</tr>
+</tbody>
+</table>
+<p>Use of ensemble techniques did not improve model accuracy.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -688,7 +541,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./introduction"
+            path: "./ensemble"
         },
         predefinedOutput: true
     }
@@ -700,8 +553,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction to SAMueL-1</a>
-    <a class='right-next' id="next-link" href="software.html" title="next page">Software</a>
+    <a class='left-prev' id="prev-link" href="ensemble_with_neural_network.html" title="previous page">Ensemble combine with a neural network</a>
+    <a class='right-next' id="next-link" href="../pathway_sim/outline_model.html" title="next page">Model building and validation</a>
 
         </div>
         
