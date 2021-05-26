@@ -494,6 +494,11 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#load-libraries">
    Load libraries
   </a>
@@ -592,6 +597,21 @@
                 
   <div class="section" id="analysis-of-alternative-pathway-scenarios">
 <h1>Analysis of alternative pathway scenarios<a class="headerlink" href="#analysis-of-alternative-pathway-scenarios" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aims">
+<h2>Aims:<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+<p>Analyse the perforance of the following scenarios:</p>
+<ol class="simple">
+<li><p>Base: Uses the hospitals’ recorded pathway statistics in SSNAP (same as validation notebook)</p></li>
+<li><p>Speed: Sets 95% of patients having a scan within 4 hours of arrival, and all patients have 15 minutes arrival to scan and 15 minutes scan to needle.</p></li>
+<li><p>Onset-known: Sets the proportion of patients with a known onset time of stroke to the national upper quartile if currently less than the national upper quartile (leave any greater than the upper national quartile at their current level).</p></li>
+<li><p>Benchmark: The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.</p></li>
+<li><p>Combine <em>Speed</em> and <em>Onset-known</em></p></li>
+<li><p>Combine <em>Speed</em> and <em>Benchmark</em></p></li>
+<li><p>Combine <em>Onset-known</em> and <em>Benchmark</em></p></li>
+<li><p>Combine <em>Speed</em> and <em>Onset-known</em> and <em>Benchmark</em></p></li>
+</ol>
+<p>The analysis will be at a global level (all hospitals together) as well as demosntrating analysis at a hospital level.</p>
+</div>
 <div class="section" id="load-libraries">
 <h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
