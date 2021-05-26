@@ -36,7 +36,7 @@ The notebooks are:
 
 * *Investigating the output of neural net embedding subnets*:  Investigate the output of the hospital and clinical subnets of the embedding neural network. 1) Examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hopsital moodels. 2) Examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output.
 
-* *# Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset*: Repeat of above but with 2D subnet output.
+* *Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset*: Repeat of above but with 2D subnet output.
 
 * Investigating the output of neural net embedding subnets - with 2D subnet output*: Repeat of above but with 2D subnet output.
 
