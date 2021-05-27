@@ -22,7 +22,7 @@ The overall aims of the project are
 
 ## Data
 
-Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams in England and Wales between 2016 and 2018 (three full years).
+Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams in England and Wales between 2016 and 2018 (three full years). Data used is for units which have at least 300 emergency stroke admissions with at least 10 patients receiving thrombolysis in the three years.
 
 ## General statistics
 
