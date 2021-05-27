@@ -32,7 +32,7 @@ This project has been brought to you by:
 * Leon Farmer
 * Penny Posh
 
-** External steering group**
+**External steering group**
 
 * Tom Monks
 * Ajay Bhalla
