@@ -34,8 +34,6 @@ Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams
 
 * 11.8% of all out-of-hospital stroke onset arrivals receive thrombolysis.
 
-* 43% of arrivals are aged 80 or more.
-
 * 67% of all patients have a determined stroke time of onset, 60% of whom arrive within 4 hours of known stroke onset. 40% of all arrivals arrive within 4 hours of known stroke onset.
 
 Of those out-of-hospital onset patients arriving within 4 hours of known stroke onset:
@@ -70,6 +68,8 @@ Of those out-of-hospital onset patients arriving within 4 hours of known stroke 
 
 ### Differences by age group (under age 80 vs. aged 80+ years) and gender:
 
+* 43% of arrivals are aged 80 or more.
+
 * 10.1% of arrivals aged 80+ receive thrombolysis, c.f. 13.0% of those under age 80. There is a steady decline in use of thrombolysis over the age of 55.
 
 * 39% of arrivals aged 80+ arrive within 4 hours of known stroke onset, c.f. 40% of those under age 80.
@@ -79,6 +79,8 @@ Of those out-of-hospital onset patients arriving within 4 hours of known stroke 
 * The average stroke severity (NIHSS) on arrival is 10.7 for those aged 80+, c.f. 8.2 for those under age 80.
 
 * Of those scanned within 4 hours, 26.3% of those aged 80+ receive thrombolysis, c.f. 34.7% of those under age 80.
+
+* 51.4% of all arrivals are male.
 
 * Of those arriving within 4 hours of known stroke onset 30.8% of all male arrivals receive thrombolysis, compared with 28.2% for females.
 
