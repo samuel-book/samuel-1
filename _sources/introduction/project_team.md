@@ -1,4 +1,4 @@
-# Project team
+# Contact and Project Team
 
 Contact for queries and information: m.allen@exeter.ac.uk
 
