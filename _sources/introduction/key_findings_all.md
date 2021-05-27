@@ -10,9 +10,9 @@
 
 The overall aims of the project are:
 
-* Model thrombolysis decision-making using machine learning, so that we may ask the question 'what treatment would my patient receive at other hospitals?'
+* Model thrombolysis decision-making using machine learning, so that we may ask the question *'what treatment would my patient receive at other hospitals?'*
 
-* Model the stroke pathway, using clinical pathway simulation, so that we may ask the question 'what would happen to a hospital's thrombolysis use of, and benefit from, thrombolysis by changing key aspects of the pathway including:
+* Model the stroke pathway, using clinical pathway simulation, so that we may ask the question *'what would happen to a hospital's thrombolysis use of, and benefit from, thrombolysis by changing key aspects of the pathway?'*. The key changes investigated are: 
 
     * Pathway speed
     
@@ -199,7 +199,7 @@ Results:
 
 * The model identifies the changes that make most difference at each hospital. For improvement in thrombolysis use the changes that make the greatest single difference are benchmark decisions (at 41 hospitals), determining stroke onset time (at 40 hospitals), and speed (at 10 hospitals). One hospital did not have improvement from any change in the model. For improvement in predicted clinical benefit the changes that make the greatest single difference are benchmark decisions (at 55 hospitals), speed (at 51 hospitals) and determining stroke onset time (at 26 hospitals).
 
-* If all changes were made at all hospitals there would still be significant variation in use of, and benefit, from thrombolysis. This is due to differences in local patient populations (both in terms of differing clinical presentations, and differences in time from onset to arrival), but the total national benefit will be significantly improved.
+* If all changes were made at all hospitals there would still be significant variation in use of, and benefit from, thrombolysis. This is due to differences in local patient populations (both in terms of differing clinical presentations, and differences in time from onset to arrival), but the total national benefit will be significantly improved.
 
 * The model may be used to provide a target use of thrombolysis that is tailored to each hospital.
 
