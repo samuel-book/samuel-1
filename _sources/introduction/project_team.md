@@ -7,6 +7,7 @@ This project has been brought to you by:
 **Project oversight and management**
 
 * Ken Stein
+* Stuart Logan
 * Sarah Carter
 
 **Clinical leadership**
@@ -30,6 +31,13 @@ This project has been brought to you by:
 * Kristin Liabo
 * Leon Farmer
 * Penny Posh
+
+** External steering group**
+
+* Tom Monks
+* Ajay Bhalla
+* Gary Ford
+* Tony Rudd
 
 
 
