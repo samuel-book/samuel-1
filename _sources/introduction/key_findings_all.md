@@ -192,7 +192,7 @@ The figure below shows an example of patient clinical embedding as a 2D vector. 
 
 ![](./../images/embedding.jpg "Clinical embedding")
 
-<img src="./../images/embedding" width="200" title="Test">
+<img src="./../images/embedding.jpg" width="200" title="Test">
 
 ## Pathway simulation
 
