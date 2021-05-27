@@ -25,7 +25,7 @@ Some of our most important findings were:
 
 * There is large range in *willingness to treat*. Given the same set of patients, those most willing to treat would treat four to five times more patients than those least willing to treat.
 
-* If all hospitals made decisions like the top 30 *most willing to treat* hospitals, there would be 13 people treated for every 10 treated now. And that would mean there would be 13 disability-free outcomes due to treatment for each 10 now.
+* If all hospitals made decisions like the top 30 *most willing to treat* hospitals, there would be 13 people treated for every 10 treated now. And that would mean there would be 13 disability-free outcomes due to treatment for every 10 now.
 
 * We can show individual hospitals examples of patients that they appear to treat differently from the top 30 *most willing to treat* hospitals. We hope this will help open up discussions on why different hospitals select different patients for treatment.
 
@@ -33,9 +33,9 @@ Some of our most important findings were:
 
 * Determining the time a stroke started is critical if clot-busting drugs are to be given. Some hospitals do that for many more patients than others. Sometimes this will be because a hospital has patients where this is very hard to find, but other times it may because some hospitals have worked out how to do this best, along with their local ambulance colleagues. If all hospitals managed to do as well as a typical 'good' hospital (about a quarter the way down the 'league table' of how many patients they determine the stroke onset time for, there would be 11-12 people treated for every 10 treated now.
 
-* Before a patient can be treated they must have a brain scan, and then the treatment must be prepared and delivered. Hospitals manage to do this at different speeds. If all hospitals managed to do both of those tasks in 30 minutes (which some hospitals have shown is possible) then there would be 12-13 people treated for every 10 treated now. But as well as treating more patients, all patients would be treated more quickly, getting more benefit from the drug, so there would be 15 disability-free outcomes due to treatment for each 10 now.
+* Before a patient can be treated they must have a brain scan, and then the treatment must be prepared and delivered. Hospitals manage to do this at different speeds. If all hospitals managed to do both of those tasks in 30 minutes (which some hospitals have shown is possible) then there would be 12-13 people treated for every 10 treated now. But as well as treating more patients, all patients would be treated more quickly, getting more benefit from the drug, so there would be 15 disability-free outcomes due to treatment for every 10 now.
 
-* If we combined all these changes across all hospitals then we would expect there would be 16 people treated for every 10 treated now. That is instead of treating about one in nine patients, as now, we would treat one in five to six. More importantly, there would be 19 disability-free outcomes due to treatment for each 10 now.
+* If we combined all these changes across all hospitals then we would expect there would be 16 people treated for every 10 treated now. That is instead of treating about one in nine patients, as now, we would treat one in five to six. More importantly, there would be 19 disability-free outcomes due to treatment for every 10 now.
 
 * After we test all these changes at each hospital in our models we find there will still be quite a lot of variation in how many are treated at each hospital. This is because hospitals have different populations of patients. So rather than having a single target for treatment for all hospitals, it may be better to have a realistic target for each hospital, which takes their patient mix into account.
 
