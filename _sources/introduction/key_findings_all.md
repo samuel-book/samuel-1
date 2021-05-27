@@ -8,7 +8,7 @@
 
 ## Overall aims
 
-The overall aims of the project are
+The overall aims of the project are:
 
 * Model thrombolysis decision-making using machine learning, so that we may ask the question 'what treatment would my patient receive at other hospitals?'
 
@@ -20,7 +20,7 @@ The overall aims of the project are
     
     * Making decisions according to the majority vote of decisions that would be expected at a 'benchmark* set of hospitals
 
-We base our modelling on a simplified view of the stroke pathway.
+We base our modelling on a simplified view of the stroke pathway:
     
 ![](./../images/pathway.png)
 
