@@ -10,7 +10,7 @@ Clot-busting drugs are not suitable for everyone. There is a small risk of a ble
 
 Our work broke down into three areas.
 
-1. We built *machine learning* models that learned which patients would be given thrombolysis at each hospital. *Machine learning* works on the principle of asking and learning *"What happened to similar patients in this hospital before?"* 
+1. We built *machine learning* models that learned which patients would be given clot-busting drugs at each hospital. *Machine learning* works on the principle of asking and learning *"What happened to similar patients in this hospital before?"* 
 
 2. We built a simulation of stroke pathways for all hospitals. This simulation would pass individual patients through a pathway with each patient having their own unique speed of movement through the pathway, but with speeds all being typical of a particular hospital. Each hospital also has patients that are typical of that hospital (replicating, for example, the number of patients who arrive in hospital in time for clot-busting treatment). With this simulation we could ask questions like *"What would happen if we could speed up the pathway at this hospital?*.
 
@@ -45,7 +45,7 @@ Some of our most important findings were:
 
 * For each hospital we can predict which change would make most difference - is it speed, or willingness to treat, or determining stroke onset times? We can help hospitals identify what is best for them to work on improving, and that may be different to the hospital down the road.
 
-* Feedback from doctors throughout the project was really positive and useful. They helped us to work out what to show. They also had questions for us on how we could take this forward. They wanted to know how doctors would know about this. They wanted to know how we would communicate with managers and the people who pay for the hospitals if they needed investment to improve the service. Importantly, they wanted our machine learning models to learn to predict likely outcome, as well as likely treatment decision.
+* Feedback from doctors throughout the project was really positive and useful. They helped us to work out what to show. They also had questions for us on how we could take this forward. They wanted to know how doctors would know about this. They wanted to know how we would communicate with managers and the people who pay for the hospitals if they needed investment to improve the service. Importantly, they wanted our machine learning models to learn to predict likely outcome, as well as likely treatment decision. We did also find that it was those doctors who are most knowledgable about this area who were most interested in our work. That is very re-assuring, but it is actually those less knowledgable, and less confident in the use of clot-busting drugs, that we want to reach most!
 
 We are working with the 'National Stroke Audit' now on making our models part of their routine reporting back to hospitals. And we are, of course, working on what we shall do next to develop this work further!
 
