@@ -167,7 +167,7 @@ When comparing predicted decisions between hospitals:
 
 * For patients not treated as expected we can use the structure of the random forests model to find similar patients that were treated differently.
 
-![](./../images/benchmark_thrombolysis.png "A comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.")
+![](./../images/benchmark_thrombolysis.jpg "A comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue")
 
 ## Neural networks
 
