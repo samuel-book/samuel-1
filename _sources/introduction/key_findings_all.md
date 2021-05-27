@@ -192,6 +192,8 @@ The figure below shows an example of patient clinical embedding as a 2D vector. 
 
 ![](./../images/embedding.jpg "Clinical embedding")
 
+<img src="./../images/embedding" width="200" title="Test">
+
 ## Pathway simulation
 
 The model is used to examine the effect, at each hospital and nationally, of making three key changes (alone or in combination) to the stroke pathway:
