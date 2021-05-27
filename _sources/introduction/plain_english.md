@@ -10,7 +10,7 @@ Clot-busting drugs are not suitable for everyone. There is a small risk of a ble
 
 Our work broke down into three areas.
 
-1. We built *machine learning* models that learned which patients would be given thrombolysis at each hospital. These models were correct eight to nine time out of ten. Using these models we could ask the question *"What treatment would this patient have likely received at different hospitals?"*
+1. We built *machine learning* models that learned which patients would be given thrombolysis at each hospital. *Machine learning* works on the principle of asking *"What happened to similar patients in this hospital before?"* 
 
 2. We built a simulation of stroke pathways for all hospitals. This simulation would pass individual patients through a pathway with each patient having their own unique speed of movement through the pathway, but with speeds all being typical of a particular hospital. Each hospital also has patients that are typical of that hospital (replicating, for example, the number of patients who arrive in hospital in time for clot-busting treatment). With this simulation we could ask questions like *"What would happen if we could speed up the pathway at this hospital?*.
 
@@ -21,6 +21,10 @@ Our work broke down into three areas.
 
 Some of our most important findings were:
 
+* Our machine learning models were correct eight to nine times out of ten. They also report how sure they are about a decision, and the more sure they are the more often they are right.
+
+* Using our machine learning models we could ask the question *"What treatment would this patient have likely received at different hospitals?"*
+
 * Different hospitals would likely make different decisions on patients. Hospitals can more easily agree on who definitely *should not be* treated with clot-busting drugs than who *should be*.
 
 * There is large range in *willingness to treat*. Given the same set of patients, those most willing to treat would treat four to five times more patients than those least willing to treat.
@@ -29,9 +33,9 @@ Some of our most important findings were:
 
 * We can show individual hospitals examples of patients that they appear to treat differently from the top 30 *most willing to treat* hospitals. We hope this will help open up discussions on why different hospitals select different patients for treatment.
 
-* We can highlight patients who were not treated as we would expect them to be in a hospital. This might be due to us not having all the important information, but it might also help hospitals see the patients where the pathway did not perform well, and help them look to see how they could make it better in the future.
+* We can highlight patients who were not treated as we would expect them to be treated in the hospital that they attended. This might be due to us not having all the important information, but it might also help hospitals see the patients where the pathway did not perform well, and help them look to see how they could make it better in the future.
 
-* Determining the time a stroke started is critical if clot-busting drugs are to be given. Some hospitals do that for many more patients than others. Sometimes this will be because a hospital has patients where this is very hard to find, but other times it may because some hospitals have worked out how to do this best, along with their local ambulance colleagues. If all hospitals managed to do as well as a typical 'good' hospital (about a quarter the way down the 'league table' of how many patients they determine the stroke onset time for, there would be 11-12 people treated for every 10 treated now.
+* Determining the time a stroke started is critical if clot-busting drugs are to be given. Some hospitals do that for many more patients than others. Sometimes this will be because a hospital has patients where this is very hard to find, but other times it may because some hospitals have worked out how to do this best, along with their local ambulance colleagues. If all hospitals managed to do as well as a typical 'good' hospital (about a quarter the way down the 'league table' of how many patients they determine the stroke onset time for), there would be 11-12 people treated for every 10 treated now.
 
 * Before a patient can be treated they must have a brain scan, and then the treatment must be prepared and delivered. Hospitals manage to do this at different speeds. If all hospitals managed to do both of those tasks in 30 minutes (which some hospitals have shown is possible) then there would be 12-13 people treated for every 10 treated now. But as well as treating more patients, all patients would be treated more quickly, getting more benefit from the drug, so there would be 15 disability-free outcomes due to treatment for every 10 now.
 
