@@ -1,7 +1,7 @@
 # Plain English Summary
 
 ```{epigraph}
-"Your decision to treat or not treat… That’s the difficult part. That’s the grey area where everyone does a different thing."
+"Your decision to treat or not treat … That’s the difficult part. That’s the grey area where everyone does a different thing."
 
 -- Stroke Consultant during interviews for SAMueL
 ```
@@ -18,7 +18,7 @@ Our work broke down into three areas.
 
 1. We built *machine learning* models that learned which patients would be given clot-busting drugs at each hospital. *Machine learning* works on the principle of asking and learning *"What happened to similar patients in this hospital before?"* 
 
-2. We built a simulation of stroke pathways for all hospitals. This simulation would pass individual patients through a pathway with each patient having their own unique speed of movement through the pathway, but with speeds all being typical of a particular hospital. Each hospital also has patients that are typical of that hospital (replicating, for example, the number of patients who arrive in hospital in time for clot-busting treatment). With this simulation we could ask questions like *"What would happen if we could speed up the pathway at this hospital?*.
+2. We built a simulation of stroke pathways for all hospitals. This simulation would pass individual patients through a pathway with each patient having their own unique speed of movement through the pathway, but with speeds all being typical of a particular hospital. Each hospital also has patients that are typical of that hospital (replicating, for example, the number of patients who arrive in hospital in time for clot-busting treatment). With this simulation we could ask questions like *"What would happen if we could speed up the pathway at this hospital?"*
 
 3. We interviewed doctors about what we were doing. We asked for their feedback - what did  they like and what did they not like? What is most useful? What are we missing?
 

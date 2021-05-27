@@ -1,7 +1,7 @@
 # SAMueL - Summary of Findings
 
 ```{epigraph}
-"Your decision to treat or not treat… That’s the difficult part. That’s the grey area where everyone does a different thing."
+"Your decision to treat or not treat … That’s the difficult part. That’s the grey area where everyone does a different thing."
 
 -- Stroke Consultant during interviews for SAMueL
 ```
