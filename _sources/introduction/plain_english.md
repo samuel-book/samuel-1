@@ -25,7 +25,7 @@ Some of our most important findings were:
 
 * There is large range in *willingness to treat*. Given the same set of patients, those most willing to treat would treat four to five times more patients than those least willing to treat.
 
-* If all hospitals made decisions like the top 30 *most willing to treat* hospitals, there would be 13 people treated for every 10 treated now. And that would mean there be be 13 disability-free outcomes due to treatment compared for each 10 now.
+* If all hospitals made decisions like the top 30 *most willing to treat* hospitals, there would be 13 people treated for every 10 treated now. And that would mean there would be 13 disability-free outcomes due to treatment for each 10 now.
 
 * We can show individual hospitals examples of patients that they appear to treat differently from the top 30 *most willing to treat* hospitals. We hope this will help open up discussions on why different hospitals select different patients for treatment.
 
