@@ -611,10 +611,12 @@
 <ul>
 <li><p>Pathway speed</p></li>
 <li><p>Determining stroke onset times</p></li>
-<li><p>Making decisions according to the majority vote of deci9ons that would be expected at a ‘benchmark* set of hospitals</p></li>
+<li><p>Making decisions according to the majority vote of decisions that would be expected at a ‘benchmark* set of hospitals</p></li>
 </ul>
 </li>
 </ul>
+<p>We base our modelling on a simplified view of the stroke pathway.</p>
+<p><img alt="" src="../_images/pathway.png" /></p>
 </div>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
@@ -790,13 +792,11 @@
 </div>
 <div class="section" id="pathway-simulation">
 <h2>Pathway simulation<a class="headerlink" href="#pathway-simulation" title="Permalink to this headline">¶</a></h2>
-<p>The pathway model is a simplified version of the stroke pathway.</p>
-<p><img alt="" src="../_images/pathway.png" /></p>
 <p>The model is used to examine the effect, at each hospital and nationally, of making three key changes (alone or in combination) to the stroke pathway:</p>
 <ol class="simple">
-<li><p>Speed: Sets 95% of patients having a scan within 4 hours of arrival, and all patients have 15 minutes arrival to scan and 15 minutes scan to needle.</p></li>
-<li><p>Onset-known: Sets the proportion of patients with a known onset time of stroke to the national upper quartile if currently less than the national upper quartile (leave any greater than the upper national quartile at their current level).</p></li>
-<li><p>Benchmark: The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.</p></li>
+<li><p><em>Speed</em>: Sets 95% of patients having a scan within 4 hours of arrival, and all patients have 15 minutes arrival to scan and 15 minutes scan to needle.</p></li>
+<li><p><em>Onset-known</em>: Sets the proportion of patients with a known onset time of stroke to the national upper quartile if currently less than the national upper quartile (leave any greater than the upper national quartile at their current level).</p></li>
+<li><p><em>Benchmark</em>: The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.</p></li>
 </ol>
 <p>Results:</p>
 <ul class="simple">
@@ -808,6 +808,8 @@
 </ul>
 <p>Net effect of changes at all hospitals:</p>
 <p><img alt="" src="../_images/scenarios.jpg" /></p>
+<p>Distributional shift in thrombolysis use and expected benefit:</p>
+<p><img alt="" src="../_images/distribution.jpg" /></p>
 </div>
 </div>
 

@@ -18,7 +18,11 @@ The overall aims of the project are
     
     * Determining stroke onset times
     
-    * Making decisions according to the majority vote of deci9ons that would be expected at a 'benchmark* set of hospitals
+    * Making decisions according to the majority vote of decisions that would be expected at a 'benchmark* set of hospitals
+
+We base our modelling on a simplified view of the stroke pathway.
+    
+![](./../images/pathway.png)
 
 ## Data
 
@@ -179,17 +183,13 @@ Neural networks offer the greatest accuracy (though not by a large amount), but 
     
 ## Pathway simulation
 
-The pathway model is a simplified version of the stroke pathway.
-
-![](./../images/pathway.png)
-
 The model is used to examine the effect, at each hospital and nationally, of making three key changes (alone or in combination) to the stroke pathway:
 
-1.	Speed: Sets 95% of patients having a scan within 4 hours of arrival, and all patients have 15 minutes arrival to scan and 15 minutes scan to needle.
+1.	*Speed*: Sets 95% of patients having a scan within 4 hours of arrival, and all patients have 15 minutes arrival to scan and 15 minutes scan to needle.
 
-2.	Onset-known: Sets the proportion of patients with a known onset time of stroke to the national upper quartile if currently less than the national upper quartile (leave any greater than the upper national quartile at their current level).
+2.	*Onset-known*: Sets the proportion of patients with a known onset time of stroke to the national upper quartile if currently less than the national upper quartile (leave any greater than the upper national quartile at their current level).
 
-3.	Benchmark: The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.
+3.	*Benchmark*: The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.
 
 Results: 
 
@@ -208,6 +208,6 @@ Net effect of changes at all hospitals:
 ![](./../images/scenarios.jpg)
 
 
+Distributional shift in thrombolysis use and expected benefit:
 
-    
-
+![](./../images/distribution.jpg)
