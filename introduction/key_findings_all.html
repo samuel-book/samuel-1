@@ -611,7 +611,7 @@
 <ul>
 <li><p>Pathway speed</p></li>
 <li><p>Determining stroke onset times</p></li>
-<li><p>Making decisions according to the majority vote of decisions that would be expected at a ‘benchmark* set of hospitals</p></li>
+<li><p>Making decisions according to the majority vote of decisions that would be expected at a <em>benchmark</em> set of hospitals</p></li>
 </ul>
 </li>
 </ul>
@@ -679,7 +679,7 @@
 <div class="section" id="stated-reasons-for-not-giving-thrombolysis">
 <h3>Stated reasons for not giving thrombolysis<a class="headerlink" href="#stated-reasons-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>The three most common reasons started for not giving thrombolysis are stroke too mild/severe, haemorrhagic  stroke, and patient improving.</p></li>
+<li><p>The three most common reasons stated for not giving thrombolysis are stroke too mild/severe, haemorrhagic  stroke, and patient improving.</p></li>
 </ul>
 </div>
 <div class="section" id="effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis">
@@ -694,11 +694,11 @@
 <h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
 <p>We built a variety of model types:</p>
 <ol class="simple">
-<li><p><em>Logistic regression</em>: We used a either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.</p></li>
-<li><p><em>Random forests</em>: We used a either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.</p></li>
-<li><p><em>Neural networks</em>: We used either a fully-connected network (where all features are treated as a single set), or a modular embedding network, where features are split into three groups: hospital ID, clinical features, pathway timings. Each group is handles by a sub-network which outputs an ‘embedding vector’, reducing the inputs down to either one or two values which are then combined together before final output.</p></li>
+<li><p><em>Logistic regression</em>: We used either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.</p></li>
+<li><p><em>Random forests</em>: We used either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.</p></li>
+<li><p><em>Neural networks</em>: We used either a fully-connected network (where all features are treated as a single set), or a modular embedding network, where features are split into three groups: hospital ID, clinical features, pathway timings. Each group is handled by a sub-network which outputs an ‘embedding vector’, reducing the inputs down to either one or two values which are then combined together before final output.</p></li>
 </ol>
-<p>*One-hot encoding converts a hospital ID to a vector that is all zeros about from the index of the hospital ID which is set to one. So hospital 2 out of a total of five hospitals would have one-hot encoding of [0, 1, 0, 0, 0].</p>
+<p>*One-hot encoding converts a hospital ID to a vector that is all zeros apart from the index of the hospital ID which is set to one. So hospital 2 out of a total of five hospitals would have one-hot encoding of [0, 1, 0, 0, 0].</p>
 <div class="section" id="accuracy-of-models">
 <h3>Accuracy of models<a class="headerlink" href="#accuracy-of-models" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
@@ -785,7 +785,7 @@
 <li><p>A 2D embedding network encodes hospitals, patients, and pathway information as a pair of values for each allowing, for example, plotting on 2D chart where similar hospitals/patients should cluster together.</p>
 <ul>
 <li><p>2D hospital embedding does not appear to show any more detail than 1D embedding.</p></li>
-<li><p>2D patient embedding clusters patients by clear groups - for example four groups (located at each corner of a chart when plotting the patient embeddings 2D vector) are: 1) patients with high clinical suitability for thrombolysis, 2) non-thrombolysed haemorrhagic stroke patients, non-thrombolysed severe stroke, non-thrombolysed mild stroke.</p></li>
+<li><p>2D patient embedding clusters patients by clear groups - for example four groups (located at each corner of a chart when plotting the patient embeddings 2D vector) are: 1) patients with high clinical suitability for thrombolysis, 2) non-thrombolysed haemorrhagic stroke patients, 3) non-thrombolysed severe stroke, 4) non-thrombolysed mild stroke.</p></li>
 </ul>
 </li>
 </ul>

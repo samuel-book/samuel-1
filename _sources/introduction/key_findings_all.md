@@ -18,7 +18,7 @@ The overall aims of the project are:
     
     * Determining stroke onset times
     
-    * Making decisions according to the majority vote of decisions that would be expected at a 'benchmark* set of hospitals
+    * Making decisions according to the majority vote of decisions that would be expected at a *benchmark* set of hospitals
 
 We base our modelling on a simplified view of the stroke pathway:
     
@@ -96,7 +96,7 @@ Of those out-of-hospital onset patients arriving within 4 hours of known stroke 
 
 ### Stated reasons for not giving thrombolysis
 
-* The three most common reasons started for not giving thrombolysis are stroke too mild/severe, haemorrhagic  stroke, and patient improving.
+* The three most common reasons stated for not giving thrombolysis are stroke too mild/severe, haemorrhagic  stroke, and patient improving.
 
 ### Effect of time and day and day of week on use of thrombolysis
 
@@ -108,13 +108,13 @@ Of those out-of-hospital onset patients arriving within 4 hours of known stroke 
 
 We built a variety of model types:
 
-1) *Logistic regression*: We used a either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.
+1) *Logistic regression*: We used either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.
 
-2) *Random forests*: We used a either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.
+2) *Random forests*: We used either a single model with one-hot encoding of hospitals*, or fitted models to each hospital independently.
 
-3) *Neural networks*: We used either a fully-connected network (where all features are treated as a single set), or a modular embedding network, where features are split into three groups: hospital ID, clinical features, pathway timings. Each group is handles by a sub-network which outputs an 'embedding vector', reducing the inputs down to either one or two values which are then combined together before final output.
+3) *Neural networks*: We used either a fully-connected network (where all features are treated as a single set), or a modular embedding network, where features are split into three groups: hospital ID, clinical features, pathway timings. Each group is handled by a sub-network which outputs an 'embedding vector', reducing the inputs down to either one or two values which are then combined together before final output.
 
-*One-hot encoding converts a hospital ID to a vector that is all zeros about from the index of the hospital ID which is set to one. So hospital 2 out of a total of five hospitals would have one-hot encoding of [0, 1, 0, 0, 0].
+*One-hot encoding converts a hospital ID to a vector that is all zeros apart from the index of the hospital ID which is set to one. So hospital 2 out of a total of five hospitals would have one-hot encoding of [0, 1, 0, 0, 0].
 
 ### Accuracy of models
 
@@ -179,7 +179,7 @@ Neural networks offer the greatest accuracy (though not by a large amount), but 
 
     * 2D hospital embedding does not appear to show any more detail than 1D embedding.
     
-    * 2D patient embedding clusters patients by clear groups - for example four groups (located at each corner of a chart when plotting the patient embeddings 2D vector) are: 1) patients with high clinical suitability for thrombolysis, 2) non-thrombolysed haemorrhagic stroke patients, non-thrombolysed severe stroke, non-thrombolysed mild stroke.
+    * 2D patient embedding clusters patients by clear groups - for example four groups (located at each corner of a chart when plotting the patient embeddings 2D vector) are: 1) patients with high clinical suitability for thrombolysis, 2) non-thrombolysed haemorrhagic stroke patients, 3) non-thrombolysed severe stroke, 4) non-thrombolysed mild stroke.
     
 ## Pathway simulation
 
