@@ -6,7 +6,7 @@
 -- Stroke Consultant during interviews for SAMueL
 ```
 
-This Jupyter Book contains code for the SAMueL-1 project: *Use of simulation and machine learning to identify key levers for maximising the disability benefit of intravenous thrombolysis in acute stroke pathways.* NIHR HS&DR Reference Number: 17/99/89
+This Jupyter Book contains methods (code) and results for the SAMueL-1 project: *Use of simulation and machine learning to identify key levers for maximising the disability benefit of intravenous thrombolysis in acute stroke pathways.* NIHR HS&DR Reference Number: 17/99/89
 
 ## Overall aims
 
