@@ -1,5 +1,11 @@
 # Plain English Summary
 
+```{epigraph}
+"Your decision to treat or not treat… That’s the difficult part. That’s the grey area where everyone does a different thing."
+
+-- Stroke Consultant during interviews for SAMueL
+```
+
 **BACKGROUND**
 
 Stroke is a common cause of adult disability. Expert opinion is that about one in five patients should receive clot-busting drugs to break up the blood clot that is causing their stroke. This is called *thrombolysis*. At the moment only about one in nine patients actually receive this treatment in the UK. There is a lot of variation between hospitals, which means that the same patient might receive different treatment in different hospitals. 
