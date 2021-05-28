@@ -1,4 +1,4 @@
-# Introduction to SAMueL-1
+# Introduction to SAMueL (Stroke Audit Machine Learning)
 
 **Use of simulation and machine learning to identify key levers for maximising the disability benefit of intravenous thrombolysis in acute stroke pathways**
 
