@@ -1,6 +1,6 @@
 # Testing of alternative what-if? scenarios
 
-This section describes experiments using the pathway simulation. Key componenents of each hospital's pathway may be changed, and the effect on thrombolysis use and clinical benefit estimated. Sceanrios tested are:
+This section describes experiments using the pathway simulation. Key components of each hospital's pathway may be changed, and the effect on thrombolysis use and clinical benefit estimated. Scenarios tested are:
 
 1. Base: Uses the hospitals' recorded pathway statistics in SSNAP (same as validation notebook). 
 
@@ -14,6 +14,6 @@ This section describes experiments using the pathway simulation. Key componenent
 
 This section contains the following notebooks:
 
-* *Stroke pathway simulation - generation of results from alternative sceanrios*: Generate results for alternative sceanrios (no analysis)
+* *Stroke pathway simulation - generation of results from alternative scenarios*: Generate results for alternative scenarios (no analysis)
 
-* *Analysis of alternative pathway scenarios*: Numerical and graphicla analysis of results from the scenario modelling.
+* *Analysis of alternative pathway scenarios*: Numerical and graphical analysis of results from the scenario modelling.
