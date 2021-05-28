@@ -20,4 +20,4 @@ The overall aims of the project are
     
     * Determining stroke onset times
     
-    * Making decisions according to the majority vote of deci9ons that would be expected at a 'benchmark* set of hospitals
+    * Making decisions according to the majority vote of decisions that would be expected at a 'benchmark* set of hospitals
