@@ -386,7 +386,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_summary.html">
-     Summary of resuts from ensemble models
+     Summary of results from ensemble models
     </a>
    </li>
   </ul>
@@ -631,7 +631,7 @@
 <li><p><em>Pathway process data</em>: Times of arrival and scan, time of day, day of week. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
 <li><p><em>Hospital ID</em> (one-hot encoded): Connect input directly to single neuron with sigmoid activation.</p></li>
 </ol>
-<p>The outputs of the three subnet outputs are then passed to a single neurone with sigmoid activation for final output.</p>
+<p>The outputs of the three subnet outputs are then passed to a single neuron with sigmoid activation for final output.</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
 </div>
 <div class="section" id="fitting-of-model">
@@ -780,7 +780,7 @@
 <div class="section" id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
 <h2>Get predictions for thrombolysis use of 10k set of patients at each hospital<a class="headerlink" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>Here we ask the counter-factual question - “what treatment would a patient be expected to receive at each of the 132 hospitals?”.</p>
-<p>Hospial is one-hot encoded as input to the hospital subnet. To make a prediction of treatment at different hospitals we change the one-hot encoding of the hospital when making prediction.</p>
+<p>Hospital is one-hot encoded as input to the hospital subnet. To make a prediction of treatment at different hospitals we change the one-hot encoding of the hospital when making prediction.</p>
 <p>For each hospital we pass through the 10k test set, and record the proportion of the patients receiving thrombolysis at that hospital.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1711,7 +1711,7 @@
 <img alt="../_images/005b_analyse_10k_2d_modular_24_0.png" src="../_images/005b_analyse_10k_2d_modular_24_0.png" />
 </div>
 </div>
-<p>The patients most likey to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of therombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clincal subnet output.</p>
+<p>The patients most likely to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of thrombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clinical subnet output.</p>
 <p>Patients appear to cluster mostly towards the edges of the plot.</p>
 <p>In the following analysis, we will look at the characteristics of patients in different parts of the scatter plot.</p>
 <div class="section" id="analysis-by-stroke-type">
@@ -1751,7 +1751,7 @@
 <img alt="../_images/005b_analyse_10k_2d_modular_27_0.png" src="../_images/005b_analyse_10k_2d_modular_27_0.png" />
 </div>
 </div>
-<p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similirity between patients (driven by reasons to give or not give thrombolysis).</p>
+<p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similarity between patients (driven by reasons to give or not give thrombolysis).</p>
 </div>
 </div>
 <div class="section" id="summarise-patients-in-corners-of-chart">

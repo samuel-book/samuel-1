@@ -1,4 +1,4 @@
-# Summary of resuts from ensemble models
+# Summary of results from ensemble models
 
 | **Data used**                                    | **Logistic regression** | **Random forests** | **Neural network (fully connected)** |
 | ------------------------------------------------ | ----------------------- | ------------------ | ------------------------------------ |

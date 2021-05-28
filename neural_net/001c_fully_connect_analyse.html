@@ -384,7 +384,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_summary.html">
-     Summary of resuts from ensemble models
+     Summary of results from ensemble models
     </a>
    </li>
   </ul>
@@ -604,11 +604,11 @@
 <div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Anlayse pre-trained models (trained on 5-fold cross-validation training/test sets)</p>
+<li><p>Analyse pre-trained models (trained on 5-fold cross-validation training/test sets)</p>
 <ul>
 <li><p>Perform range of accuracy scores</p></li>
 <li><p>Perform receiver-operator-characteristic curve</p></li>
-<li><p>Test model callibrations</p></li>
+<li><p>Test model calibration</p></li>
 </ul>
 </li>
 </ul>
@@ -617,19 +617,18 @@
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Models are fitted to previously split training and test data sets.</p></li>
-<li><p>MinMax scaling is used (all features are scaled 0-1 based on the fature min/max).</p></li>
+<li><p>MinMax scaling is used (all features are scaled 0-1 based on the feature min/max).</p></li>
 <li><p>Models are fitted to previously split training and test data sets.</p></li>
-<li><p>MinMax scaling is used (all features are scaled 0-1 based on the fature min/max).</p></li>
-<li><p>Model has two hidden layers, each with the number of neurones being 2x the number of features. Prior studies show performance of the network is similar across all models with this complexity or more. A dropout value of 0.5 is used based on previous exploration.</p></li>
+<li><p>Model has two hidden layers, each with the number of neurons being 2x the number of features. Prior studies show performance of the network is similar across all models with this complexity or more. A dropout value of 0.5 is used based on previous exploration.</p></li>
 <li><p>A batch size of 32 is used</p></li>
 </ul>
 <p>Model structure:</p>
 <ul class="simple">
 <li><p>Input layer</p></li>
-<li><p>Dense layer (# neurones = 2x features, ReLu activation)</p></li>
+<li><p>Dense layer (# neurons = 2x features, ReLu activation)</p></li>
 <li><p>Batch normalisation</p></li>
 <li><p>Dropout layer</p></li>
-<li><p>Dense layer (# neurones = 2x features, ReLu activation)</p></li>
+<li><p>Dense layer (# neurons = 2x features, ReLu activation)</p></li>
 <li><p>Batch normalisation</p></li>
 <li><p>Dropout layer</p></li>
 <li><p>Output layer (single sigmoid activation)</p></li>
@@ -827,7 +826,7 @@
 </div>
 <div class="section" id="define-function-for-line-intersect">
 <h2>Define function for line intersect<a class="headerlink" href="#define-function-for-line-intersect" title="Permalink to this headline">¶</a></h2>
-<p>Used to find point of sensitivity-specificty curve where sensitivity = specificity.</p>
+<p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_intersect</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">):</span>

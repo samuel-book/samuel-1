@@ -384,7 +384,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_summary.html">
-     Summary of resuts from ensemble models
+     Summary of results from ensemble models
     </a>
    </li>
   </ul>
@@ -572,14 +572,14 @@
 <p>Models are fitted to previously split training and test data sets.</p>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to two values output. The subnets created are for:</p>
 <ol class="simple">
-<li><p><em>Patient clinical data</em>: Age, gender, ethnicity, disability before stroke, stroke scale data. Pass through one hidden layer (with 2x neurons as input features) and then to two neurones with sigmoid activation.</p></li>
-<li><p><em>Pathway process data</em>: Times of arrival and scan, time of day, day of week. Pass through one hidden layer (with 2x neurons as input features) and then to two neurones with sigmoid activation.</p></li>
-<li><p><em>Hospital ID</em> (one-hot encoded): Connect input directly to two neurones with sigmoid activation.</p></li>
+<li><p><em>Patient clinical data</em>: Age, gender, ethnicity, disability before stroke, stroke scale data. Pass through one hidden layer (with 2x neurons as input features) and then to two neurons with sigmoid activation.</p></li>
+<li><p><em>Pathway process data</em>: Times of arrival and scan, time of day, day of week. Pass through one hidden layer (with 2x neurons as input features) and then to two neurons with sigmoid activation.</p></li>
+<li><p><em>Hospital ID</em> (one-hot encoded): Connect input directly to two neurons with sigmoid activation.</p></li>
 </ol>
 <p>The outputs of the three subnet outputs are then passed to a single neurone with sigmoid activation for final output.</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
-<p>Models are fitted with Keras ‘early-stopping’. This monitors accuracy of the test set and stops when there has been no improvement in <em>n</em> epochs (this is the ‘patience’, and is set to 100 epohs here).</p>
-<p>NOTE: In the training charts below you will see that test accuracy is higher than training accuracy. This may seem surprising; it is due to keras returuning the ccruracy of the training set during training when droput is used (and no droput is used for the test set).</p>
+<p>Models are fitted with keras ‘early-stopping’. This monitors accuracy of the test set and stops when there has been no improvement in <em>n</em> epochs (this is the ‘patience’, and is set to 100 epochs here).</p>
+<p>NOTE: In the training charts below you will see that test accuracy is higher than training accuracy. This may seem surprising; it is due to keras returning the accuracy of the training set during training when dropout is used (and no dropout is used for the test set).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./saved_models/2d_modular/&#39;</span>

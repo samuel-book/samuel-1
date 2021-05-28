@@ -384,7 +384,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_summary.html">
-     Summary of resuts from ensemble models
+     Summary of results from ensemble models
     </a>
    </li>
   </ul>
@@ -567,24 +567,24 @@
 <div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Ascertain how many training epochs are needed to train a fully connected TensFlow neural net. This will be used in future training.</p></li>
+<li><p>Ascertain how many training epochs are needed to train a fully connected TensorFlow neural net. This will be used in future training.</p></li>
 </ul>
 </div>
 <div class="section" id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Models are fitted to previously split training and test data sets.</p></li>
-<li><p>MinMax scaling is used (all features are scaled 0-1 based on the fature min/max).</p></li>
-<li><p>Model has two hidden layers, each with the number of neurones being 2x the number of features. Prior studies show performance of the network is similar across all models with this complexity or more. A dropout value of 0.5 is used based on previous exploration.</p></li>
-<li><p>A batch size of 32 is used (“Friends don’t let friends use minibatches larger than 32”. Yan LeCun on paper: <a class="reference external" href="http://arxiv.org/abs/1804.07612">arxiv.org/abs/1804.07612</a>)</p></li>
+<li><p>MinMax scaling is used (all features are scaled 0-1 based on the feature min/max).</p></li>
+<li><p>Model has two hidden layers, each with the number of neurons being 2x the number of features. Prior studies show performance of the network is similar across all models with this complexity or more. A dropout value of 0.5 is used based on previous exploration.</p></li>
+<li><p>A batch size of 32 is used (“Friends don’t let friends use mini-batches larger than 32”. Yan LeCun on paper: <a class="reference external" href="http://arxiv.org/abs/1804.07612">arxiv.org/abs/1804.07612</a>)</p></li>
 </ul>
 <p>Model structure:</p>
 <ul class="simple">
 <li><p>Input layer</p></li>
-<li><p>Dense layer (# neurones = 2x features, ReLu activation)</p></li>
+<li><p>Dense layer (# neurons = 2x features, ReLu activation)</p></li>
 <li><p>Batch normalisation</p></li>
 <li><p>Dropout layer</p></li>
-<li><p>Dense layer (# neurones = 2x features, ReLu activation)</p></li>
+<li><p>Dense layer (# neurons = 2x features, ReLu activation)</p></li>
 <li><p>Batch normalisation</p></li>
 <li><p>Dropout layer</p></li>
 <li><p>Output layer (single sigmoid activation)</p></li>
@@ -833,7 +833,7 @@
 <ul class="simple">
 <li><p>Training set accuracy continues to increase throughout the training period of the experiment.</p></li>
 <li><p>Test set accuracy rises, plateaus, and then declines over the training period of the experiment. The plateau occurs between approximately 25 and 70 epochs.</p></li>
-<li><p>A training period of 30 epcohs (minibatch size 32) will be used in furture experiments using this model structure.</p></li>
+<li><p>A training period of 30 epochs (mini-batch size 32) may be used in future experiments using this model structure.</p></li>
 </ul>
 </div>
 </div>
