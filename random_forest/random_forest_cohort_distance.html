@@ -242,7 +242,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="random_forest_compare_hospital.html">
-     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+     Compare level of agreement in clinical decision making between hospitals using Random Forests models
     </a>
    </li>
    <li class="toctree-l2">
@@ -597,7 +597,7 @@
 <li><p>Find the hamming distance between predicted outcomes in the cohort for every pair of hospitals and store in a distance matrix <span class="math notranslate nohighlight">\(D\)</span></p></li>
 <li><p>Seriate <span class="math notranslate nohighlight">\(D\)</span> to visualise hospital groups</p></li>
 </ul>
-<p>We follow this by repeating the analysis a subgroup of hospitals - those with 30-70% agreement to thrombolyse betwen hospitals (so we remove those patients high agreement on thrombolysis decision).</p>
+<p>We follow this by repeating the analysis a subgroup of hospitals - those with 30-70% agreement to thrombolyse between hospitals (so we remove those patients high agreement on thrombolysis decision).</p>
 </div>
 <div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
@@ -1545,10 +1545,10 @@
 <div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Using all patients in the cohort, the pairwise hamming distance between hospitals is reletively low.</p></li>
-<li><p>Using only ‘contentious’ patients in the cohort (ie. patients that only 30-70% of hospitals would thrombolyse) we find that there are two distinct groups of hospitals, representing two types of decision making processes.</p></li>
+<li><p>Using all patients in the cohort, the pairwise hamming distance between hospitals is relatively low.</p></li>
+<li><p>Using only ‘contentious’ patients in the cohort (i.e. patients that only 30-70% of hospitals would thrombolyse) we find that there are two distinct groups of hospitals, representing two types of decision making processes.</p></li>
 <li><p>Within each group, there are sub-groups of hospitals that are more similar to one another than other hospitals in the same group.</p></li>
-<li><p>The two identified groups have very different thrombolysis use in the group of ‘conetious’ patients: 90% c.f. 13%.</p></li>
+<li><p>The two identified groups have very different thrombolysis use in the group of ‘contentious patients. 13%.</p></li>
 <li><p>Use of patients groups with high predicted disagreement in decision-making facilitates identification of hospitals with similar decision-making.</p></li>
 </ul>
 </div>

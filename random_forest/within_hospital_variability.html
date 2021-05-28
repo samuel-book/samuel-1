@@ -242,7 +242,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="random_forest_compare_hospital.html">
-     Compare level of agreement in clinical decison making between hospitals using Random Forests models
+     Compare level of agreement in clinical decision making between hospitals using Random Forests models
     </a>
    </li>
    <li class="toctree-l2">
@@ -990,7 +990,7 @@
 <h2>Similarity Metric<a class="headerlink" href="#similarity-metric" title="Permalink to this headline">¶</a></h2>
 <p>When a decision tree is fit to the training data, each internal node in the tree will be split into two further nodes based on the feature that maximises the information gain (or minimises the entropy). Once a split results in two nodes that are pure (only containing samples from a single class) no further information gain is possible: the two nodes are leaves, representing the ends of two paths through the tree. As each patient can take only one path through the decision tree, and all patients start in the same node (the root node), we can use these paths to find the similarity between any pair of patients:</p>
 <p><span class="math notranslate nohighlight">\(S(i,j) = \frac{P(i,j)}{\sqrt{P(i)P(j)}}\)</span>.</p>
-<p>Here, <span class="math notranslate nohighlight">\(S(i,j)\)</span> represents the simailarity between patient <span class="math notranslate nohighlight">\(i\)</span> and patient <span class="math notranslate nohighlight">\(j\)</span> as a function of each patient’s path, <span class="math notranslate nohighlight">\(P\)</span>, through the decision tree, where <span class="math notranslate nohighlight">\(P(i)\)</span> correspond to the path length of patient <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(P(j)\)</span> the path length of <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(P(i,j)\)</span> the length of the shared path of <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>Here, <span class="math notranslate nohighlight">\(S(i,j)\)</span> represents the similarity between patient <span class="math notranslate nohighlight">\(i\)</span> and patient <span class="math notranslate nohighlight">\(j\)</span> as a function of each patient’s path, <span class="math notranslate nohighlight">\(P\)</span>, through the decision tree, where <span class="math notranslate nohighlight">\(P(i)\)</span> correspond to the path length of patient <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(P(j)\)</span> the path length of <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(P(i,j)\)</span> the length of the shared path of <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <p>Path length is measured using the information gain (change in entropy) at each split. Consider patient <span class="math notranslate nohighlight">\(z\)</span>, who takes a path through the decision tree which is comprised of a set of <span class="math notranslate nohighlight">\(N\)</span> nodes, each passed sequentially and with index <span class="math notranslate nohighlight">\(n \in [1,N]\)</span>, where <span class="math notranslate nohighlight">\(n=1\)</span> represents the root node and <span class="math notranslate nohighlight">\(n=N\)</span> the leaf node. If each node with index <span class="math notranslate nohighlight">\(n\)</span> has <span class="math notranslate nohighlight">\(X_n\)</span> patients passing through it, the length of the path of patient <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(P(z)\)</span>, is given by:</p>
 <p><span class="math notranslate nohighlight">\(P(z)= \sum_{n=1}^{N-1} X_{n+1} (H_n - H_{n+1} \frac{X_{n+1}}{X_n})\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(H_n\)</span> is the entropy at node <span class="math notranslate nohighlight">\(n\)</span> and the information gain at each split has been weighted by <span class="math notranslate nohighlight">\(X_{n+1}\)</span>, the total number of patients that move from node <span class="math notranslate nohighlight">\(n\)</span> to node <span class="math notranslate nohighlight">\(n+1\)</span>.</p>
@@ -1990,8 +1990,8 @@ Wall time: 4.69 s
 <div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Misclassifications indicate that there is variablilty in clinical decision making within a hospital</p></li>
-<li><p>We can use the sturcture of the Random Forest classifier to define a similarity metric</p></li>
+<li><p>Misclassifications indicate that there is variability in clinical decision making within a hospital</p></li>
+<li><p>We can use the structure of the Random Forest classifier to define a similarity metric</p></li>
 <li><p>For patients that are incorrectly classified, we can find similar patients that were treated differently, further demonstrating variation in decision making within a hospital</p></li>
 </ul>
 </div>

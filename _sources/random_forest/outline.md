@@ -10,9 +10,9 @@ This section contains the following notebooks:
 
 * *Train and save hospital-level Random Forest models*: Train and save hospital-level models for future use (saves models along with thresholds that give expected thrombolysis use at own hospital, and data used to train model. These are saved as a pickled dictionary).
 
-* *Compare level of agreement in clinical decison making between hospitals using Random Forests models*: Pass all patients through all hospital decision models. What level of agreement is there between hospitals?
+* *Compare level of agreement in clinical decision making between hospitals using Random Forests models*: Pass all patients through all hospital decision models. What level of agreement is there between hospitals?
 
-* *Benchmark hospitals*: Identify top 30 thrombolysis use hospitals (using the same 10k reference set of patients at all hospitals). For each hoispital, predict decision made by those benchmark hospitals and take majority decision as whether a patient should be given thrombolysis. Compare these benchmark thrombolysis rates with actual thrombolysis rates.
+* *Benchmark hospitals*: Identify top 30 thrombolysis use hospitals (using the same 10k reference set of patients at all hospitals). For each hospital, predict decision made by those benchmark hospitals and take majority decision as whether a patient should be given thrombolysis. Compare these benchmark thrombolysis rates with actual thrombolysis rates.
 
 * *Grouping hospitals by similarities in decision making*: We compare the extent of similarity in decision-making between hospitals, and identify groups of hospitals making similar decisions.
 
