@@ -27,7 +27,7 @@ Our work broke down into three areas.
 
 Some of our most important findings were:
 
-* Our machine learning models were correct eight to nine times out of ten. They also report how sure they are about a decision, and the more sure they are the more often they are right.
+* Our machine learning models were correct 8-9 times out of 10. They also report how sure they are about a decision, and the more sure they are the more often they are right.
 
 * Using our machine learning models we could ask the question *"What treatment would this patient have likely received at different hospitals?"*
 
@@ -45,7 +45,7 @@ Some of our most important findings were:
 
 * Before a patient can be treated they must have a brain scan, and then the treatment must be prepared and delivered. Hospitals manage to do this at different speeds. If all hospitals managed to do both of those tasks in 30 minutes (which some hospitals have shown is possible) then there would be 12-13 people treated for every 10 treated now. But as well as treating more patients, all patients would be treated more quickly, getting more benefit from the drug, so there would be 15 disability-free outcomes due to treatment for every 10 now.
 
-* If we combined all these changes across all hospitals then we would expect there would be 16 people treated for every 10 treated now. That is instead of treating about one in nine patients, as now, we would treat one in five to six. More importantly, there would be 19 disability-free outcomes due to treatment for every 10 now.
+* If we combined all these changes across all hospitals then we would expect there would be 16 people treated for every 10 treated now. That is instead of treating about 1 in 9 patients, as now, we would treat 1 in 5-6. More importantly, there would be 19 disability-free outcomes due to treatment for every 10 now.
 
 * After we test all these changes at each hospital in our models we find there will still be quite a lot of variation in how many are treated at each hospital. This is because hospitals have different populations of patients. So rather than having a single target for treatment for all hospitals, it may be better to have a realistic target for each hospital, which takes their patient mix into account.
 

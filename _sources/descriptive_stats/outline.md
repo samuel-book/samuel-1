@@ -16,4 +16,4 @@ This section contains the following notebooks:
 
 * *Pathway patterns throughout the week in an example single stroke team*: Analysis of key pathway statistics broken down by day of week in a single stroke team.
 
-* *Stroke pathway timing distribution*: Visualise distributions for onset-to-arrival, arrival-to-scan, and scan-to-needle
+* *Stroke pathway timing distribution*: Visualise distributions for onset-to-arrival, arrival-to-scan, and scan-to-needle, and fit candidate distributions to find best fit.
