@@ -693,7 +693,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_distributions</span><span class="p">(</span>
-        <span class="n">data_to_fit</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">number_of_dist_to_plot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>   
+        <span class="n">data_to_fit</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">number_of_dist_to_plot</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>   
     
     <span class="c1"># Reshape data and remove invalid values</span>
     <span class="n">yy</span> <span class="o">=</span> <span class="n">data_to_fit</span><span class="o">.</span><span class="n">values</span>
@@ -787,14 +787,56 @@
     <span class="c1"># ----</span>
     
     <span class="c1"># Create figure</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
     
     <span class="n">data</span> <span class="o">=</span> <span class="n">y_std</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="c1">#data.sort()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
     
     <span class="c1"># Get the top three distributions from the previous phase</span>
     <span class="n">dist_names</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Distribution&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">number_of_dist_to_plot</span><span class="p">]</span>
+    
+    <span class="c1"># Histograms</span>
+    
+    <span class="c1"># Divide the observed data into 100 bins for plotting (this can be changed)</span>
+    <span class="n">number_of_bins</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">bin_cutoffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">99</span><span class="p">),</span><span class="n">number_of_bins</span><span class="p">)</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bin_cutoffs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.75&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># X values for hisotgram</span>
+    
+            
+    <span class="k">for</span> <span class="n">distribution</span> <span class="ow">in</span> <span class="n">dist_names</span><span class="p">:</span>
+        
+        <span class="c1"># Create an empty list to stroe fitted distribution parameters</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Set up distribution and store distribution paraemters</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+        <span class="n">param</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+        
+        <span class="c1"># Get line for each distribution (and scale to match observed data)</span>
+        <span class="n">pdf_fitted</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">scale_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span> <span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span> <span class="p">(</span><span class="n">pdf_fitted</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">pdf_fitted</span> <span class="o">*=</span> <span class="n">scale_pdf</span>
+        
+        <span class="c1"># Add a small amounbt of jitter to avoid overlying lines</span>
+        <span class="n">jitter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdf_fitted</span><span class="p">))</span>
+        <span class="n">pdf_fitted</span> <span class="o">*=</span> <span class="n">jitter</span>
+        
+        <span class="c1"># Add the line to the plot</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf_fitted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">distribution</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Normalised value&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Hisotgram of normalised values&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>          
+
 
     <span class="k">for</span> <span class="n">distribution</span> <span class="ow">in</span> <span class="n">dist_names</span><span class="p">:</span>
         <span class="c1"># Set up distribution</span>
@@ -814,15 +856,18 @@
         <span class="n">cum_data</span> <span class="o">=</span> <span class="n">cum_data</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">cum_data</span><span class="p">)</span>
         <span class="n">cum_norm</span> <span class="o">=</span> <span class="n">cum_norm</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">)</span>
 
-        <span class="c1"># plot</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">,</span><span class="n">cum_data</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">distribution</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Theoretical cumulative distribution&#39;</span><span class="p">)</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Observed cumulative distribution&#39;</span><span class="p">)</span>
-        <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="c1"># plot observed and theoretical distributions</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">,</span><span class="n">cum_data</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">distribution</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
         
-    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;P-P plot&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Theoretical cumulative distribution&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Observed cumulative distribution&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
 
-    <span class="c1"># Display plot    </span>
+    <span class="c1"># Display plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;output/pp_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
     
@@ -848,16 +893,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution    chi_square  p_value
-3      lognorm    906.097303      0.0
-2        gamma   2548.308229      0.0
-5     pearson3   2548.498535      0.0
-9  weibull_max   3989.924265      0.0
-6       triang   9958.283517      0.0
-4         norm  18698.635930      0.0
-7      uniform  39412.366567      0.0
-1        expon  51227.230609      0.0
-0         beta  70705.193975      0.0
-8  weibull_min  83328.565608      0.0
+3      lognorm   1034.321737      0.0
+2        gamma   2917.079629      0.0
+5     pearson3   2917.203030      0.0
+9  weibull_max   4644.417595      0.0
+8  weibull_min   5701.372611      0.0
+6       triang   9278.524343      0.0
+4         norm  19139.495446      0.0
+7      uniform  37631.869004      0.0
+1        expon  54491.538960      0.0
+0         beta  74890.233216      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_11_1.png" src="../_images/06_distributions_11_1.png" />
@@ -880,16 +925,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm    1304.734823      0.0
-8  weibull_min    2332.395283      0.0
-1        expon    2601.691754      0.0
-5     pearson3    3625.517458      0.0
-2        gamma    3684.511812      0.0
-0         beta    4136.674987      0.0
-9  weibull_max   26502.523072      0.0
-4         norm   60087.021339      0.0
-6       triang   63346.535653      0.0
-7      uniform  112628.146035      0.0
+3      lognorm     933.002052      0.0
+2        gamma    1375.265685      0.0
+1        expon    1614.298000      0.0
+8  weibull_min    3805.073497      0.0
+5     pearson3    4033.523243      0.0
+0         beta    4300.853464      0.0
+9  weibull_max   24046.486663      0.0
+6       triang   56773.671137      0.0
+4         norm   57794.503988      0.0
+7      uniform  113670.959163      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_13_1.png" src="../_images/06_distributions_13_1.png" />
@@ -910,16 +955,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm      45.821391      0.0
-0         beta     534.323062      0.0
-5     pearson3     550.792315      0.0
-9  weibull_max    2183.947059      0.0
-8  weibull_min    2526.843820      0.0
-4         norm   25367.897592      0.0
-1        expon   25995.621272      0.0
-2        gamma   46185.933168      0.0
-6       triang  138094.351132      0.0
-7      uniform  184080.191352      0.0
+3      lognorm      83.851418      0.0
+5     pearson3     597.009581      0.0
+0         beta     709.852648      0.0
+8  weibull_min    2818.250389      0.0
+9  weibull_max    7134.133387      0.0
+1        expon   24249.722762      0.0
+4         norm   28889.660154      0.0
+6       triang  166415.411353      0.0
+7      uniform  196113.730283      0.0
+2        gamma  835317.187731      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_15_1.png" src="../_images/06_distributions_15_1.png" />
