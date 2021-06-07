@@ -517,8 +517,23 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aim">
-   Aim
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-data">
+   Import data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-distributions">
+   Plot distributions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -566,33 +581,48 @@
                 
   <div class="section" id="stroke-pathway-timing-distribution">
 <h1>Stroke pathway timing distribution<a class="headerlink" href="#stroke-pathway-timing-distribution" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aim">
-<h2>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Visualise distributions of timings for:</p>
 <ul class="simple">
 <li><p>Onset to arrival (when known)</p></li>
 <li><p>Arrival to scan</p></li>
 <li><p>Scan to needle</p></li>
 </ul>
+<p>Find best distribution fit for the above.</p>
+</div>
+<div class="section" id="import-libraries">
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
+<span class="c1"># Hide warnings to keep notebook tidy</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="c1"># import data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-data">
+<h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import data</span>
 <span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
     <span class="s1">&#39;./../data/2019-11-04-HQIP303-Exeter_MA.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="plot-distributions">
+<h2>Plot distributions<a class="headerlink" href="#plot-distributions" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
@@ -651,25 +681,27 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06_distributions_2_0.png" src="../_images/06_distributions_2_0.png" />
+<img alt="../_images/06_distributions_6_0.png" src="../_images/06_distributions_6_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="fit-distributions">
 <h2>Fit distributions<a class="headerlink" href="#fit-distributions" title="Permalink to this headline">¶</a></h2>
+<p>Distributions are fitted to bootstrapped 10k samples of the data.</p>
 <div class="section" id="define-function-to-fit-distributions">
 <h3>Define function to fit distributions<a class="headerlink" href="#define-function-to-fit-distributions" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_distributions</span><span class="p">(</span><span class="n">data_to_fit</span><span class="p">):</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_distributions</span><span class="p">(</span>
+        <span class="n">data_to_fit</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">number_of_dist_to_plot</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>   
     
     <span class="c1"># Reshape data and remove invalid values</span>
     <span class="n">yy</span> <span class="o">=</span> <span class="n">data_to_fit</span><span class="o">.</span><span class="n">values</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">yy</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yy</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
     <span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
     
-    <span class="c1"># Bootstrap sample 10k samples</span>
-    <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Bootstrap sample</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="c1"># Reshape</span>
     <span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span><span class="o">.</span><span class="n">reshape</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -680,8 +712,8 @@
     <span class="n">sc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
     <span class="n">y_std</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
     
-    <span class="c1"># Add +/- 0.001 jitter to avoid failure of fit</span>
-    <span class="n">jitter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+    <span class="c1"># Add +/- 0.0001 Std Dev jitter to avoid failure of fit for discrete data</span>
+    <span class="n">jitter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
     <span class="n">jitter</span> <span class="o">=</span> <span class="n">jitter</span><span class="o">.</span><span class="n">reshape</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">y_std</span> <span class="o">+=</span> <span class="n">jitter</span>
     
@@ -743,12 +775,58 @@
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;chi_square&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chi_square</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values</span>
     <span class="n">results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;chi_square&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
+    
     <span class="c1"># Report results</span>
 
     <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Distributions sorted by goodness of fit:&#39;</span><span class="p">)</span>
     <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;----------------------------------------&#39;</span><span class="p">)</span>
     <span class="nb">print</span> <span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">()</span>
+
+    <span class="c1"># Plot</span>
+    <span class="c1"># ----</span>
+    
+    <span class="c1"># Create figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">y_std</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1">#data.sort()</span>
+    
+    <span class="c1"># Get the top three distributions from the previous phase</span>
+    <span class="n">dist_names</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Distribution&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">number_of_dist_to_plot</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">distribution</span> <span class="ow">in</span> <span class="n">dist_names</span><span class="p">:</span>
+        <span class="c1"># Set up distribution</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+        <span class="n">param</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y_std</span><span class="p">)</span>
+
+        <span class="c1"># Get random numbers from distribution</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="o">*</span><span class="n">param</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">norm</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+        <span class="c1"># Calculate cumulative distributions</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">))</span>
+        <span class="n">data_counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">bins</span><span class="p">)</span>
+        <span class="n">norm_counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span><span class="n">bins</span><span class="p">)</span>
+        <span class="n">cum_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">data_counts</span><span class="p">)</span>
+        <span class="n">cum_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">norm_counts</span><span class="p">)</span>
+        <span class="n">cum_data</span> <span class="o">=</span> <span class="n">cum_data</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">cum_data</span><span class="p">)</span>
+        <span class="n">cum_norm</span> <span class="o">=</span> <span class="n">cum_norm</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">)</span>
+
+        <span class="c1"># plot</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">,</span><span class="n">cum_data</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">distribution</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Theoretical cumulative distribution&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Observed cumulative distribution&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Display plot    </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;output/pp_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+    
+    <span class="k">return</span>
 </pre></div>
 </div>
 </div>
@@ -762,7 +840,7 @@
 <span class="c1"># Censor at 8 hours</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">onset_to_arrival</span> <span class="o">&lt;=</span> <span class="mi">480</span>
 <span class="n">onset_to_arrival</span> <span class="o">=</span> <span class="n">onset_to_arrival</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">fit_distributions</span><span class="p">(</span><span class="n">onset_to_arrival</span><span class="p">)</span>
+<span class="n">fit_distributions</span><span class="p">(</span><span class="n">onset_to_arrival</span><span class="p">,</span> <span class="s1">&#39;onset_to_arrival&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -770,18 +848,19 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution    chi_square  p_value
-3      lognorm   1035.973629      0.0
-2        gamma   2867.577302      0.0
-5     pearson3   2867.877770      0.0
-9  weibull_max   4346.740179      0.0
-8  weibull_min   5544.402156      0.0
-6       triang   9628.460031      0.0
-4         norm  18830.063675      0.0
-7      uniform  38428.238166      0.0
-1        expon  53905.993560      0.0
-0         beta  92182.354188      0.0
+3      lognorm    906.097303      0.0
+2        gamma   2548.308229      0.0
+5     pearson3   2548.498535      0.0
+9  weibull_max   3989.924265      0.0
+6       triang   9958.283517      0.0
+4         norm  18698.635930      0.0
+7      uniform  39412.366567      0.0
+1        expon  51227.230609      0.0
+0         beta  70705.193975      0.0
+8  weibull_min  83328.565608      0.0
 </pre></div>
 </div>
+<img alt="../_images/06_distributions_11_1.png" src="../_images/06_distributions_11_1.png" />
 </div>
 </div>
 </div>
@@ -793,7 +872,7 @@
 <span class="c1"># Censor at 8 hours</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">arrival_to_scan</span> <span class="o">&lt;=</span> <span class="mi">480</span>
 <span class="n">arrival_to_scan</span> <span class="o">=</span> <span class="n">arrival_to_scan</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">fit_distributions</span><span class="p">(</span><span class="n">arrival_to_scan</span><span class="p">)</span>
+<span class="n">fit_distributions</span><span class="p">(</span><span class="n">arrival_to_scan</span><span class="p">,</span> <span class="s1">&#39;arrival_to_scan&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -801,18 +880,19 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm    1043.244304      0.0
-8  weibull_min    1242.414276      0.0
-2        gamma    1900.433438      0.0
-5     pearson3    1909.613959      0.0
-1        expon    2122.071088      0.0
-0         beta    3924.046486      0.0
-9  weibull_max   25326.018898      0.0
-6       triang   55942.946250      0.0
-4         norm   59422.248827      0.0
-7      uniform  112924.720088      0.0
+3      lognorm    1304.734823      0.0
+8  weibull_min    2332.395283      0.0
+1        expon    2601.691754      0.0
+5     pearson3    3625.517458      0.0
+2        gamma    3684.511812      0.0
+0         beta    4136.674987      0.0
+9  weibull_max   26502.523072      0.0
+4         norm   60087.021339      0.0
+6       triang   63346.535653      0.0
+7      uniform  112628.146035      0.0
 </pre></div>
 </div>
+<img alt="../_images/06_distributions_13_1.png" src="../_images/06_distributions_13_1.png" />
 </div>
 </div>
 </div>
@@ -822,7 +902,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scan_to_needle</span> <span class="o">=</span> \
     <span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;S2ThrombolysisTime_min&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;S2BrainImagingTime_min&#39;</span><span class="p">]</span>
-<span class="n">fit_distributions</span><span class="p">(</span><span class="n">scan_to_needle</span><span class="p">)</span>
+<span class="n">fit_distributions</span><span class="p">(</span><span class="n">scan_to_needle</span><span class="p">,</span> <span class="s1">&#39;scan_to_needle&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -830,18 +910,19 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm     156.464194      0.0
-5     pearson3     625.603158      0.0
-0         beta     709.696904      0.0
-8  weibull_min    2381.501591      0.0
-9  weibull_max    3229.290860      0.0
-1        expon   21832.942628      0.0
-4         norm   27966.447333      0.0
-6       triang  156575.354540      0.0
-7      uniform  196413.310249      0.0
-2        gamma  668068.407184      0.0
+3      lognorm      45.821391      0.0
+0         beta     534.323062      0.0
+5     pearson3     550.792315      0.0
+9  weibull_max    2183.947059      0.0
+8  weibull_min    2526.843820      0.0
+4         norm   25367.897592      0.0
+1        expon   25995.621272      0.0
+2        gamma   46185.933168      0.0
+6       triang  138094.351132      0.0
+7      uniform  184080.191352      0.0
 </pre></div>
 </div>
+<img alt="../_images/06_distributions_15_1.png" src="../_images/06_distributions_15_1.png" />
 </div>
 </div>
 </div>
@@ -850,6 +931,7 @@
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>All timings show a right skew, with lognormal having minimum chi-squared</p></li>
+<li><p>No distribution was a perfect fit to data (all had P&lt;0.01)</p></li>
 <li><p>Choose log normal distributions for pathway process times</p></li>
 </ul>
 </div>
