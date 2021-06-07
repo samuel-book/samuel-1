@@ -831,9 +831,9 @@
         <span class="c1"># Add the line to the plot</span>
         <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf_fitted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">distribution</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Normalised value&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Standardised value&#39;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>    
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Hisotgram of normalised values&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Hisotgram of standardised values&#39;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>          
 
@@ -893,16 +893,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution    chi_square  p_value
-3      lognorm   1034.321737      0.0
-2        gamma   2917.079629      0.0
-5     pearson3   2917.203030      0.0
-9  weibull_max   4644.417595      0.0
-8  weibull_min   5701.372611      0.0
-6       triang   9278.524343      0.0
-4         norm  19139.495446      0.0
-7      uniform  37631.869004      0.0
-1        expon  54491.538960      0.0
-0         beta  74890.233216      0.0
+3      lognorm   1250.007140      0.0
+5     pearson3   3225.606883      0.0
+2        gamma   3225.682490      0.0
+0         beta   3314.800198      0.0
+9  weibull_max   4454.134946      0.0
+6       triang  10537.311565      0.0
+4         norm  19593.910321      0.0
+7      uniform  39400.229128      0.0
+1        expon  55229.515972      0.0
+8  weibull_min  84845.956460      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_11_1.png" src="../_images/06_distributions_11_1.png" />
@@ -925,16 +925,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm     933.002052      0.0
-2        gamma    1375.265685      0.0
-1        expon    1614.298000      0.0
-8  weibull_min    3805.073497      0.0
-5     pearson3    4033.523243      0.0
-0         beta    4300.853464      0.0
-9  weibull_max   24046.486663      0.0
-6       triang   56773.671137      0.0
-4         norm   57794.503988      0.0
-7      uniform  113670.959163      0.0
+3      lognorm    1040.942774      0.0
+1        expon    1876.190793      0.0
+8  weibull_min    1921.123683      0.0
+5     pearson3    3305.569698      0.0
+2        gamma    3314.555272      0.0
+0         beta    3805.658138      0.0
+9  weibull_max   24903.425135      0.0
+6       triang   54444.210136      0.0
+4         norm   57988.231947      0.0
+7      uniform  111683.194954      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_13_1.png" src="../_images/06_distributions_13_1.png" />
@@ -955,16 +955,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm      83.851418      0.0
-5     pearson3     597.009581      0.0
-0         beta     709.852648      0.0
-8  weibull_min    2818.250389      0.0
-9  weibull_max    7134.133387      0.0
-1        expon   24249.722762      0.0
-4         norm   28889.660154      0.0
-6       triang  166415.411353      0.0
-7      uniform  196113.730283      0.0
-2        gamma  835317.187731      0.0
+3      lognorm     100.568060      0.0
+5     pearson3     663.171935      0.0
+0         beta     664.877755      0.0
+9  weibull_max    2280.099365      0.0
+8  weibull_min    2684.310652      0.0
+1        expon   24172.934268      0.0
+4         norm   26905.449919      0.0
+6       triang  169906.642630      0.0
+7      uniform  196205.794518      0.0
+2        gamma  573877.189190      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_15_1.png" src="../_images/06_distributions_15_1.png" />
