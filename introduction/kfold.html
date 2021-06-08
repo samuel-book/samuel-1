@@ -5,61 +5,57 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search &#8212; SAMueL Stroke Audit Machine Learning</title>
+    <title>Assessing accuracy of models with straified k-fold cross-validation &#8212; SAMueL Stroke Audit Machine Learning</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script src="searchindex.js" defer></script>
-  
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistic Regression" href="../logistic_regression/outline.html" />
+    <link rel="prev" title="Stroke pathway timing distribution" href="../descriptive_stats/06_distributions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
-
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -73,20 +69,20 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
       
       <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="#" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction/intro.html">
+  <a class="reference internal" href="intro.html">
    Introduction to SAMueL (Stroke Audit Machine Learning)
   </a>
  </li>
@@ -98,17 +94,17 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction/plain_english.html">
+  <a class="reference internal" href="plain_english.html">
    Plain English Summary
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction/key_findings_all.html">
+  <a class="reference internal" href="key_findings_all.html">
    SAMueL - Summary of Findings
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction/project_team.html">
+  <a class="reference internal" href="project_team.html">
    Contact and Project Team
   </a>
  </li>
@@ -120,12 +116,12 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction/data.html">
+  <a class="reference internal" href="data.html">
    Data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction/software.html">
+  <a class="reference internal" href="software.html">
    Software
   </a>
  </li>
@@ -137,7 +133,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="descriptive_stats/outline.html">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
    Outline - what is in this section?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -147,42 +143,42 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/01_descriptive.html">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
      Descriptive analysis of stroke pathway data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/04_thrombolysis_general.html">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
      Association between patient features on use of thrombolysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/05_thrombolysis_comparison.html">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
      Comparison of average values for patients who receive thrombolysis and those that do not
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/02a_daily_patterns.html">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
      Pathway patterns throughout the day
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/02b_weekly_patterns.html">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
      Pathway patterns throughout the week
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/03a_daily_patterns_single_team.html">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
      Pathway patterns throughout the day in an example single stroke team
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/03b_weekly_patterns_single_team.html">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
      Pathway patterns throughout the week in an example single stroke team
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="descriptive_stats/06_distributions.html">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
      Stroke pathway timing distribution
     </a>
    </li>
@@ -194,14 +190,14 @@
   Machine Learning
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="introduction/kfold.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Assessing accuracy of models with straified k-fold cross-validation
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="logistic_regression/outline.html">
+  <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -211,19 +207,19 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="logistic_regression/logistic_regression_single_fit.html">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
      Logistic Regression Classifier - Fitting hospital-specific models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="random_forest/outline.html">
+  <a class="reference internal" href="../random_forest/outline.html">
    Random Forests
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -233,59 +229,59 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_single_fit.html">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_hospital_fit_accuracy.html">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
      Random Forest Classifier - Fitting hospital-specific models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_train_save_hospital_models.html">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
      Train and save hospital-level models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_compare_hospital.html">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
      Compare level of agreement in clinical decision making between hospitals using Random Forests models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_benchmark_hospitals.html">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
      Benchmark hospitals
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
      How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/random_forest_cohort_distance.html">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
      Grouping hospitals by similarities in decision making
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/create_vignette_dataset.html">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
      Patient level decisions at own hospital, and consensus decisions at other other hospitals
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/vignettes.html">
+    <a class="reference internal" href="../random_forest/vignettes.html">
      Thrombolysis hospital vs. benchmark diagrams and patient vignettes
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random_forest/within_hospital_variability.html">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
      Find similar patients who are treated differently within the same hospital
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="neural_net/outline.html">
+  <a class="reference internal" href="../neural_net/outline.html">
    Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -295,69 +291,69 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/001a_fully_connected_fit_check_training_time.html">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/001b_fully_connected_fit.html">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
      Fully connected TensorFlow model - Train and save models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/001c_fully_connect_analyse.html">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
      Fully connected TensorFlow model - analysis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/001d_learning_curve.html">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
      Fully connected TensorFlow model - Learning curve
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/002b_1d_modular_fit.html">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
      Modular TensorFlow model with 1D embedding - Train and save models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/002c_1d_modular_analyse.html">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
      Modular TensorFlow model with 1D embedding - analyse
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/003a_2d_modular_fit.html">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/003b_2d_modular_analyse.html">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
      Modular TensorFlow model with 2D embedding - analyse
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/004a_generate_1d_nets_for_10k.html">
+    <a class="reference internal" href="../neural_net/004a_generate_1d_nets_for_10k.html">
      Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/004b_analyse_10k_1d_modular.html">
+    <a class="reference internal" href="../neural_net/004b_analyse_10k_1d_modular.html">
      Investigating the output of neural net embedding subnets
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/005a_generate_2d_nets_for_10k.html">
+    <a class="reference internal" href="../neural_net/005a_generate_2d_nets_for_10k.html">
      Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="neural_net/005b_analyse_10k_2d_modular.html">
+    <a class="reference internal" href="../neural_net/005b_analyse_10k_2d_modular.html">
      Investigating the output of neural net embedding subnets - with 2D subnet output
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble/outline.html">
+  <a class="reference internal" href="../ensemble/outline.html">
    Ensemble Models
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -367,32 +363,32 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble/ensemble_generate_probabilities.html">
+    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
      Ensemble model fitting - generate probabilities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble/compare_model_outputs.html">
+    <a class="reference internal" href="../ensemble/compare_model_outputs.html">
      Comparison of model outputs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble/ensemble_with_logistic_regression.html">
+    <a class="reference internal" href="../ensemble/ensemble_with_logistic_regression.html">
      Ensemble combine with logistic regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble/ensemble_with_random_forests.html">
+    <a class="reference internal" href="../ensemble/ensemble_with_random_forests.html">
      Ensemble combine with random forests
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble/ensemble_with_neural_network.html">
+    <a class="reference internal" href="../ensemble/ensemble_with_neural_network.html">
      Ensemble combine with a neural network
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble/ensemble_summary.html">
+    <a class="reference internal" href="../ensemble/ensemble_summary.html">
      Summary of results from ensemble models
     </a>
    </li>
@@ -406,7 +402,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="pathway_sim/outline_model.html">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
    Model building and validation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -416,24 +412,24 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="pathway_sim/pathway_code.html">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
      Pathway code
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pathway_sim/extract_hospital_performance.html">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
      Extract hospital performance for pathway model
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pathway_sim/validation.html">
+    <a class="reference internal" href="../pathway_sim/validation.html">
      Stroke pathway simulation - validation and calibration
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="pathway_sim/outline_scenarios.html">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -443,12 +439,12 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="pathway_sim/scenario_results_generation.html">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
      Stroke pathway simulation - generation of results from alternative scenarios
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pathway_sim/scenario_analysis.html">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
      Analysis of alternative pathway scenarios
     </a>
    </li>
@@ -487,6 +483,23 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/introduction/kfold.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
             <!-- Full screen (wrap in <a> to have style consistency -->
@@ -511,33 +524,39 @@
         
               <div>
                 
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    Searching for multiple words only shows matches that contain
-    all words.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <div class="section" id="assessing-accuracy-of-models-with-straified-k-fold-cross-validation">
+<h1>Assessing accuracy of models with straified k-fold cross-validation<a class="headerlink" href="#assessing-accuracy-of-models-with-straified-k-fold-cross-validation" title="Permalink to this headline">¶</a></h1>
+<p>When assessing accuracy of the machine learning models, stratified k-fold splits were used. We used 5-fold splits where each data point is in one, and only one, of five test sets. This is represented schematically below. Data is stratified such that the test set is representative of hospital mix in the whole data population, and within the hospital level data the use of thrombolysis is representative of the whole data for that hospital.</p>
+<p><img alt="" src="../_images/kfold.jpg" /></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="../descriptive_stats/06_distributions.html" title="previous page">Stroke pathway timing distribution</a>
+    <a class='right-next' id="next-link" href="../logistic_regression/outline.html" title="next page">Logistic Regression</a>
 
         </div>
         
@@ -559,7 +578,7 @@
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
   </body>
