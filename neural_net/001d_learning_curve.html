@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Fully connected TensorFlow model - Learning curve &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -87,7 +88,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Summary
  </span>
@@ -109,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
@@ -126,7 +127,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -185,7 +186,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
@@ -395,7 +396,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -567,15 +568,15 @@
         
               <div>
                 
-  <div class="section" id="fully-connected-tensorflow-model-learning-curve">
+  <section id="fully-connected-tensorflow-model-learning-curve">
 <h1>Fully connected TensorFlow model - Learning curve<a class="headerlink" href="#fully-connected-tensorflow-model-learning-curve" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Ascertain the relationship between training set size and model accuracy</p></li>
 </ul>
-</div>
-<div class="section" id="basic-methodology">
+</section>
+<section id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Models are fitted to a single fold of previously split k-fold training and test data sets.</p></li>
@@ -596,8 +597,8 @@
 <li><p>Dropout layer</p></li>
 <li><p>Output layer (single sigmoid activation)</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,8 +625,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-to-scale-data-minmax-scaling">
+</section>
+<section id="function-to-scale-data-minmax-scaling">
 <h2>Function to scale data (minmax scaling)<a class="headerlink" href="#function-to-scale-data-minmax-scaling" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -647,8 +648,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-neural-net">
+</section>
+<section id="define-neural-net">
 <h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,8 +689,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="run-k-fold-validation-with-varying-training-set-sizes">
+</section>
+<section id="run-k-fold-validation-with-varying-training-set-sizes">
 <h2>Run k-fold validation with varying training set sizes<a class="headerlink" href="#run-k-fold-validation-with-varying-training-set-sizes" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -833,14 +834,14 @@ Training set size 70000, accuracy: 0.844
 <img alt="../_images/001d_learning_curve_9_0.png" src="../_images/001d_learning_curve_9_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Training accuracy rises, and then increases only slightly over 25,000 training samples.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -889,9 +890,10 @@ Training set size 70000, accuracy: 0.844
 
       </div>
     </div>
-  
+    
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  
+
+    
   </body>
 </html>

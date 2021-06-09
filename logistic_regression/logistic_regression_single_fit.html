@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Logistic Regression Classifier - Fitting to all stroke teams together &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -87,7 +88,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Summary
  </span>
@@ -109,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
@@ -126,7 +127,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -185,7 +186,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
@@ -395,7 +396,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -626,9 +627,9 @@
         
               <div>
                 
-  <div class="section" id="logistic-regression-classifier-fitting-to-all-stroke-teams-together">
+  <section id="logistic-regression-classifier-fitting-to-all-stroke-teams-together">
 <h1>Logistic Regression Classifier - Fitting to all stroke teams together<a class="headerlink" href="#logistic-regression-classifier-fitting-to-all-stroke-teams-together" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Assess accuracy of a logistic regression classifier, using k-fold (5-fold) training/test data splits (each data point is present in one and only one of the five test sets). This notebook fits all data in a single model, with hospital ID being a one-hot encoded feature.</p>
 <p>The notebook includes:</p>
@@ -638,8 +639,8 @@
 <li><p>Identify feature weights (model coefficients)</p></li>
 <li><p>Performing a learning rate test (relationship between training set size and accuracy)</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -661,8 +662,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="import-data">
+</section>
+<section id="import-data">
 <h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has previously been split into 5 training/test splits.</p>
 <div class="cell tag_remove-output docutils container">
@@ -684,10 +685,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="standardise-data">
+<section id="standardise-data">
 <h3>Standardise data<a class="headerlink" href="#standardise-data" title="Permalink to this headline">¶</a></h3>
 <p>Standardisation subtracts the mean and divides by the standard deviation, for each feature. Here we use the sklearn built-in method for standardisation.</p>
 <div class="cell docutils container">
@@ -717,8 +718,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-accuracy-measures">
+</section>
+<section id="calculate-accuracy-measures">
 <h3>Calculate accuracy measures<a class="headerlink" href="#calculate-accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,8 +830,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+</section>
+<section id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
 <h3>Find model probability threshold to match predicted and actual thrombolysis use<a class="headerlink" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -849,8 +850,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="line-intersect">
+</section>
+<section id="line-intersect">
 <h3>Line intersect<a class="headerlink" href="#line-intersect" title="Permalink to this headline">¶</a></h3>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -875,9 +876,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="fit-model-k-fold">
+</section>
+</section>
+<section id="fit-model-k-fold">
 <h2>Fit model (k-fold)<a class="headerlink" href="#fit-model-k-fold" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -955,10 +956,10 @@ Run 4, accuracy: 0.833, threshold 0.470
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="results">
+</section>
+<section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="accuracy-measures">
+<section id="accuracy-measures">
 <h3>Accuracy measures<a class="headerlink" href="#accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1375,8 +1376,8 @@ Run 4, accuracy: 0.833, threshold 0.470
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
+</section>
+<section id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
 <h3>Receiver Operator Characteristic and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h3>
 <p>Receiver Operator Characteristic Curve:</p>
 <div class="cell docutils container">
@@ -1465,6 +1466,9 @@ SD AUC: 0.0014
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Receiver Operator Characteristic Curve&#39;</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Mean AUC: </span><span class="si">{</span><span class="n">mean_auc</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.64</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> 
+         <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plot sensitivity-specificity</span>
@@ -1488,8 +1492,8 @@ SD AUC: 0.0014
 <img alt="../_images/logistic_regression_single_fit_29_0.png" src="../_images/logistic_regression_single_fit_29_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
+</section>
+<section id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1523,8 +1527,8 @@ SD AUC: 0.0014
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="collate-and-save-results">
+</section>
+<section id="collate-and-save-results">
 <h3>Collate and save results<a class="headerlink" href="#collate-and-save-results" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1559,9 +1563,9 @@ SD AUC: 0.0014
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="feature-weights">
+</section>
+</section>
+<section id="feature-weights">
 <h2>Feature Weights<a class="headerlink" href="#feature-weights" title="Permalink to this headline">¶</a></h2>
 <p>Get Logistic Regression weights (average across k-fold results).
 Sort by absolute value of weight.</p>
@@ -1612,13 +1616,13 @@ Sort by absolute value of weight.</p>
   <tbody>
     <tr>
       <th>S2BrainImagingTime_min</th>
-      <td>-18.492412</td>
-      <td>18.492412</td>
+      <td>-18.492408</td>
+      <td>18.492408</td>
     </tr>
     <tr>
       <th>S2StrokeType_Infarction</th>
-      <td>2.017886</td>
-      <td>2.017886</td>
+      <td>2.017887</td>
+      <td>2.017887</td>
     </tr>
     <tr>
       <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
@@ -1722,8 +1726,8 @@ Sort by absolute value of weight.</p>
     </tr>
     <tr>
       <th>ExtinctionInattention</th>
-      <td>0.117929</td>
-      <td>0.117929</td>
+      <td>0.117928</td>
+      <td>0.117928</td>
     </tr>
     <tr>
       <th>team_GKONI0110I</th>
@@ -1732,8 +1736,8 @@ Sort by absolute value of weight.</p>
     </tr>
     <tr>
       <th>Sensory</th>
-      <td>0.107786</td>
-      <td>0.107786</td>
+      <td>0.107787</td>
+      <td>0.107787</td>
     </tr>
   </tbody>
 </table>
@@ -1802,8 +1806,8 @@ Sort by absolute value of weight.</p>
 <img alt="../_images/logistic_regression_single_fit_39_0.png" src="../_images/logistic_regression_single_fit_39_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="learning-cvurve">
+</section>
+<section id="learning-cvurve">
 <h2>Learning cvurve<a class="headerlink" href="#learning-cvurve" title="Permalink to this headline">¶</a></h2>
 <p>Examine the relationship between training data size and accuracy.</p>
 <div class="cell docutils container">
@@ -1906,8 +1910,8 @@ Sort by absolute value of weight.</p>
 <img alt="../_images/logistic_regression_single_fit_43_0.png" src="../_images/logistic_regression_single_fit_43_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</section>
+<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2044,7 +2048,7 @@ Sort by absolute value of weight.</p>
     </tr>
     <tr>
       <th>0.6</th>
-      <td>0.549274</td>
+      <td>0.549273</td>
       <td>0.566846</td>
       <td>0.566846</td>
       <td>0.064974</td>
@@ -2169,8 +2173,8 @@ Accuracy: 0.896
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Overall accuracy = 83.2% (89.6% for those 60% samples with at least 80% confidence of model)</p></li>
@@ -2189,8 +2193,8 @@ Accuracy: 0.896
 </li>
 <li><p>The model shows good calibration of probability vs. fraction positive, without need of additional calibration</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2239,9 +2243,10 @@ Accuracy: 0.896
 
       </div>
     </div>
-  
+    
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  
+
+    
   </body>
 </html>

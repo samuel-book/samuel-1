@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Data &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -87,7 +88,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Summary
  </span>
@@ -109,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
@@ -126,7 +127,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -185,7 +186,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
@@ -395,7 +396,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -584,9 +585,9 @@
         
               <div>
                 
-  <div class="section" id="data">
+  <section id="data">
 <h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="data-access">
+<section id="data-access">
 <h2>Data access<a class="headerlink" href="#data-access" title="Permalink to this headline">¶</a></h2>
 <p>Data was obtained from the Sentinel Stroke National Audit (SSNAP [1]), managed through the Healthcare Quality Improvement Partnership (HQIP [2]). SSNAP has near-complete coverage of all acute stroke admissions in the UK (outside Scotland). All hospitals admitting acute stroke participate in the audit, and year-on-year comparison with Hospital Episode Statistics [3] confirms estimated case ascertainment of 95% of coded cases of acute stroke.</p>
 <p>The NHS Health Research Authority decision tool [4] was used to confirm that ethical approval was not required to access the data. Data access was authorised by HQIP (reference HQIP303).</p>
@@ -595,16 +596,16 @@
 <p>[2] <a class="reference external" href="https://www.hqip.org.uk/">https://www.hqip.org.uk/</a></p>
 <p>[3] <a class="reference external" href="https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics">https://digital.nhs.uk/data-and-information/data-tools-and-services/data-services/hospital-episode-statistics</a></p>
 <p>[4] <a class="reference external" href="http://www.hra-decisiontools.org.uk/research/">http://www.hra-decisiontools.org.uk/research/</a></p>
-</div>
-<div class="section" id="data-fields">
+</section>
+<section id="data-fields">
 <h2>Data Fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="stroke-team">
+<section id="stroke-team">
 <h3>Stroke Team<a class="headerlink" href="#stroke-team" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>StrokeTeam: Pseudonymised SSNAP ‘routinely admitting team‘ unique identifier. For emergency care it is expected that each hospital has one stroke team (though post-72 hour care may be reported under a different team at that hospital).PatientUID: Pseudonymised patient unique identifier</p></li>
 </ul>
-</div>
-<div class="section" id="patient-general">
+</section>
+<section id="patient-general">
 <h3>Patient – general<a class="headerlink" href="#patient-general" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Pathway: Total number of team transfers, excluding community teams</p></li>
@@ -613,8 +614,8 @@
 <li><p>S1Gender: Gender</p></li>
 <li><p>S1Ethnicity: Patient Ethnicity. Aggregated to White, Black, Mixed, Asian and Other</p></li>
 </ul>
-</div>
-<div class="section" id="patient-pathway-information">
+</section>
+<section id="patient-pathway-information">
 <h3>Patient – pathway information<a class="headerlink" href="#patient-pathway-information" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>S1OnsetInHospital: Whether the patient was already an inpatient at the time of stroke</p></li>
@@ -629,8 +630,8 @@
 <li><p>S2BrainImagingTime_min: Time from Clock Start to brain scan. In minutes. “Clock Start” is used throughout SSNAP reporting to refer to the date and time of arrival at first hospital for newly arrived patients, or to the date and time of symptom onset if patient already in hospital at the time of their stroke.</p></li>
 <li><p>S2ThrombolysisTime_min: Time from Clock Start to thrombolysis. In minutes. “Clock Start” is used throughout SSNAP reporting to refer to the date and time of arrival at first hospital for newly arrived patients, or to the date and time of symptom onset if patient already in hospital at the time of their stroke.</p></li>
 </ul>
-</div>
-<div class="section" id="patient-comorbidities">
+</section>
+<section id="patient-comorbidities">
 <h3>Patient – comorbidities<a class="headerlink" href="#patient-comorbidities" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>CongestiveHeartFailure: Pre-Stroke Congestive Heart Failure</p></li>
@@ -644,8 +645,8 @@
 <li><p>AFAnticoagulentDOAC: If the patient was receiving anticoagulant medication, was it direct oral anticoagulants (DOACs)</p></li>
 <li><p>AFAnticoagulentHeparin: If the patient was receiving anticoagulant medication, was it Heparin</p></li>
 </ul>
-</div>
-<div class="section" id="patient-nih-stroke-scale">
+</section>
+<section id="patient-nih-stroke-scale">
 <h3>Patient – NIH Stroke Scale<a class="headerlink" href="#patient-nih-stroke-scale" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>S2NihssArrival: National Institutes of Health Stroke Scale score on arrival at hospital</p></li>
@@ -665,8 +666,8 @@
 <li><p>Sensory: National Institutes of Health Stroke Scale Item 8 Sensory (higher values indicate more severe deficit)</p></li>
 <li><p>Visual: National Institutes of Health Stroke Scale Item 3 Visual Fields (higher values indicate more severe deficit)</p></li>
 </ul>
-</div>
-<div class="section" id="patient-other-clinical-features">
+</section>
+<section id="patient-other-clinical-features">
 <h3>Patient – other clinical features<a class="headerlink" href="#patient-other-clinical-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>S2INR: Patient’s International Normalised ratio (INR) on arrival at hospital (available since 01-Dec-2017)</p></li>
@@ -677,14 +678,14 @@
 <li><p>S2StrokeType: Whether the stroke type was infarction or primary intracerebral haemorrhage</p></li>
 <li><p>S2TIAInLastMonth: Whether the patient had a Transient Ischaemic Attack during the last month. Item from the SSNAP comprehensive dataset questions (not mandatory)</p></li>
 </ul>
-</div>
-<div class="section" id="patient-thrombolysis-given">
+</section>
+<section id="patient-thrombolysis-given">
 <h3>Patient – thrombolysis given<a class="headerlink" href="#patient-thrombolysis-given" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>S2Thrombolysis: Whether the patient was given thrombolysis (clot busting medication)</p></li>
 </ul>
-</div>
-<div class="section" id="patient-reason-stated-for-not-giving-thrombolysis">
+</section>
+<section id="patient-reason-stated-for-not-giving-thrombolysis">
 <h3>Patient – Reason stated for not giving thrombolysis<a class="headerlink" href="#patient-reason-stated-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Age: If the answer to thrombolysis given was “no but”, the reason was Age</p></li>
@@ -698,9 +699,9 @@
 <li><p>TimeWindow: If the answer to thrombolysis given was “no but”, the reason was Age</p></li>
 <li><p>TooMildSevere: If the answer to thrombolysis given was “no but”, the reason was Stroke too mild or too severe</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -749,9 +750,10 @@
 
       </div>
     </div>
-  
+    
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  
+
+    
   </body>
 </html>

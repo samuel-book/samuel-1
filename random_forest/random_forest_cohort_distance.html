@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Grouping hospitals by similarities in decision making &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -89,7 +90,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Summary
  </span>
@@ -111,7 +112,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
@@ -128,7 +129,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -187,7 +188,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
@@ -397,7 +398,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -588,9 +589,9 @@
         
               <div>
                 
-  <div class="section" id="grouping-hospitals-by-similarities-in-decision-making">
+  <section id="grouping-hospitals-by-similarities-in-decision-making">
 <h1>Grouping hospitals by similarities in decision making<a class="headerlink" href="#grouping-hospitals-by-similarities-in-decision-making" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To place hospitals into groups according to their decision making such that hospitals in the same group make similar decisions. This is done based on Hamming distance - the proportion of patients with an agreed decision between two hospitals.</p></li>
@@ -603,8 +604,8 @@
 <li><p>Seriate <span class="math notranslate nohighlight">\(D\)</span> to visualise hospital groups</p></li>
 </ul>
 <p>We follow this by repeating the analysis a subgroup of hospitals - those with 30-70% agreement to thrombolyse between hospitals (so we remove those patients high agreement on thrombolysis decision).</p>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,8 +631,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-pre-trained-hospital-models">
+</section>
+<section id="load-pre-trained-hospital-models">
 <h2>Load pre-trained hospital models<a class="headerlink" href="#load-pre-trained-hospital-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -642,8 +643,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-cohort">
+</section>
+<section id="load-cohort">
 <h2>Load cohort<a class="headerlink" href="#load-cohort" title="Permalink to this headline">¶</a></h2>
 <p>The 10k test cohort was not used in training the models used.</p>
 <div class="cell docutils container">
@@ -972,8 +973,8 @@
 <p>10000 rows × 101 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="put-10k-cohort-through-all-hospital-models">
+</section>
+<section id="put-10k-cohort-through-all-hospital-models">
 <h2>Put 10k cohort through all hospital models<a class="headerlink" href="#put-10k-cohort-through-all-hospital-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -999,8 +1000,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="find-hamming-distance-between-hospitals">
+</section>
+<section id="find-hamming-distance-between-hospitals">
 <h2>Find hamming distance between hospitals<a class="headerlink" href="#find-hamming-distance-between-hospitals" title="Permalink to this headline">¶</a></h2>
 <p>Hamming distance is a metric for comparing two binary data strings. While comparing two binary strings of equal length, Hamming distance is the number of bit positions in which the two bits are different. Our binary data is whether a hospital is predicted to give thrombolysis or not to each of the cohort of patients.</p>
 <div class="cell docutils container">
@@ -1085,8 +1086,8 @@
 <img alt="../_images/random_forest_cohort_distance_22_0.png" src="../_images/random_forest_cohort_distance_22_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="use-contentious-patients-to-determine-hospital-distance">
+</section>
+<section id="use-contentious-patients-to-determine-hospital-distance">
 <h2>Use ‘contentious’ patients to determine hospital distance<a class="headerlink" href="#use-contentious-patients-to-determine-hospital-distance" title="Permalink to this headline">¶</a></h2>
 <p>We define ‘contentious’ patients as those patients with a low level of agreement between hospitals.</p>
 <p>For each patient, calculate the percentage of hospitals that agree on the decision to thrombolyse or not.</p>
@@ -1448,7 +1449,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="re-calculate-hamming-distance-based-on-contentious-patients">
+<section id="re-calculate-hamming-distance-based-on-contentious-patients">
 <h3>Re-calculate hamming distance based on contentious patients<a class="headerlink" href="#re-calculate-hamming-distance-based-on-contentious-patients" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1463,7 +1464,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="seriate">
+<section id="seriate">
 <h4>Seriate<a class="headerlink" href="#seriate" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1544,10 +1545,10 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Using all patients in the cohort, the pairwise hamming distance between hospitals is relatively low.</p></li>
@@ -1556,8 +1557,8 @@
 <li><p>The two identified groups have very different thrombolysis use in the group of ‘contentious patients. 13%.</p></li>
 <li><p>Use of patients groups with high predicted disagreement in decision-making facilitates identification of hospitals with similar decision-making.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1606,9 +1607,10 @@
 
       </div>
     </div>
-  
+    
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  
+
+    
   </body>
 </html>

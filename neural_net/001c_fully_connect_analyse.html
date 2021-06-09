@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Fully connected TensorFlow model - analysis &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -87,7 +88,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Summary
  </span>
@@ -109,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
@@ -126,7 +127,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -185,7 +186,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
@@ -395,7 +396,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -604,9 +605,9 @@
         
               <div>
                 
-  <div class="section" id="fully-connected-tensorflow-model-analysis">
+  <section id="fully-connected-tensorflow-model-analysis">
 <h1>Fully connected TensorFlow model - analysis<a class="headerlink" href="#fully-connected-tensorflow-model-analysis" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Analyse pre-trained models (trained on 5-fold cross-validation training/test sets)</p>
@@ -617,8 +618,8 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="basic-methodology">
+</section>
+<section id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Models are fitted to previously split training and test data sets.</p></li>
@@ -638,8 +639,8 @@
 <li><p>Dropout layer</p></li>
 <li><p>Output layer (single sigmoid activation)</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,8 +681,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="import-data">
+</section>
+<section id="import-data">
 <h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -695,8 +696,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-to-scale-data">
+</section>
+<section id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,8 +719,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-for-accuracy">
+</section>
+<section id="define-function-for-accuracy">
 <h2>Define function for accuracy<a class="headerlink" href="#define-function-for-accuracy" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -828,8 +829,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-for-line-intersect">
+</section>
+<section id="define-function-for-line-intersect">
 <h2>Define function for line intersect<a class="headerlink" href="#define-function-for-line-intersect" title="Permalink to this headline">¶</a></h2>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -854,8 +855,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-neural-net">
+</section>
+<section id="define-neural-net">
 <h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,8 +896,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="use-trained-models-to-predict-outcome-of-test-data-sets">
+</section>
+<section id="use-trained-models-to-predict-outcome-of-test-data-sets">
 <h2>Use trained models to predict outcome of test data sets<a class="headerlink" href="#use-trained-models-to-predict-outcome-of-test-data-sets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1224,8 +1225,8 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves">
+</section>
+<section id="receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves">
 <h2>Receiver Operator Characteristic (ROC) Curve and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h2>
 <p>Calulcate areas of ROC curves.</p>
 <div class="cell docutils container">
@@ -1327,6 +1328,9 @@ SD AUC: 0.0016
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Receiver Operator Characteristic Curve&#39;</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Mean AUC: </span><span class="si">{</span><span class="n">mean_auc</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.64</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> 
+         <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plot sensitivity-specificity</span>
@@ -1350,7 +1354,7 @@ SD AUC: 0.0016
 <img alt="../_images/001c_fully_connect_analyse_25_0.png" src="../_images/001c_fully_connect_analyse_25_0.png" />
 </div>
 </div>
-<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
+<section id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1384,9 +1388,9 @@ SD AUC: 0.0016
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="collate-and-save-results">
+</section>
+</section>
+<section id="collate-and-save-results">
 <h2>Collate and save results<a class="headerlink" href="#collate-and-save-results" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1421,8 +1425,8 @@ SD AUC: 0.0016
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</section>
+<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1685,8 +1689,8 @@ Accuracy: 0.903
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Overall accuracy = 84.4% (90.3% for those 65% samples with at least 80% confidence of model)</p></li>
@@ -1694,8 +1698,8 @@ Accuracy: 0.903
 <li><p>The model can achieve 83.3% sensitivity and specificity simultaneously</p></li>
 <li><p>ROC AUC = 0.913</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1744,9 +1748,10 @@ Accuracy: 0.903
 
       </div>
     </div>
-  
+    
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  
+
+    
   </body>
 </html>
