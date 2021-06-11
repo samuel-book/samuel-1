@@ -662,6 +662,22 @@
 </div>
 </div>
 </div>
+<div class="section" id="calculate-r-squared">
+<h3>Calculate R-squared<a class="headerlink" href="#calculate-r-squared" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsquared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="n">observed</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">rsquared</span> <span class="o">=</span> <span class="n">rsquared</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R-Squared </span><span class="si">{</span><span class="n">rsquared</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R-Squared 0.979
+</pre></div>
+</div>
+</div>
+</div>
 <p>Plot results</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -674,28 +690,14 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Actual thrombolysis use (%)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Model thrombolysis use (%)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;R-squared: </span><span class="si">{</span><span class="n">rsquared</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> 
+        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./results/validation.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/validation_8_0.png" src="../_images/validation_8_0.png" />
-</div>
-</div>
-<div class="section" id="calculate-r-squared">
-<h3>Calculate R-squared<a class="headerlink" href="#calculate-r-squared" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsquared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="n">observed</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">rsquared</span> <span class="o">=</span> <span class="n">rsquared</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R-Squared </span><span class="si">{</span><span class="n">rsquared</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R-Squared 0.980
-</pre></div>
-</div>
+<img alt="../_images/validation_10_0.png" src="../_images/validation_10_0.png" />
 </div>
 </div>
 </div>
@@ -712,7 +714,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean observed thrombolysis use: 11.45
-Mean predicted thrombolysis use: 11.23
+Mean predicted thrombolysis use: 11.27
 </pre></div>
 </div>
 </div>
@@ -744,14 +746,14 @@ Mean predicted thrombolysis use: 11.23
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean difference                          -0.223489
-Std Dev difference                        0.515904
-Mean absolute difference                  0.384129
-Std Dev absolute difference               0.410547
-Mean percentage difference               -1.568678
-Std Dev percentage difference             4.316186
-Mean percentage absolute difference       3.340640
-Std Dev percentage absolute difference    3.151244
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean difference                          -0.188262
+Std Dev difference                        0.523398
+Mean absolute difference                  0.389702
+Std Dev absolute difference               0.396888
+Mean percentage difference               -1.327968
+Std Dev percentage difference             4.313913
+Mean percentage absolute difference       3.382064
+Std Dev percentage absolute difference    2.989145
 dtype: float64
 </pre></div>
 </div>
