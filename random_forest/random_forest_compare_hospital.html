@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Compare level of agreement in clinical decision making between hospitals using Random Forests models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -88,7 +87,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Summary
  </span>
@@ -110,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Data and software
  </span>
@@ -127,7 +126,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -186,7 +185,7 @@
   </ul>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -396,7 +395,7 @@
   </ul>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -580,15 +579,15 @@
         
               <div>
                 
-  <section id="compare-level-of-agreement-in-clinical-decision-making-between-hospitals-using-random-forests-models">
+  <div class="section" id="compare-level-of-agreement-in-clinical-decision-making-between-hospitals-using-random-forests-models">
 <h1>Compare level of agreement in clinical decision making between hospitals using Random Forests models<a class="headerlink" href="#compare-level-of-agreement-in-clinical-decision-making-between-hospitals-using-random-forests-models" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims:<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Quantify the level of agreement between different hospital models on what treatment patients should receive.</p></li>
 </ul>
-</section>
-<section id="import-libraries">
+</div>
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -609,8 +608,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-data">
+</div>
+<div class="section" id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <p>Create combined data set by combining cohort train/test</p>
 <div class="cell docutils container">
@@ -627,8 +626,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-previously-saved-models">
+</div>
+<div class="section" id="load-previously-saved-models">
 <h2>Load previously saved models<a class="headerlink" href="#load-previously-saved-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -638,8 +637,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="pass-patients-from-each-hospital-through-all-other-hospital-models">
+</div>
+<div class="section" id="pass-patients-from-each-hospital-through-all-other-hospital-models">
 <h2>Pass patients from each hospital through all other hospital models<a class="headerlink" href="#pass-patients-from-each-hospital-through-all-other-hospital-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -764,22 +763,22 @@
       <th></th>
       <th>True</th>
       <th>Hospital</th>
-      <th>UALFR2142B</th>
-      <th>XKAWN3771U</th>
-      <th>WSNTP4114A</th>
-      <th>TBZOA3799I</th>
-      <th>IAZKG9244A</th>
-      <th>BBXPQ0212O</th>
-      <th>GKONI0110I</th>
-      <th>AOBTM3098N</th>
-      <th>...</th>
-      <th>IDHVL2894N</th>
-      <th>NTPQZ0829K</th>
+      <th>OQYTM8444L</th>
       <th>NZECY6641V</th>
-      <th>ZBVSO0975W</th>
-      <th>HGGNH9018F</th>
-      <th>DANAH4615Q</th>
-      <th>WTBXP2683L</th>
+      <th>NTPQZ0829K</th>
+      <th>MHMYL4920B</th>
+      <th>NFBUF0424E</th>
+      <th>UMYTD3128E</th>
+      <th>FYFMU3598G</th>
+      <th>JADBS8258F</th>
+      <th>...</th>
+      <th>HONZP0443O</th>
+      <th>TPXYE0168D</th>
+      <th>IYJHY1440E</th>
+      <th>HREGJ0143U</th>
+      <th>PSNKC7508G</th>
+      <th>FLVXS2956M</th>
+      <th>HZNVT9936G</th>
       <th>sum</th>
       <th>percent</th>
       <th>percent_agree</th>
@@ -789,10 +788,10 @@
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>UALFR2142B</td>
+      <td>OQYTM8444L</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -806,15 +805,15 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>3</td>
-      <td>2.272727</td>
-      <td>97.727273</td>
+      <td>1</td>
+      <td>0.757576</td>
+      <td>99.242424</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
-      <td>UALFR2142B</td>
-      <td>1</td>
+      <td>0</td>
+      <td>OQYTM8444L</td>
+      <td>0</td>
       <td>1</td>
       <td>1</td>
       <td>1</td>
@@ -830,14 +829,14 @@
       <td>1</td>
       <td>1</td>
       <td>1</td>
-      <td>128</td>
-      <td>96.969697</td>
-      <td>96.969697</td>
+      <td>119</td>
+      <td>90.151515</td>
+      <td>90.151515</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1</td>
-      <td>UALFR2142B</td>
+      <td>OQYTM8444L</td>
       <td>1</td>
       <td>1</td>
       <td>1</td>
@@ -854,17 +853,17 @@
       <td>1</td>
       <td>1</td>
       <td>1</td>
-      <td>128</td>
-      <td>96.969697</td>
-      <td>96.969697</td>
+      <td>127</td>
+      <td>96.212121</td>
+      <td>96.212121</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0</td>
-      <td>UALFR2142B</td>
+      <td>OQYTM8444L</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -878,14 +877,14 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0.000000</td>
-      <td>100.000000</td>
+      <td>8</td>
+      <td>6.060606</td>
+      <td>93.939394</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0</td>
-      <td>UALFR2142B</td>
+      <td>OQYTM8444L</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -896,25 +895,25 @@
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.000000</td>
-      <td>100.000000</td>
+      <td>6</td>
+      <td>4.545455</td>
+      <td>95.454545</td>
     </tr>
   </tbody>
 </table>
 <p>5 rows × 137 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="analyse-results">
+</div>
+<div class="section" id="analyse-results">
 <h2>Analyse results<a class="headerlink" href="#analyse-results" title="Permalink to this headline">¶</a></h2>
-<section id="percentage-of-hospitals-agreeing-to-give-thrombolysis">
+<div class="section" id="percentage-of-hospitals-agreeing-to-give-thrombolysis">
 <h3>Percentage of hospitals agreeing to give thrombolysis<a class="headerlink" href="#percentage-of-hospitals-agreeing-to-give-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -946,8 +945,8 @@
 <img alt="../_images/random_forest_compare_hospital_17_0.png" src="../_images/random_forest_compare_hospital_17_0.png" />
 </div>
 </div>
-</section>
-<section id="proportion-agreeing">
+</div>
+<div class="section" id="proportion-agreeing">
 <h3>Proportion agreeing<a class="headerlink" href="#proportion-agreeing" title="Permalink to this headline">¶</a></h3>
 <p>Split patients by:</p>
 <ol class="simple">
@@ -966,7 +965,7 @@
 <span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">percent_agree</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="n">p</span><span class="o">&gt;=</span><span class="n">x</span><span class="p">])</span>\
          <span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">percent_agree</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xvals</span><span class="p">]</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Either treatment&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All patients&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 
 <span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;True&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">percent_agree</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="n">p</span><span class="o">&gt;=</span><span class="n">x</span><span class="p">)</span>\
          <span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;True&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">percent_agree</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xvals</span><span class="p">]</span>
@@ -1080,9 +1079,9 @@
 </table>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="observations">
+</div>
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>It is easier to find majority agreement on who not to thrombolyse than who to thrombolyse. For example:</p>
@@ -1093,8 +1092,8 @@
 </ul>
 </li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1143,10 +1142,9 @@
 
       </div>
     </div>
-    
+  
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
-    
+  
   </body>
 </html>

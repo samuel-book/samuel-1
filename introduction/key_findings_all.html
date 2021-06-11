@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SAMueL - Summary of Findings &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -88,7 +87,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Summary
  </span>
@@ -110,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Data and software
  </span>
@@ -127,7 +126,7 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -186,7 +185,7 @@
   </ul>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -396,7 +395,7 @@
   </ul>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -607,13 +606,13 @@
         
               <div>
                 
-  <section id="samuel-summary-of-findings">
+  <div class="section" id="samuel-summary-of-findings">
 <h1>SAMueL - Summary of Findings<a class="headerlink" href="#samuel-summary-of-findings" title="Permalink to this headline">¶</a></h1>
 <blockquote class="epigraph">
 <div><p>“Your decision to treat or not treat … That’s the difficult part. That’s the grey area where everyone does a different thing.”</p>
 <p class="attribution">—Stroke Consultant during interviews for SAMueL</p>
 </div></blockquote>
-<section id="overall-aims">
+<div class="section" id="overall-aims">
 <h2>Overall aims<a class="headerlink" href="#overall-aims" title="Permalink to this headline">¶</a></h2>
 <p>The overall aims of the project are:</p>
 <ul class="simple">
@@ -628,12 +627,12 @@
 </ul>
 <p>We base our modelling on a simplified view of the stroke pathway:</p>
 <p><img alt="" src="../_images/pathway.png" /></p>
-</section>
-<section id="data">
+</div>
+<div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams in England and Wales between 2016 and 2018 (three full years). Data used is for units which have at least 300 emergency stroke admissions with at least 10 patients receiving thrombolysis in the three years.</p>
-</section>
-<section id="general-statistics">
+</div>
+<div class="section" id="general-statistics">
 <h2>General statistics<a class="headerlink" href="#general-statistics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>94.7% of patients have an out-of-hospital stroke onset.</p></li>
@@ -648,7 +647,7 @@
 <li><p>11.8% of all arrivals receive thrombolysis.</p></li>
 <li><p>The average scan-to-needle time is 40 minutes, the average arrival-to-needle time is 63 minutes, and the average onset-to-needle time is 158 minutes.</p></li>
 </ul>
-<section id="inter-hospital-variation">
+<div class="section" id="inter-hospital-variation">
 <h3>Inter-hospital variation<a class="headerlink" href="#inter-hospital-variation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Thrombolysis use varies from 1.5% to 24.3% of all patients, and 7.3% to 49.7% of patients arriving within 4 hours of known stroke onset.</p></li>
@@ -660,8 +659,8 @@
 <li><p>The proportion of patients aged 80+ varies from 29% to 58%.</p></li>
 <li><p>The average NIHSS (stroke severity) ranges from 6.1 to 11.7.</p></li>
 </ul>
-</section>
-<section id="differences-by-age-group-under-age-80-vs-aged-80-years-and-gender">
+</div>
+<div class="section" id="differences-by-age-group-under-age-80-vs-aged-80-years-and-gender">
 <h3>Differences by age group (under age 80 vs. aged 80+ years) and gender:<a class="headerlink" href="#differences-by-age-group-under-age-80-vs-aged-80-years-and-gender" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>43% of arrivals are aged 80 or more.</p></li>
@@ -673,36 +672,36 @@
 <li><p>51.4% of all arrivals are male.</p></li>
 <li><p>Of those arriving within 4 hours of known stroke onset 30.8% of all male arrivals receive thrombolysis, compared with 28.2% for females.</p></li>
 </ul>
-</section>
-<section id="effect-of-ethnicity">
+</div>
+<div class="section" id="effect-of-ethnicity">
 <h3>Effect of ethnicity<a class="headerlink" href="#effect-of-ethnicity" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>There is a small effect of ethnicity: 10.2% of black people receive thrombolysis, compared with 11.7% of white people. This difference is mostly explained by a lower proportion of black people arriving within 4 hours of known stroke onset.</p></li>
 </ul>
-</section>
-<section id="effect-of-clinical-features">
+</div>
+<div class="section" id="effect-of-clinical-features">
 <h3>Effect of clinical features<a class="headerlink" href="#effect-of-clinical-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Use of thrombolysis falls as disability (mRS) before stroke increases.</p></li>
 <li><p>Use of thrombolysis is low at low stroke severity on arrival, increases and reaches a plateau (NIHSS 6-25) and falls again at higher stroke severity on arrival.</p></li>
 <li><p>The presence or absence of comorbidities can be a strong indicator of the use of thrombolysis. For example those on anticoagulant therapies receive thrombolysis less than those who do not, but those on anti-platelet therapies receive it more.</p></li>
 </ul>
-</section>
-<section id="stated-reasons-for-not-giving-thrombolysis">
+</div>
+<div class="section" id="stated-reasons-for-not-giving-thrombolysis">
 <h3>Stated reasons for not giving thrombolysis<a class="headerlink" href="#stated-reasons-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>The three most common reasons stated for not giving thrombolysis are stroke too mild/severe, haemorrhagic  stroke, and patient improving.</p></li>
 </ul>
-</section>
-<section id="effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis">
+</div>
+<div class="section" id="effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis">
 <h3>Effect of time and day and day of week on use of thrombolysis<a class="headerlink" href="#effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Nationally, there is a significant fall in use of thrombolysis for arrivals between 3am and 6am (with about 6% receiving thrombolysis, compared with 11% to 13% in other periods during the day), but the number of arrivals in this period is only about 3% of all arrivals.</p></li>
 <li><p>Nationally there is a small effect of day of week, with thrombolysis use ranging from 11.2 to 12.6% by day of week (increasing Monday through to Sunday).</p></li>
 </ul>
-</section>
-</section>
-<section id="machine-learning">
+</div>
+</div>
+<div class="section" id="machine-learning">
 <h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
 <p>We built a variety of model types:</p>
 <ol class="simple">
@@ -711,7 +710,7 @@
 <li><p><em>Neural networks</em>: We used either a fully-connected network (where all features are treated as a single set), or a modular embedding network, where features are split into three groups: hospital ID, clinical features, pathway timings. Each group is handled by a sub-network which outputs an ‘embedding vector’, reducing the inputs down to either one or two values which are then combined together before final output.</p></li>
 </ol>
 <p>*One-hot encoding converts a hospital ID to a vector that is all zeros apart from the index of the hospital ID which is set to one. So hospital 2 out of a total of five hospitals would have one-hot encoding of [0, 1, 0, 0, 0].</p>
-<section id="accuracy-of-models">
+<div class="section" id="accuracy-of-models">
 <h3>Accuracy of models<a class="headerlink" href="#accuracy-of-models" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -763,9 +762,9 @@
 <li><p>Accuracy of models increased with training set size up to about 30k training et examples.</p></li>
 <li><p>All random forest and neural network models were well calibrated, meaning that 9 out of 10 people with a predicted 90% probability of receiving thrombolysis would receive thrombolysis. The single fit logistic regression model, but not the individual hospital fit model was well calibrated.</p></li>
 </ul>
-</section>
-</section>
-<section id="random-forests-what-treatment-would-my-patient-receive-elsewhere">
+</div>
+</div>
+<div class="section" id="random-forests-what-treatment-would-my-patient-receive-elsewhere">
 <h2>Random forests - what treatment would my patient receive elsewhere?<a class="headerlink" href="#random-forests-what-treatment-would-my-patient-receive-elsewhere" title="Permalink to this headline">¶</a></h2>
 <p>For most modelling (e.g. inclusion in stroke pathway model) we have chosen to use hospital-level random forests models. Though accuracy is a little lower than the best models, these models are easier for people to understand and have strong hospital independence.</p>
 <p>When comparing predicted decisions between hospitals:</p>
@@ -785,8 +784,8 @@
 </ul>
 <p>The figure below shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.</p>
 <p><img alt="" src="../_images/benchmark_thrombolysis.jpg" /></p>
-</section>
-<section id="neural-networks">
+</div>
+<div class="section" id="neural-networks">
 <h2>Neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
 <p>Neural networks offer the greatest accuracy (though not by a large amount), but are more ‘black box’ than other model types so are not currently our preferred machine learning model. However, as well as high accuracy, modular embedding networks offer the advantage of being able to separate out hospital, clinical, and pathway features.</p>
 <ul class="simple">
@@ -805,8 +804,8 @@
 </ul>
 <p>The figure below shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.</p>
 <p><img alt="" src="../_images/embedding.jpg" /></p>
-</section>
-<section id="pathway-simulation">
+</div>
+<div class="section" id="pathway-simulation">
 <h2>Pathway simulation<a class="headerlink" href="#pathway-simulation" title="Permalink to this headline">¶</a></h2>
 <p>The model is used to examine the effect, at each hospital and nationally, of making three key changes (alone or in combination) to the stroke pathway:</p>
 <ol class="simple">
@@ -826,8 +825,8 @@
 <p><img alt="" src="../_images/scenarios.jpg" /></p>
 <p>Distributional shift in thrombolysis use and expected benefit:</p>
 <p><img alt="" src="../_images/distribution.jpg" /></p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -876,10 +875,9 @@
 
       </div>
     </div>
-    
+  
   <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
-    
+  
   </body>
 </html>
