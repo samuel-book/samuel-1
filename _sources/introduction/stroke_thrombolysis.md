@@ -24,6 +24,10 @@ The NHS plan for improving stroke care through the use of Integrated Stroke Deli
 
 *In 2016-18 in England and Wales, 37% of emergency stoke patients arrived within 4 hours of known stroke onset (see results section of this report)
 
+## Barriers to thrombolysis use
+
+There have been many studies of barriers to the uptake of thrombolysis [14-16]. Eissa et al. [14] divided barriers into pre-admission and post-admission phases.  Pre-admission barriers included poor patient response (not recognising symptoms of a stroke and not calling for help soon enough) and paramedic-related barriers (such as adding delays in getting the patient to an appropriate hospital in the fastest possible time). Hospital-based barriers include organisational problems (delay in recognising stroke patients, delays in pathway, poor infrastructure) and physician uncertainty or lack of experience leading to low use of thrombolysis. There has been significant discussion on how services may best be organised to optimise the effectiveness of thrombolysis [17].
+
 ## References
 
 1. NIH National Heart Blood and Lung Institute. Stroke [Internet]. 2021. Available from: https://www.nhlbi.nih.gov/health-topics/stroke
@@ -51,3 +55,11 @@ The NHS plan for improving stroke care through the use of Integrated Stroke Deli
 12. NHS England and NHS Improvement. National Stroke Service Model: Integrated Stroke Delivery Networks. 2021 [cited 2021 Jun 14]. Available from: https://www.england.nhs.uk/wp-content/uploads/2021/05/national-stroke-service-model-integrated-stroke-delivery-networks-may-2021.pdf
 
 13. Meretoja A, Strbian D, Mustanoja S, Tatlisumak T, Lindsberg PJ, Kaste M. Reducing in-hospital delay to 20 minutes in stroke thrombolysis. Neurology. 2012;79(4):306–13. Available from: http://www.ncbi.nlm.nih.gov/pubmed/22622858
+
+14. Eissa A, Krass I, Bajorek B V. Barriers to the utilization of thrombolysis for acute ischaemic stroke. J Clin Pharm Ther [Internet]. 2012 Apr 13;37(4):399–409. Available from: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-2710.2011.01329.x
+
+15.	Carter-Jones CR. Stroke thrombolysis: Barriers to implementation. Vol. 19. 2011. 53–57 p. 
+
+16.	Engelter ST, Gostynski M, Papa S, Ajdacic-Gross V, Lyrer PA. Barriers to stroke thrombolysis in a geographically defined population. Cerebrovasc Dis. 2007;23(2–3):211–5. 
+
+17. Lahr MMH, Luijckx GJ, Vroomen PCAJ, Van Der Zee DJ, Buskens E. The chain of care enabling tPA treatment in acute ischemic stroke: A comprehensive review of organisational models. Vol. 260. 2013. 960–968 p. 
