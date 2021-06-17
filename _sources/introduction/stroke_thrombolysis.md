@@ -30,17 +30,17 @@ There have been many studies of barriers to the uptake of thrombolysis [14-16]. 
 
 ## References
 
-1. NIH National Heart Blood and Lung Institute. Stroke [Internet]. 2021. Available from: https://www.nhlbi.nih.gov/health-topics/stroke
+1. NIH National Heart Blood and Lung Institute. Stroke 2021. Available from: https://www.nhlbi.nih.gov/health-topics/stroke
 
 2. Feigin VL, Forouzanfar MH, Krishnamurthi R, Mensah GA, Connor M, Bennett DA, et al. Global and regional burden of stroke during 1990-2010: Findings from the Global Burden of Disease Study 2010. Lancet 2014;383(9913):245–55. Available from: http://dx.doi.org/10.1016/S0140-6736(13)61953-4
 
-3. HQIP. Sentinel Stroke National Audit Programme - Annual Report 2019-20 [Internet]. HQIP. 2021. Available from: https://www.hqip.org.uk/resource/sentinel-stroke-national-audit-programme-annual-report-2019-20/
+3. HQIP. Sentinel Stroke National Audit Programme - Annual Report 2019-20. HQIP. 2021. Available from: https://www.hqip.org.uk/resource/sentinel-stroke-national-audit-programme-annual-report-2019-20/
 
 4. Newton JN, Briggs ADM, Murray CJL, Dicker D, Foreman KJ, Wang H, et al. Changes in health in England, with analysis by English regions and areas of deprivation, 1990-2013: A systematic analysis for the Global Burden of Disease Study 2013. Lancet. 2015;386(10010):2257–74. 
 
 5. Emberson J, Lees KR, Lyden P, Blackwell L, Albers G, Bluhmki E, et al. Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials. Lancet. 2014;384(9958):1929–35. 
 
-6. Berge E, Whiteley W, Audebert H, De Marchis GM, Fonseca AC, Padiglioni C, et al. European Stroke Organisation (ESO) guidelines on intravenous thrombolysis for acute ischaemic stroke. Eur stroke J [Internet]. 2021 Mar 1 [cited 2021 Jun 15];6(1):I–LXII. Available from: http://www.ncbi.nlm.nih.gov/pubmed/33817340
+6. Berge E, Whiteley W, Audebert H, De Marchis GM, Fonseca AC, Padiglioni C, et al. European Stroke Organisation (ESO) guidelines on intravenous thrombolysis for acute ischaemic stroke. Eur stroke J 2021 Mar 1;6(1):I–LXII. Available from: http://www.ncbi.nlm.nih.gov/pubmed/33817340
 
 7. Norrving B, Barrick J, Davalos A, Dichgans M, Cordonnier C, Guekht A, et al. Action Plan for Stroke in Europe 2018–2030. Eur Stroke J. 2018;3(4):309–36. 
 
@@ -52,11 +52,11 @@ There have been many studies of barriers to the uptake of thrombolysis [14-16]. 
 
 11.	NHS. The NHS Long Term Plan. 2019. Available from: https://www.longtermplan.nhs.uk/wp-content/uploads/2019/08/nhs-long-term-plan-version-1.2.pdf
 
-12. NHS England and NHS Improvement. National Stroke Service Model: Integrated Stroke Delivery Networks. 2021 [cited 2021 Jun 14]. Available from: https://www.england.nhs.uk/wp-content/uploads/2021/05/national-stroke-service-model-integrated-stroke-delivery-networks-may-2021.pdf
+12. NHS England and NHS Improvement. National Stroke Service Model: Integrated Stroke Delivery Networks. 2021 . Available from: https://www.england.nhs.uk/wp-content/uploads/2021/05/national-stroke-service-model-integrated-stroke-delivery-networks-may-2021.pdf
 
 13. Meretoja A, Strbian D, Mustanoja S, Tatlisumak T, Lindsberg PJ, Kaste M. Reducing in-hospital delay to 20 minutes in stroke thrombolysis. Neurology. 2012;79(4):306–13. Available from: http://www.ncbi.nlm.nih.gov/pubmed/22622858
 
-14. Eissa A, Krass I, Bajorek B V. Barriers to the utilization of thrombolysis for acute ischaemic stroke. J Clin Pharm Ther [Internet]. 2012 Apr 13;37(4):399–409. Available from: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-2710.2011.01329.x
+14. Eissa A, Krass I, Bajorek B V. Barriers to the utilization of thrombolysis for acute ischaemic stroke. J Clin Pharm Ther 2012 Apr 13;37(4):399–409. Available from: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-2710.2011.01329.x
 
 15.	Carter-Jones CR. Stroke thrombolysis: Barriers to implementation. Vol. 19. 2011. 53–57 p. 
 
