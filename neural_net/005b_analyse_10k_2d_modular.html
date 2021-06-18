@@ -1743,6 +1743,78 @@
 <img alt="../_images/005b_analyse_10k_2d_modular_24_0.png" src="../_images/005b_analyse_10k_2d_modular_24_0.png" />
 </div>
 </div>
+<p>Plots as heat map of average values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_mean_values</span><span class="p">(</span><span class="n">df_input</span><span class="p">,</span> <span class="n">x1_col</span><span class="p">,</span> <span class="n">x2_col</span><span class="p">,</span> <span class="n">y_col</span><span class="p">,</span> 
+                     <span class="n">x1_label</span><span class="p">,</span> <span class="n">x2_label</span><span class="p">,</span> <span class="n">y_label</span><span class="p">,</span>
+                     <span class="n">number_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_input</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># Get data</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">x1_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">x2_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    
+    <span class="c1"># Bin data (assume original data is 0-1)</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">number_bins</span><span class="p">)</span>
+    <span class="n">x1_binned</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">x2_binned</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    
+    <span class="c1"># Allocate group based on bins</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x1_binned</span><span class="p">,</span> <span class="n">x2_binned</span><span class="p">))</span>
+    <span class="n">mean_values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;group&#39;</span><span class="p">,</span><span class="n">y_col</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_values</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;x1_bin_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;x2_bin_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;x1_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;x1_bin_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">bins</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+    <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;x2_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_values</span><span class="p">[</span><span class="s1">&#39;x2_bin_index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">bins</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+    
+    <span class="c1"># Put in array</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">number_bins</span><span class="p">,</span><span class="n">number_bins</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mean_values</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">x1_ind</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="s1">&#39;x1_bin_index&#39;</span><span class="p">]</span>
+        <span class="n">x2_ind</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="s1">&#39;x2_bin_index&#39;</span><span class="p">]</span>
+        <span class="n">z</span><span class="p">[</span><span class="n">x1_ind</span><span class="p">,</span> <span class="n">x2_ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">y_col</span><span class="p">]</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+    <span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">ticks</span><span class="o">/</span><span class="n">number_bins</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">ticks</span><span class="o">/</span><span class="n">number_bins</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x1_label</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">x2_label</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">y_label</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;./output/heat_</span><span class="si">{</span><span class="n">y_col</span><span class="si">}</span><span class="s1">.jpg&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_mean_values</span><span class="p">(</span>
+    <span class="n">all_test</span><span class="p">,</span> <span class="s1">&#39;patient_encode_x&#39;</span><span class="p">,</span> <span class="s1">&#39;patient_encode_y&#39;</span><span class="p">,</span> <span class="s1">&#39;num_hosp_thrombolysing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Clinical subnet embedding output 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Clinical subnet embedding output 2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Number of hospitals predicted to give thrombolysis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/005b_analyse_10k_2d_modular_27_0.png" src="../_images/005b_analyse_10k_2d_modular_27_0.png" />
+</div>
+</div>
 <p>The patients most likely to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of thrombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clinical subnet output.</p>
 <p>Patients appear to cluster mostly towards the edges of the plot.</p>
 <p>In the following analysis, we will look at the characteristics of patients in different parts of the scatter plot.</p>
@@ -1780,7 +1852,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/005b_analyse_10k_2d_modular_27_0.png" src="../_images/005b_analyse_10k_2d_modular_27_0.png" />
+<img alt="../_images/005b_analyse_10k_2d_modular_30_0.png" src="../_images/005b_analyse_10k_2d_modular_30_0.png" />
 </div>
 </div>
 <p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similarity between patients (driven by reasons to give or not give thrombolysis).</p>
