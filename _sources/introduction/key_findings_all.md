@@ -171,7 +171,7 @@ When comparing predicted decisions between hospitals:
 
 * For patients not treated as expected we can use the structure of the random forests model to find similar patients that were treated differently.
 
-[Fig. 2](tree-fig_benchmark) shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
+[Fig. 2](fig_benchmark) shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
 
 ![](./../images/benchmark_thrombolysis.jpg)
 
