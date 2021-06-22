@@ -657,8 +657,11 @@
 </ul>
 </li>
 </ul>
-<p>We base our modelling on a simplified view of the stroke pathway:</p>
-<p><img alt="" src="../_images/pathway.png" /></p>
+<p>We base our modelling on a simplified view of the stroke pathway (<a class="reference internal" href="#fig-pathway"><span class="std std-ref">Fig. 1</span></a>)</p>
+<div class="figure align-default" id="fig-pathway">
+<a class="reference internal image-reference" href="../_images/pathway.png"><img alt="../_images/pathway.png" src="../_images/pathway.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Schamtic of simplified pathway to thrombolysis, as used in the clinical pathway simulation.</span><a class="headerlink" href="#fig-pathway" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
@@ -814,8 +817,12 @@
 <li><p>Hospitals may be grouped by comparison of what proportion of patients would be expected to have the same thrombolysis decision. This grouping is made clearer by using a subset of patients with higher divergence of decisions (those patients that 30-70% of hospitals would thrombolyse).</p></li>
 <li><p>For patients not treated as expected we can use the structure of the random forests model to find similar patients that were treated differently.</p></li>
 </ul>
-<p>The figure below shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.</p>
+<p><span class="xref myst">Fig. 2</span> shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals.</p>
 <p><img alt="" src="../_images/benchmark_thrombolysis.jpg" /></p>
+<div class="figure align-default" id="fig-benchmark">
+<a class="reference internal image-reference" href="../_images/benchmark_thrombolysis.jpg"><img alt="../_images/benchmark_thrombolysis.jpg" src="../_images/benchmark_thrombolysis.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.</span><a class="headerlink" href="#fig-benchmark" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="neural-networks">
 <h2>Neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>

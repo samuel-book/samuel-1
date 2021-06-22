@@ -20,9 +20,13 @@ The overall aims of the project are:
     
     * Making decisions according to the majority vote of decisions that would be expected at a *benchmark* set of hospitals
 
-We base our modelling on a simplified view of the stroke pathway:
+We base our modelling on a simplified view of the stroke pathway ([Fig. 1](fig_pathway))
     
-![](./../images/pathway.png)
+:::{figure-md} fig_pathway
+<img src="./../images/pathway.png" width="800px">
+
+Schamtic of simplified pathway to thrombolysis, as used in the clinical pathway simulation.
+:::
 
 ## Data
 
@@ -167,9 +171,15 @@ When comparing predicted decisions between hospitals:
 
 * For patients not treated as expected we can use the structure of the random forests model to find similar patients that were treated differently.
 
-The figure below shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.
+[Fig. 2](tree-fig_benchmark) shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
 
 ![](./../images/benchmark_thrombolysis.jpg)
+
+:::{figure-md} fig_benchmark
+<img src="./../images/benchmark_thrombolysis.jpg" width="400px">
+
+Comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.
+:::
 
 
 ## Neural networks
