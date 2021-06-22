@@ -840,8 +840,12 @@
 </ul>
 </li>
 </ul>
-<p>The figure below shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.</p>
+<p><a class="reference internal" href="#fig-embedding"><span class="std std-ref">Fig. 3</span></a> shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.</p>
 <p><img alt="" src="../_images/embedding.jpg" /></p>
+<div class="figure align-default" id="fig-embedding">
+<a class="reference internal image-reference" href="../_images/embedding.jpg"><img alt="../_images/embedding.jpg" src="../_images/embedding.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Clinical subnet embedding output marking of those patients with a haemorrhagic stroke (red) as opposed to a non-haemorrhagic stroke (blue).</span><a class="headerlink" href="#fig-embedding" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="pathway-simulation">
 <h2>Pathway simulation<a class="headerlink" href="#pathway-simulation" title="Permalink to this headline">¶</a></h2>
@@ -859,10 +863,17 @@
 <li><p>If all changes were made at all hospitals there would still be significant variation in use of, and benefit from, thrombolysis. This is due to differences in local patient populations (both in terms of differing clinical presentations, and differences in time from onset to arrival), but the total national benefit will be significantly improved.</p></li>
 <li><p>The model may be used to provide a target use of thrombolysis that is tailored to each hospital.</p></li>
 </ul>
-<p>Net effect of changes at all hospitals:</p>
-<p><img alt="" src="../_images/scenarios.jpg" /></p>
-<p>Distributional shift in thrombolysis use and expected benefit:</p>
-<p><img alt="" src="../_images/distribution.jpg" /></p>
+<p><a class="reference internal" href="#fig-pathway-net"><span class="std std-ref">Fig. 4</span></a> shows the net effect of changes at all hospitals:</p>
+<div class="figure align-default" id="fig-pathway-net">
+<a class="reference internal image-reference" href="../_images/scenarios.jpg"><img alt="../_images/scenarios.jpg" src="../_images/scenarios.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers.</span><a class="headerlink" href="#fig-pathway-net" title="Permalink to this image">¶</a></p>
+</div>
+<p>shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.</p>
+<p><a class="reference internal" href="#fig-pathway-dist"><span class="std std-ref">Fig. 5</span></a> shows the net effect of changes at all hospitals:</p>
+<div class="figure align-default" id="fig-pathway-dist">
+<a class="reference internal image-reference" href="../_images/distribution.jpg"><img alt="../_images/distribution.jpg" src="../_images/distribution.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.</span><a class="headerlink" href="#fig-pathway-dist" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 

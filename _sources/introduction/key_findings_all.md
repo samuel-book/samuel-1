@@ -196,9 +196,15 @@ Neural networks offer the greatest accuracy (though not by a large amount), but 
     
     * 2D patient embedding clusters patients by clear groups - for example four groups (located at each corner of a chart when plotting the patient embeddings 2D vector) are: 1) patients with high clinical suitability for thrombolysis, 2) non-thrombolysed haemorrhagic stroke patients, 3) non-thrombolysed severe stroke, 4) non-thrombolysed mild stroke.
     
-The figure below shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.
+[Fig. 3](fig_embedding) shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.
 
 ![](./../images/embedding.jpg "Clinical embedding")
+
+:::{figure-md} fig_embedding
+<img src="./../images/embedding.jpg" width="400px">
+
+Clinical subnet embedding output marking of those patients with a haemorrhagic stroke (red) as opposed to a non-haemorrhagic stroke (blue).
+:::
 
 ## Pathway simulation
 
@@ -222,11 +228,21 @@ Results:
 
 * The model may be used to provide a target use of thrombolysis that is tailored to each hospital.
 
-Net effect of changes at all hospitals:
+[Fig. 4](fig_pathway_net) shows the net effect of changes at all hospitals:
 
-![](./../images/scenarios.jpg)
+:::{figure-md} fig_pathway_net
+<img src="./../images/scenarios.jpg" width="400px">
+
+Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers. 
+:::
+
+shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.
 
 
-Distributional shift in thrombolysis use and expected benefit:
+[Fig. 5](fig_pathway_dist) shows the net effect of changes at all hospitals:
 
-![](./../images/distribution.jpg)
+:::{figure-md} fig_pathway_dist
+<img src="./../images/distribution.jpg" width="400px">
+
+Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.
+:::
