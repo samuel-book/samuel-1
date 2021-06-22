@@ -198,8 +198,6 @@ Neural networks offer the greatest accuracy (though not by a large amount), but 
     
 [Fig. 3](fig_embedding) shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.
 
-![](./../images/embedding.jpg "Clinical embedding")
-
 :::{figure-md} fig_embedding
 <img src="./../images/embedding.jpg" width="400px">
 
