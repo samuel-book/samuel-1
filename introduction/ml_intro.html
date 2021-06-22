@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Software &#8212; SAMueL Stroke Audit Machine Learning</title>
+    <title>Introduction to machine learning methods &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,10 +49,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Outline - what is in this section?" href="../descriptive_stats/outline.html" />
-    <link rel="prev" title="Data" href="data.html" />
+    <link rel="next" title="Clinical pathway simulation" href="clinical_pathway_simulation.html" />
+    <link rel="prev" title="What is clinical audit?" href="clinical_audit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -114,7 +116,7 @@
   Introduction
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="stroke_thrombolysis.html">
    An introduction to stroke and thrombolysis
@@ -125,8 +127,8 @@
    What is clinical audit?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ml_intro.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Introduction to machine learning methods
   </a>
  </li>
@@ -141,14 +143,14 @@
   Data and software
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data.html">
    Data
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="software.html">
    Software
   </a>
  </li>
@@ -523,7 +525,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/introduction/software.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/introduction/ml_intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -548,6 +550,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic regression
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -556,19 +571,18 @@
         
               <div>
                 
-  <div class="section" id="software">
-<h1>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
-<p>All work is performed using Free and Open Source Software in Python (v. 3.8.5, <a class="reference external" href="http://www.python.org">www.python.org</a>) with the following packages:</p>
-<ul class="simple">
-<li><p><em>NumPy</em> (v. 1.19.2): For general mathematical computation. <a class="reference external" href="http://pypi.org/project/numpy/">pypi.org/project/numpy/</a></p></li>
-<li><p><em>Pandas</em> (v. 1.2.0): For general data manipulation. <a class="reference external" href="http://pypi.org/project/pandas/">pypi.org/project/pandas/</a></p></li>
-<li><p><em>MatPlotLib</em> (v. 3.3.2): For visualisation. <a class="reference external" href="http://pypi.org/project/matplotlib/">pypi.org/project/matplotlib/</a></p></li>
-<li><p><em>Seriate</em> (v. 1.1.2): For sequencing (used when looking at distance in decision-making between hospitals)</p></li>
-<li><p><em>Scikit-Learn</em> (v. 0.23.2): General machine learning utilities and methods. <a class="reference external" href="http://pypi.org/project/scikit-learn/">pypi.org/project/scikit-learn/</a></p></li>
-<li><p><em>TensorFlow (including Keras)</em> (v. 2.2.0): For neural networks. <a class="reference external" href="http://pypi.org/project/tensorflow/">pypi.org/project/tensorflow/</a></p></li>
-<li><p><em>Jupyter Lab</em> (v. 2.2.6): Mixed code and markdown environment for writing and running code. <a class="reference external" href="http://pypi.org/project/jupyterlab/">pypi.org/project/jupyterlab/</a></p></li>
-<li><p><em>Jupyter Book</em> (v. 0.10.1): For production of this on-line book of project code and results. <a class="reference external" href="http://pypi.org/project/jupyter-book/">pypi.org/project/jupyter-book/</a></p></li>
-</ul>
+  <div class="section" id="introduction-to-machine-learning-methods">
+<h1>Introduction to machine learning methods<a class="headerlink" href="#introduction-to-machine-learning-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="logistic-regression">
+<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
+<p>Logistic Regression is a probabilistic model, meaning it assigns a class probability to each data point. Probabilities are calculated using a logistic function:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = \frac{1}{1 + e^{-x}}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span> is a linear combination of the variables of each data point, i.e. <span class="math notranslate nohighlight">\(a + bx_1 + cx_2 + ..\)</span>, where <span class="math notranslate nohighlight">\(x_1\)</span> is the value of one variable, <span class="math notranslate nohighlight">\(x_2\)</span> the value of another, etc. The function <span class="math notranslate nohighlight">\(f\)</span> maps <span class="math notranslate nohighlight">\(x\)</span> to a value between 0 and 1, which may be viewed as a class probability. If the class probability is greater than the decision threshold, the data point is classified as belonging to class 1 (thrombolysis). For probabilities less than the threshold, it is placed in class 0 (no thrombolysis).</p>
+<p>During training, the logistic regression uses the examples in the training data to find the values of the coefficients in <span class="math notranslate nohighlight">\(x\)</span> (<span class="math notranslate nohighlight">\(a\)</span>,<span class="math notranslate nohighlight">\(b\)</span>,<span class="math notranslate nohighlight">\(c\)</span>…) that lead to the highest possible accuracy in the training data. The values of these parameters determine the importance of each variable for the classification, and therefore the decision making process. A variable with a larger coefficient (positive or negative) is more important when deciding whether or not to thrombolyse a patient.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -596,8 +610,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="data.html" title="previous page">Data</a>
-    <a class='right-next' id="next-link" href="../descriptive_stats/outline.html" title="next page">Outline - what is in this section?</a>
+    <a class='left-prev' id="prev-link" href="clinical_audit.html" title="previous page">What is clinical audit?</a>
+    <a class='right-next' id="next-link" href="clinical_pathway_simulation.html" title="next page">Clinical pathway simulation</a>
 
         </div>
         
