@@ -20,7 +20,7 @@ The overall aims of the project are:
     
     * Making decisions according to the majority vote of decisions that would be expected at a *benchmark* set of hospitals
 
-We base our modelling on a simplified view of the stroke pathway ([Fig. 1](fig_pathway))
+We base our modelling on a simplified view of the stroke pathway.
     
 :::{figure-md} fig_pathway
 <img src="./../images/pathway.png" width="800px">
@@ -171,7 +171,7 @@ When comparing predicted decisions between hospitals:
 
 * For patients not treated as expected we can use the structure of the random forests model to find similar patients that were treated differently.
 
-[Fig. 2](fig_benchmark) shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
+The [figure](fig_benchmark) below shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
 
 :::{figure-md} fig_benchmark
 <img src="./../images/benchmark_thrombolysis.jpg" width="400px">
@@ -196,7 +196,7 @@ Neural networks offer the greatest accuracy (though not by a large amount), but 
     
     * 2D patient embedding clusters patients by clear groups - for example four groups (located at each corner of a chart when plotting the patient embeddings 2D vector) are: 1) patients with high clinical suitability for thrombolysis, 2) non-thrombolysed haemorrhagic stroke patients, 3) non-thrombolysed severe stroke, 4) non-thrombolysed mild stroke.
     
-[Fig. 3](fig_embedding) shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.
+The [figure](fig_embedding) below shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.
 
 :::{figure-md} fig_embedding
 <img src="./../images/embedding.jpg" width="400px">
@@ -226,7 +226,7 @@ Results:
 
 * The model may be used to provide a target use of thrombolysis that is tailored to each hospital.
 
-[Fig. 4](fig_pathway_net) shows the net effect of changes at all hospitals:
+The [figure](fig_pathway_net) below shows the net effect of changes at all hospitals:
 
 :::{figure-md} fig_pathway_net
 <img src="./../images/scenarios.jpg" width="600px">
@@ -237,7 +237,7 @@ Net national changes in thrombolysis use (left) or clinical benefit (right) by c
 shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.
 
 
-[Fig. 5](fig_pathway_dist) shows the net effect of changes at all hospitals:
+The [figure](fig_pathway_dist) below shows the net effect of changes at all hospitals:
 
 :::{figure-md} fig_pathway_dist
 <img src="./../images/distribution.jpg" width="600px">

@@ -657,7 +657,7 @@
 </ul>
 </li>
 </ul>
-<p>We base our modelling on a simplified view of the stroke pathway (<a class="reference internal" href="#fig-pathway"><span class="std std-ref">Fig. 1</span></a>)</p>
+<p>We base our modelling on a simplified view of the stroke pathway.</p>
 <div class="figure align-default" id="fig-pathway">
 <a class="reference internal image-reference" href="../_images/pathway.png"><img alt="../_images/pathway.png" src="../_images/pathway.png" style="width: 800px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Schamtic of simplified pathway to thrombolysis, as used in the clinical pathway simulation.</span><a class="headerlink" href="#fig-pathway" title="Permalink to this image">¶</a></p>
@@ -817,7 +817,7 @@
 <li><p>Hospitals may be grouped by comparison of what proportion of patients would be expected to have the same thrombolysis decision. This grouping is made clearer by using a subset of patients with higher divergence of decisions (those patients that 30-70% of hospitals would thrombolyse).</p></li>
 <li><p>For patients not treated as expected we can use the structure of the random forests model to find similar patients that were treated differently.</p></li>
 </ul>
-<p><a class="reference internal" href="#fig-benchmark"><span class="std std-ref">Fig. 2</span></a> shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals.</p>
+<p>The <a class="reference internal" href="#fig-benchmark"><span class="std std-ref">figure</span></a> below shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals.</p>
 <div class="figure align-default" id="fig-benchmark">
 <a class="reference internal image-reference" href="../_images/benchmark_thrombolysis.jpg"><img alt="../_images/benchmark_thrombolysis.jpg" src="../_images/benchmark_thrombolysis.jpg" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.</span><a class="headerlink" href="#fig-benchmark" title="Permalink to this image">¶</a></p>
@@ -840,7 +840,7 @@
 </ul>
 </li>
 </ul>
-<p><a class="reference internal" href="#fig-embedding"><span class="std std-ref">Fig. 3</span></a> shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.</p>
+<p>The <a class="reference internal" href="#fig-embedding"><span class="std std-ref">figure</span></a> below shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.</p>
 <div class="figure align-default" id="fig-embedding">
 <a class="reference internal image-reference" href="../_images/embedding.jpg"><img alt="../_images/embedding.jpg" src="../_images/embedding.jpg" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Clinical subnet embedding output marking of those patients with a haemorrhagic stroke (red) as opposed to a non-haemorrhagic stroke (blue).</span><a class="headerlink" href="#fig-embedding" title="Permalink to this image">¶</a></p>
@@ -862,13 +862,13 @@
 <li><p>If all changes were made at all hospitals there would still be significant variation in use of, and benefit from, thrombolysis. This is due to differences in local patient populations (both in terms of differing clinical presentations, and differences in time from onset to arrival), but the total national benefit will be significantly improved.</p></li>
 <li><p>The model may be used to provide a target use of thrombolysis that is tailored to each hospital.</p></li>
 </ul>
-<p><a class="reference internal" href="#fig-pathway-net"><span class="std std-ref">Fig. 4</span></a> shows the net effect of changes at all hospitals:</p>
+<p>The <a class="reference internal" href="#fig-pathway-net"><span class="std std-ref">figure</span></a> below shows the net effect of changes at all hospitals:</p>
 <div class="figure align-default" id="fig-pathway-net">
 <a class="reference internal image-reference" href="../_images/scenarios.jpg"><img alt="../_images/scenarios.jpg" src="../_images/scenarios.jpg" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers.</span><a class="headerlink" href="#fig-pathway-net" title="Permalink to this image">¶</a></p>
 </div>
 <p>shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.</p>
-<p><a class="reference internal" href="#fig-pathway-dist"><span class="std std-ref">Fig. 5</span></a> shows the net effect of changes at all hospitals:</p>
+<p>The <a class="reference internal" href="#fig-pathway-dist"><span class="std std-ref">figure</span></a> below shows the net effect of changes at all hospitals:</p>
 <div class="figure align-default" id="fig-pathway-dist">
 <a class="reference internal image-reference" href="../_images/distribution.jpg"><img alt="../_images/distribution.jpg" src="../_images/distribution.jpg" style="width: 600px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.</span><a class="headerlink" href="#fig-pathway-dist" title="Permalink to this image">¶</a></p>
