@@ -229,7 +229,7 @@ Results:
 [Fig. 4](fig_pathway_net) shows the net effect of changes at all hospitals:
 
 :::{figure-md} fig_pathway_net
-<img src="./../images/scenarios.jpg" width="400px">
+<img src="./../images/scenarios.jpg" width="600px">
 
 Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers. 
 :::
@@ -240,7 +240,7 @@ shows the distribution of use of, and benefit from, thrombolysis before and afte
 [Fig. 5](fig_pathway_dist) shows the net effect of changes at all hospitals:
 
 :::{figure-md} fig_pathway_dist
-<img src="./../images/distribution.jpg" width="400px">
+<img src="./../images/distribution.jpg" width="600px">
 
 Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.
 :::
