@@ -5,7 +5,7 @@ When assessing accuracy of the machine learning models, stratified k-fold splits
 All models were trained and tested using data for patients arriving within 4 hours of known stroke onset (39% of all patients), and was restricted to hospitals receiving at least 300 patients over three years, and giving thrombolysis to at least 10 patients over three years.
 
 :::{figure-md} fig_kfold
-<img src="../images/kfold.jpg" width="600px">
+<img src="../images/kfold.jpg" width="400px">
 
 Schematic of how k-fold validation splits data so that all examples are in one, but only one, test set.]
 :::
