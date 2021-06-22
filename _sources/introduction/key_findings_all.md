@@ -173,8 +173,6 @@ When comparing predicted decisions between hospitals:
 
 [Fig. 2](fig_benchmark) shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
 
-![](./../images/benchmark_thrombolysis.jpg)
-
 :::{figure-md} fig_benchmark
 <img src="./../images/benchmark_thrombolysis.jpg" width="400px">
 
