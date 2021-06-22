@@ -20,7 +20,7 @@ The overall aims of the project are:
     
     * Making decisions according to the majority vote of decisions that would be expected at a *benchmark* set of hospitals
 
-We base our modelling on a simplified view of the stroke pathway (`Figure {number} <fig_pathway>`).
+We base our modelling on a simplified view of the stroke pathway ({numref}`Figure {number} <fig_pathway>`).
     
 :::{figure-md} fig_pathway
 <img src="./../images/pathway.png" width="800px">
