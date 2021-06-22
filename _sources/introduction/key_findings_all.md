@@ -236,8 +236,7 @@ Net national changes in thrombolysis use (left) or clinical benefit (right) by c
 
 shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.
 
-
-The [figure](fig_pathway_dist) below shows the net effect of changes at all hospitals:
+{numref}`Figure {number} <fig_pathway_dist>` shows the net effect of changes at all hospitals:
 
 :::{figure-md} fig_pathway_dist
 <img src="./../images/distribution.jpg" width="600px">
