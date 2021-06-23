@@ -18,7 +18,7 @@ During training, the logistic regression uses the examples in the training data 
 
 A random forest is an example of an ensemble algorithm: the outcome (whether or not a patient is thrombolysed) is decided by a majority vote of other algorithms. In the case of a random forest, these 'other algorithms' are decision trees. A random forest is an ensemble of decision trees.
 
-We can think of a decision tree as similar to a flow chart. In {numref}`Figure {number} <tree-fig>`)below we can see that a decision tree is comprised of a set of nodes and branches. The node at the top of the tree is called the *root node* and the nodes at the bottom are *leaf nodes*. Every node in the tree, except for the leaf nodes, splits into two branches leading to two nodes that are further down the tree. A path through the decision tree always starts at the root node. Each step in the path involves moving along a branch to a node lower down the tree. The path ends at a leaf node where there are no further branches to move along.
+We can think of a decision tree as similar to a flow chart. In {numref}`Figure {number} <tree-fig>` below we can see that a decision tree is comprised of a set of nodes and branches. The node at the top of the tree is called the *root node* and the nodes at the bottom are *leaf nodes*. Every node in the tree, except for the leaf nodes, splits into two branches leading to two nodes that are further down the tree. A path through the decision tree always starts at the root node. Each step in the path involves moving along a branch to a node lower down the tree. The path ends at a leaf node where there are no further branches to move along.
 
 :::{figure-md} tree-fig
 <img src="./decision_tree.gv.png" width="400px">
