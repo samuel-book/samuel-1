@@ -54,15 +54,15 @@ We recruited nineteen participants, who took part in three individual and five g
 Physicians working in hospitals with lower thrombolysis rates were more likely to suggest that a significant barrier to thrombolysis was the delayed presentation of patients, which could be magnified by suboptimal ambulance services:
 
 ```{admonition} Quote
-*“A lot of patients present outside the window of thrombolysis at the hospital.” (Site B)*
+*“A lot of patients present outside the window of thrombolysis at the hospital.”* (Site B)
 
-*“I think we rarely hit the 11% percent national numbers, probably because patients come just outside the thrombolysis window.” (Site A)*
+*“I think we rarely hit the 11% percent national numbers, probably because patients come just outside the thrombolysis window.”* (Site A)
 ```
 
 Those working in hospitals with lower thrombolysis rates were more likely to report that their patients were ‘different’ to those presenting at other centres – in terms of rurality, ethnicity, frailty, or socio-demographic factors: 
 
 ```{admonition} Quote
-*“We’ve a slightly older population… we’ve slightly more bleeds than infarcts…we’re a slightly larger geographical area, so sometimes people are a bit delayed getting to hospital and we operate across two sites as well.” (Site C)*
+*“We’ve a slightly older population… we’ve slightly more bleeds than infarcts…we’re a slightly larger geographical area, so sometimes people are a bit delayed getting to hospital and we operate across two sites as well.”* (Site C)
 ```
 The above physician also highlighted that because of these complexities, decision making about thrombolysis was the most difficult part of their job. 
 While population differences were also acknowledged by physicians at higher thrombolysing centres, they were more likely to articulate the centrality of patient heterogeneity in their decision making: 
@@ -76,4 +76,33 @@ Consultant 3: *“The days of people being textbook strokes are long gone… we 
 
 (Site H)
 ```
+Those in mid-rate thrombolysis centres suggested that some of the delays in patient presentation could be mitigated through treatment by stroke physicians rather than generalists, or by the involvement of a Specialist Stroke Nurse: 
+
+```{admonition} Quote
+*“We typically have a more deprived population, so accessing health care and time to hospital [and] our ambulance service is not as good…”, “a burden of disease due to deprivation… we do see a lot of young strokes… smoking, drinking, drug abuse… expertise is important there, so if you looked at our patients… the ones that had been thrombolysed under 30 minutes… nearly all of them had been managed by a stroke registrar or a geriatrics registrar or a geriatrics consultant.”* (Site E)
+
+*“[a] stroke nurses being there increases the speed…”(Site D)*
+```
+Those physicians currently working in centres with low or medium thrombolysis rates seemed more likely to emphasise the equipment that they lacked, and which they perceived would improve the accuracy and speed of their decision making. 
+
+Similarly, physicians working in hospitals with higher thrombolysis rates suggested that their higher rates were due to access to scans and other specialist facilities, as well as 24 hour stroke services: 
+
+```{admonition} Quote
+*“We’re a big teaching hospital… that’s also got a trauma centre”* (Site H)
+
+*“Thrombolysis is done by registrars with consultation on the phone with some access to the imaging for the consultant… there is no dedicated stroke team at night… we have a big variation between out of hours and in hours door to needle time… it’s 38 minutes, out of hours it’s 89 minutes… don’t thrombolyse wake up stroke… MRI… perfusion scan… we don’t have the facilities.”* (Site F)
+
+*“On SSNAP data, we are one of the top performing units in the country and that has happened through years of planning and hard work, where we take direct admissions, twenty-four seven, we don’t do remote assessments… it’s always face to face assessments by consultant… with a specialist nurse, to see a patient, etc. And we have access to scans directly, including vascular imaging…”* (Site G)
+```
+
+Thus, the provision of more diagnostic tools was perceived as enabling a more nuanced approach to risk management - that went beyond tallying risk factors, and individualised patient care for more ‘marginal’ case:
+
+```{admonition} Quote
+*“If I might manage a level of uncertainty about the onset time and some other characteristics, medications, for example, a slightly imperfect history that I have, if it’s a very severe stroke, it’s going to be a disabling stroke and I feel that the risks are outweighed by the benefits... I think that stroke severity and my perception of the ability to benefit from thrombolysis will then weigh into how much uncertainty I’m able to cope with, with the other things.”* (Site G)
+```
+
+Although the sample interviewed was small, they were diverse in their attitudes to thrombolysis use. 
+
+
+
 
