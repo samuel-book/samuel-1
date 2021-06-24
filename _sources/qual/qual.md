@@ -64,6 +64,16 @@ Those working in hospitals with lower thrombolysis rates were more likely to rep
 ```{admonition} Quote
 *“We’ve a slightly older population… we’ve slightly more bleeds than infarcts…we’re a slightly larger geographical area, so sometimes people are a bit delayed getting to hospital and we operate across two sites as well.” (Site C)*
 ```
+The above physician also highlighted that because of these complexities, decision making about thrombolysis was the most difficult part of their job. 
+While population differences were also acknowledged by physicians at higher thrombolysing centres, they were more likely to articulate the centrality of patient heterogeneity in their decision making: 
 
+```{admonition} Quote
+Consultant 1: *“I wouldn’t be giving thrombolysis for various reasons… They’re often late, or got a very mild deficit, or they’ve got something that makes you feel extra wary about treating them… we’ve got a population that’s increasingly frail, they’ve got multiple comorbidities… [but] every patient is unique.”*
 
+Consultant 2: *“We all have different approaches, I say to myself the first question is, if I don’t thrombolyse this patient, what is the worst neurological outcome they could have? What is the disability going to be? And then the next question is how far are we down the time pathway, what’s the risk of bleeding here? And then, what are the little things that feed into pros and cons, how does that alter the equation from a standard patient? is it that the benefits are going to outweigh the risks, how finely balanced is that decision?”*
+
+Consultant 3: *“The days of people being textbook strokes are long gone… we don’t see them… we don’t have a blanket policy. We eyeball them. And if they look dodgy we park them and work out what’s going on, if they don’t look dodgy, we go straight to the scanner.”* 
+
+(Site H)
+```
 
