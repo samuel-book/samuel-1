@@ -45,6 +45,7 @@ We recruited nineteen participants, who took part in three individual and five g
 | Middle (Site F)       | Single: Stoke Consultant(M)                                            |
 | High (Site G)         | Group: 3 Consultants: Stroke & Geriatrician (1M/2F)                    |
 | High (Site H)         | Group: 3 Consultants: Stroke, Neurologist, Geriatrician (2M/1F)        |
+|-----------------------|------------------------------------------------------------------------|
 
 ### Current attitudes to thrombolysis use
 Physicians working in hospitals with lower thrombolysis rates were more likely to suggest that a significant barrier to thrombolysis was the delayed presentation of patients, which could be magnified by suboptimal ambulance services:
