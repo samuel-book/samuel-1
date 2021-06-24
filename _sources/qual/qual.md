@@ -23,14 +23,47 @@ Our approach was subsequently modified for remote delivery, with all interviews 
 
 During the interviews, we collected data about physicians’ backgrounds, their attitudes to thrombolysis and their understanding of variance, their perspectives on machine learning, and potential loci for the implementation of machine learning feedback (within and beyond SSNAP), established the physicians’ views on possible unintended consequences, which may result from changing the acute stroke pathway, and potential means of mitigation. Our fieldnotes reflected the challenges of conducting interviews via video, with physicians often in clinical settings and sometimes wearing PPE, as well as capturing the dynamics between physicians, who were also remote working from each other [3, 4].
 
-Towards the end of the project, and during the third lockdown for COVID-19, we undertook an online discussion of our results with a small group of physicians (N=3) who were identified via an annual meeting for trainees, organised by the British Association for Stroke Physicians (BASP). The modellers (MA, CJ) presented a further set of outputs from their analyses, and the discussion focused on how additional modelling outputs might be used to facilitate quality improvement and inform service delivery. 
+Towards the end of the project, and during the third lockdown for COVID-19, we undertook an online discussion of our results with a small group of physicians (N=3) who were identified via an annual meeting for trainees, organised by the British Association for Stroke Physicians (BASP). The modellers (MA, CJ) presented a further set of outputs from their analyses, and the discussion focused on how additional modelling outputs might be used to facilitate quality improvement and inform service delivery.
+
+## Data analysis
+
+Interview data was transcribed by an independent GDPR-compliant transcriber, and fieldnotes were written up by the two researchers. All data were anonymised and managed in Nvivo for Teams [5]. Both researchers read all the transcripts to develop preliminary ideas and understanding. We developed these ideas alongside further re-reading of the transcripts, using a Framework Analysis aligned with the four broad exploratory objectives of the study, but crucially with an openness to any new insights from the physicians [6], [7]. Analytical summaries across multiple cases were created independently by both researchers, and used to explore the data. We held repeat discussions to develop the analysis, looking for negative cases, and resolving differences of opinion about interpretation [8]. In this way, we were able to examine these physicians’ accounts of their use of thrombolysis and orientation to machine learning and simulation. As our analyses developed, we also discussed our findings with members of the wider research team.
+
+## Results
+
+### Interview participants
+
+We recruited nineteen participants, who took part in three individual and five group interviews. Eleven of the participants were consultants (specialising in stroke, neurology or elderly care) with four stroke registrars and one specialist stroke nurse. Ten participants were male and nine were female. 
+
+----------------------- ------------------------------------------------------------------------
+  Thrombosis              **Interviews**
+  Low (Site A)            Group: 2 Stoke Consultants (2 x M) + I Specialist Stroke Nurse (1 x F)
+  Low (Site B)            Single: Consultant Stroke and elderly medicine (M)
+  Low (Site C)            Group: 3 Stroke Consultants (1M/2F)
+  Middle (Site D/Pilot)   Group: 4 Registrars (4F) (Pilot interview)
+  Middle (Site E)         Single Consultant Geriatrician (M)
+  Middle (Site F)         Single: Stoke Consultant(M)
+  High (Site G)           Group: 3 Consultants: Stroke & Geriatrician (1M/2F)
+  High (Site H)           Group: 3 Consultants: Stroke, Neurologist, Geriatrician (2M/1F)
+  ----------------------- ------------------------------------------------------------------------
+  
+  
 
 
-## Current attitudes to thrombolysis use
+### Current attitudes to thrombolysis use
 Physicians working in hospitals with lower thrombolysis rates were more likely to suggest that a significant barrier to thrombolysis was the delayed presentation of patients, which could be magnified by suboptimal ambulance services:
 
-```{admonition} Quotes
+```{admonition} Quote
 *“A lot of patients present outside the window of thrombolysis at the hospital.” (Site B)*
 
 *“I think we rarely hit the 11% percent national numbers, probably because patients come just outside the thrombolysis window.” (Site A)*
 ```
+
+Those working in hospitals with lower thrombolysis rates were more likely to report that their patients were ‘different’ to those presenting at other centres – in terms of rurality, ethnicity, frailty, or socio-demographic factors: 
+
+```{admonition} Quote
+*“We’ve a slightly older population… we’ve slightly more bleeds than infarcts…we’re a slightly larger geographical area, so sometimes people are a bit delayed getting to hospital and we operate across two sites as well.” (Site C)*
+```
+
+
+
