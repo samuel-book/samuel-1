@@ -29,8 +29,8 @@ Towards the end of the project, and during the third lockdown for COVID-19, we u
 ## Current attitudes to thrombolysis use
 Physicians working in hospitals with lower thrombolysis rates were more likely to suggest that a significant barrier to thrombolysis was the delayed presentation of patients, which could be magnified by suboptimal ambulance services:
 
-````{panels}
-“A lot of patients present outside the window of thrombolysis at the hospital.” (Site B)
+```{admonition} Quotes
+*“A lot of patients present outside the window of thrombolysis at the hospital.” (Site B)*
 
-“I think we rarely hit the 11% percent national numbers, probably because patients come just outside the thrombolysis window.” (Site A)
-````
+*“I think we rarely hit the 11% percent national numbers, probably because patients come just outside the thrombolysis window.” (Site A)*
+```
