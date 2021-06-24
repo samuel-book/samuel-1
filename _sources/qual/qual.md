@@ -35,20 +35,16 @@ Interview data was transcribed by an independent GDPR-compliant transcriber, and
 
 We recruited nineteen participants, who took part in three individual and five group interviews. Eleven of the participants were consultants (specialising in stroke, neurology or elderly care) with four stroke registrars and one specialist stroke nurse. Ten participants were male and nine were female. 
 
------------------------ ------------------------------------------------------------------------
-  Thrombosis              **Interviews**
-  Low (Site A)            Group: 2 Stoke Consultants (2 x M) + I Specialist Stroke Nurse (1 x F)
-  Low (Site B)            Single: Consultant Stroke and elderly medicine (M)
-  Low (Site C)            Group: 3 Stroke Consultants (1M/2F)
-  Middle (Site D/Pilot)   Group: 4 Registrars (4F) (Pilot interview)
-  Middle (Site E)         Single Consultant Geriatrician (M)
-  Middle (Site F)         Single: Stoke Consultant(M)
-  High (Site G)           Group: 3 Consultants: Stroke & Geriatrician (1M/2F)
-  High (Site H)           Group: 3 Consultants: Stroke, Neurologist, Geriatrician (2M/1F)
-  ----------------------- ------------------------------------------------------------------------
-  
-  
-
+| Thrombolysis          | Interviews                                                             |
+|-----------------------|------------------------------------------------------------------------|
+| Low (Site A)          | Group: 2 Stoke Consultants (2 x M) + I Specialist Stroke Nurse (1 x F) |
+| Low (Site B)          | Single: Consultant Stroke and elderly medicine (M)                     |
+| Low (Site C)          | Group: 3 Stroke Consultants (1M/2F)                                    |
+| Middle (Site D/Pilot) | Group: 4 Registrars (4F) (Pilot interview)                             |
+| Middle (Site E)       | Single Consultant Geriatrician (M)                                     |
+| Middle (Site F)       | Single: Stoke Consultant(M)                                            |
+| High (Site G)         | Group: 3 Consultants: Stroke & Geriatrician (1M/2F)                    |
+| High (Site H)         | Group: 3 Consultants: Stroke, Neurologist, Geriatrician (2M/1F)        |
 
 ### Current attitudes to thrombolysis use
 Physicians working in hospitals with lower thrombolysis rates were more likely to suggest that a significant barrier to thrombolysis was the delayed presentation of patients, which could be magnified by suboptimal ambulance services:
