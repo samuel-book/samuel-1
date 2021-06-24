@@ -1,5 +1,7 @@
 # Public and Patient Involvement
 
+(Kristin Liabo, Leon Farmer & Penny Thompson)
+
 Aims for involving patients and carers in SAMueL: The research team planned to invite two people with personal experience of having a stroke, or personal experience of caring for a family member at home after they had a stroke, to sit on the study steering group. In addition we planned to establish a patient and carer advisory group of 6-8 members who would meet with the lead researchers separately to the steering group. 
 
 The aim of the involvement was to help keep the study patient-centred, for patients and carers to inform the work of the modellers in terms of what aspects of the data to focus on, and to inform discussions about study dissemination and next steps at the end of the study.

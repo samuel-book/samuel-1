@@ -1,5 +1,7 @@
 # Qualitative research
 
+(Julia Frost & Kristin Liabo)
+
 ## Objectives
 
 The overall objective of the qualitative research was to understand influence of modelling, including the use of machine learning techniques, in the context of the national audit, in order to support efforts to maximise the appropriate use of thrombolysis and reduce unnecessary variation. 
