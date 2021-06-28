@@ -44,6 +44,16 @@ The basic building block of neural networks is the perceptron ({numref}`Figure {
 Schematic of a perceptron. Each feature (including a constant) is multiplied by an individual weight for that feature. These features.weights are summed, and the output passed to an activation function (a simple activation function is a step function whereby if the sum of weighted features is less than 0 the output is zero, and if the sum of weighted features is equal to or more than 0 the output is one).
 :::
 
+A neural network is composed of a network of perceptrons, and sometimes is called a multi-layer-perceptron ({numref}`Figure {number} <neuralnet-fig>`). Input features are connected to multiple perceptrons (or neurons) each of which performs a weighted sum of feature.weights and passes the output through an activation function. The most common activation function used within the network is the rectified linear unit (ReLU). Using ReLU , if the weighted sum of inputs is less than zero, the output is zero, and if the weighted sum of inputs is greater than zero then the output is equal to the weighted sum of inputs. This simple function is computationally efficient and is enough for the neural network to mimic non-linear functions. The outputs from a layer in the network are passed as inputs to the next layer. The layers may be of any number of neurones, and may vary between layers (though it is most common now to have the same number of neurons in all layers apart from the final layer). The final layer has an activation function depending on the purpose of network. For example, a regressor network will often leave the weighted sum in the final layer unchanged. A binomial classification network will commonly use logistic/sigmoid activation in the final layer (usually with a single neurone in the output layer), and a multi-class network will often use softmax activation where there are as many output neurones as there are classes, and each will have an output equivalent to a probability of 0-1. 
+
+:::{figure-md} neuralnet-fig
+<img src="./net.png" width="600px">
+
+An example neural network. In this ‘fully connected’ neural network there are as many perceptrons in each layer as there are features (in practice this number may be changed). Each feature is connected to all perceptrons in the first hidden layer, each with its own associated weight.
+:::
+
+{numref}`Figure {number} <neuralnet-fig>` shows a fully connected network where all neurons in a layer are connected to all neurons in the next layer. There are many variations on this, and later we will discuss embedding layers which are used in this project.
+
 
 
 
