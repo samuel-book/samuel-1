@@ -587,6 +587,11 @@
    Neural networks
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-clinical-pathway-simulation-and-clinical-decision-making">
+   Combining clinical pathway simulation and clinical decision making
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -637,6 +642,11 @@ f(x) = \frac{1}{1 + e^{-x}}
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">An example neural network. In this ‘fully connected’ neural network there are as many perceptrons in each layer as there are features (in practice this number may be changed). Each feature is connected to all perceptrons in the first hidden layer, each with its own associated weight.</span><a class="headerlink" href="#neuralnet-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p><a class="reference internal" href="#neuralnet-fig"><span class="std std-numref">Figure 9</span></a> shows a fully connected network where all neurons in a layer are connected to all neurons in the next layer. There are many variations on this, and later we will discuss embedding layers which are used in this project.</p>
+<p>Training a neural network is similar to a perceptron, using methods based on stochastic gradient descent. The additional component in neural network is back-propagation of loss, which distributes loss through the network according to how much individual neurons contribute to the overall loss.</p>
+</div>
+<div class="section" id="combining-clinical-pathway-simulation-and-clinical-decision-making">
+<h2>Combining clinical pathway simulation and clinical decision making<a class="headerlink" href="#combining-clinical-pathway-simulation-and-clinical-decision-making" title="Permalink to this headline">¶</a></h2>
+<p>Traditional clinical pathway simulation mimics a process, using times and decisions sampled from appropriate distributions. In this project we combine simulation with machine learning, by using probabilities of receiving thrombolysis derived from machine learning models (‘replacing’ the decision-making in one hospital with a majority vote of a standard set of benchmark hospital decision models).</p>
 </div>
 </div>
 

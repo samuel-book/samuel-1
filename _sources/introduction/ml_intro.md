@@ -54,9 +54,8 @@ An example neural network. In this ‘fully connected’ neural network there ar
 
 {numref}`Figure {number} <neuralnet-fig>` shows a fully connected network where all neurons in a layer are connected to all neurons in the next layer. There are many variations on this, and later we will discuss embedding layers which are used in this project.
 
+Training a neural network is similar to a perceptron, using methods based on stochastic gradient descent. The additional component in neural network is back-propagation of loss, which distributes loss through the network according to how much individual neurons contribute to the overall loss.
 
+## Combining clinical pathway simulation and clinical decision making
 
-
-
-
-
+Traditional clinical pathway simulation mimics a process, using times and decisions sampled from appropriate distributions. In this project we combine simulation with machine learning, by using probabilities of receiving thrombolysis derived from machine learning models (‘replacing’ the decision-making in one hospital with a majority vote of a standard set of benchmark hospital decision models). 
