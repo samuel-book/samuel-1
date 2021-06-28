@@ -28,8 +28,25 @@ Example of the structure of a decision tree with nodes (ovals) and branches (arr
 
 The path taken through a tree is determined by the rules associated with each node. The decision tree learns these rules during the training process. The goal of the training process is to find rules for each node such that a leaf node contains samples from one class only: the leaf node a patient ends up in determines the predicted outcome of the decision tree. 
 
-Specifically, given some training data (variables and outcomes), the decision tree algorithm will find the variable that is most descriminative (provides the best separation of data based on the outcome). This variable will be used for the root node. The rule for the root node consists of this variable and a threshold value. For any data point, if the value of the variable is less than or equal to the threshold value at the root node, the data point will take the left branch and if it is greater than the threshold value it will take the right branch. The process of finding the most descriminative feature and a threshold value is repeated to determine the rules of the internal nodes lower down the tree. Once all data points in a node have the same outcome, that node is a leaf node, representing the end of a path through a tree. Once all paths through the tree end in a leaf node the training process is complete. 
+Specifically, given some training data (variables and outcomes), the decision tree algorithm will find the variable that is most discriminative (provides the best separation of data based on the outcome). This variable will be used for the root node. The rule for the root node consists of this variable and a threshold value. For any data point, if the value of the variable is less than or equal to the threshold value at the root node, the data point will take the left branch and if it is greater than the threshold value it will take the right branch. The process of finding the most discriminative feature and a threshold value is repeated to determine the rules of the internal nodes lower down the tree. Once all data points in a node have the same outcome, that node is a leaf node, representing the end of a path through a tree. Once all paths through the tree end in a leaf node the training process is complete. 
 
 As a random forest is an ensemble of decision trees, during training the algorithm will select a random sample of the training data with replacement and train a decision tree using this sample. Each tree is trained on a subset of all features. This process is repeated many times, the exact number being a parameter of the algorithm corresponding to the number of decision trees in the random forest. 
 
 The resulting random forest is a classifier that can be used to determine whether a data point belongs to class 0 (not thrombolysed) or class 1 (thrombolysed). The path of the data point through every decision tree ends in a leaf node. If there are 100 decision trees in the random forest, and the data point's path ends in a leaf node with class 0 in 30 of the decision trees and a leaf node of class 1 in 70, the random forest takes the majority outcome and classifies the data point as belonging to class 1 (thrombolysed) with a probability of 0.7 (70/100: number of trees voting class 1 / total number of trees).
+
+## Neural networks
+
+The basic building block of neural networks is the perceptron ({numref}`Figure {number} <perceptron-fig>`). Each feature (including a constant/bias feature which usually has the value of one) has an associated weight. The product of each feature multiplied by its weight is summed. The sum is then passed to an activation function. The activation function may leave the input unchanged (often used for a regression output). May use a step function (whereby if the sum of weighted features is less than 0 the output is zero, and if the sum of weighted features is equal to or more than 0 the output is one), a logistic function (converting the input into a number between zero or one), or other functions. The weights are optimised during the learning process in order to minimise the inaccuracy (loss) of the model. Commonly optimising is performed according to a variant of stochastic gradient descent, where a an example is chosen at random (stochastic), the inaccuracy (loss) is calculated, and the weights are moved a little in the direction which reduced the loss (gradient descent). This learning process is repeated until the model converges on minimum loss.
+
+:::{figure-md} perceptron-fig
+<img src="./perceptron.png" width="600px">
+
+Schematic of a perceptron. Each feature (including a constant) is multiplied by an individual weight for that feature. These features.weights are summed, and the output passed to an activation function (a simple activation function is a step function whereby if the sum of weighted features is less than 0 the output is zero, and if the sum of weighted features is equal to or more than 0 the output is one).
+:::
+
+
+
+
+
+
+
