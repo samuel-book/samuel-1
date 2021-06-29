@@ -200,10 +200,11 @@ Net national changes in thrombolysis use (left) or clinical benefit (right) by c
 
 * {numref}`Figure {number} <fig_pathway_dist>` shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.
 
-{numref}`Figure {number} <fig_pathway_dist>` shows the net effect of changes at all hospitals:
-
 :::{figure-md} fig_pathway_dist
 <img src="./../images/distribution.jpg" width="600px">
+
+Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.
+:::
 
 * The model identifies the changes that make most difference at each hospital.
 
@@ -241,6 +242,6 @@ Net national changes in thrombolysis use (left) or clinical benefit (right) by c
 
 6. Develop more tools for evaluating and displaying bias in individual hospital models (the model bias reflecting the biases in the hospital).
 
-### Funding
+## Funding
 
 This project was funded by the National Institute for Health Research (NIHR) HS&DR programme (Reference Number: 17/99/89) and will be published in full in Health Services and Delivery Research Journal; Vol. XX, No. XX. See the NIHR Journals Library website for further project information.
