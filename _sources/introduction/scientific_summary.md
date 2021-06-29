@@ -190,7 +190,7 @@ Results:
 
 * Combining the three changes suggests that thrombolysis use could potentially be increased from 11.6% to 18.3% of all emergency admissions, and the clinical benefit increased from 9.4 to 17.6 additional good outcomes per 1,000 admissions. The average drivers in improvement in thrombolysis use are benchmark decisions > determining stroke onset > speed, while the average drivers in improvement in outcomes are speed > benchmark decisions > determining stroke onset. 
 
-* The model may be used to provide a target use of thrombolysis that is tailored to each hospital. {numref}`Figure {number} <fig_pathway_net>` shows the net effect of changes at all hospitals:
+* {numref}`Figure {number} <fig_pathway_net>` shows the net effect of changes at all hospitals:
 
 :::{figure-md} fig_pathway_net
 <img src="./../images/scenarios.jpg" width="600px">
@@ -206,7 +206,7 @@ Net national changes in thrombolysis use (left) or clinical benefit (right) by c
 Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.
 :::
 
-* The model identifies the changes that make most difference at each hospital.
+* The model identifies the changes that make most difference at each hospital, and may be used to provide a target use of thrombolysis that is tailored to each hospital. .
 
 ### Qualitative research
 
