@@ -39,7 +39,7 @@ We model three aspects of the thrombolysis pathway:
 
 ### Qualitative research
 
-In addition to the modelling work, the project had a qualitative research arm, with the objective of understanding clinicians' attitudes to use of of modelling and machine learning applied to the national stroke audit.
+In addition to the modelling work, the project had a qualitative research arm, with the objective of understanding clinicians' attitudes to use of modelling and machine learning applied to the national stroke audit.
 
 ## Methods
 
