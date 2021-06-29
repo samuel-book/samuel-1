@@ -8,7 +8,7 @@ Stroke is a medical condition where blood flow to an area of the brain has been 
 
 ### Intravenous Thrombolysis (IVT)
 
-Intravenous thrombolysis (IVT) is a form of ‘clot-busting’ therapy developed to treat ischaemic stroke by removing or reducing the blood clot impairing blood flow in the brain. 
+Intravenous thrombolysis (IVT) is a form of ‘clot-busting’ therapy developed to treat ischaemic stroke by removing or reducing the blood clot impairing blood flow in the brain.
 For ischaemic strokes, IVT is an effective treatment for the management of acute stroke if given soon (within 4 hours) after stroke onset, and is recommended for use in many parts of the world including Europe.
 
 Based on expert clinical opinion, the Sentinel Stroke National Audit Programme Report, the NHS long term plan, and the specification of the Integrated Stroke Delivery Networks all provide a target of 20% of stroke patients receiving thrombolysis. Currently 11%-12% of patients in England and Wales receive thrombolysis, with significant inter-hospital variability (per-hospital thrombolysis use ranges from 2% to 25%).
@@ -19,7 +19,7 @@ Use of thrombolysis is therefore lower than target, and highly variable between 
 
 NHS England describes clinical audit in the following way:
 
-"Clinical audit is a way to find out if healthcare is being provided in line with standards and lets care providers and patients know where their service is doing well, and where there could be improvements. The aim is to allow quality improvement to take place where it will be most helpful and will improve outcomes for patients..."
+*"Clinical audit is a way to find out if healthcare is being provided in line with standards and lets care providers and patients know where their service is doing well, and where there could be improvements. The aim is to allow quality improvement to take place where it will be most helpful and will improve outcomes for patients..."*
 
 The national audit covering stroke is the Sentinel Stroke National Audit Programme (SSNAP). SSNAP collects longitudinal data on the processes and outcomes of stroke care up to 6 months post-stroke for more than 90% of stroke admissions to acute hospitals in England, Wales and Northern Ireland. Every year data from approximately 85 000 patients are collected. SSNAP publishes quarterly and yearly analysis of results.
 
