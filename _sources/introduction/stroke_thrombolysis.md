@@ -8,9 +8,7 @@ Stroke is a major cause of adult long-term disability and is a major burden on h
 
 ## Intravenous Thrombolysis (IVT)
 
-Intravenous thrombolysis (IVT) is a form of ‘clot-busting’ therapy developed to treat ischaemic stroke by removing or reducing the bloodclot impairing blood flow in the brain. 
-
-Intravenous thrombolysis (IVT) is a form of ‘clot-busting’ therapy developed to treat ischaemic stroke by removing or reducing the bloodclot impairing blood flow in the brain.
+Intravenous thrombolysis (IVT) is a form of ‘clot-busting’ therapy developed to treat ischaemic stroke by removing or reducing the blood clot impairing blood flow in the brain.
 
 For ischaemic strokes, IVT is an effective treatment for the management of acute stroke if given soon after stroke onset [5], and is recommended for use in many parts of the world including Europe [6]. The mechanism of action is activation of the body’s own clot-breakdown pathway, fibrinolysis. Though the benefit of alteplase is now well established, individual trials have suffered from uncertainty in the relationship between time to treatment with alteplase and the benefit achieved. Emberson et al. [5] accessed individual patient results from nine clinical trials involving 6,756 patients (3,3391 treated, 3.365 untreated control). By combining the trials in this meta-analysis, they established a statistically significant benefit of alteplase up to at 5 hours after onset of stroke symptoms, using modified Rankin Scale score of 0-1 at 3-6 months as the outcome measure. The decline in odds-ratio of an additional good outcome was consistent across age groups, but the differences in baseline (untreated) probability of a good outcome in aged under 80 and aged 80+ means that the absolute probability of a good outcome after treatment with alteplase is dependent on age group. 
 

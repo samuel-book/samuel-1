@@ -8,17 +8,17 @@
 
 ## Overall aims
 
-The overall aims of the project are:
+We seek to enhance the national stroke audit by providing further analysis of the thrombolysis pathway at each hospital, identifying areas which would most improve the clinical benefit of thrombolysis, allowing quality improvement to focus down on the most influential aspect.
 
-* Model thrombolysis decision-making using machine learning, so that we may ask the question *'what treatment would my patient receive at other hospitals?'*
+### Modelling of the stroke thrombolysis pathway
 
-* Model the stroke pathway, using clinical pathway simulation, so that we may ask the question *'what would happen to a hospital's thrombolysis use of, and benefit from, thrombolysis by changing key aspects of the pathway?'*. The key changes investigated are: 
+We model three aspects of the thrombolysis pathway:
 
-    * Pathway speed
-    
-    * Determining stroke onset times
-    
-    * Making decisions according to the majority vote of decisions that would be expected at a *benchmark* set of hospitals
+1. *Pathway speed*: what would be the effect of changing time from arrival to scan, or time from scan to treatment?
+
+2. *Determination of stroke onset time*: what would be the effect of changing the proportion of patients with determined stroke onset time?
+
+3. *Clinical decision making*: what would be the effect of treating patients according to decisions made at a benchmark set of hospitals?
 
 We base our modelling on a simplified view of the stroke pathway ({numref}`Figure {number} <fig_pathway>`).
     
@@ -27,6 +27,10 @@ We base our modelling on a simplified view of the stroke pathway ({numref}`Figur
 
 Schamtic of simplified pathway to thrombolysis, as used in the clinical pathway simulation.
 :::
+
+### Qualitative research
+
+In addition to the modelling work, the project had a qualitative research arm, with the objective of understanding clinicians' attitudes to use of of modelling and machine learning applied to the national stroke audit.
 
 ## Data
 
@@ -143,7 +147,7 @@ We built a variety of model types:
 
 * Combining outputs of the three model types into one combined model (an *ensemble* model) did not improve accuracy.
 
-* Accuracy of models increased with training set size up to about 30k training et examples.
+* Accuracy of models increased with training set size up to about 30k training set examples.
 
 * All random forest and neural network models were well calibrated, meaning that 9 out of 10 people with a predicted 90% probability of receiving thrombolysis would receive thrombolysis. The single fit logistic regression model, but not the individual hospital fit model was well calibrated.
 
@@ -153,7 +157,9 @@ For most modelling (e.g. inclusion in stroke pathway model) we have chosen to us
 
 When comparing predicted decisions between hospitals:
 
-* It is easier to find majority agreement on who not to thrombolyse than who to thrombolyse. 77.5% of all patients have a treatment decision that is agreed by 80% hospitals. Of those who were not given thrombolysis, 84.6% had agreement by 80% hospitals. Of those who were given thrombolysis, 60.4% had agreement by 80% hospitals
+* It is easier to find majority agreement on who not to thrombolyse than who to thrombolyse. 77.5% of all patients have a treatment decision that is agreed by 80% hospitals. Of those who were not given thrombolysis, 84.6% had agreement by 80% hospitals. Of those who were given thrombolysis, 60.4% had agreement by 80% hospitals.
+
+* A comparison of a hospital's likelihood to give thrombolysis may be made by passing the a standard 10k patient cohort set through all hospitals. This evaluates likelihood to give thrombolysis independently from hospitals own local patient populations. 
 
 * A *benchmark set* of hospitals was created by passing the same 10k patient cohort set through all hospitals, and selecting the 30 hospitals with the highest thrombolysis use. If all thrombolysis decisions were made by a majority vote of these hospitals then thrombolysis use (in those arriving within 4 hours of known stroke onset) would be expected to increase from 29.5% to 36.9%.
 
