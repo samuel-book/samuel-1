@@ -117,6 +117,19 @@ Machine learning, predicting use of thrombolysis, was performed on the 40% of pa
 
 Machine learning accuracy was assessed using stratified k-fold cross-validation.
 
+| Model\*                                    | Accuracy (%) | ROC-AUC | Max Sens=Spec (%) [1] |
+|--------------------------------------------|--------------|---------|-----------------------|
+| Logistic regression single model           | 83.2         | 0.904   | 82.0                  |
+| Logistic regression hospital-level models  | 77.5         | 0.815   | 74.0                  |
+| Random forest single model                 | 84.6         | 0.914   | 83.7                  |
+| Random forest hospital-level models        | 81.4         | 0.854   | 78.1                  |
+| Fully-connected neural net single model    | 84.4         | 0.913   | 83.3                  |
+| 1D Embedding neural net single model       | 85.5         | 0.921   | 84.5                  |
+
+\* Single model fits use one-hot encoding for hospitals. Hospital-level models fit a model to each hospital independently. Embedding neural nets encode hospital id, pathway data, and clinical data into a single value vector each.
+
+[1] The maximum value where sensitivity matches specificity.
+
 * Machine learning models ranged from 78% to 86% accuracy depending on model type. The model with the highest accuracy was a neural network using three *embedding layers* for hospital ID, clinical features of the patients, and pathway timings. 
 
 * There is high agreement between model types. Logistic regression (single fit), random forests (single fit), and neural networks (single fit, 1D embedding) agree classification on 87% of patients. Neural networks and random forests agree on 93% of patients.
@@ -137,13 +150,25 @@ For most modelling (e.g. inclusion in stroke pathway model) we have chosen to us
 
 * A comparison of a hospital's likelihood to give thrombolysis may be made by passing the a standard 10k patient cohort set through all hospitals. This evaluates likelihood to give thrombolysis independently from hospitals own local patient populations. 
 
-* A *benchmark* set of hospitals was created by passing the same 10k patient cohort set through all hospitals, and selecting the 30 hospitals with the highest thrombolysis use. If all thrombolysis decisions were made by a majority vote of these hospitals then thrombolysis use (in those arriving within 4 hours of known stroke onset) would be expected to increase from 29.5% to 36.9%.
+* A *benchmark* set of hospitals was created by passing the same 10k patient cohort set through all hospitals, and selecting the 30 hospitals with the highest thrombolysis use. If all thrombolysis decisions were made by a majority vote of these hospitals then thrombolysis use (in those arriving within 4 hours of known stroke onset) would be expected to increase from 29.5% to 36.9%. {numref}`Figure {number} <fig_benchmark>` shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. 
+
+:::{figure-md} fig_benchmark
+<img src="./../images/benchmark_thrombolysis.jpg" width="400px">
+
+Comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.
+:::
 
 * Models may be used to identify two types of patients (and patient vignettes may be constructed to illustrate particular types of patients):
 
     * Patients where the model has high confidence in prediction, but were not treated as expected (e.g. a patient who appears to have high suitability for thrombolysis, but did not receive it).
 
-    * Patients which were treated according to the prediction of the hospital model, but where the majority of the benchmark hospitals would have treated that patient differently.
+    * Patients which were treated according to the prediction of the hospital model, but where the majority of the benchmark hospitals would have treated that patient differently. {numref}`Figure {number} <fig_embedding>` shows an example of patient clinical embedding as a 2D vector. Haemorrhagic stroke patients are in red, and non-haemorrhagic stroke patients in blue.
+
+:::{figure-md} fig_embedding
+<img src="./../images/embedding.jpg" width="400px">
+
+Clinical subnet embedding output marking of those patients with a haemorrhagic stroke (red) as opposed to a non-haemorrhagic stroke (blue).
+:::
 
 * Hospitals may be grouped by comparison of what proportion of patients would be expected to have the same thrombolysis decision. 
 
@@ -163,7 +188,22 @@ Results:
 
 * The model predicts current thrombolysis use with high accuracy (R-squared of 0.980, mean absolute difference in thrombolysis use of 0.5 percentage points).
 
-* Combining the three changes suggests that thrombolysis use could potentially be increased from 11.6% to 18.3% of all emergency admissions, and the clinical benefit increased from 9.4 to 17.6 additional good outcomes per 1,000 admissions. The average drivers in improvement in thrombolysis use are benchmark decisions > determining stroke onset > speed, while the average drivers in improvement in outcomes are speed > benchmark decisions > determining stroke onset.
+* Combining the three changes suggests that thrombolysis use could potentially be increased from 11.6% to 18.3% of all emergency admissions, and the clinical benefit increased from 9.4 to 17.6 additional good outcomes per 1,000 admissions. The average drivers in improvement in thrombolysis use are benchmark decisions > determining stroke onset > speed, while the average drivers in improvement in outcomes are speed > benchmark decisions > determining stroke onset. 
+
+* The model may be used to provide a target use of thrombolysis that is tailored to each hospital. {numref}`Figure {number} <fig_pathway_net>` shows the net effect of changes at all hospitals:
+
+:::{figure-md} fig_pathway_net
+<img src="./../images/scenarios.jpg" width="600px">
+
+Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers.
+:::
+
+* {numref}`Figure {number} <fig_pathway_dist>` shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.
+
+{numref}`Figure {number} <fig_pathway_dist>` shows the net effect of changes at all hospitals:
+
+:::{figure-md} fig_pathway_dist
+<img src="./../images/distribution.jpg" width="600px">
 
 * The model identifies the changes that make most difference at each hospital.
 

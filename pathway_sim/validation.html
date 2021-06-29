@@ -104,11 +104,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/key_findings_all.html">
-   SAMueL - Summary of Findings
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../introduction/project_team.html">
    Contact and Project Team
   </a>
@@ -640,7 +635,7 @@
 <h2>Pathway simulation overview<a class="headerlink" href="#pathway-simulation-overview" title="Permalink to this headline">¶</a></h2>
 <p>The stroke pathway simulation models the passage of a cohort of patients through a hospital’s stroke pathway. Timings in the simulation are sampled from distributions using NumPy. These distributions may be based on observed timings or may be ‘what if?’ scenarios such as ‘what if arrival-to-scan time was consistently 15 minutes?’</p>
 <p>The process model is based on data available in SSNAP</p>
-<p><img alt="" src="../_images/pathway1.png" /></p>
+<p><img alt="" src="../_images/pathway.png" /></p>
 <p>Individual patient pathways are modelled within a NumPy array for each hospital. The following fields are populated based on sampling from distributions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">0</span><span class="p">:</span> <span class="n">Patient</span> <span class="n">aged</span> <span class="mi">80</span><span class="o">+</span>
  <span class="mi">1</span><span class="p">:</span> <span class="n">Allowable</span> <span class="n">onset</span> <span class="n">to</span> <span class="n">needle</span> <span class="n">time</span> <span class="p">(</span><span class="n">may</span> <span class="n">depend</span> <span class="n">on</span> <span class="n">age</span><span class="p">)</span>
