@@ -83,7 +83,7 @@ Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams
 ### Patient – thrombolysis given
 * S2Thrombolysis: Whether the patient was given thrombolysis (clot busting medication)
 
-### Patient – Reason stated for not giving thrombolysis
+### Patient – reason stated for not giving thrombolysis
 * Age: If the answer to thrombolysis given was “no but”, the reason was Age
 * Comorbidity: If the answer to thrombolysis given was “no but”, the reason was Co-morbidity
 * Haemorrhagic: If the answer to thrombolysis given was “no but”, the reason was Haemorrhagic stroke
