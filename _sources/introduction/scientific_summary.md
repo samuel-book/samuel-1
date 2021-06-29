@@ -189,7 +189,7 @@ Results:
 * The model predicts current thrombolysis use with high accuracy ({numref}`Figure {number} <fig_validation>`, R-squared of 0.980, mean absolute difference in thrombolysis use of 0.5 percentage points).
 
 :::{figure-md} fig_validation
-<img src="./../images/validation.jpg" width="600px">
+<img src="./../images/validation.jpg" width="400px">
 
 Modelled vs actual thrombolysis use at each hospital. 
 :::
