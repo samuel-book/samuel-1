@@ -186,7 +186,7 @@ The model is used to examine the effect, at each hospital and nationally, of mak
 
 Results:
 
-* The model predicts current thrombolysis use with high accuracy ({numref}`Figure {number} <fig_validation>`, R-squared of 0.980, mean absolute difference in thrombolysis use of 0.5 percentage points).
+* The model predicts current thrombolysis use with high accuracy ({numref}`Figure {number} <fig_validation>`, R-squared of 0.979, mean absolute difference in thrombolysis use of 0.5 percentage points).
 
 :::{figure-md} fig_validation
 <img src="./../images/validation.jpg" width="400px">
