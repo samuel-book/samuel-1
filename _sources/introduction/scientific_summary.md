@@ -129,7 +129,7 @@ Machine learning accuracy was assessed using stratified k-fold cross-validation.
 
 * All random forest and neural network models were well calibrated, meaning that 9 out of 10 people with a predicted 90% probability of receiving thrombolysis would receive thrombolysis.
 
-### Comparing decisions between hospitals
+#### Comparing decisions between hospitals
 
 For most modelling (e.g. inclusion in stroke pathway model) we have chosen to use hospital-level random forests models. Though accuracy is a little lower than the best models, these models are easier for people to understand and have strong hospital independence. When comparing predicted decisions between hospitals:
 

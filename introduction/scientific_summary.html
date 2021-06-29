@@ -676,12 +676,12 @@
        Machine learning performance
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comparing-decisions-between-hospitals">
+       Comparing decisions between hospitals
+      </a>
+     </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparing-decisions-between-hospitals">
-     Comparing decisions between hospitals
-    </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pathway-simulation">
@@ -841,9 +841,8 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>All random forest and neural network models were well calibrated, meaning that 9 out of 10 people with a predicted 90% probability of receiving thrombolysis would receive thrombolysis.</p></li>
 </ul>
 </div>
-</div>
 <div class="section" id="comparing-decisions-between-hospitals">
-<h3>Comparing decisions between hospitals<a class="headerlink" href="#comparing-decisions-between-hospitals" title="Permalink to this headline">¶</a></h3>
+<h4>Comparing decisions between hospitals<a class="headerlink" href="#comparing-decisions-between-hospitals" title="Permalink to this headline">¶</a></h4>
 <p>For most modelling (e.g. inclusion in stroke pathway model) we have chosen to use hospital-level random forests models. Though accuracy is a little lower than the best models, these models are easier for people to understand and have strong hospital independence. When comparing predicted decisions between hospitals:</p>
 <ul class="simple">
 <li><p>It is easier to find majority agreement on who not to thrombolyse than who to thrombolyse. 77.5% of all patients have a treatment decision that is agreed by 80% hospitals. Of those who were not given thrombolysis, 84.6% had agreement by 80% hospitals. Of those who were given thrombolysis, 60.4% had agreement by 80% hospitals.</p></li>
@@ -858,6 +857,7 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>Hospitals may be grouped by comparison of what proportion of patients would be expected to have the same thrombolysis decision.</p></li>
 <li><p>Using embedding neural networks, similar patients (e.g. haemorrhagic stroke patients, or patients with severe stroke) are located close together in embedding space. Patient embedding may also be use to rank patients in order of suitability for thrombolysis (by consensus across all hospitals). Similarly hospital embedding may be used to rank hospitals by likelihood to use thrombolysis, independent of patient and pathway characteristics.</p></li>
 </ul>
+</div>
 </div>
 <div class="section" id="pathway-simulation">
 <h3>Pathway simulation<a class="headerlink" href="#pathway-simulation" title="Permalink to this headline">¶</a></h3>
