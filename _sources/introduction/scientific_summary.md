@@ -186,7 +186,13 @@ The model is used to examine the effect, at each hospital and nationally, of mak
 
 Results:
 
-* The model predicts current thrombolysis use with high accuracy (R-squared of 0.980, mean absolute difference in thrombolysis use of 0.5 percentage points).
+* The model predicts current thrombolysis use with high accuracy ({numref}`Figure {number} <fig_validation>`, R-squared of 0.980, mean absolute difference in thrombolysis use of 0.5 percentage points).
+
+:::{figure-md} fig_validation
+<img src="./../images/validation.jpg" width="600px">
+
+Modelled vs actual thrombolysis use at each hospital. 
+:::
 
 * Combining the three changes suggests that thrombolysis use could potentially be increased from 11.6% to 18.3% of all emergency admissions, and the clinical benefit increased from 9.4 to 17.6 additional good outcomes per 1,000 admissions. The average drivers in improvement in thrombolysis use are benchmark decisions > determining stroke onset > speed, while the average drivers in improvement in outcomes are speed > benchmark decisions > determining stroke onset. 
 
