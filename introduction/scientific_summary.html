@@ -871,7 +871,7 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <p>* Single model fits use one-hot encoding for hospitals. Hospital-level models fit a model to each hospital independently. Embedding neural nets encode hospital id, pathway data, and clinical data into a single value vector each.</p>
 <p>[1] The maximum value where sensitivity matches specificity.</p>
 <ul class="simple">
-<li><p>Machine learning models ranged from 78% to 86% accuracy depending on model type. The model with the highest accuracy was a neural network using three <em>embedding layers</em> for hospital ID, clinical features of the patients, and pathway timings.</p></li>
+<li><p>Machine learning models ranged from 78% to 86% accuracy depending on model type. The model with the highest accuracy, by a small margin, was a neural network using three <em>embedding layers</em> for hospital ID, clinical features of the patients, and pathway timings.</p></li>
 <li><p>There is high agreement between model types. Logistic regression (single fit), random forests (single fit), and neural networks (single fit, 1D embedding) agree classification on 87% of patients. Neural networks and random forests agree on 93% of patients.</p></li>
 <li><p>There is generally higher agreement between model types (87% to 93% for any pairwise comparison), than between models and reality (83% to 86% accuracy for the same model types).</p></li>
 <li><p>Combining outputs of the three model types into one combined model (an ensemble model) did not improve accuracy.</p></li>
