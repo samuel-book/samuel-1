@@ -6,7 +6,7 @@ Clot-busting drugs are not suitable for everyone. Doctors must feel confident in
 
 In our work we have developed the methods for understanding what are the main causes of variation between hospitals: How much difference is due to processes (like how quickly a patient is scanned), how much is due to differences in patient populations, and how much difference is due to different decision-making by doctors.
 
-For each hospital we can say what would have the most effect – is it the decision-making (lack of confidence), is it that the processes, like scanning, need to be sped up, or is it that the hospital needs to find a way of better finding out when a person has had a stroke (if that is unknown then it is not possible to give clot-busting drugs).
+For each hospital we can say what would have the most effect – is it the decision-making (lack of confidence), is it that the processes, like scanning, need to be sped up, or is it that the hospital needs to find a way of better finding out when a person has had a stroke (if that is unknown then it is not possible to give clot-busting drugs)?
 
 By using these methods we predict that the number of people across England and Wales for whom clot-busting drugs would prevent disability after stroke could be nearly doubled.
 
