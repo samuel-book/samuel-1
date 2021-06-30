@@ -1,6 +1,6 @@
 # Abstract
 
-**Background**: Stroke is a common cause of adult disability. Expert opinion is that about 20% of patients should receive thrombolysis to break up a clot causing the stroke. Currently 11-12% of patients in England and Wales receive this treatment, ranging between 2% and 25% between hospitals.
+**Background**: Stroke is a common cause of adult disability. Expert opinion is that about 20% of patients should receive thrombolysis to break up a clot causing the stroke. Currently 11-12% of patients in England and Wales receive this treatment, ranging from 2% to 25% between hospitals.
 
 **Objectives**: Enhance national stroke audit by understanding of the key sources of inter-hospital variation and how a target of 20% thrombolysis may be reached.
 
