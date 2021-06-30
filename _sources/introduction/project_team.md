@@ -20,6 +20,7 @@ This project has been brought to you by:
 * Michael Allen
 * Richard Everson
 * Kerry Pearn
+* Tom Monks
 * Zhivko Zhelev
 
 **Qualitative research**
