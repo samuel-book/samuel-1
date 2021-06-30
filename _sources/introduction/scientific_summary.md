@@ -107,7 +107,7 @@ Of those out-of-hospital onset patients arriving within 4 hours of known stroke 
 
 Nationally, there is a significant fall in use of thrombolysis for arrivals between 3am and 6am (with about 6% receiving thrombolysis, compared with 11% to 13% in other periods during the day), but the number of arrivals in this period is only about 3% of all arrivals.
 
-Nationally there is a small effect of day of week, with thrombolysis use ranging from 11.2 to 12.6% by day of week (increasing Monday through to Sunday).
+Nationally there is a small effect of day of week, with thrombolysis use ranging from 11.2% to 12.6% by day of week (increasing Monday through to Sunday).
 
 ### Machine learning for clinical decision making
 
