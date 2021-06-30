@@ -236,17 +236,15 @@ Using modelling and machine learning we identify potential for reaching close to
 
 ### Recommendations for further research
 
-1. Expand machine learning to predict probability of good outcome, and probability of adverse effects of thrombolysis.
+1.	Expand machine learning to predict probability of good outcome, and probability of adverse effects of thrombolysis.
 
-2. Conduct further qualitative research with a more targetted approach to lower thrombolysis units, or groups of units (such as Integrated Stroke Delivery Networks) that include units with lower thrombolysis use.
+2.	Conduct further qualitative research with a more targeted approach to lower thrombolysis units, or groups of units (such as Integrated Stroke Delivery Networks) that include units with lower thrombolysis use.
 
-3. Expand outputs of models to incorporate health economic evaluation of changes, to demonstrate benefits in health economic terms such as Quality Adjusted Life Years. This allows exploration the cost-effectiveness of making organisational changes to the care pathway. 
+3.	Expand outputs of models to incorporate health economic evaluation of changes, to demonstrate benefits in health economic terms such as Quality Adjusted Life Years. This allows exploration the cost-effectiveness of making organisational changes to the care pathway.
 
-4. Include organisational features (from the national stroke audit organisational audit) in machine learning models.
+4.	Include organisational features (from the national stroke audit organisational audit) in machine learning models.
 
-5. Develop more methods to explain machine learning models, so that people could see what was driving model overall and on individual predictions. For example, incorporate Shapley values in model outputs.
-
-6. Develop more tools for evaluating and displaying bias in individual hospital models (the model bias reflecting the biases in the hospital).
+5.	Develop more methods to explain machine learning models (and the biases that have been learned), so that people could see what was driving model overall and individual predictions. For example, incorporate Shapley values in model outputs. Include design of a web portal for drilling down into hospital models in more detail.
 
 ## Funding
 
