@@ -1,4 +1,4 @@
-## Acknowledgements
+# Acknowledgements
 
 We wish to particularly thank our public and patient involvement members Leon Farmer and Penny Posh.
 
