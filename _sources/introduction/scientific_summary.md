@@ -226,11 +226,11 @@ Histograms for changes in distribution in thrombolysis use (left) or clinical be
 
 ## Conclusion
 
+Using modelling and machine learning we identify potential for reaching close to the 20% target of thrombolysis use, and doubling clinical benefit from thrombolysis.
+
 ### Implications for healthcare
 
-* Using modelling and machine learning we identify potential for reaching close to the 20% target of thrombolysis use, and doubling clinical benefit from thrombolysis.
-
-* Realistically achievable thrombolysis use depends on local patient populations, so a universal target of 20% across all hospitals may over-estimate what is achievable at some hospitals, while under-estimating what is achievable at other hospitals.
+* Realistically achievable thrombolysis use depends on local patient populations, so a universal target of 20% across all hospitals may over-estimate what is achievable at some hospitals, while under-estimating what is achievable at other hospitals. Local agreed targets may be more appropriate.
 
 * The tools develop have the potential to add further depth of analysis to the national stroke audit outputs, and may be transferable to other national clinical audits.
 
