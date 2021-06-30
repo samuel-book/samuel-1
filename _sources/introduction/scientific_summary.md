@@ -224,6 +224,10 @@ Histograms for changes in distribution in thrombolysis use (left) or clinical be
 
 * Despite this being a small study physicians engaged with the machine learning process and outcomes, suggesting ways in which the outputs could be modified for feedback to stroke centres, and utilised to inform thrombolytic decision-making.
 
+## Limitations
+
+Models may only be built using data available in SSNAP. Not all factors affecting use of thrombolysis are contained in SSNAP data; the model therefore provides information on patterns of thrombolysis use in hospitals, but is not suitable for, or intended for, a decision aid to thrombolysis.
+
 ## Conclusion
 
 Using modelling and machine learning we identify potential for reaching close to the 20% target of thrombolysis use, and doubling clinical benefit from thrombolysis.
