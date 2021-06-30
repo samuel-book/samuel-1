@@ -36,8 +36,8 @@ This project has been brought to you by:
 
 **External steering group**
 
-* Tom Monks
 * Ajay Bhalla
+* Tom Monks
 * Gary Ford
 * Tony Rudd
 
