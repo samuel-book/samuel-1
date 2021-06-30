@@ -184,7 +184,7 @@ The model is used to examine the effect, at each hospital and nationally, of mak
 
 3. Benchmark: The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.
 
-Results:
+The results of making these changes were:
 
 * The model predicts current thrombolysis use with high accuracy ({numref}`Figure {number} <fig_validation>`, R-squared of 0.979, mean absolute difference in thrombolysis use of 0.5 percentage points).
 
