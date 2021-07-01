@@ -1,6 +1,5 @@
 # Summary slides
 
-
 ![](./Slide1.JPG)
 
 ---
