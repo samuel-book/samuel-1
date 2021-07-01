@@ -8,7 +8,7 @@
 
 **BACKGROUND AND SUMMARY**
 
-Stroke is a common cause of adult disability. Expert opinion is that about one in five patients should receive clot-busting drugs to break up the blood clot that is causing their stroke. This is called thrombolysis. At the moment only about one in nine patients actually receive this treatment in the UK. There is a lot of variation between hospitals, which means that the same patient might receive different treatment in different hospitals.
+Stroke is a common cause of adult disability. Expert opinion is that about one in five patients should receive clot-busting drugs (*'thrombolysis'*) to break up the blood clot that is causing their stroke. This is called thrombolysis. At the moment only about one in nine patients actually receive this treatment in the UK. There is a lot of variation between hospitals, which means that the same patient might receive different treatment in different hospitals.
 
 Clot-busting drugs are not suitable for everyone. There is a small risk of a bleed in the brain. Doctors must feel confident in their use, and lack of confidence may explain some of the variation in use. In our work we have developed the methods for understanding what are the main causes of variation between hospitals: How much difference is due to processes (like how quickly a patient is scanned, an essential step), how much is due to differences in patient populations, and how much difference is due to different decision-making by doctors. This has enabled us to model the ideal number of patients who could or should be treated in each hospital in the UK. We predict that the number of people for whom clot-busting drugs would prevent disability after stroke could be nearly doubled.
 
@@ -17,7 +17,7 @@ Clot-busting drugs are not suitable for everyone. There is a small risk of a ble
 :::{figure-md} fig_stickmen_1
 <img src="./../images/stick_men.png" width="600px">
 
-A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated be thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
+A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated with thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
 :::
 
 
@@ -63,3 +63,11 @@ Some of our most important findings were:
 * Feedback from doctors throughout the project was really positive and useful. They helped us to work out what results to show and how to show them. They also had questions for us on how we could take this forward. They wanted to know how doctors would get to hear about our research. They wanted to know how we would communicate with managers and the people who pay for the hospitals if they needed to fund improvements in the service. Importantly, they wanted our machine learning models to learn to predict likely outcome for individuals, as well as the likely treatment decision. We also found that it was those doctors who were most experienced in this area who were the most open to how our work might help them improve treatment. That is reassuring, but it is actually those doctors who are less experienced in the use of clot-busting drugs that we want to reach most.
 
 We are working with the ‘National Stroke Audit’ now on making our models part of their routine reporting back to hospitals. And we are, of course, working on what we shall do next to develop this work further!
+
+{numref}`Figure {number} <fig_stickmen_reasons>` shows a summary of our findings of why potentially treatable patients did not receive thrombolysis.
+
+:::{figure-md} fig_stickmen_reasons
+<img src="./../images/stick_men_reasons.png" width="600px">
+
+A summary of the breakdown of the reasons for not giving thrombolysis to ten emergency stroke patients who might be considered *treatable* but who were not given thrombolysis. 
+:::

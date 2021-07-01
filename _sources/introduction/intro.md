@@ -19,7 +19,7 @@ Clot-busting drugs are not suitable for everyone. There is a small risk of a ble
 :::{figure-md} fig_stickmen
 <img src="./../images/stick_men.png" width="600px">
 
-A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated be thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
+A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated with thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
 :::
 
 ### Overall aims:
