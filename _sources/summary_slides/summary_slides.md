@@ -1,6 +1,5 @@
 # Summary slides
 
----
 
 ![](./Slide1.JPG)
 
@@ -15,5 +14,3 @@
 ---
 
 ![](./Slide4.JPG)
-
----
