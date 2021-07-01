@@ -2,6 +2,14 @@
 
 Stroke is a common cause of adult disability. Expert opinion is that about one in five patients should receive clot-busting drugs to break up the blood clot that is causing their stroke. At the moment only about one in nine patients actually receive this treatment in the UK. There is a lot of variation between hospitals, which means that the same patient might receive different treatment in different hospitals.
 
+{numref}`Figure {number} <stick_men>` shows a summary of the percieved problem.
+
+:::{figure-md} fig_stickmen
+<img src="./../images/stick_men.png" width="600px">
+
+A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated be thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
+:::
+
 Clot-busting drugs are not suitable for everyone. Doctors must feel confident in their use, and lack of confidence may explain some of the variation in use. Hospitals must also be well set up to be able to investigate and treat stroke patients quickly, like getting them to a head scanner quickly (an essential step before treating).
 
 In our work we have developed the methods for understanding what are the main causes of variation between hospitals: How much difference is due to processes (like how quickly a patient is scanned), how much is due to differences in patient populations, and how much difference is due to different decision-making by doctors.
