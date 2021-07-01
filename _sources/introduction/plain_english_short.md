@@ -2,7 +2,7 @@
 
 Stroke is a common cause of adult disability. Expert opinion is that about one in five patients should receive clot-busting drugs to break up the blood clot that is causing their stroke. At the moment only about one in nine patients actually receive this treatment in the UK. There is a lot of variation between hospitals, which means that the same patient might receive different treatment in different hospitals.
 
-{numref}`Figure {number} <stick_men_3>` shows a summary of the percieved problem.
+{numref}`Figure {number} <fig_stickmen_3>` shows a summary of the percieved problem.
 
 :::{figure-md} fig_stickmen_3
 <img src="./../images/stick_men.png" width="600px">
