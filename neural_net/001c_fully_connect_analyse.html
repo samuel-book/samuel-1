@@ -633,11 +633,6 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-neural-net">
-   Define neural net
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#use-trained-models-to-predict-outcome-of-test-data-sets">
    Use trained models to predict outcome of test data sets
   </a>
@@ -931,47 +926,6 @@
 </div>
 </div>
 </div>
-<div class="section" id="define-neural-net">
-<h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_net</span><span class="p">(</span><span class="n">number_features</span><span class="p">,</span> <span class="n">expansion</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
-    
-    <span class="c1"># Clear Tensorflow</span>
-    <span class="n">K</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
-    
-    <span class="c1"># Input layer</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">number_features</span><span class="p">)</span>
-    
-    <span class="c1"># Dense layer 1</span>
-    <span class="n">dense_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
-        <span class="n">number_features</span> <span class="o">*</span> <span class="n">expansion</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
-    <span class="n">norm_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">dense_1</span><span class="p">)</span>
-    <span class="n">dropout_1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">norm_1</span><span class="p">)</span>
-    
-    <span class="c1"># Dense layer 2</span>
-    <span class="n">dense_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span>
-        <span class="n">number_features</span> <span class="o">*</span> <span class="n">expansion</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">dropout_1</span><span class="p">)</span>
-    <span class="n">norm_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">dense_2</span><span class="p">)</span>
-    <span class="n">dropout_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">norm_2</span><span class="p">)</span>    
- 
-    <span class="c1"># Outpout (single sigmoid)</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)(</span><span class="n">dropout_2</span><span class="p">)</span>
-    
-    <span class="c1"># Build net</span>
-    <span class="n">net</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
-    
-    <span class="c1"># Compiling model</span>
-    <span class="n">opt</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
-    <span class="n">net</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span>
-    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">net</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <div class="section" id="use-trained-models-to-predict-outcome-of-test-data-sets">
 <h2>Use trained models to predict outcome of test data sets<a class="headerlink" href="#use-trained-models-to-predict-outcome-of-test-data-sets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -1016,11 +970,7 @@
     <span class="c1"># Scale data</span>
     <span class="n">X_train_sc</span><span class="p">,</span> <span class="n">X_test_sc</span> <span class="o">=</span> <span class="n">scale_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
     
-    <span class="c1"># Define network</span>
-    <span class="n">number_features</span> <span class="o">=</span> <span class="n">X_train_sc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">make_net</span><span class="p">(</span><span class="n">number_features</span><span class="p">)</span>
-    
-    <span class="c1"># Load model parameters</span>
+    <span class="c1"># Load model</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">model_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="s1">.h5&#39;</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     
@@ -1353,7 +1303,7 @@ SD AUC: 0.0016
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/001c_fully_connect_analyse_22_0.png" src="../_images/001c_fully_connect_analyse_22_0.png" />
+<img alt="../_images/001c_fully_connect_analyse_20_0.png" src="../_images/001c_fully_connect_analyse_20_0.png" />
 </div>
 </div>
 <p>Plot Sensitivity-Specificity Curve alongside Receiver Operator Characteristic Curve</p>
@@ -1426,7 +1376,7 @@ SD AUC: 0.0016
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/001c_fully_connect_analyse_25_0.png" src="../_images/001c_fully_connect_analyse_25_0.png" />
+<img alt="../_images/001c_fully_connect_analyse_23_0.png" src="../_images/001c_fully_connect_analyse_23_0.png" />
 </div>
 </div>
 <div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
@@ -1740,7 +1690,7 @@ SD AUC: 0.0016
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/001c_fully_connect_analyse_33_0.png" src="../_images/001c_fully_connect_analyse_33_0.png" />
+<img alt="../_images/001c_fully_connect_analyse_31_0.png" src="../_images/001c_fully_connect_analyse_31_0.png" />
 </div>
 </div>
 <p>Get accuracy of model when model is at least 80% confident</p>
