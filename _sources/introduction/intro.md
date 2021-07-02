@@ -14,15 +14,7 @@ Stroke is a common cause of adult disability. Expert opinion is that about one i
 
 Clot-busting drugs are not suitable for everyone. There is a small risk of a bleed in the brain. Doctors must feel confident in their use, and lack of confidence may explain some of the variation in use. In our work we have developed the methods for understanding what are the main causes of variation between hospitals: How much difference is due to processes (like how quickly a patient is scanned, an essential step), how much is due to differences in patient populations, and how much difference is due to different decision-making by doctors. This has enabled us to model the a realistic number of patients who could or should be treated in each hospital in the UK. We predict that the number of people for whom clot-busting drugs would prevent disability after stroke could be nearly doubled.
 
-{numref}`Figure {number} <fig_stickmen>` shows a summary of the percieved problem.
-
-:::{figure-md} fig_stickmen
-<img src="./../images/stick_men.png" width="600px">
-
-A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated with thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
-:::
-
-### Overall aims:
+## Overall aims:
 
 The overall aims of the project are
 
@@ -37,3 +29,13 @@ The overall aims of the project are
     * Making decisions according to the majority vote of decisions that would be expected at a *benchmark* set of hospitals
     
 This Jupyter Book contains methods (code) and results for the SAMueL-1 project: *Use of simulation and machine learning to identify key levers for maximising the disability benefit of intravenous thrombolysis in acute stroke pathways.* NIHR HS&DR Reference Number: 17/99/89
+
+## Summary of findings
+
+{numref}`Figure {number} <fig_summary>` shows a summary of the percieved problem and what we found by using modelling the pathway and the clinical decision-making.
+
+:::{figure-md} fig_summary
+<img src="./../images/summary.jpg" width="800px">
+
+A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated with thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
+:::
