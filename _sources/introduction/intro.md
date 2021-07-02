@@ -37,5 +37,5 @@ This Jupyter Book contains methods (code) and results for the SAMueL-1 project: 
 :::{figure-md} fig_summary
 <img src="./../images/summary.jpg" width="800px">
 
-A summary of the peceived problem. Clinical expert opinion is that two in every ten emergency stroke patients could be treated with thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. 
+A summary of the perceived problem and our findings. Clinical expert opinion is that two in every ten emergency stroke patients could be treated with thrombolysis, but the reality is that only about one in ten are treated with thrombolysis. This leaves about one in ten patients who could be treated, but are not. For patients who might be treated but were not, we found the main cause is likely to be variation in clinical decision-making between hospitals. After decision-making the change that would make the most difference was increasing the proportion of patients with known stroke onset time, to be at least the current national upper quartile. Finally speed increases would improve the use of thrombolysis a little (but would also benefit everyone who does receive thrombolysis, as the faster the treatment the better the likely outcome).
 :::

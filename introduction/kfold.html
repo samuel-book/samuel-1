@@ -602,11 +602,11 @@
                 
   <div class="section" id="assessing-accuracy-of-models-with-stratified-k-fold-cross-validation">
 <h1>Assessing accuracy of models with stratified k-fold cross-validation<a class="headerlink" href="#assessing-accuracy-of-models-with-stratified-k-fold-cross-validation" title="Permalink to this headline">¶</a></h1>
-<p>When assessing accuracy of the machine learning models, stratified k-fold splits were used (<a class="reference internal" href="#fig-kfold"><span class="std std-numref">Figure 15</span></a>) We used 5-fold splits where each data point is in one, and only one, of five test sets. This is represented schematically below. Data is stratified such that the test set is representative of hospital mix in the whole data population, and within the hospital level data the use of thrombolysis is representative of the whole data for that hospital.</p>
+<p>When assessing accuracy of the machine learning models, stratified k-fold splits were used (<a class="reference internal" href="#fig-kfold"><span class="std std-numref">Figure 14</span></a>) We used 5-fold splits where each data point is in one, and only one, of five test sets. This is represented schematically below. Data is stratified such that the test set is representative of hospital mix in the whole data population, and within the hospital level data the use of thrombolysis is representative of the whole data for that hospital.</p>
 <p>All models were trained and tested using data for patients arriving within 4 hours of known stroke onset (39% of all patients), and was restricted to hospitals receiving at least 300 patients over three years, and giving thrombolysis to at least 10 patients over three years.</p>
 <div class="figure align-default" id="fig-kfold">
 <a class="reference internal image-reference" href="../_images/kfold.jpg"><img alt="../_images/kfold.jpg" src="../_images/kfold.jpg" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Schematic of how k-fold validation splits data so that all examples are in one, but only one, test set.]</span><a class="headerlink" href="#fig-kfold" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Schematic of how k-fold validation splits data so that all examples are in one, but only one, test set.]</span><a class="headerlink" href="#fig-kfold" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 
