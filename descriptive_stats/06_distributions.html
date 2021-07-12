@@ -719,7 +719,7 @@
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">481</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">onset_to_arrival</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to arrival&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to arrival (mins)&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Onset to arrival&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -974,16 +974,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution    chi_square  p_value
-3      lognorm   1250.007140      0.0
-5     pearson3   3225.606883      0.0
-2        gamma   3225.682490      0.0
-0         beta   3314.800198      0.0
-9  weibull_max   4454.134946      0.0
-6       triang  10537.311565      0.0
-4         norm  19593.910321      0.0
-7      uniform  39400.229128      0.0
-1        expon  55229.515972      0.0
-8  weibull_min  84845.956460      0.0
+3      lognorm   1045.429203      0.0
+5     pearson3   2733.457960      0.0
+2        gamma   2733.537108      0.0
+0         beta   2779.466554      0.0
+9  weibull_max   4223.923118      0.0
+8  weibull_min   5253.431211      0.0
+6       triang   9527.744736      0.0
+4         norm  18851.022544      0.0
+7      uniform  38850.174403      0.0
+1        expon  51645.542977      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_11_1.png" src="../_images/06_distributions_11_1.png" />
@@ -1006,16 +1006,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm    1040.942774      0.0
-1        expon    1876.190793      0.0
-8  weibull_min    1921.123683      0.0
-5     pearson3    3305.569698      0.0
-2        gamma    3314.555272      0.0
-0         beta    3805.658138      0.0
-9  weibull_max   24903.425135      0.0
-6       triang   54444.210136      0.0
-4         norm   57988.231947      0.0
-7      uniform  111683.194954      0.0
+3      lognorm    1144.708796      0.0
+1        expon    2165.007927      0.0
+5     pearson3    3965.934823      0.0
+8  weibull_min    3980.110875      0.0
+0         beta    4174.294144      0.0
+2        gamma    5685.567469      0.0
+9  weibull_max   25435.682790      0.0
+4         norm   59322.174233      0.0
+6       triang   64104.205539      0.0
+7      uniform  112570.700834      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_13_1.png" src="../_images/06_distributions_13_1.png" />
@@ -1036,16 +1036,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm     100.568060      0.0
-5     pearson3     663.171935      0.0
-0         beta     664.877755      0.0
-9  weibull_max    2280.099365      0.0
-8  weibull_min    2684.310652      0.0
-1        expon   24172.934268      0.0
-4         norm   26905.449919      0.0
-6       triang  169906.642630      0.0
-7      uniform  196205.794518      0.0
-2        gamma  573877.189190      0.0
+3      lognorm      46.032864      0.0
+0         beta     470.506798      0.0
+5     pearson3     550.822451      0.0
+8  weibull_min    2514.967506      0.0
+4         norm   25175.135246      0.0
+1        expon   26105.141731      0.0
+9  weibull_max   42400.680577      0.0
+6       triang  157342.350517      0.0
+7      uniform  196793.337000      0.0
+2        gamma  647516.851838      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_15_1.png" src="../_images/06_distributions_15_1.png" />
