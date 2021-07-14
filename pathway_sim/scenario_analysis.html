@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Qualitative research" href="../qual/qual.html" />
+    <link rel="next" title="Modelling the same patient population attending all hospitals" href="scenario_analysis_1k_patient_cohort.html" />
     <link rel="prev" title="Stroke pathway simulation - generation of results from alternative scenarios" href="scenario_results_generation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -495,6 +495,11 @@
      Analysis of alternative pathway scenarios
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_analysis_1k_patient_cohort.html">
+     Modelling the same patient population attending all hospitals
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -723,6 +728,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">FormatStrFormatter</span><span class="p">)</span>
 </pre></div>
@@ -747,6 +753,8 @@
     <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_onset_benchmark.csv&#39;</span><span class="p">)</span>
 <span class="n">performance_speed_onset_benchmark</span> <span class="o">=</span> \
     <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/performance_speed_onset_benchmark.csv&#39;</span><span class="p">)</span>
+<span class="n">performance_same_patients</span> <span class="o">=</span> \
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./output/same_patient_characteristics.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1070,29 +1078,29 @@
       <td>AGNOF1041H</td>
       <td>base</td>
       <td>671.666667</td>
-      <td>15.36</td>
-      <td>12.97</td>
-      <td>103.168000</td>
-      <td>8.711517</td>
+      <td>15.11</td>
+      <td>12.72</td>
+      <td>101.488833</td>
+      <td>8.543600</td>
     </tr>
     <tr>
       <th>1</th>
       <td>AKCGO9726K</td>
       <td>base</td>
       <td>1143.333333</td>
-      <td>15.17</td>
-      <td>13.42</td>
-      <td>173.443667</td>
-      <td>15.343533</td>
+      <td>15.06</td>
+      <td>13.43</td>
+      <td>172.186000</td>
+      <td>15.354967</td>
     </tr>
     <tr>
       <th>2</th>
       <td>AOBTM3098N</td>
       <td>base</td>
       <td>500.666667</td>
-      <td>7.90</td>
+      <td>7.81</td>
       <td>5.74</td>
-      <td>39.552667</td>
+      <td>39.102067</td>
       <td>2.873827</td>
     </tr>
     <tr>
@@ -1100,20 +1108,20 @@
       <td>APXEE8191H</td>
       <td>base</td>
       <td>439.333333</td>
-      <td>10.00</td>
-      <td>7.23</td>
-      <td>43.933333</td>
-      <td>3.176380</td>
+      <td>10.08</td>
+      <td>7.35</td>
+      <td>44.284800</td>
+      <td>3.229100</td>
     </tr>
     <tr>
       <th>4</th>
       <td>ATDID5461S</td>
       <td>base</td>
       <td>275.666667</td>
-      <td>9.22</td>
-      <td>6.33</td>
-      <td>25.416467</td>
-      <td>1.744970</td>
+      <td>9.20</td>
+      <td>6.42</td>
+      <td>25.361333</td>
+      <td>1.769780</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1126,63 +1134,63 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>1051</th>
+      <th>1183</th>
       <td>YPKYH1768F</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
       <td>250.333333</td>
-      <td>21.76</td>
-      <td>23.10</td>
-      <td>54.472533</td>
-      <td>5.782700</td>
+      <td>7.40</td>
+      <td>4.85</td>
+      <td>18.524667</td>
+      <td>1.214117</td>
     </tr>
     <tr>
-      <th>1052</th>
+      <th>1184</th>
       <td>YQMZV4284N</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
       <td>358.333333</td>
-      <td>13.92</td>
-      <td>12.27</td>
-      <td>49.880000</td>
-      <td>4.396750</td>
+      <td>16.47</td>
+      <td>13.34</td>
+      <td>59.017500</td>
+      <td>4.780167</td>
     </tr>
     <tr>
-      <th>1053</th>
+      <th>1185</th>
       <td>ZBVSO0975W</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
       <td>449.333333</td>
-      <td>21.27</td>
-      <td>20.40</td>
-      <td>95.573200</td>
-      <td>9.166400</td>
+      <td>7.65</td>
+      <td>6.28</td>
+      <td>34.374000</td>
+      <td>2.821813</td>
     </tr>
     <tr>
-      <th>1054</th>
+      <th>1186</th>
       <td>ZHCLE1578P</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
       <td>796.000000</td>
-      <td>14.08</td>
-      <td>12.94</td>
-      <td>112.076800</td>
-      <td>10.300240</td>
+      <td>10.71</td>
+      <td>8.70</td>
+      <td>85.251600</td>
+      <td>6.925200</td>
     </tr>
     <tr>
-      <th>1055</th>
+      <th>1187</th>
       <td>ZRRCV7012C</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
       <td>597.333333</td>
-      <td>12.33</td>
-      <td>11.31</td>
-      <td>73.651200</td>
-      <td>6.755840</td>
+      <td>11.43</td>
+      <td>8.88</td>
+      <td>68.275200</td>
+      <td>5.304320</td>
     </tr>
   </tbody>
 </table>
-<p>1056 rows × 7 columns</p>
+<p>1188 rows × 7 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/key_scenario_results.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;./output/key_scenario_results.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1214,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-order</span>
 <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
 <span class="n">df_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
 <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_order</span>
 <span class="n">summary_stats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1265,59 +1274,66 @@
   <tbody>
     <tr>
       <th>base</th>
-      <td>11.61</td>
-      <td>9.41</td>
+      <td>11.59</td>
+      <td>9.40</td>
       <td>0.00</td>
       <td>0.00</td>
     </tr>
     <tr>
       <th>speed</th>
-      <td>12.33</td>
-      <td>11.86</td>
-      <td>6.26</td>
-      <td>26.00</td>
+      <td>12.36</td>
+      <td>11.89</td>
+      <td>6.60</td>
+      <td>26.42</td>
     </tr>
     <tr>
       <th>onset</th>
-      <td>13.68</td>
-      <td>11.09</td>
-      <td>17.85</td>
-      <td>17.81</td>
+      <td>13.66</td>
+      <td>11.07</td>
+      <td>17.88</td>
+      <td>17.78</td>
     </tr>
     <tr>
       <th>benchmark</th>
-      <td>14.51</td>
-      <td>11.70</td>
-      <td>25.04</td>
-      <td>24.28</td>
+      <td>14.50</td>
+      <td>11.69</td>
+      <td>25.10</td>
+      <td>24.34</td>
     </tr>
     <tr>
       <th>speed_onset</th>
-      <td>14.53</td>
-      <td>13.99</td>
-      <td>25.16</td>
-      <td>48.62</td>
+      <td>14.51</td>
+      <td>13.97</td>
+      <td>25.21</td>
+      <td>48.58</td>
     </tr>
     <tr>
       <th>speed_benchmark</th>
-      <td>15.44</td>
-      <td>14.82</td>
-      <td>33.00</td>
-      <td>57.49</td>
+      <td>15.42</td>
+      <td>14.81</td>
+      <td>33.02</td>
+      <td>57.53</td>
     </tr>
     <tr>
       <th>onset_benchmark</th>
-      <td>17.18</td>
-      <td>13.86</td>
-      <td>48.06</td>
-      <td>47.22</td>
+      <td>17.19</td>
+      <td>13.87</td>
+      <td>48.27</td>
+      <td>47.48</td>
     </tr>
     <tr>
       <th>speed_onset_benchmark</th>
-      <td>18.26</td>
-      <td>17.55</td>
-      <td>57.35</td>
-      <td>86.49</td>
+      <td>18.27</td>
+      <td>17.56</td>
+      <td>57.57</td>
+      <td>86.83</td>
+    </tr>
+    <tr>
+      <th>same_patient_characteristics</th>
+      <td>11.43</td>
+      <td>9.26</td>
+      <td>-1.40</td>
+      <td>-1.52</td>
     </tr>
   </tbody>
 </table>
@@ -1325,11 +1341,13 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_stats_for_fig</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats_for_fig</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats_for_fig</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -1339,8 +1357,8 @@
 <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats_for_fig</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats_for_fig</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -1564,10 +1582,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark    81
-onset        40
-speed        10
-base          1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark                       71
+onset                           37
+same_patient_characteristics    19
+speed                            5
 dtype: int64
 </pre></div>
 </div>
@@ -1593,9 +1611,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark    55
-speed        51
-onset        26
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark                       49
+speed                           42
+onset                           26
+same_patient_characteristics    15
 dtype: int64
 </pre></div>
 </div>
@@ -1735,11 +1754,13 @@ dtype: int64
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span>
     <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
     <span class="n">df_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_order</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
 
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
@@ -1848,7 +1869,7 @@ dtype: int64
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="scenario_results_generation.html" title="previous page">Stroke pathway simulation - generation of results from alternative scenarios</a>
-    <a class='right-next' id="next-link" href="../qual/qual.html" title="next page">Qualitative research</a>
+    <a class='right-next' id="next-link" href="scenario_analysis_1k_patient_cohort.html" title="next page">Modelling the same patient population attending all hospitals</a>
 
         </div>
         

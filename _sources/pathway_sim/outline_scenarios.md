@@ -17,3 +17,5 @@ This section contains the following notebooks:
 * *Stroke pathway simulation - generation of results from alternative scenarios*: Generate results for alternative scenarios (no analysis)
 
 * *Analysis of alternative pathway scenarios*: Numerical and graphical analysis of results from the scenario modelling.
+
+* *Modelling the same patient population attending all hospitals*: Predicting the thrombolysis rate at each hospital if the same patient population (based on the national average patient characteristics) attend each hospital.

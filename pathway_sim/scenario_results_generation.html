@@ -495,6 +495,11 @@
      Analysis of alternative pathway scenarios
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_analysis_1k_patient_cohort.html">
+     Modelling the same patient population attending all hospitals
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -647,6 +652,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#combine-speed-onset-known-and-benchmark">
    Combine speed, onset-known, and benchmark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#same-patient-characteristics-to-all-hospitals">
+   Same patient characteristics to all hospitals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1018,6 +1028,371 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="same-patient-characteristics-to-all-hospitals">
+<h2>Same patient characteristics to all hospitals<a class="headerlink" href="#same-patient-characteristics-to-all-hospitals" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get predicted cohort thrombolysis for patients arrived in 4 hours</span>
+<span class="n">cohort_rate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;../random_forest/predictions/corhort_rates.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;hospital&#39;</span><span class="p">)</span>
+<span class="n">cohort_rate</span><span class="p">[</span><span class="s1">&#39;cohort_rate&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="mi">100</span> <span class="c1"># Convert from percent to fraction</span>
+
+<span class="c1"># Create scenarios</span>
+<span class="n">hospital_performance</span> <span class="o">=</span> <span class="n">hospital_performance_original</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">hospital_performance</span> <span class="o">=</span> <span class="n">hospital_performance</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">cohort_rate</span><span class="p">[</span><span class="s1">&#39;cohort_rate&#39;</span><span class="p">],</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Set all hopsital to 1000 arrivals</span>
+<span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;arrivals&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Set aged 80+ to national average for arrivaks within 4 hours of stroke onset</span>
+<span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;80_plus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.423</span>
+
+<span class="c1"># Set known arrival within 4 hours to 58% of onset_known</span>
+<span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;known_arrival_within_4hrs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.58</span>
+
+<span class="c1"># Set onet to arrival to national average</span>
+<span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;onset_arrival_mins_mu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.58</span>
+<span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;onset_arrival_mins_sigma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.56</span>
+
+<span class="c1"># Set eligible to prop of 10k cohort predicted to receive thrombolysis</span>
+<span class="c1"># Adjust for rate being just for those scanned in 4 hours from onset </span>
+<span class="n">correction</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">0.827</span> <span class="c1"># 82.7% in 10k cohort scanned in 4 hours from onset</span>
+<span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;eligable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_performance</span><span class="p">[</span><span class="s1">&#39;cohort_rate&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">correction</span>
+
+<span class="c1"># Get results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model_ssnap_pathway_scenarios</span><span class="p">(</span><span class="n">hospital_performance</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;same_patient_characteristics&#39;</span>
+
+<span class="c1"># Add to results_all</span>
+<span class="n">results_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results_all</span><span class="p">,</span> <span class="n">results</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Save pathway stats used</span>
+<span class="n">hospital_performance</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;output/same_patient_characteristics.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Baseline_good_outcomes_(median)</th>
+      <th>Baseline_good_outcomes_per_1000_patients_(low_5%)</th>
+      <th>Baseline_good_outcomes_per_1000_patients_(high_95%)</th>
+      <th>Baseline_good_outcomes_per_1000_patients_(mean)</th>
+      <th>Baseline_good_outcomes_per_1000_patients_(stdev)</th>
+      <th>Baseline_good_outcomes_per_1000_patients_(95ci)</th>
+      <th>Percent_Thrombolysis_(median%)</th>
+      <th>Percent_Thrombolysis_(low_5%)</th>
+      <th>Percent_Thrombolysis_(high_95%)</th>
+      <th>Percent_Thrombolysis_(mean)</th>
+      <th>...</th>
+      <th>Percent_Thrombolysis_(95ci)</th>
+      <th>Additional_good_outcomes_per_1000_patients_(median)</th>
+      <th>Additional_good_outcomes_per_1000_patients_(low_5%)</th>
+      <th>Additional_good_outcomes_per_1000_patients_(high_95%)</th>
+      <th>Additional_good_outcomes_per_1000_patients_(mean)</th>
+      <th>Additional_good_outcomes_per_1000_patients_(stdev)</th>
+      <th>Additional_good_outcomes_per_1000_patients_(95ci)</th>
+      <th>Onset_to_needle_(mean)</th>
+      <th>calibration</th>
+      <th>scenario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGNOF1041H</th>
+      <td>256.33</td>
+      <td>231.00</td>
+      <td>280.33</td>
+      <td>256.68</td>
+      <td>15.27</td>
+      <td>2.99</td>
+      <td>11.03</td>
+      <td>8.94</td>
+      <td>12.82</td>
+      <td>11.06</td>
+      <td>...</td>
+      <td>0.22</td>
+      <td>9.21</td>
+      <td>7.32</td>
+      <td>11.08</td>
+      <td>9.21</td>
+      <td>1.12</td>
+      <td>0.22</td>
+      <td>164.15</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>AKCGO9726K</th>
+      <td>256.34</td>
+      <td>236.79</td>
+      <td>280.84</td>
+      <td>256.40</td>
+      <td>13.15</td>
+      <td>2.58</td>
+      <td>22.48</td>
+      <td>20.03</td>
+      <td>24.50</td>
+      <td>22.39</td>
+      <td>...</td>
+      <td>0.27</td>
+      <td>19.97</td>
+      <td>17.46</td>
+      <td>21.74</td>
+      <td>19.82</td>
+      <td>1.33</td>
+      <td>0.26</td>
+      <td>151.32</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>AOBTM3098N</th>
+      <td>257.00</td>
+      <td>226.00</td>
+      <td>290.10</td>
+      <td>257.08</td>
+      <td>19.05</td>
+      <td>3.73</td>
+      <td>8.60</td>
+      <td>6.80</td>
+      <td>10.61</td>
+      <td>8.71</td>
+      <td>...</td>
+      <td>0.24</td>
+      <td>6.47</td>
+      <td>4.86</td>
+      <td>8.17</td>
+      <td>6.62</td>
+      <td>0.97</td>
+      <td>0.19</td>
+      <td>182.50</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>APXEE8191H</th>
+      <td>256.26</td>
+      <td>227.33</td>
+      <td>291.91</td>
+      <td>256.63</td>
+      <td>22.71</td>
+      <td>4.45</td>
+      <td>13.10</td>
+      <td>10.71</td>
+      <td>15.95</td>
+      <td>13.21</td>
+      <td>...</td>
+      <td>0.31</td>
+      <td>10.16</td>
+      <td>8.20</td>
+      <td>12.67</td>
+      <td>10.30</td>
+      <td>1.31</td>
+      <td>0.26</td>
+      <td>177.40</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>ATDID5461S</th>
+      <td>254.55</td>
+      <td>218.00</td>
+      <td>316.36</td>
+      <td>259.09</td>
+      <td>30.24</td>
+      <td>5.93</td>
+      <td>7.27</td>
+      <td>5.45</td>
+      <td>10.18</td>
+      <td>7.59</td>
+      <td>...</td>
+      <td>0.30</td>
+      <td>5.23</td>
+      <td>3.33</td>
+      <td>7.26</td>
+      <td>5.29</td>
+      <td>1.19</td>
+      <td>0.23</td>
+      <td>197.94</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>YPKYH1768F</th>
+      <td>256.00</td>
+      <td>220.00</td>
+      <td>292.40</td>
+      <td>258.40</td>
+      <td>23.60</td>
+      <td>4.63</td>
+      <td>7.20</td>
+      <td>4.80</td>
+      <td>10.42</td>
+      <td>7.47</td>
+      <td>...</td>
+      <td>0.34</td>
+      <td>4.98</td>
+      <td>3.26</td>
+      <td>7.24</td>
+      <td>4.98</td>
+      <td>1.25</td>
+      <td>0.24</td>
+      <td>206.28</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>YQMZV4284N</th>
+      <td>256.98</td>
+      <td>220.39</td>
+      <td>293.44</td>
+      <td>256.98</td>
+      <td>22.35</td>
+      <td>4.38</td>
+      <td>16.20</td>
+      <td>12.53</td>
+      <td>18.72</td>
+      <td>15.92</td>
+      <td>...</td>
+      <td>0.39</td>
+      <td>12.97</td>
+      <td>9.91</td>
+      <td>15.56</td>
+      <td>12.87</td>
+      <td>1.75</td>
+      <td>0.34</td>
+      <td>170.94</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>ZBVSO0975W</th>
+      <td>258.35</td>
+      <td>229.40</td>
+      <td>289.76</td>
+      <td>258.08</td>
+      <td>17.57</td>
+      <td>3.44</td>
+      <td>7.80</td>
+      <td>5.35</td>
+      <td>10.02</td>
+      <td>7.66</td>
+      <td>...</td>
+      <td>0.29</td>
+      <td>6.27</td>
+      <td>4.09</td>
+      <td>8.38</td>
+      <td>6.23</td>
+      <td>1.31</td>
+      <td>0.26</td>
+      <td>168.60</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>ZHCLE1578P</th>
+      <td>256.28</td>
+      <td>228.64</td>
+      <td>281.60</td>
+      <td>256.71</td>
+      <td>16.16</td>
+      <td>3.17</td>
+      <td>10.87</td>
+      <td>9.05</td>
+      <td>12.33</td>
+      <td>10.76</td>
+      <td>...</td>
+      <td>0.20</td>
+      <td>8.83</td>
+      <td>7.34</td>
+      <td>10.38</td>
+      <td>8.78</td>
+      <td>0.89</td>
+      <td>0.17</td>
+      <td>169.10</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+    <tr>
+      <th>ZRRCV7012C</th>
+      <td>256.28</td>
+      <td>229.48</td>
+      <td>286.43</td>
+      <td>257.04</td>
+      <td>16.69</td>
+      <td>3.27</td>
+      <td>11.22</td>
+      <td>9.36</td>
+      <td>13.07</td>
+      <td>11.19</td>
+      <td>...</td>
+      <td>0.23</td>
+      <td>8.62</td>
+      <td>7.10</td>
+      <td>10.23</td>
+      <td>8.67</td>
+      <td>1.00</td>
+      <td>0.20</td>
+      <td>178.32</td>
+      <td>1.0</td>
+      <td>same_patient_characteristics</td>
+    </tr>
+  </tbody>
+</table>
+<p>132 rows × 21 columns</p>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_all</span>
@@ -1069,121 +1444,121 @@
   <tbody>
     <tr>
       <th>AGNOF1041H</th>
-      <td>258.57</td>
-      <td>235.47</td>
-      <td>287.63</td>
-      <td>258.91</td>
-      <td>15.60</td>
-      <td>3.06</td>
-      <td>15.35</td>
-      <td>13.26</td>
-      <td>17.29</td>
-      <td>15.36</td>
+      <td>257.82</td>
+      <td>228.02</td>
+      <td>287.70</td>
+      <td>258.00</td>
+      <td>17.26</td>
+      <td>3.38</td>
+      <td>15.28</td>
+      <td>12.95</td>
+      <td>17.15</td>
+      <td>15.20</td>
       <td>...</td>
-      <td>0.23</td>
-      <td>12.97</td>
-      <td>11.10</td>
-      <td>14.69</td>
-      <td>12.97</td>
-      <td>1.13</td>
-      <td>0.22</td>
-      <td>162.39</td>
+      <td>0.28</td>
+      <td>12.78</td>
+      <td>10.72</td>
+      <td>14.81</td>
+      <td>12.76</td>
+      <td>1.27</td>
+      <td>0.25</td>
+      <td>163.02</td>
       <td>1.0</td>
       <td>base</td>
     </tr>
     <tr>
       <th>AKCGO9726K</th>
-      <td>262.90</td>
-      <td>243.22</td>
-      <td>286.13</td>
-      <td>263.31</td>
-      <td>12.59</td>
-      <td>2.47</td>
-      <td>15.14</td>
-      <td>13.47</td>
-      <td>16.80</td>
-      <td>15.17</td>
+      <td>259.84</td>
+      <td>241.38</td>
+      <td>286.26</td>
+      <td>260.74</td>
+      <td>14.08</td>
+      <td>2.76</td>
+      <td>14.79</td>
+      <td>13.29</td>
+      <td>16.89</td>
+      <td>14.91</td>
       <td>...</td>
       <td>0.20</td>
-      <td>13.41</td>
-      <td>11.85</td>
-      <td>14.81</td>
-      <td>13.42</td>
-      <td>1.00</td>
+      <td>13.09</td>
+      <td>11.68</td>
+      <td>15.13</td>
+      <td>13.21</td>
+      <td>1.02</td>
       <td>0.20</td>
-      <td>154.40</td>
+      <td>154.07</td>
       <td>1.0</td>
       <td>base</td>
     </tr>
     <tr>
       <th>AOBTM3098N</th>
-      <td>246.00</td>
-      <td>213.90</td>
+      <td>243.00</td>
+      <td>211.90</td>
       <td>272.00</td>
-      <td>244.42</td>
-      <td>18.97</td>
-      <td>3.72</td>
+      <td>242.04</td>
+      <td>19.53</td>
+      <td>3.83</td>
       <td>7.80</td>
-      <td>6.40</td>
-      <td>9.41</td>
-      <td>7.90</td>
+      <td>6.19</td>
+      <td>9.40</td>
+      <td>7.80</td>
       <td>...</td>
+      <td>0.22</td>
+      <td>5.61</td>
+      <td>4.27</td>
+      <td>7.34</td>
+      <td>5.67</td>
+      <td>0.98</td>
       <td>0.19</td>
-      <td>5.65</td>
-      <td>4.50</td>
-      <td>7.08</td>
-      <td>5.74</td>
-      <td>0.81</td>
-      <td>0.16</td>
-      <td>182.86</td>
+      <td>183.15</td>
       <td>1.0</td>
       <td>base</td>
     </tr>
     <tr>
       <th>APXEE8191H</th>
-      <td>239.18</td>
-      <td>204.90</td>
-      <td>266.63</td>
-      <td>237.56</td>
-      <td>20.19</td>
-      <td>3.96</td>
-      <td>10.25</td>
-      <td>7.96</td>
-      <td>12.07</td>
-      <td>10.00</td>
+      <td>235.76</td>
+      <td>205.01</td>
+      <td>275.74</td>
+      <td>239.00</td>
+      <td>21.02</td>
+      <td>4.12</td>
+      <td>10.02</td>
+      <td>8.42</td>
+      <td>12.53</td>
+      <td>10.40</td>
       <td>...</td>
-      <td>0.28</td>
-      <td>7.35</td>
-      <td>5.32</td>
-      <td>9.06</td>
-      <td>7.23</td>
-      <td>1.07</td>
-      <td>0.21</td>
-      <td>180.64</td>
+      <td>0.26</td>
+      <td>7.46</td>
+      <td>5.89</td>
+      <td>9.53</td>
+      <td>7.59</td>
+      <td>1.20</td>
+      <td>0.24</td>
+      <td>180.86</td>
       <td>1.0</td>
       <td>base</td>
     </tr>
     <tr>
       <th>ATDID5461S</th>
       <td>232.73</td>
-      <td>196.18</td>
-      <td>280.00</td>
-      <td>235.27</td>
-      <td>25.64</td>
-      <td>5.03</td>
+      <td>196.36</td>
+      <td>272.73</td>
+      <td>236.47</td>
+      <td>24.64</td>
+      <td>4.83</td>
       <td>9.09</td>
-      <td>6.55</td>
-      <td>12.02</td>
-      <td>9.22</td>
+      <td>6.89</td>
+      <td>12.00</td>
+      <td>9.17</td>
       <td>...</td>
       <td>0.33</td>
+      <td>6.12</td>
+      <td>4.62</td>
+      <td>8.61</td>
       <td>6.28</td>
-      <td>4.46</td>
-      <td>8.38</td>
-      <td>6.33</td>
-      <td>1.26</td>
-      <td>0.25</td>
-      <td>188.42</td>
+      <td>1.20</td>
+      <td>0.24</td>
+      <td>188.62</td>
       <td>1.0</td>
       <td>base</td>
     </tr>
@@ -1213,127 +1588,385 @@
     </tr>
     <tr>
       <th>YPKYH1768F</th>
-      <td>280.00</td>
-      <td>232.00</td>
-      <td>320.00</td>
-      <td>277.28</td>
-      <td>28.45</td>
-      <td>5.58</td>
-      <td>21.60</td>
-      <td>18.38</td>
-      <td>26.82</td>
-      <td>21.76</td>
+      <td>256.00</td>
+      <td>220.00</td>
+      <td>292.40</td>
+      <td>258.40</td>
+      <td>23.60</td>
+      <td>4.63</td>
+      <td>7.20</td>
+      <td>4.80</td>
+      <td>10.42</td>
+      <td>7.47</td>
       <td>...</td>
-      <td>0.51</td>
-      <td>22.94</td>
-      <td>18.89</td>
-      <td>28.51</td>
-      <td>23.10</td>
-      <td>3.02</td>
-      <td>0.59</td>
-      <td>120.78</td>
+      <td>0.34</td>
+      <td>4.98</td>
+      <td>3.26</td>
+      <td>7.24</td>
+      <td>4.98</td>
+      <td>1.25</td>
+      <td>0.24</td>
+      <td>206.28</td>
       <td>1.0</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
     </tr>
     <tr>
       <th>YQMZV4284N</th>
-      <td>237.43</td>
-      <td>200.98</td>
-      <td>276.68</td>
-      <td>238.69</td>
-      <td>22.71</td>
-      <td>4.45</td>
-      <td>13.97</td>
-      <td>10.89</td>
-      <td>16.77</td>
-      <td>13.92</td>
+      <td>256.98</td>
+      <td>220.39</td>
+      <td>293.44</td>
+      <td>256.98</td>
+      <td>22.35</td>
+      <td>4.38</td>
+      <td>16.20</td>
+      <td>12.53</td>
+      <td>18.72</td>
+      <td>15.92</td>
       <td>...</td>
-      <td>0.37</td>
-      <td>12.36</td>
-      <td>9.46</td>
-      <td>14.98</td>
-      <td>12.27</td>
+      <td>0.39</td>
+      <td>12.97</td>
+      <td>9.91</td>
+      <td>15.56</td>
+      <td>12.87</td>
       <td>1.75</td>
       <td>0.34</td>
-      <td>140.37</td>
+      <td>170.94</td>
       <td>1.0</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
     </tr>
     <tr>
       <th>ZBVSO0975W</th>
-      <td>257.24</td>
-      <td>222.72</td>
-      <td>291.87</td>
-      <td>255.72</td>
-      <td>22.54</td>
-      <td>4.42</td>
-      <td>21.27</td>
-      <td>18.47</td>
-      <td>24.29</td>
-      <td>21.27</td>
+      <td>258.35</td>
+      <td>229.40</td>
+      <td>289.76</td>
+      <td>258.08</td>
+      <td>17.57</td>
+      <td>3.44</td>
+      <td>7.80</td>
+      <td>5.35</td>
+      <td>10.02</td>
+      <td>7.66</td>
       <td>...</td>
-      <td>0.39</td>
-      <td>20.39</td>
-      <td>17.73</td>
-      <td>23.80</td>
-      <td>20.40</td>
-      <td>1.87</td>
-      <td>0.37</td>
-      <td>131.75</td>
+      <td>0.29</td>
+      <td>6.27</td>
+      <td>4.09</td>
+      <td>8.38</td>
+      <td>6.23</td>
+      <td>1.31</td>
+      <td>0.26</td>
+      <td>168.60</td>
       <td>1.0</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
     </tr>
     <tr>
       <th>ZHCLE1578P</th>
-      <td>244.35</td>
-      <td>220.98</td>
-      <td>268.91</td>
-      <td>244.31</td>
-      <td>14.63</td>
-      <td>2.87</td>
-      <td>13.82</td>
-      <td>12.44</td>
-      <td>15.96</td>
-      <td>14.08</td>
+      <td>256.28</td>
+      <td>228.64</td>
+      <td>281.60</td>
+      <td>256.71</td>
+      <td>16.16</td>
+      <td>3.17</td>
+      <td>10.87</td>
+      <td>9.05</td>
+      <td>12.33</td>
+      <td>10.76</td>
       <td>...</td>
-      <td>0.22</td>
-      <td>12.95</td>
-      <td>11.22</td>
-      <td>14.86</td>
-      <td>12.94</td>
-      <td>1.13</td>
-      <td>0.22</td>
-      <td>135.52</td>
+      <td>0.20</td>
+      <td>8.83</td>
+      <td>7.34</td>
+      <td>10.38</td>
+      <td>8.78</td>
+      <td>0.89</td>
+      <td>0.17</td>
+      <td>169.10</td>
       <td>1.0</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
     </tr>
     <tr>
       <th>ZRRCV7012C</th>
-      <td>246.23</td>
-      <td>220.94</td>
-      <td>281.49</td>
-      <td>246.21</td>
-      <td>16.84</td>
-      <td>3.30</td>
-      <td>12.40</td>
-      <td>9.72</td>
-      <td>14.41</td>
-      <td>12.33</td>
+      <td>256.28</td>
+      <td>229.48</td>
+      <td>286.43</td>
+      <td>257.04</td>
+      <td>16.69</td>
+      <td>3.27</td>
+      <td>11.22</td>
+      <td>9.36</td>
+      <td>13.07</td>
+      <td>11.19</td>
       <td>...</td>
-      <td>0.27</td>
-      <td>11.26</td>
-      <td>9.07</td>
-      <td>13.39</td>
-      <td>11.31</td>
-      <td>1.36</td>
-      <td>0.27</td>
-      <td>138.39</td>
+      <td>0.23</td>
+      <td>8.62</td>
+      <td>7.10</td>
+      <td>10.23</td>
+      <td>8.67</td>
+      <td>1.00</td>
+      <td>0.20</td>
+      <td>178.32</td>
       <td>1.0</td>
-      <td>speed_onset_benchmark</td>
+      <td>same_patient_characteristics</td>
     </tr>
   </tbody>
 </table>
-<p>1056 rows × 21 columns</p>
+<p>1188 rows × 21 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital_performance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thrombolysis_rate</th>
+      <th>admissions</th>
+      <th>80_plus</th>
+      <th>onset_known</th>
+      <th>known_arrival_within_4hrs</th>
+      <th>onset_arrival_mins_mu</th>
+      <th>onset_arrival_mins_sigma</th>
+      <th>scan_within_4_hrs</th>
+      <th>arrival_scan_arrival_mins_mu</th>
+      <th>arrival_scan_arrival_mins_sigma</th>
+      <th>onset_scan_4_hrs</th>
+      <th>eligable</th>
+      <th>scan_needle_mins_mu</th>
+      <th>scan_needle_mins_sigma</th>
+      <th>cohort_rate</th>
+      <th>arrivals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGNOF1041H</th>
+      <td>0.154839</td>
+      <td>671.666667</td>
+      <td>0.423</td>
+      <td>0.635236</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.965596</td>
+      <td>1.665700</td>
+      <td>1.497966</td>
+      <td>0.935867</td>
+      <td>0.335671</td>
+      <td>3.669602</td>
+      <td>0.664462</td>
+      <td>0.2776</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>AKCGO9726K</th>
+      <td>0.158892</td>
+      <td>1143.333333</td>
+      <td>0.423</td>
+      <td>0.970845</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.955882</td>
+      <td>2.834183</td>
+      <td>0.999719</td>
+      <td>0.908425</td>
+      <td>0.452842</td>
+      <td>2.904479</td>
+      <td>0.874818</td>
+      <td>0.3745</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>AOBTM3098N</th>
+      <td>0.085885</td>
+      <td>500.666667</td>
+      <td>0.423</td>
+      <td>0.619174</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.935043</td>
+      <td>3.471419</td>
+      <td>1.254744</td>
+      <td>0.846435</td>
+      <td>0.314389</td>
+      <td>3.694918</td>
+      <td>0.518929</td>
+      <td>0.2600</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>APXEE8191H</th>
+      <td>0.098634</td>
+      <td>439.333333</td>
+      <td>0.423</td>
+      <td>0.716237</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.966899</td>
+      <td>3.312930</td>
+      <td>0.714465</td>
+      <td>0.904505</td>
+      <td>0.362394</td>
+      <td>3.585094</td>
+      <td>0.751204</td>
+      <td>0.2997</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>ATDID5461S</th>
+      <td>0.090689</td>
+      <td>275.666667</td>
+      <td>0.423</td>
+      <td>0.573156</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.878594</td>
+      <td>4.125690</td>
+      <td>0.549301</td>
+      <td>0.865455</td>
+      <td>0.313422</td>
+      <td>3.497262</td>
+      <td>0.608126</td>
+      <td>0.2592</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>YPKYH1768F</th>
+      <td>0.105193</td>
+      <td>250.333333</td>
+      <td>0.423</td>
+      <td>0.585885</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.952681</td>
+      <td>3.779215</td>
+      <td>0.872809</td>
+      <td>0.844371</td>
+      <td>0.269045</td>
+      <td>3.982100</td>
+      <td>0.683223</td>
+      <td>0.2225</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>YQMZV4284N</th>
+      <td>0.104186</td>
+      <td>358.333333</td>
+      <td>0.423</td>
+      <td>0.945116</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.948936</td>
+      <td>3.574735</td>
+      <td>0.912298</td>
+      <td>0.798206</td>
+      <td>0.361306</td>
+      <td>3.285165</td>
+      <td>0.463749</td>
+      <td>0.2988</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>ZBVSO0975W</th>
+      <td>0.081602</td>
+      <td>449.333333</td>
+      <td>0.423</td>
+      <td>0.465134</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.972222</td>
+      <td>2.860226</td>
+      <td>0.990966</td>
+      <td>0.930952</td>
+      <td>0.317170</td>
+      <td>3.606046</td>
+      <td>0.575788</td>
+      <td>0.2623</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>ZHCLE1578P</th>
+      <td>0.112647</td>
+      <td>796.000000</td>
+      <td>0.423</td>
+      <td>0.733668</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.949830</td>
+      <td>3.306916</td>
+      <td>0.842940</td>
+      <td>0.892569</td>
+      <td>0.291898</td>
+      <td>3.276043</td>
+      <td>0.795401</td>
+      <td>0.2414</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>ZRRCV7012C</th>
+      <td>0.063058</td>
+      <td>597.333333</td>
+      <td>0.423</td>
+      <td>0.779576</td>
+      <td>0.58</td>
+      <td>4.58</td>
+      <td>0.56</td>
+      <td>0.977305</td>
+      <td>3.743456</td>
+      <td>0.662710</td>
+      <td>0.851959</td>
+      <td>0.288755</td>
+      <td>3.261270</td>
+      <td>0.803624</td>
+      <td>0.2388</td>
+      <td>1000</td>
+    </tr>
+  </tbody>
+</table>
+<p>132 rows × 16 columns</p>
 </div></div></div>
 </div>
 </div>
