@@ -212,7 +212,16 @@ Net national changes in thrombolysis use (left) or clinical benefit (right) by c
 Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.
 :::
 
-* The model identifies the changes that make most difference at each hospital, and may be used to provide a target use of thrombolysis that is tailored to each hospital. .
+* The model identifies the changes that make most difference at each hospital, and may be used to provide a target use of thrombolysis that is tailored to each hospital.
+
+We also used the mdoelling to explore the most significant causes of inter-hopsital variation in thrombolysis use (a subtly different question from asking about what will improve thrombolysis use most). The key findings were:
+
+* About half of the variance in current thrombolysis use is due to  differences in local patient populations, and about half is due to differences within hospitals (pathway speed, determination of stroke onset time, decisions to thrombolyse or not).
+
+* Within the hospitals, the largest contributor to inter-hospital differences in thrombolysis use is differences in decision making around thrombolysis, then speed, then determination of stroke onset time.
+
+* If all hospitals treated a standard set of patients, reflecting national averages in patient population characteristics, hospitals that currently have a lower thrombolysis rate would tend to give more thrombolysis, and those with higher thrombolysis rates would tend to give less thrombolysis. But this explains only about half of the differences between low and high thrombolysing units. 
+
 
 ### Qualitative research
 
