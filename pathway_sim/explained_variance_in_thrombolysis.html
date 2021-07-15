@@ -1,0 +1,1386 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain &#8212; SAMueL Stroke Audit Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Qualitative research" href="../qual/qual.html" />
+    <link rel="prev" title="Modelling the same patient population attending all hospitals" href="scenario_analysis_1k_patient_cohort.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL (Stroke Audit Machine Learning)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/abstract.html">
+   Abstract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/plain_english_short.html">
+   Plain English Summary (short)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/plain_english.html">
+   Plain English Summary (long)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/scientific_summary.html">
+   Scientific Summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../summary_slides/summary_slides.html">
+   Summary slides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/project_team.html">
+   Contact and Project Team
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/stroke_thrombolysis.html">
+   An introduction to stroke and thrombolysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/clinical_audit.html">
+   What is clinical audit?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/ml_intro.html">
+   Introduction to machine learning methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/clinical_pathway_simulation.html">
+   Clinical pathway simulation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../descriptive_stats/outline.html">
+   Outline - what is in this section?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/kfold.html">
+   Assessing accuracy of models with stratified k-fold cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decision making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/004a_generate_1d_nets_for_10k.html">
+     Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/004b_analyse_10k_1d_modular.html">
+     Investigating the output of neural net embedding subnets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/005a_generate_2d_nets_for_10k.html">
+     Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/005b_analyse_10k_2d_modular.html">
+     Investigating the output of neural net embedding subnets - with 2D subnet output
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ensemble/outline.html">
+   Ensemble Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
+     Ensemble model fitting - generate probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/compare_model_outputs.html">
+     Comparison of model outputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_with_logistic_regression.html">
+     Ensemble combine with logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_with_random_forests.html">
+     Ensemble combine with random forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_with_neural_network.html">
+     Ensemble combine with a neural network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_summary.html">
+     Summary of results from ensemble models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="outline_model.html">
+   Model building and validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="thrombolysis_effect.html">
+     Plotting the relationship between time to treatment and the probability of a good outcome
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scenario_analysis_1k_patient_cohort.html">
+     Modelling the same patient population attending all hospitals
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Qualitative research and PPI
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qual/qual.html">
+   Qualitative research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qual/ppi.html">
+   Public and Patient Involvement
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendicies
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/pathway_sim/explained_variance_in_thrombolysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data-and-pivot-by-scenario">
+   Load data and pivot by scenario
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-difference-between-each-hospital-s-thrombolysis-rate-and-the-mean-thrombolysis">
+   Calculate difference between each hospital’s thrombolysis rate and the mean thrombolysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-much-variation-is-explained-by-differences-in-decision-making">
+   How much variation is explained by differences in decision making?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-much-variation-is-explained-by-differences-in-speed">
+   How much variation is explained by differences in speed?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-much-variation-is-explained-by-determination-of-stroke-onset-time">
+   How much variation is explained by determination of stroke onset time?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-relationships">
+   Plot relationships
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="how-much-of-the-inter-hospital-variation-in-thrombolysis-use-do-in-hospital-processes-explain">
+<h1>How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain<a class="headerlink" href="#how-much-of-the-inter-hospital-variation-in-thrombolysis-use-do-in-hospital-processes-explain" title="Permalink to this headline">¶</a></h1>
+<p>Aims:</p>
+<ul class="simple">
+<li><p>Investigate the correlation (explained variance) between hospital model process parameters and the variation in use of thrombolysis between hospitals.</p></li>
+</ul>
+<div class="section" id="load-data-and-pivot-by-scenario">
+<h2>Load data and pivot by scenario<a class="headerlink" href="#load-data-and-pivot-by-scenario" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Load data</span>
+<span class="n">scenarios</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;output/key_scenario_results.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Performance data</span>
+<span class="n">performance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;hosp_performance_output/hospital_performance.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">)</span>
+
+<span class="n">performance</span><span class="p">[</span><span class="s1">&#39;hosp_speed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">performance</span><span class="p">[</span><span class="s1">&#39;arrival_scan_arrival_mins_mu&#39;</span><span class="p">])</span> <span class="o">+</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">performance</span><span class="p">[</span><span class="s1">&#39;scan_needle_mins_mu&#39;</span><span class="p">]))</span>
+
+<span class="c1"># Decision data</span>
+<span class="n">decision</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s1">&#39;../random_forest/predictions/corhort_rates.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;hospital&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scenarios</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stroke_team</th>
+      <th>scenario</th>
+      <th>admissions</th>
+      <th>thrombolysis_rate</th>
+      <th>additional_good_outcomes_per_1000_patients</th>
+      <th>patients_receiving_thrombolysis</th>
+      <th>add_good_outcomes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AGNOF1041H</td>
+      <td>base</td>
+      <td>671.666667</td>
+      <td>15.11</td>
+      <td>12.72</td>
+      <td>101.488833</td>
+      <td>8.543600</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AKCGO9726K</td>
+      <td>base</td>
+      <td>1143.333333</td>
+      <td>15.06</td>
+      <td>13.43</td>
+      <td>172.186000</td>
+      <td>15.354967</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AOBTM3098N</td>
+      <td>base</td>
+      <td>500.666667</td>
+      <td>7.81</td>
+      <td>5.74</td>
+      <td>39.102067</td>
+      <td>2.873827</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>APXEE8191H</td>
+      <td>base</td>
+      <td>439.333333</td>
+      <td>10.08</td>
+      <td>7.35</td>
+      <td>44.284800</td>
+      <td>3.229100</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ATDID5461S</td>
+      <td>base</td>
+      <td>275.666667</td>
+      <td>9.20</td>
+      <td>6.42</td>
+      <td>25.361333</td>
+      <td>1.769780</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">performance</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>thrombolysis_rate</th>
+      <th>admissions</th>
+      <th>80_plus</th>
+      <th>onset_known</th>
+      <th>known_arrival_within_4hrs</th>
+      <th>onset_arrival_mins_mu</th>
+      <th>onset_arrival_mins_sigma</th>
+      <th>scan_within_4_hrs</th>
+      <th>arrival_scan_arrival_mins_mu</th>
+      <th>arrival_scan_arrival_mins_sigma</th>
+      <th>onset_scan_4_hrs</th>
+      <th>eligable</th>
+      <th>scan_needle_mins_mu</th>
+      <th>scan_needle_mins_sigma</th>
+      <th>hosp_speed</th>
+    </tr>
+    <tr>
+      <th>stroke_team</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGNOF1041H</th>
+      <td>0.154839</td>
+      <td>671.666667</td>
+      <td>0.425459</td>
+      <td>0.635236</td>
+      <td>0.681250</td>
+      <td>4.576874</td>
+      <td>0.557598</td>
+      <td>0.965596</td>
+      <td>1.665700</td>
+      <td>1.497966</td>
+      <td>0.935867</td>
+      <td>0.388325</td>
+      <td>3.669602</td>
+      <td>0.664462</td>
+      <td>44.525658</td>
+    </tr>
+    <tr>
+      <th>AKCGO9726K</th>
+      <td>0.158892</td>
+      <td>1143.333333</td>
+      <td>0.395658</td>
+      <td>0.970845</td>
+      <td>0.428829</td>
+      <td>4.625486</td>
+      <td>0.597451</td>
+      <td>0.955882</td>
+      <td>2.834183</td>
+      <td>0.999719</td>
+      <td>0.908425</td>
+      <td>0.419355</td>
+      <td>2.904479</td>
+      <td>0.874818</td>
+      <td>35.272215</td>
+    </tr>
+    <tr>
+      <th>AOBTM3098N</th>
+      <td>0.085885</td>
+      <td>500.666667</td>
+      <td>0.485470</td>
+      <td>0.619174</td>
+      <td>0.629032</td>
+      <td>4.603918</td>
+      <td>0.584882</td>
+      <td>0.935043</td>
+      <td>3.471419</td>
+      <td>1.254744</td>
+      <td>0.846435</td>
+      <td>0.267819</td>
+      <td>3.694918</td>
+      <td>0.518929</td>
+      <td>72.424682</td>
+    </tr>
+    <tr>
+      <th>APXEE8191H</th>
+      <td>0.098634</td>
+      <td>439.333333</td>
+      <td>0.515679</td>
+      <td>0.716237</td>
+      <td>0.608051</td>
+      <td>4.590357</td>
+      <td>0.496452</td>
+      <td>0.966899</td>
+      <td>3.312930</td>
+      <td>0.714465</td>
+      <td>0.904505</td>
+      <td>0.258964</td>
+      <td>3.585094</td>
+      <td>0.751204</td>
+      <td>63.522230</td>
+    </tr>
+    <tr>
+      <th>ATDID5461S</th>
+      <td>0.090689</td>
+      <td>275.666667</td>
+      <td>0.533546</td>
+      <td>0.573156</td>
+      <td>0.660338</td>
+      <td>4.427826</td>
+      <td>0.591373</td>
+      <td>0.878594</td>
+      <td>4.125690</td>
+      <td>0.549301</td>
+      <td>0.865455</td>
+      <td>0.315126</td>
+      <td>3.497262</td>
+      <td>0.608126</td>
+      <td>94.935429</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rx</span> <span class="o">=</span> <span class="n">scenarios</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;scenario&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rx</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">performance</span><span class="p">[[</span><span class="s1">&#39;hosp_speed&#39;</span><span class="p">,</span> <span class="s1">&#39;onset_known&#39;</span><span class="p">]],</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rx</span> <span class="o">=</span> <span class="n">rx</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">decision</span><span class="p">[</span><span class="s1">&#39;cohort_rate&#39;</span><span class="p">],</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rx</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>base</th>
+      <th>benchmark</th>
+      <th>onset</th>
+      <th>onset_benchmark</th>
+      <th>same_patient_characteristics</th>
+      <th>speed</th>
+      <th>speed_benchmark</th>
+      <th>speed_onset</th>
+      <th>speed_onset_benchmark</th>
+      <th>hosp_speed</th>
+      <th>onset_known</th>
+      <th>cohort_rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGNOF1041H</th>
+      <td>15.11</td>
+      <td>20.38</td>
+      <td>18.17</td>
+      <td>24.09</td>
+      <td>11.04</td>
+      <td>15.21</td>
+      <td>20.14</td>
+      <td>17.89</td>
+      <td>23.90</td>
+      <td>44.525658</td>
+      <td>0.635236</td>
+      <td>27.76</td>
+    </tr>
+    <tr>
+      <th>AKCGO9726K</th>
+      <td>15.06</td>
+      <td>14.18</td>
+      <td>14.92</td>
+      <td>14.27</td>
+      <td>22.22</td>
+      <td>15.32</td>
+      <td>14.69</td>
+      <td>15.36</td>
+      <td>14.83</td>
+      <td>35.272215</td>
+      <td>0.970845</td>
+      <td>37.45</td>
+    </tr>
+    <tr>
+      <th>AOBTM3098N</th>
+      <td>7.81</td>
+      <td>11.88</td>
+      <td>9.39</td>
+      <td>14.52</td>
+      <td>8.74</td>
+      <td>9.39</td>
+      <td>13.78</td>
+      <td>11.40</td>
+      <td>17.17</td>
+      <td>72.424682</td>
+      <td>0.619174</td>
+      <td>26.00</td>
+    </tr>
+    <tr>
+      <th>APXEE8191H</th>
+      <td>10.08</td>
+      <td>13.06</td>
+      <td>10.76</td>
+      <td>13.35</td>
+      <td>13.24</td>
+      <td>10.15</td>
+      <td>12.80</td>
+      <td>10.90</td>
+      <td>13.54</td>
+      <td>63.522230</td>
+      <td>0.716237</td>
+      <td>29.97</td>
+    </tr>
+    <tr>
+      <th>ATDID5461S</th>
+      <td>9.20</td>
+      <td>9.92</td>
+      <td>11.81</td>
+      <td>13.35</td>
+      <td>7.60</td>
+      <td>11.10</td>
+      <td>11.79</td>
+      <td>14.64</td>
+      <td>15.95</td>
+      <td>94.935429</td>
+      <td>0.573156</td>
+      <td>25.92</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="calculate-difference-between-each-hospital-s-thrombolysis-rate-and-the-mean-thrombolysis">
+<h2>Calculate difference between each hospital’s thrombolysis rate and the mean thrombolysis<a class="headerlink" href="#calculate-difference-between-each-hospital-s-thrombolysis-rate-and-the-mean-thrombolysis" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_rx</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean thrombolysis: </span><span class="si">{</span><span class="n">mean_rx</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;base&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean_rx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean thrombolysis: 11.22
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rx</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>base</th>
+      <th>benchmark</th>
+      <th>onset</th>
+      <th>onset_benchmark</th>
+      <th>same_patient_characteristics</th>
+      <th>speed</th>
+      <th>speed_benchmark</th>
+      <th>speed_onset</th>
+      <th>speed_onset_benchmark</th>
+      <th>hosp_speed</th>
+      <th>onset_known</th>
+      <th>cohort_rate</th>
+      <th>diff_from_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGNOF1041H</th>
+      <td>15.11</td>
+      <td>20.38</td>
+      <td>18.17</td>
+      <td>24.09</td>
+      <td>11.04</td>
+      <td>15.21</td>
+      <td>20.14</td>
+      <td>17.89</td>
+      <td>23.90</td>
+      <td>44.525658</td>
+      <td>0.635236</td>
+      <td>27.76</td>
+      <td>3.889545</td>
+    </tr>
+    <tr>
+      <th>AKCGO9726K</th>
+      <td>15.06</td>
+      <td>14.18</td>
+      <td>14.92</td>
+      <td>14.27</td>
+      <td>22.22</td>
+      <td>15.32</td>
+      <td>14.69</td>
+      <td>15.36</td>
+      <td>14.83</td>
+      <td>35.272215</td>
+      <td>0.970845</td>
+      <td>37.45</td>
+      <td>3.839545</td>
+    </tr>
+    <tr>
+      <th>AOBTM3098N</th>
+      <td>7.81</td>
+      <td>11.88</td>
+      <td>9.39</td>
+      <td>14.52</td>
+      <td>8.74</td>
+      <td>9.39</td>
+      <td>13.78</td>
+      <td>11.40</td>
+      <td>17.17</td>
+      <td>72.424682</td>
+      <td>0.619174</td>
+      <td>26.00</td>
+      <td>-3.410455</td>
+    </tr>
+    <tr>
+      <th>APXEE8191H</th>
+      <td>10.08</td>
+      <td>13.06</td>
+      <td>10.76</td>
+      <td>13.35</td>
+      <td>13.24</td>
+      <td>10.15</td>
+      <td>12.80</td>
+      <td>10.90</td>
+      <td>13.54</td>
+      <td>63.522230</td>
+      <td>0.716237</td>
+      <td>29.97</td>
+      <td>-1.140455</td>
+    </tr>
+    <tr>
+      <th>ATDID5461S</th>
+      <td>9.20</td>
+      <td>9.92</td>
+      <td>11.81</td>
+      <td>13.35</td>
+      <td>7.60</td>
+      <td>11.10</td>
+      <td>11.79</td>
+      <td>14.64</td>
+      <td>15.95</td>
+      <td>94.935429</td>
+      <td>0.573156</td>
+      <td>25.92</td>
+      <td>-2.020455</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="how-much-variation-is-explained-by-differences-in-decision-making">
+<h2>How much variation is explained by differences in decision making?<a class="headerlink" href="#how-much-variation-is-explained-by-differences-in-decision-making" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_explained_by_decison_making</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span>
+    <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;cohort_rate&#39;</span><span class="p">],</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">diff_explained_by_decison_making</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.399
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-much-variation-is-explained-by-differences-in-speed">
+<h2>How much variation is explained by differences in speed?<a class="headerlink" href="#how-much-variation-is-explained-by-differences-in-speed" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_explained_by_speed</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span>
+    <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">],</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;hosp_speed&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">diff_explained_by_speed</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.254
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-much-variation-is-explained-by-determination-of-stroke-onset-time">
+<h2>How much variation is explained by determination of stroke onset time?<a class="headerlink" href="#how-much-variation-is-explained-by-determination-of-stroke-onset-time" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_explained_by_determination_of_onset</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span>
+    <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">],</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">diff_explained_by_determination_of_onset</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0474
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-relationships">
+<h2>Plot relationships<a class="headerlink" href="#plot-relationships" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;cohort_rate&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">]</span>
+<span class="n">gradient</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y_fit</span><span class="o">=</span><span class="n">intercept</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">gradient</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;original data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fitted line&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="o">=</span><span class="s1">&#39;Slope: </span><span class="si">%.2f</span><span class="se">\n</span><span class="s1">R-Squared: </span><span class="si">%.3f</span><span class="se">\n</span><span class="s1">P value: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">p_value</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Relationship between thrombolysis use and</span><span class="se">\n</span><span class="s1">decision making&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted 10k cohort thrombolysis rate&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Difference in thrombolysis from mean&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;hosp_speed&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">]</span>
+<span class="n">gradient</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y_fit</span><span class="o">=</span><span class="n">intercept</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">gradient</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;original data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fitted line&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="o">=</span><span class="s1">&#39;Slope: </span><span class="si">%.2f</span><span class="se">\n</span><span class="s1">R-Squared: </span><span class="si">%.3f</span><span class="se">\n</span><span class="s1">P value: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">p_value</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">77</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Relationship between thrombolysis use and</span><span class="se">\n</span><span class="s1">pathway speed&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Arrival to scan + scan to needle (mins)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Difference in thrombolysis from mean&#39;</span><span class="p">)</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rx</span><span class="p">[</span><span class="s1">&#39;diff_from_mean&#39;</span><span class="p">]</span>
+<span class="n">gradient</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y_fit</span><span class="o">=</span><span class="n">intercept</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">gradient</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;original data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fitted line&#39;</span><span class="p">)</span>
+<span class="n">text</span><span class="o">=</span><span class="s1">&#39;Slope: </span><span class="si">%.2f</span><span class="se">\n</span><span class="s1">R-Squared: </span><span class="si">%.3f</span><span class="se">\n</span><span class="s1">P value: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">p_value</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.38</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Relationship between thrombolysis use and</span><span class="se">\n</span><span class="s1">determination of stroke onset&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Proportion patients with determined stroke onset&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Difference in thrombolysis from mean&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/model_correlations.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/explained_variance_in_thrombolysis_18_0.png" src="../_images/explained_variance_in_thrombolysis_18_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In-hospital process parameters partly explain the inter-hospital variation in thrombolysis use.</p></li>
+<li><p>The strongest relationship is between decision-making, as described by the predicted thrombolysis use of a standard 10k cohort of patients, with R-square of 0.30.</p></li>
+<li><p>Pathway speed is the next strongest predictor of thrombolysis use, with an R-square of 0.25.</p></li>
+<li><p>Determination of stroke onset time is the weakest predictor of thrombolysis use (R-square of 0.05), but is still statistically significant (p=0.012)</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./pathway_sim"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="scenario_analysis_1k_patient_cohort.html" title="previous page">Modelling the same patient population attending all hospitals</a>
+    <a class='right-next' id="next-link" href="../qual/qual.html" title="next page">Qualitative research</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SAMueL project team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -19,3 +19,7 @@ This section contains the following notebooks:
 * *Analysis of alternative pathway scenarios*: Numerical and graphical analysis of results from the scenario modelling.
 
 * *Modelling the same patient population attending all hospitals*: Predicting the thrombolysis rate at each hospital if the same patient population (based on the national average patient characteristics) attend each hospital.
+
+* *How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain*: Investigates the correlation (explained variance) between hospital model process parameters and the variation in use of thrombolysis between hospitals.
+
+

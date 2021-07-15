@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Qualitative research" href="../qual/qual.html" />
+    <link rel="next" title="How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain" href="explained_variance_in_thrombolysis.html" />
     <link rel="prev" title="Analysis of alternative pathway scenarios" href="scenario_analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -498,6 +498,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Modelling the same patient population attending all hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="explained_variance_in_thrombolysis.html">
+     How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain
     </a>
    </li>
   </ul>
@@ -1214,7 +1219,7 @@
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()],[</span><span class="n">mean_thrombolysis</span><span class="p">,</span> <span class="n">mean_thrombolysis</span><span class="p">],</span> <span class="s1">&#39;g:&#39;</span><span class="p">,</span> 
          <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Expected line if all variance</span><span class="se">\n</span><span class="s1">due to patient populations&#39;</span><span class="p">)</span>
 
-<span class="n">text</span><span class="o">=</span><span class="s1">&#39;Slope: </span><span class="si">%.2f</span><span class="se">\n</span><span class="s1">R-Squared: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">text</span><span class="o">=</span><span class="s1">&#39;Slope: </span><span class="si">%.2f</span><span class="se">\n</span><span class="s1">R-Squared: </span><span class="si">%.3f</span><span class="se">\n</span><span class="s1">P value: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">p_value</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">26</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
@@ -1262,7 +1267,7 @@
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>In this experiment we fix the patient population, so that all hospitals in the model see the same patients, and pass those patients through each hospital model using that hospital’s pathway characteristics and decision model.</p></li>
-<li><p>When a standard (national average) patient population is passed through all hospitals the cohort thrombolysis rate at each hospital correlates with the actual thrombolysis use with R-square of 0.41, suggesting in-hospital processes and decision making account for about 40% of observation variance. Similarly, the regression fit between actual and cohort thrombolysis rate has a slope of 0.55, suggesting that 55% of the inter-hospital variance is sue to hospital processes - when the patient population is unchanged there is 0.55 percentage point difference in predicted cohort population thrombolysis rate for each 1 percentage point change in actual thrombolysis rate.</p></li>
+<li><p>When a standard (national average) patient population is passed through all hospitals the cohort thrombolysis rate at each hospital correlates with the actual thrombolysis use with R-square of 0.41, suggesting in-hospital processes and decision making account for about 40% of observed variance. Similarly, the regression fit between actual and cohort thrombolysis rate has a slope of 0.55, suggesting that 55% of the inter-hospital variance is due to hospital processes - when the patient population is unchanged there is, on average, a 0.55 percentage point difference in predicted cohort population thrombolysis rate for each 1 percentage point change in actual thrombolysis rate.</p></li>
 <li><p>As a general guide it seems that about half of the inter-hospital variance in thrombolysis rate is explained by in-hospital process and decisions, and the other half is explained by differences in local populations.</p></li>
 <li><p>As should be expected, the mean and distribution of the cohort thrombolysis use per hospital is very similar to the actual mean and distribution of thrombolysis use.</p></li>
 <li><p>There is a tendency for lower thrombolysing units to do better with a standard cohort, and those with higher thrombolysis rates to do worse. So there is a general observation that hospitals with high thrombolysis use do so partly because they have a more thrombolysable population, and vice versa.</p></li>
@@ -1296,7 +1301,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="scenario_analysis.html" title="previous page">Analysis of alternative pathway scenarios</a>
-    <a class='right-next' id="next-link" href="../qual/qual.html" title="next page">Qualitative research</a>
+    <a class='right-next' id="next-link" href="explained_variance_in_thrombolysis.html" title="next page">How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain</a>
 
         </div>
         
