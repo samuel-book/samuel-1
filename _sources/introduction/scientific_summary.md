@@ -214,7 +214,7 @@ Histograms for changes in distribution in thrombolysis use (left) or clinical be
 
 * The model identifies the changes that make most difference at each hospital, and may be used to provide a target use of thrombolysis that is tailored to each hospital.
 
-We also used the mdoelling to explore the most significant causes of inter-hopsital variation in thrombolysis use (a subtly different question from asking about what will improve thrombolysis use most). The key findings were:
+We also used the modelling to explore the most significant causes of inter-hospital variation in thrombolysis use (a subtly different question from asking about what will improve thrombolysis use most). The key findings were:
 
 * About half of the variance in current thrombolysis use is due to  differences in local patient populations, and about half is due to differences within hospitals (pathway speed, determination of stroke onset time, decisions to thrombolyse or not).
 
