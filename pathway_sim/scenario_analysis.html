@@ -1036,6 +1036,10 @@
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Additional_good_outcomes_per_1000_patients_(mean)&#39;</span><span class="p">]</span>
 <span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;patients_receiving_thrombolysis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;thrombolysed&#39;</span><span class="p">]</span>
 <span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes&#39;</span><span class="p">]</span>
+
+<span class="c1"># Remove same_patient_characteristics as not needed here</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="s1">&#39;scenario&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;same_patient_characteristics&#39;</span>
+<span class="n">key_results</span> <span class="o">=</span> <span class="n">key_results</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1136,58 +1140,58 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>1183</th>
+      <th>1051</th>
       <td>YPKYH1768F</td>
-      <td>same_patient_characteristics</td>
+      <td>speed_onset_benchmark</td>
       <td>250.333333</td>
-      <td>7.47</td>
-      <td>4.98</td>
-      <td>18.699900</td>
-      <td>1.246660</td>
+      <td>22.20</td>
+      <td>23.54</td>
+      <td>55.574000</td>
+      <td>5.892847</td>
     </tr>
     <tr>
-      <th>1184</th>
+      <th>1052</th>
       <td>YQMZV4284N</td>
-      <td>same_patient_characteristics</td>
+      <td>speed_onset_benchmark</td>
       <td>358.333333</td>
-      <td>15.92</td>
-      <td>12.87</td>
-      <td>57.046667</td>
-      <td>4.611750</td>
+      <td>13.51</td>
+      <td>12.02</td>
+      <td>48.410833</td>
+      <td>4.307167</td>
     </tr>
     <tr>
-      <th>1185</th>
+      <th>1053</th>
       <td>ZBVSO0975W</td>
-      <td>same_patient_characteristics</td>
+      <td>speed_onset_benchmark</td>
       <td>449.333333</td>
-      <td>7.66</td>
-      <td>6.23</td>
-      <td>34.418933</td>
-      <td>2.799347</td>
+      <td>21.12</td>
+      <td>20.10</td>
+      <td>94.899200</td>
+      <td>9.031600</td>
     </tr>
     <tr>
-      <th>1186</th>
+      <th>1054</th>
       <td>ZHCLE1578P</td>
-      <td>same_patient_characteristics</td>
+      <td>speed_onset_benchmark</td>
       <td>796.000000</td>
-      <td>10.76</td>
-      <td>8.78</td>
-      <td>85.649600</td>
-      <td>6.988880</td>
+      <td>13.89</td>
+      <td>12.82</td>
+      <td>110.564400</td>
+      <td>10.204720</td>
     </tr>
     <tr>
-      <th>1187</th>
+      <th>1055</th>
       <td>ZRRCV7012C</td>
-      <td>same_patient_characteristics</td>
+      <td>speed_onset_benchmark</td>
       <td>597.333333</td>
-      <td>11.19</td>
-      <td>8.67</td>
-      <td>66.841600</td>
-      <td>5.178880</td>
+      <td>12.25</td>
+      <td>11.22</td>
+      <td>73.173333</td>
+      <td>6.702080</td>
     </tr>
   </tbody>
 </table>
-<p>1188 rows × 7 columns</p>
+<p>1056 rows × 7 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1330,26 +1334,17 @@
       <td>57.54</td>
       <td>86.82</td>
     </tr>
-    <tr>
-      <th>same_patient_characteristics</th>
-      <td>11.44</td>
-      <td>9.26</td>
-      <td>-1.39</td>
-      <td>-1.50</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_stats_for_fig</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats_for_fig</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats_for_fig</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;percent_thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -1359,8 +1354,8 @@
 <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats_for_fig</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats_for_fig</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">summary_stats</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="p">[</span><span class="s1">&#39;add_good_outcomes_per_1000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -1584,10 +1579,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark                       70
-onset                           38
-same_patient_characteristics    18
-speed                            6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark    83
+onset        39
+speed        10
 dtype: int64
 </pre></div>
 </div>
@@ -1613,10 +1607,9 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark                       51
-speed                           41
-onset                           27
-same_patient_characteristics    13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benchmark    56
+speed        49
+onset        27
 dtype: int64
 </pre></div>
 </div>
@@ -1804,7 +1797,49 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_38_0.png" src="../_images/scenario_analysis_38_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">dc051264aace</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">103</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-21-332be4b55168&gt;</span> in <span class="ni">plot_hospital</span><span class="nt">(data, id)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> 
+<span class="ne">---&gt; </span><span class="mi">24</span>     <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/frame.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4306</span>                 <span class="n">weight</span>  <span class="mf">1.0</span>     <span class="mf">0.8</span>
+<span class="g g-Whitespace">   </span><span class="mi">4307</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">4308</span><span class="s2">         return super().drop(</span>
+<span class="g g-Whitespace">   </span><span class="mi">4309</span><span class="s2">             labels=labels,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4310</span><span class="s2">             axis=axis,</span>
+
+<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4151</span><span class="s2">         for axis, labels in axes.items():</span>
+<span class="g g-Whitespace">   </span><span class="mi">4152</span><span class="s2">             if labels is not None:</span>
+<span class="ne">-&gt; </span><span class="mi">4153</span><span class="s2">                 obj = obj._drop_axis(labels, axis, level=level, errors=errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4154</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">4155</span><span class="s2">         if inplace:</span>
+
+<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">_drop_axis</span><span class="nt">(self, labels, axis, level, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4186</span><span class="s2">                 new_axis = axis.drop(labels, level=level, errors=errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4187</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">4188</span><span class="s2">                 new_axis = axis.drop(labels, errors=errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4189</span><span class="s2">             result = self.reindex(**{axis_name: new_axis})</span>
+<span class="g g-Whitespace">   </span><span class="mi">4190</span><span class="s2"> </span>
+
+<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5589</span><span class="s2">         if mask.any():</span>
+<span class="g g-Whitespace">   </span><span class="mi">5590</span><span class="s2">             if errors != &quot;ignore&quot;:</span>
+<span class="ne">-&gt; </span><span class="mi">5591</span><span class="s2">                 raise KeyError(f&quot;</span><span class="si">{labels[mask]}</span><span class="s2"> not found in axis&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5592</span><span class="s2">             indexer = indexer[~mask]</span>
+<span class="g g-Whitespace">   </span><span class="mi">5593</span><span class="s2">         return self.delete(indexer)</span>
+
+<span class="ne">KeyError</span>: &quot;[&#39;same_patient_characteristics&#39;] not found in axis&quot;
+</pre></div>
+</div>
 </div>
 </div>
 <p>An example where determining stroke onset time makes most difference.</p>
@@ -1814,9 +1849,6 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_40_0.png" src="../_images/scenario_analysis_40_0.png" />
-</div>
 </div>
 <p>An example where applying benchmark decion-making makes most difference.</p>
 <div class="cell docutils container">
@@ -1824,9 +1856,6 @@ dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">54</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/scenario_analysis_42_0.png" src="../_images/scenario_analysis_42_0.png" />
 </div>
 </div>
 </section>
