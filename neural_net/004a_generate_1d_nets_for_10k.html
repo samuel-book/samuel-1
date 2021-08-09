@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset &#8212; SAMueL Stroke Audit Machine Learning</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -20,10 +20,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -41,7 +45,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -53,14 +57,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Investigating the output of neural net embedding subnets" href="004b_analyse_10k_1d_modular.html" />
     <link rel="prev" title="Modular TensorFlow model with 2D embedding - analyse" href="003b_2d_modular_analyse.html" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-    
+
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
@@ -69,30 +73,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Summary
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/abstract.html">
    Abstract
@@ -124,12 +128,12 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/stroke_thrombolysis.html">
    An introduction to stroke and thrombolysis
@@ -151,12 +155,12 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -168,22 +172,17 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../descriptive_stats/outline.html">
    Outline - what is in this section?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
      Descriptive analysis of stroke pathway data
@@ -225,29 +224,26 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Machine Learning
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/kfold.html">
    Assessing accuracy of models with stratified k-fold cross-validation
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
@@ -259,17 +255,14 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../random_forest/outline.html">
    Random Forests
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
@@ -321,17 +314,14 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="outline.html">
    Neural Networks
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
@@ -363,6 +353,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="002c_1d_modular_analyse.html#aims">
+     Aims
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
@@ -370,6 +365,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="003b_2d_modular_analyse.html">
      Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="003b_2d_modular_analyse.html#aims">
+     Aims
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -393,20 +393,22 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../ensemble/outline.html">
    Ensemble Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
      Ensemble model fitting - generate probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html#add-actual-use-of-thrombolysis">
+     Add actual use of thrombolysis
     </a>
    </li>
    <li class="toctree-l2">
@@ -435,24 +437,21 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Pathway Simulation
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../pathway_sim/outline_model.html">
    Model building and validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/thrombolysis_effect.html">
      Plotting the relationship between time to treatment and the probability of a good outcome
@@ -474,17 +473,14 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
      Stroke pathway simulation - generation of results from alternative scenarios
@@ -506,14 +502,16 @@
     </a>
    </li>
   </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Qualitative research and PPI
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../qual/qual.html">
    Qualitative research
@@ -525,12 +523,12 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p>
  <span class="caption-text">
   Appendicies
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/acknowledgements.html">
    Acknowledgements
@@ -538,7 +536,6 @@
  </li>
 </ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -588,12 +585,12 @@
 
             <!-- Source interaction buttons -->
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -602,11 +599,12 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aims">
    Aims
@@ -639,7 +637,8 @@
  </li>
 </ul>
 
-            </nav>
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -648,17 +647,17 @@
         
               <div>
                 
-  <div class="section" id="modular-tensorflow-model-with-1d-embedding-train-and-save-model-for-10k-patient-subset">
+  <section id="modular-tensorflow-model-with-1d-embedding-train-and-save-model-for-10k-patient-subset">
 <h1>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset<a class="headerlink" href="#modular-tensorflow-model-with-1d-embedding-train-and-save-model-for-10k-patient-subset" title="Permalink to this headline">¶</a></h1>
 <p><em>Embedding</em> converts a categorical variable into a projection onto n-dimensional space [1], and has been shown to be an effective way to train neural network when using categorical data, while also allowing a measure of similarity/distance between different values of the categorical data, Here we use embedding for hospital ID. We also convert patient data and pathway data into an embedded vector (this may also be known as <em>encoding</em> the data in a vector with fewer dimensions than the original data set for those groups of features).</p>
 <p>[1] Guo C, &amp; Berkhahn F. (2016) Entity Embeddings of Categorical Variables. arXiv:160406737 [cs] <a class="reference external" href="http://arxiv.org/abs/1604.06737">http://arxiv.org/abs/1604.06737</a></p>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To train and save fully connected models for 10k patient subset</p></li>
 </ul>
-</div>
-<div class="section" id="basic-methodology">
+</section>
+<section id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <p>Models are fitted to previously split training and test data sets.</p>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 1D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
@@ -671,8 +670,8 @@
 <p><img alt="" src="../_images/subnets_1.png" /></p>
 <p>Models are fitted with keras ‘early-stopping’. This monitors accuracy of the test set and stops when there has been no improvement in <em>n</em> epochs (this is the ‘patience’, and is set to 100 epochs here).</p>
 <p>NOTE: In the training charts below you will see that test accuracy is higher than training accuracy. This may seem surprising; it is due to keras returning the accuracy of the training set during training when dropout is used (and no dropout is used for the test set).</p>
-</div>
-<div class="section" id="set-up">
+</section>
+<section id="set-up">
 <h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,8 +710,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-to-scale-data">
+</section>
+<section id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <p>In neural networks it is common to to scale input data 0-1 rather than use standardisation (subtracting mean and dividing by standard deviation) of each feature).</p>
 <div class="cell docutils container">
@@ -735,8 +734,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="set-up-neural-net">
+</section>
+<section id="set-up-neural-net">
 <h2>Set up neural net<a class="headerlink" href="#set-up-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,8 +811,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train-model">
+</section>
+<section id="train-model">
 <h2>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -947,8 +946,8 @@
 <img alt="../_images/004a_generate_1d_nets_for_10k_10_1.png" src="../_images/004a_generate_1d_nets_for_10k_10_1.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -997,9 +996,11 @@
 
       </div>
     </div>
-  
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
   </body>
 </html>
