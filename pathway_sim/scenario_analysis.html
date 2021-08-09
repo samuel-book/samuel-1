@@ -1749,14 +1749,11 @@ dtype: int64
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;thrombolysis_rate&#39;</span><span class="p">]</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;outcomes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital_data</span><span class="p">[</span><span class="s1">&#39;additional_good_outcomes_per_1000_patients&#39;</span><span class="p">]</span>
     <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;base&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;benchmark&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;speed_onset&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+    <span class="s1">&#39;speed_benchmark&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;onset_benchmark&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;speed_onset_benchmark&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
     <span class="n">df_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">order</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_order</span>
     <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
-
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
     <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
@@ -1797,49 +1794,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">dc051264aace</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">103</span><span class="p">)</span>
-
-<span class="nn">&lt;ipython-input-21-332be4b55168&gt;</span> in <span class="ni">plot_hospital</span><span class="nt">(data, id)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> 
-<span class="ne">---&gt; </span><span class="mi">24</span>     <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;same_patient_characteristics&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> 
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-
-<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/frame.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4306</span>                 <span class="n">weight</span>  <span class="mf">1.0</span>     <span class="mf">0.8</span>
-<span class="g g-Whitespace">   </span><span class="mi">4307</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">4308</span><span class="s2">         return super().drop(</span>
-<span class="g g-Whitespace">   </span><span class="mi">4309</span><span class="s2">             labels=labels,</span>
-<span class="g g-Whitespace">   </span><span class="mi">4310</span><span class="s2">             axis=axis,</span>
-
-<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4151</span><span class="s2">         for axis, labels in axes.items():</span>
-<span class="g g-Whitespace">   </span><span class="mi">4152</span><span class="s2">             if labels is not None:</span>
-<span class="ne">-&gt; </span><span class="mi">4153</span><span class="s2">                 obj = obj._drop_axis(labels, axis, level=level, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4154</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">4155</span><span class="s2">         if inplace:</span>
-
-<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">_drop_axis</span><span class="nt">(self, labels, axis, level, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4186</span><span class="s2">                 new_axis = axis.drop(labels, level=level, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4187</span><span class="s2">             else:</span>
-<span class="ne">-&gt; </span><span class="mi">4188</span><span class="s2">                 new_axis = axis.drop(labels, errors=errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4189</span><span class="s2">             result = self.reindex(**{axis_name: new_axis})</span>
-<span class="g g-Whitespace">   </span><span class="mi">4190</span><span class="s2"> </span>
-
-<span class="nn">~/anaconda3/envs/samuel/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5589</span><span class="s2">         if mask.any():</span>
-<span class="g g-Whitespace">   </span><span class="mi">5590</span><span class="s2">             if errors != &quot;ignore&quot;:</span>
-<span class="ne">-&gt; </span><span class="mi">5591</span><span class="s2">                 raise KeyError(f&quot;</span><span class="si">{labels[mask]}</span><span class="s2"> not found in axis&quot;)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5592</span><span class="s2">             indexer = indexer[~mask]</span>
-<span class="g g-Whitespace">   </span><span class="mi">5593</span><span class="s2">         return self.delete(indexer)</span>
-
-<span class="ne">KeyError</span>: &quot;[&#39;same_patient_characteristics&#39;] not found in axis&quot;
-</pre></div>
-</div>
+<img alt="../_images/scenario_analysis_38_0.png" src="../_images/scenario_analysis_38_0.png" />
 </div>
 </div>
 <p>An example where determining stroke onset time makes most difference.</p>
@@ -1849,6 +1804,9 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_40_0.png" src="../_images/scenario_analysis_40_0.png" />
+</div>
 </div>
 <p>An example where applying benchmark decion-making makes most difference.</p>
 <div class="cell docutils container">
@@ -1856,6 +1814,9 @@ dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hospital</span><span class="p">(</span><span class="n">results_pivot</span><span class="p">,</span> <span class="mi">54</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/scenario_analysis_42_0.png" src="../_images/scenario_analysis_42_0.png" />
 </div>
 </div>
 </section>
@@ -1866,7 +1827,7 @@ dtype: int64
 <li><p>Overall the net improvements made to thrombolysis use were benchmark decisions &gt; determining stroke onset time &gt; speed improvement.</p></li>
 <li><p>Overall the net improvements made to additional good outcomes  were speed improvement &gt; benchmark decisions &gt; determining stroke onset time.</p></li>
 <li><p>Speed improvement therefore had least effect on the proportion of patients receiving thrombolysis, but most effect on the the predicted outcomes. This is due to improving the speed of thrombolysis improving the outcomes for all patients, including those that would have received thrombolysis anyway (without speed improvement).</p></li>
-<li><p>When asking the question “which single change makes most difference at each hospital?” then for thrombolysis the order is: benchmark decisions (82/132 hospitals), determining time of stroke onset (40/132), speed (10/132) and no-change (1/132). For improvements in clinical outcome the order is benchmark decisions (55/132 hospitals), speed (51/132), and determining time of stroke onset (26/132).</p></li>
+<li><p>When asking the question “which single change makes most difference at each hospital?” then for thrombolysis the order is: benchmark decisions (83/132 hospitals), determining time of stroke onset (39/132), speed (10/132). For improvements in clinical outcome the order is benchmark decisions (56/132 hospitals), speed (49/132), and determining time of stroke onset (27/132).</p></li>
 <li><p>Combining improvements to the pathway had a greater effect than any single change alone.</p></li>
 <li><p>Even with all improvements, there would still be expected to be a significant inter-hospital variation in use of thrombolysis and, the benefit gained. With the modelled improvements there is a general improvement across hospitals, and not a significant reduction in inter-hospital variation. The remaining variation is due to variation in patient populations.</p></li>
 <li><p>Charts may be readily produced for each hospitals showing the potential benefit of each process change individually or combined.</p></li>
