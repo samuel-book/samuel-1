@@ -2329,68 +2329,11 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 <p>All arrivals</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict to known onset</span>
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">data_known_onset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count patients with determined NIHSS</span>
+<span class="n">total_with_determined_nihss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">proportion_with_determined_nihss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># Get counts of arrival times, up to 12 hours, in 30 min bins</span>
-<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">721</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">arrivals_all</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data_known_onset</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
-<span class="n">prop_arrivals_in_12_hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arrivals_all</span><span class="p">)</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">df_all_arrivals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="n">df_all_arrivals</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span>
-<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All arrivals:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All arrivals:
--------------
-Proportion of arrivals with known stroke onset: 0.669
-Proportion known stroke onset arriving within 12 hours: 0.799
-                     Counts  Prop known onset  Cumulatative prop
-Arrival bin (upper)                                             
-30                     1819          0.011995           0.011995
-60                    11283          0.074401           0.086396
-90                    23536          0.155198           0.241594
-120                   18806          0.124008           0.365603
-150                   12402          0.081780           0.447382
-180                    8791          0.057969           0.505351
-210                    6731          0.044385           0.549736
-240                    5283          0.034837           0.584572
-270                    4344          0.028645           0.613217
-300                    3653          0.024088           0.637305
-330                    3133          0.020659           0.657965
-360                    2767          0.018246           0.676211
-390                    2486          0.016393           0.692603
-420                    2109          0.013907           0.706510
-450                    1968          0.012977           0.719488
-480                    1690          0.011144           0.730632
-510                    1599          0.010544           0.741175
-540                    1454          0.009588           0.750763
-570                    1376          0.009073           0.759837
-600                    1235          0.008144           0.767980
-630                    1202          0.007926           0.775907
-660                    1163          0.007669           0.783575
-690                    1136          0.007491           0.791066
-720                    1158          0.007636           0.798702
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict to known onset</span>
+<span class="c1"># Restrict to known onset</span>
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="n">data_known_onset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -2409,6 +2352,7 @@ Arrival bin (upper)
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All arrivals:&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proporotion of arrivals with determmined NIHSS: </span><span class="si">{</span><span class="n">proportion_with_determined_nihss</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">prop_known_onset_all</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">)</span>
@@ -2418,6 +2362,7 @@ Arrival bin (upper)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All arrivals:
 -------------
+Proporotion of arrivals with determmined NIHSS: 0.935
 Proportion of arrivals with known stroke onset: 0.669
 Proportion known stroke onset arriving within 12 hours: 0.799
                      Counts  Prop known onset  Cumulatative prop
@@ -2456,6 +2401,7 @@ Arrival bin (upper)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restirct to mild stroke</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">5</span>
 <span class="n">data_mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">proportion_mild_stroke</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">total_with_determined_nihss</span>
 
 <span class="c1"># Restrict to known onset</span>
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
@@ -2476,6 +2422,7 @@ Arrival bin (upper)
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mild stroke (NIHSS &lt;= 5):&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of all arrivals, with determined NIHSS, with mild stroke: </span><span class="si">{</span><span class="n">proportion_mild_stroke</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">prop_known_onset_mild</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">df_mild_arrivals</span><span class="p">)</span>
@@ -2485,6 +2432,7 @@ Arrival bin (upper)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mild stroke (NIHSS &lt;= 5):
 -------------------------
+Proportion of all arrivals, with determined NIHSS, with mild stroke: 0.564
 Proportion of arrivals with known stroke onset: 0.645
 Proportion known stroke onset arriving within 12 hours: 0.723
                      Counts  Prop known onset  Cumulatative prop
@@ -2523,6 +2471,7 @@ Arrival bin (upper)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restirct to mild stroke</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">5</span>
 <span class="n">data_not_mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">proportion_not_mild_stroke</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">total_with_determined_nihss</span>
 
 <span class="c1"># Restrict to known onset</span>
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
@@ -2544,7 +2493,8 @@ Arrival bin (upper)
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Non-mild stroke (NIHSS &gt;5):&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">prop_known_onset_not_mild</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">proportion_not_mild_stroke</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of all arrivals, with determined NIHSS, with mild stroke: </span><span class="si">{</span><span class="n">proportion_not_mild_stroke</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">df_not_mild_arrivals</span><span class="p">)</span>
 </pre></div>
@@ -2553,7 +2503,8 @@ Arrival bin (upper)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-mild stroke (NIHSS &gt;5):
 -------------------------
-Proportion of arrivals with known stroke onset: 0.715
+Proportion of arrivals with known stroke onset: 0.436
+Proportion of all arrivals, with determined NIHSS, with mild stroke: 0.436
 Proportion known stroke onset arriving within 12 hours: 0.883
                      Counts  Prop known onset  Cumulatative prop
 Arrival bin (upper)                                             
@@ -2619,19 +2570,7 @@ Arrival bin (upper)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_descriptive_42_0.png" src="../_images/01_descriptive_42_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_known_onset_mild</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6454027501629045
-</pre></div>
-</div>
+<img alt="../_images/01_descriptive_41_0.png" src="../_images/01_descriptive_41_0.png" />
 </div>
 </div>
 </div>
