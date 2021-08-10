@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Descriptive analysis of stroke pathway data &#8212; SAMueL Stroke Audit Machine Learning</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -57,14 +53,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Association between patient features on use of thrombolysis" href="04_thrombolysis_general.html" />
     <link rel="prev" title="Outline - what is in this section?" href="outline.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -73,30 +69,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Summary
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/abstract.html">
    Abstract
@@ -128,12 +124,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/stroke_thrombolysis.html">
    An introduction to stroke and thrombolysis
@@ -155,12 +151,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -172,17 +168,22 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active collapsible-parent">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="outline.html">
    Outline - what is in this section?
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Descriptive analysis of stroke pathway data
@@ -224,26 +225,29 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Machine Learning
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/kfold.html">
    Assessing accuracy of models with stratified k-fold cross-validation
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
@@ -255,14 +259,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../random_forest/outline.html">
    Random Forests
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
@@ -314,14 +321,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neural_net/outline.html">
    Neural Networks
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
@@ -353,11 +363,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
-     Aims
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
@@ -365,11 +370,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
      Modular TensorFlow model with 2D embedding - analyse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
-     Aims
     </a>
    </li>
    <li class="toctree-l2">
@@ -393,22 +393,20 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ensemble/outline.html">
    Ensemble Models
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
      Ensemble model fitting - generate probabilities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html#add-actual-use-of-thrombolysis">
-     Add actual use of thrombolysis
     </a>
    </li>
    <li class="toctree-l2">
@@ -437,21 +435,24 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Pathway Simulation
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../pathway_sim/outline_model.html">
    Model building and validation
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/thrombolysis_effect.html">
      Plotting the relationship between time to treatment and the probability of a good outcome
@@ -473,14 +474,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
      Stroke pathway simulation - generation of results from alternative scenarios
@@ -502,16 +506,14 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Qualitative research and PPI
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../qual/qual.html">
    Qualitative research
@@ -523,12 +525,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Appendicies
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/acknowledgements.html">
    Acknowledgements
@@ -536,6 +538,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -585,12 +588,12 @@
 
             <!-- Source interaction buttons -->
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -599,12 +602,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aim">
    Aim
@@ -668,14 +670,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-onset-to-arrival-times">
+   Analyse onset-to-arrival times
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-observations">
    General observations
   </a>
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -684,9 +690,9 @@
         
               <div>
                 
-  <section id="descriptive-analysis-of-stroke-pathway-data">
+  <div class="section" id="descriptive-analysis-of-stroke-pathway-data">
 <h1>Descriptive analysis of stroke pathway data<a class="headerlink" href="#descriptive-analysis-of-stroke-pathway-data" title="Permalink to this headline">¶</a></h1>
-<section id="aim">
+<div class="section" id="aim">
 <h2>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">¶</a></h2>
 <p>Describe key pathway statistics</p>
 <ul class="simple">
@@ -694,9 +700,10 @@
 <li><p>Analyse pathway statistics by stroke team, and combined across all stroke teams.</p></li>
 <li><p>Repeat team and combined analysis by age category (under aged 80 years, and aged 80+).</p></li>
 <li><p>Create histograms of variation in key statistics across stroke teams.</p></li>
+<li><p>Analyse onset-to-arrival (and breakdown by mild and non-mild stroke)</p></li>
 </ul>
-</section>
-<section id="import-libraries-and-data">
+</div>
+<div class="section" id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has been restricted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
 <div class="cell docutils container">
@@ -807,8 +814,8 @@ memory usage: 116.7+ MB
 </div>
 </div>
 </div>
-</section>
-<section id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+</div>
+<div class="section" id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
 <h2>Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients<a class="headerlink" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -841,8 +848,8 @@ memory usage: 116.7+ MB
 </div>
 </div>
 </div>
-</section>
-<section id="compare-thrombolysis-use-for-out-of-hospital-and-in-hospital-stroke-onset">
+</div>
+<div class="section" id="compare-thrombolysis-use-for-out-of-hospital-and-in-hospital-stroke-onset">
 <h2>Compare thrombolysis use for out-of-hospital and in-hospital stroke onset<a class="headerlink" href="#compare-thrombolysis-use-for-out-of-hospital-and-in-hospital-stroke-onset" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,8 +884,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-</section>
-<section id="restrict-data-to-out-of-hospital-onset">
+</div>
+<div class="section" id="restrict-data-to-out-of-hospital-onset">
 <h2>Restrict data to out-of-hospital onset<a class="headerlink" href="#restrict-data-to-out-of-hospital-onset" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,8 +895,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-</section>
-<section id="function-for-analysis-by-stroke-team">
+</div>
+<div class="section" id="function-for-analysis-by-stroke-team">
 <h2>Function for analysis by stroke team<a class="headerlink" href="#function-for-analysis-by-stroke-team" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1042,8 +1049,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-</section>
-<section id="create-analysis-by-team-and-show-summary">
+</div>
+<div class="section" id="create-analysis-by-team-and-show-summary">
 <h2>Create analysis by team and show summary<a class="headerlink" href="#create-analysis-by-team-and-show-summary" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1360,8 +1367,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-</section>
-<section id="analyse-for-all-patients-together">
+</div>
+<div class="section" id="analyse-for-all-patients-together">
 <h2>Analyse for all patients together<a class="headerlink" href="#analyse-for-all-patients-together" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1384,8 +1391,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-</section>
-<section id="analysis-by-under-age-80-vs-80">
+</div>
+<div class="section" id="analysis-by-under-age-80-vs-80">
 <h2>Analysis by under age 80 vs 80+<a class="headerlink" href="#analysis-by-under-age-80-vs-80" title="Permalink to this headline">¶</a></h2>
 <p>Repeat general and hospital level analysis by age stratification</p>
 <div class="cell docutils container">
@@ -1400,7 +1407,7 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-<section id="under-age-80">
+<div class="section" id="under-age-80">
 <h3>Under age 80<a class="headerlink" href="#under-age-80" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1726,8 +1733,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
-</section>
-<section id="aged-80">
+</div>
+<div class="section" id="aged-80">
 <h3>Aged 80+<a class="headerlink" href="#aged-80" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2107,20 +2114,20 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
     <tr>
       <th>80_plus</th>
       <td>0.423219</td>
-      <td>0</td>
-      <td>1</td>
+      <td>0.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>rankin_before_stroke_all</th>
-      <td>1.04732</td>
+      <td>1.047315</td>
       <td>0.654225</td>
-      <td>1.59853</td>
+      <td>1.598534</td>
     </tr>
     <tr>
       <th>nihss_arrival_all</th>
       <td>7.46584</td>
-      <td>6.36386</td>
-      <td>9.05927</td>
+      <td>6.363859</td>
+      <td>9.059266</td>
     </tr>
     <tr>
       <th>onset_known</th>
@@ -2142,27 +2149,27 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
     </tr>
     <tr>
       <th>rankin_before_stroke_4hrs</th>
-      <td>1.05969</td>
+      <td>1.059689</td>
       <td>0.623704</td>
-      <td>1.65387</td>
+      <td>1.653869</td>
     </tr>
     <tr>
       <th>nihss_arrival_4hrs</th>
-      <td>9.21473</td>
-      <td>8.17881</td>
-      <td>10.6659</td>
+      <td>9.214728</td>
+      <td>8.178815</td>
+      <td>10.66594</td>
     </tr>
     <tr>
       <th>onset_arrival_mins_mu</th>
-      <td>111.393</td>
-      <td>109.258</td>
-      <td>114.301</td>
+      <td>111.392722</td>
+      <td>109.258422</td>
+      <td>114.30144</td>
     </tr>
     <tr>
       <th>onset_arrival_mins_sigma</th>
-      <td>52.7291</td>
-      <td>52.8406</td>
-      <td>52.4377</td>
+      <td>52.729071</td>
+      <td>52.840638</td>
+      <td>52.437656</td>
     </tr>
     <tr>
       <th>scan_within_4_hrs</th>
@@ -2172,15 +2179,15 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
     </tr>
     <tr>
       <th>arrival_scan_mins_mu</th>
-      <td>42.1014</td>
-      <td>41.5845</td>
-      <td>42.8095</td>
+      <td>42.101407</td>
+      <td>41.584525</td>
+      <td>42.809469</td>
     </tr>
     <tr>
       <th>arrival_scan_mins_sigma</th>
-      <td>44.7938</td>
-      <td>44.5686</td>
-      <td>45.0914</td>
+      <td>44.793795</td>
+      <td>44.568632</td>
+      <td>45.091427</td>
     </tr>
     <tr>
       <th>eligable</th>
@@ -2190,39 +2197,39 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
     </tr>
     <tr>
       <th>scan_needle_mins_mu</th>
-      <td>35.9556</td>
-      <td>36.5091</td>
-      <td>34.9572</td>
+      <td>35.955574</td>
+      <td>36.509091</td>
+      <td>34.957163</td>
     </tr>
     <tr>
       <th>scan_needle_mins_sigma</th>
-      <td>28.3803</td>
-      <td>29.29</td>
-      <td>26.6335</td>
+      <td>28.380323</td>
+      <td>29.290013</td>
+      <td>26.633541</td>
     </tr>
     <tr>
       <th>arrival_needle_mins_mu</th>
-      <td>58.8163</td>
-      <td>60.0172</td>
-      <td>56.6501</td>
+      <td>58.816315</td>
+      <td>60.017234</td>
+      <td>56.650144</td>
     </tr>
     <tr>
       <th>arrival_needle_mins_sigma</th>
-      <td>35.1624</td>
-      <td>36.6569</td>
-      <td>32.1809</td>
+      <td>35.162372</td>
+      <td>36.656941</td>
+      <td>32.180851</td>
     </tr>
     <tr>
       <th>onset_needle_mins_mu</th>
-      <td>155.778</td>
-      <td>156.465</td>
-      <td>154.538</td>
+      <td>155.77768</td>
+      <td>156.465147</td>
+      <td>154.537656</td>
     </tr>
     <tr>
       <th>onset_needle_mins_sigma</th>
-      <td>54.0356</td>
-      <td>55.2386</td>
-      <td>51.7749</td>
+      <td>54.035606</td>
+      <td>55.238587</td>
+      <td>51.774937</td>
     </tr>
     <tr>
       <th>thrombolysis_after_180_min</th>
@@ -2232,17 +2239,17 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
     </tr>
     <tr>
       <th>thrombolysis_after_270_min</th>
-      <td>0.0167264</td>
-      <td>0.0183003</td>
-      <td>0.0138874</td>
+      <td>0.016726</td>
+      <td>0.0183</td>
+      <td>0.013887</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="summary-figure">
+</div>
+</div>
+<div class="section" id="summary-figure">
 <h2>Summary figure<a class="headerlink" href="#summary-figure" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2316,8 +2323,319 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 <img alt="../_images/01_descriptive_33_0.png" src="../_images/01_descriptive_33_0.png" />
 </div>
 </div>
-</section>
-<section id="general-observations">
+</div>
+<div class="section" id="analyse-onset-to-arrival-times">
+<h2>Analyse onset-to-arrival times<a class="headerlink" href="#analyse-onset-to-arrival-times" title="Permalink to this headline">¶</a></h2>
+<p>All arrivals</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict to known onset</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">data_known_onset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Get counts of arrival times, up to 12 hours, in 30 min bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">721</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">arrivals_all</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data_known_onset</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">prop_arrivals_in_12_hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arrivals_all</span><span class="p">)</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_all_arrivals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df_all_arrivals</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All arrivals:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All arrivals:
+-------------
+Proportion of arrivals with known stroke onset: 0.669
+Proportion known stroke onset arriving within 12 hours: 0.799
+                     Counts  Prop known onset  Cumulatative prop
+Arrival bin (upper)                                             
+30                     1819          0.011995           0.011995
+60                    11283          0.074401           0.086396
+90                    23536          0.155198           0.241594
+120                   18806          0.124008           0.365603
+150                   12402          0.081780           0.447382
+180                    8791          0.057969           0.505351
+210                    6731          0.044385           0.549736
+240                    5283          0.034837           0.584572
+270                    4344          0.028645           0.613217
+300                    3653          0.024088           0.637305
+330                    3133          0.020659           0.657965
+360                    2767          0.018246           0.676211
+390                    2486          0.016393           0.692603
+420                    2109          0.013907           0.706510
+450                    1968          0.012977           0.719488
+480                    1690          0.011144           0.730632
+510                    1599          0.010544           0.741175
+540                    1454          0.009588           0.750763
+570                    1376          0.009073           0.759837
+600                    1235          0.008144           0.767980
+630                    1202          0.007926           0.775907
+660                    1163          0.007669           0.783575
+690                    1136          0.007491           0.791066
+720                    1158          0.007636           0.798702
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict to known onset</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">data_known_onset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">prop_known_onset_all</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Get counts of arrival times, up to 12 hours, in 30 min bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">721</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">arrivals_all</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data_known_onset</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">prop_arrivals_in_12_hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arrivals_all</span><span class="p">)</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_all_arrivals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df_all_arrivals</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All arrivals:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">prop_known_onset_all</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">df_all_arrivals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All arrivals:
+-------------
+Proportion of arrivals with known stroke onset: 0.669
+Proportion known stroke onset arriving within 12 hours: 0.799
+                     Counts  Prop known onset  Cumulatative prop
+Arrival bin (upper)                                             
+30                     1819          0.011995           0.011995
+60                    11283          0.074401           0.086396
+90                    23536          0.155198           0.241594
+120                   18806          0.124008           0.365603
+150                   12402          0.081780           0.447382
+180                    8791          0.057969           0.505351
+210                    6731          0.044385           0.549736
+240                    5283          0.034837           0.584572
+270                    4344          0.028645           0.613217
+300                    3653          0.024088           0.637305
+330                    3133          0.020659           0.657965
+360                    2767          0.018246           0.676211
+390                    2486          0.016393           0.692603
+420                    2109          0.013907           0.706510
+450                    1968          0.012977           0.719488
+480                    1690          0.011144           0.730632
+510                    1599          0.010544           0.741175
+540                    1454          0.009588           0.750763
+570                    1376          0.009073           0.759837
+600                    1235          0.008144           0.767980
+630                    1202          0.007926           0.775907
+660                    1163          0.007669           0.783575
+690                    1136          0.007491           0.791066
+720                    1158          0.007636           0.798702
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mild stroke (NIHSS &lt;= 5)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restirct to mild stroke</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">5</span>
+<span class="n">data_mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Restrict to known onset</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_mild</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">data_known_onset</span> <span class="o">=</span> <span class="n">data_mild</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">prop_known_onset_mild</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Get counts of arrival times, up to 12 hours, in 30 min bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">721</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">arrivals_all</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data_known_onset</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">prop_arrivals_in_12_hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arrivals_all</span><span class="p">)</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_mild_arrivals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df_mild_arrivals</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span>
+<span class="n">df_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">df_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mild stroke (NIHSS &lt;= 5):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">prop_known_onset_mild</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">df_mild_arrivals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mild stroke (NIHSS &lt;= 5):
+-------------------------
+Proportion of arrivals with known stroke onset: 0.645
+Proportion known stroke onset arriving within 12 hours: 0.723
+                     Counts  Prop known onset  Cumulatative prop
+Arrival bin (upper)                                             
+30                      810          0.010485           0.010485
+60                     3767          0.048760           0.059245
+90                     8347          0.108043           0.167288
+120                    7769          0.100562           0.267850
+150                    5840          0.075593           0.343443
+180                    4290          0.055530           0.398972
+210                    3464          0.044838           0.443810
+240                    2807          0.036334           0.480144
+270                    2369          0.030664           0.510808
+300                    2010          0.026017           0.536826
+330                    1760          0.022781           0.559607
+360                    1545          0.019998           0.579605
+390                    1409          0.018238           0.597844
+420                    1240          0.016051           0.613894
+450                    1204          0.015585           0.629479
+480                     975          0.012620           0.642099
+510                     978          0.012659           0.654758
+540                     895          0.011585           0.666343
+570                     843          0.010912           0.677255
+600                     759          0.009824           0.687079
+630                     743          0.009617           0.696697
+660                     697          0.009022           0.705719
+690                     681          0.008815           0.714533
+720                     682          0.008828           0.723361
+</pre></div>
+</div>
+</div>
+</div>
+<p>Non-mild stroke (NIHSS &gt; 5)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restirct to mild stroke</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">5</span>
+<span class="n">data_not_mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Restrict to known onset</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Precise&#39;</span><span class="p">,</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_not_mild</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">data_known_onset</span> <span class="o">=</span> <span class="n">data_not_mild</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">prop_known_onset_not_mild</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Get counts of arrival times, up to 12 hours, in 30 min bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">721</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">arrivals_all</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data_known_onset</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
+<span class="n">prop_arrivals_in_12_hours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">arrivals_all</span><span class="p">)</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_not_mild_arrivals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_not_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df_not_mild_arrivals</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Arrival bin (upper)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_not_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span>
+<span class="n">df_not_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrivals_all</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_not_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span>
+    <span class="n">df_not_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Prop known onset&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Non-mild stroke (NIHSS &gt;5):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of arrivals with known stroke onset: </span><span class="si">{</span><span class="n">prop_known_onset_not_mild</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion known stroke onset arriving within 12 hours: </span><span class="si">{</span><span class="n">prop_arrivals_in_12_hours</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">df_not_mild_arrivals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-mild stroke (NIHSS &gt;5):
+-------------------------
+Proportion of arrivals with known stroke onset: 0.715
+Proportion known stroke onset arriving within 12 hours: 0.883
+                     Counts  Prop known onset  Cumulatative prop
+Arrival bin (upper)                                             
+30                      915          0.013852           0.013852
+60                     6813          0.103141           0.116993
+90                    13655          0.206722           0.323715
+120                    9899          0.149860           0.473575
+150                    5874          0.088926           0.562501
+180                    4058          0.061434           0.623935
+210                    2920          0.044206           0.668140
+240                    2238          0.033881           0.702021
+270                    1756          0.026584           0.728605
+300                    1421          0.021512           0.750117
+330                    1220          0.018469           0.768587
+360                    1067          0.016153           0.784740
+390                     949          0.014367           0.799107
+420                     750          0.011354           0.810461
+450                     654          0.009901           0.820362
+480                     631          0.009553           0.829914
+510                     537          0.008130           0.838044
+540                     473          0.007161           0.845205
+570                     465          0.007040           0.852244
+600                     406          0.006146           0.858391
+630                     394          0.005965           0.864355
+660                     398          0.006025           0.870381
+690                     396          0.005995           0.876376
+720                     413          0.006252           0.882628
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df_all_arrivals</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">df_all_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">df_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">df_not_mild_arrivals</span><span class="p">[</span><span class="s1">&#39;Cumulatative prop&#39;</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;All arrivals&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NIHSS &lt;= 5&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NIHSS &gt;5&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to arrival (minutes)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of patients (with known onset)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#39;&#39;Proportion all arrivals with known onset </span><span class="si">{</span><span class="n">prop_known_onset_all</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1"></span>
+<span class="s1">Proportion NIHSS &lt;=5 arrivals with known onset </span><span class="si">{</span><span class="n">prop_known_onset_mild</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1"></span>
+<span class="s1">Proportion NIHSS &gt;5 arrivals with known onset </span><span class="si">{</span><span class="n">prop_known_onset_not_mild</span><span class="si">:</span><span class="s1">0.3</span><span class="si">}</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="n">props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;square&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">175</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">props</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/onset_to_arrival.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_descriptive_42_0.png" src="../_images/01_descriptive_42_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop_known_onset_mild</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6454027501629045
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="general-observations">
 <h2>General observations<a class="headerlink" href="#general-observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>There are 239,505 admissions (2016-2018) to 132 stroke teams that receive at least 300 admissions and provide thrombolysis to at least 10 patients over the course of three years (2016-2018).</p></li>
@@ -2354,8 +2672,8 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 <li><p>The average stroke severity (NIHSS) on arrival is 10.7 for those aged 80+, c.f. 8.2 for those under age 80.</p></li>
 <li><p>Of those scanned within 4 hours, 26.3% of those aged 80+ receive thrombolysis, c.f. 34.7% of those under age 80.</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2404,11 +2722,9 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

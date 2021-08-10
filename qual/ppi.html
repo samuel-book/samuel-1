@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Public and Patient Involvement &#8212; SAMueL Stroke Audit Machine Learning</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -57,14 +53,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Acknowledgements" href="../introduction/acknowledgements.html" />
     <link rel="prev" title="Qualitative research" href="qual.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -73,30 +69,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Summary
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/abstract.html">
    Abstract
@@ -128,12 +124,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/stroke_thrombolysis.html">
    An introduction to stroke and thrombolysis
@@ -155,12 +151,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -172,17 +168,22 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../descriptive_stats/outline.html">
    Outline - what is in this section?
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
      Descriptive analysis of stroke pathway data
@@ -224,26 +225,29 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Machine Learning
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/kfold.html">
    Assessing accuracy of models with stratified k-fold cross-validation
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
@@ -255,14 +259,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../random_forest/outline.html">
    Random Forests
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
@@ -314,14 +321,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neural_net/outline.html">
    Neural Networks
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
@@ -353,11 +363,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html#aims">
-     Aims
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
@@ -365,11 +370,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
      Modular TensorFlow model with 2D embedding - analyse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html#aims">
-     Aims
     </a>
    </li>
    <li class="toctree-l2">
@@ -393,22 +393,20 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ensemble/outline.html">
    Ensemble Models
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
      Ensemble model fitting - generate probabilities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html#add-actual-use-of-thrombolysis">
-     Add actual use of thrombolysis
     </a>
    </li>
    <li class="toctree-l2">
@@ -437,21 +435,24 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Pathway Simulation
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../pathway_sim/outline_model.html">
    Model building and validation
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/thrombolysis_effect.html">
      Plotting the relationship between time to treatment and the probability of a good outcome
@@ -473,14 +474,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
      Stroke pathway simulation - generation of results from alternative scenarios
@@ -502,16 +506,14 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Qualitative research and PPI
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="qual.html">
    Qualitative research
@@ -523,12 +525,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Appendicies
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/acknowledgements.html">
    Acknowledgements
@@ -536,6 +538,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -585,12 +588,12 @@
 
             <!-- Source interaction buttons -->
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -607,7 +610,7 @@
         
               <div>
                 
-  <section id="public-and-patient-involvement">
+  <div class="section" id="public-and-patient-involvement">
 <h1>Public and Patient Involvement<a class="headerlink" href="#public-and-patient-involvement" title="Permalink to this headline">¶</a></h1>
 <p>(Kristin Liabo, Leon Farmer &amp; Penny Thompson)</p>
 <p>Aims for involving patients and carers in SAMueL: The research team planned to invite two people with personal experience of having a stroke, or personal experience of caring for a family member at home after they had a stroke, to sit on the study steering group. In addition we planned to establish a patient and carer advisory group of 6-8 members who would meet with the lead researchers separately to the steering group.</p>
@@ -622,7 +625,7 @@
 <p>Second, communicating the methods of SAMueL, and the findings, to patients and carers, has been valuable for the researchers in terms of learning to speak more clearly about their work, and about the public value of their research. Having a responsive audience has been useful for making the presentation of the research methods and results more accessible.
 Finally, and perhaps most importantly, the dialectic process that is public involvement has given the researchers a deeper understanding of their own work. As argued by the late Nobel Prize winner of physics, Richard Feynman, explaining things in simpler terms is hugely beneficial for the person doing the explanation. This has been borne out in the SAMueL study time and again.</p>
 <p>The involvement in this study has also been of some interest and benefit to the patients and carers themselves. A testimony of this can be found on the PenARC website, where Leon Farmer speaks about how he has been involved and what it means to him: <a class="reference external" href="https://arc-swp.nihr.ac.uk/patient-and-public-involvement/">https://arc-swp.nihr.ac.uk/patient-and-public-involvement/</a></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -671,11 +674,9 @@ Finally, and perhaps most importantly, the dialectic process that is public invo
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

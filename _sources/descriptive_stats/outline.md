@@ -2,7 +2,7 @@
 
 This section contains the following notebooks:
 
-* *Descriptive analysis of stroke pathway data*: Describe mean patient and pathway characteristics, and describe variation across stroke teams, and variation between age groups (under age 80 vs. 80+).
+* *Descriptive analysis of stroke pathway data*: Describe mean patient and pathway characteristics, and describe variation across stroke teams, and variation between age groups (under age 80 vs. 80+). Onset-to-arrival time analysis.
 
 * *Association between patient features on use of thrombolysis*: Examine relationship between patient features and use of thrombolysis. Analysis by Disability (modified Rankin Scale) before stroke; Stroke severity (NIHSS); Gender; Ethnicity; Age group; Onset known; Arrival by ambulance; Co-morbidities.
 

@@ -4,11 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Investigating the output of neural net embedding subnets - with 2D subnet output &#8212; SAMueL Stroke Audit Machine Learning</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -59,14 +55,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ensemble Models" href="../ensemble/outline.html" />
     <link rel="prev" title="Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset" href="005a_generate_2d_nets_for_10k.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -75,30 +71,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
    Introduction to SAMueL (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Summary
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/abstract.html">
    Abstract
@@ -130,12 +126,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/stroke_thrombolysis.html">
    An introduction to stroke and thrombolysis
@@ -157,12 +153,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Data and software
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/data.html">
    Data
@@ -174,17 +170,22 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Descriptive statistics
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../descriptive_stats/outline.html">
    Outline - what is in this section?
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/01_descriptive.html">
      Descriptive analysis of stroke pathway data
@@ -226,26 +227,29 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Machine Learning
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/kfold.html">
    Assessing accuracy of models with stratified k-fold cross-validation
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../logistic_regression/outline.html">
    Logistic Regression
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
      Logistic Regression Classifier - Fitting to all stroke teams together
@@ -257,14 +261,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../random_forest/outline.html">
    Random Forests
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
      Random Forest Classifier - Fitting to all stroke teams together
@@ -316,14 +323,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="outline.html">
    Neural Networks
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="001a_fully_connected_fit_check_training_time.html">
      Fully connected TensorFlow model - Check required training epochs
@@ -355,11 +365,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="002c_1d_modular_analyse.html#aims">
-     Aims
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="003a_2d_modular_fit.html">
      Modular TensorFlow model with 2D embedding - Train and save models
     </a>
@@ -367,11 +372,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="003b_2d_modular_analyse.html">
      Modular TensorFlow model with 2D embedding - analyse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="003b_2d_modular_analyse.html#aims">
-     Aims
     </a>
    </li>
    <li class="toctree-l2">
@@ -395,22 +395,20 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ensemble/outline.html">
    Ensemble Models
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
      Ensemble model fitting - generate probabilities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html#add-actual-use-of-thrombolysis">
-     Add actual use of thrombolysis
     </a>
    </li>
    <li class="toctree-l2">
@@ -439,21 +437,24 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Pathway Simulation
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../pathway_sim/outline_model.html">
    Model building and validation
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/thrombolysis_effect.html">
      Plotting the relationship between time to treatment and the probability of a good outcome
@@ -475,14 +476,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
    Testing of alternative what-if? scenarios
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
      Stroke pathway simulation - generation of results from alternative scenarios
@@ -504,16 +508,14 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Qualitative research and PPI
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../qual/qual.html">
    Qualitative research
@@ -525,12 +527,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Appendicies
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/acknowledgements.html">
    Acknowledgements
@@ -538,6 +540,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -587,12 +590,12 @@
 
             <!-- Source interaction buttons -->
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -601,12 +604,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aims">
    Aims
@@ -693,8 +695,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -703,17 +704,17 @@
         
               <div>
                 
-  <section id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
+  <div class="section" id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
 <h1>Investigating the output of neural net embedding subnets - with 2D subnet output<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To investigate the output of the hospital and clinical subnets of the embedding neural network.</p></li>
 <li><p>To examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hopsital moodels.</p></li>
 <li><p>To examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output</p></li>
 </ul>
-</section>
-<section id="neural-network-structure">
+</div>
+<div class="section" id="neural-network-structure">
 <h2>Neural Network structure<a class="headerlink" href="#neural-network-structure" title="Permalink to this headline">¶</a></h2>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
 <ol class="simple">
@@ -723,12 +724,12 @@
 </ol>
 <p>The outputs of the three subnet outputs are then passed to a single neuron with sigmoid activation for final output.</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
-</section>
-<section id="fitting-of-model">
+</div>
+<div class="section" id="fitting-of-model">
 <h2>Fitting of model<a class="headerlink" href="#fitting-of-model" title="Permalink to this headline">¶</a></h2>
 <p>The model has been pretrained (see the notebook <em>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset</em>)</p>
-</section>
-<section id="load-libraries">
+</div>
+<div class="section" id="load-libraries">
 <h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -755,8 +756,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-function-to-scale-data">
+</div>
+<div class="section" id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <p>Scale input data 0-1 (MinMax scaling).</p>
 <div class="cell docutils container">
@@ -779,8 +780,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-model-outputs-for-test-data">
+</div>
+<div class="section" id="get-model-outputs-for-test-data">
 <h2>Get model outputs for test data<a class="headerlink" href="#get-model-outputs-for-test-data" title="Permalink to this headline">¶</a></h2>
 <p>Get prediction probabilities for the test 10k training set. Training data is used only to scale test set X values.</p>
 <p>This prediction run is used to check model, and get accuracy.</p>
@@ -866,8 +867,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
+</div>
+<div class="section" id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
 <h2>Get predictions for thrombolysis use of 10k set of patients at each hospital<a class="headerlink" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>Here we ask the counter-factual question - “what treatment would a patient be expected to receive at each of the 132 hospitals?”.</p>
 <p>Hospital is one-hot encoded as input to the hospital subnet. To make a prediction of treatment at different hospitals we change the one-hot encoding of the hospital when making prediction.</p>
@@ -1312,10 +1313,10 @@
 <p>10000 rows × 104 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="get-subnet-outputs">
+</div>
+<div class="section" id="get-subnet-outputs">
 <h2>Get subnet outputs<a class="headerlink" href="#get-subnet-outputs" title="Permalink to this headline">¶</a></h2>
-<section id="get-hospital-subnet-output">
+<div class="section" id="get-hospital-subnet-output">
 <h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1343,8 +1344,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-patient-subnet-output">
+</div>
+<div class="section" id="get-patient-subnet-output">
 <h3>Get patient subnet output<a class="headerlink" href="#get-patient-subnet-output" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1385,8 +1386,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-pathway-subnet-output">
+</div>
+<div class="section" id="get-pathway-subnet-output">
 <h3>Get pathway subnet output<a class="headerlink" href="#get-pathway-subnet-output" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1735,9 +1736,9 @@
 <p>10000 rows × 110 columns</p>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
+</div>
+</div>
+<div class="section" id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
 <h2>Comparing hospital subnet activation with thrombolysis use at each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>The hospital subnet outputs a single value (in the range 0-1) for each hospital.</p>
 <p>Here we compare the hospital subnet output for each hospital with:</p>
@@ -1773,8 +1774,8 @@
 </div>
 </div>
 <p>In this output, all hospitals appear to sit on <span class="math notranslate nohighlight">\(x=0\)</span> or <span class="math notranslate nohighlight">\(y=1\)</span>, with use of thrombolysis in the hospital increasing along the <span class="math notranslate nohighlight">\(y\)</span> axis and then the <span class="math notranslate nohighlight">\(x\)</span> axis.</p>
-</section>
-<section id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
+</div>
+<div class="section" id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
 <h2>Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient<a class="headerlink" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1877,7 +1878,7 @@
 <p>The patients most likely to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of thrombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clinical subnet output.</p>
 <p>Patients appear to cluster mostly towards the edges of the plot.</p>
 <p>In the following analysis, we will look at the characteristics of patients in different parts of the scatter plot.</p>
-<section id="analysis-by-stroke-type">
+<div class="section" id="analysis-by-stroke-type">
 <h3>Analysis by stroke type<a class="headerlink" href="#analysis-by-stroke-type" title="Permalink to this headline">¶</a></h3>
 <p>Plot the location of stroke type by haemorrhage (red) or infarction (blue).</p>
 <div class="cell docutils container">
@@ -1915,9 +1916,9 @@
 </div>
 </div>
 <p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similarity between patients (driven by reasons to give or not give thrombolysis).</p>
-</section>
-</section>
-<section id="summarise-patients-in-corners-of-chart">
+</div>
+</div>
+<div class="section" id="summarise-patients-in-corners-of-chart">
 <h2>Summarise patients in corners of chart<a class="headerlink" href="#summarise-patients-in-corners-of-chart" title="Permalink to this headline">¶</a></h2>
 <p>Summarise key characteristics of patients in the four corners of the chart.</p>
 <div class="cell docutils container">
@@ -2142,12 +2143,12 @@
 <li><p><em>High x and low y</em>: Largely non-thrombolysed patients with haemorrhagic stroke.</p></li>
 <li><p><em>High x and high y</em>: Largely non-thrombolysed patients with infarction stroke and very mild stroke.</p></li>
 </ul>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <p>2D clinical subnet analysis allows leads to potentially useful embedding/encoding of patients whereby similar patients are clustered together.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2196,11 +2197,9 @@
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>
