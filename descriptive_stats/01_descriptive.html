@@ -2440,6 +2440,21 @@ Arrival bin (upper)
 <p>Mild stroke (NIHSS &lt;= 5)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion mild stroke</span>
+<span class="n">mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">5</span>
+<span class="n">prop_mild</span> <span class="o">=</span> <span class="n">mild</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion mild </span><span class="si">{</span><span class="n">prop_mild</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion mild 0.53
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restirct to mild stroke</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;=</span><span class="mi">5</span>
 <span class="n">data_mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
@@ -2508,6 +2523,21 @@ Arrival bin (upper)
 </div>
 </div>
 <p>Non-mild stroke (NIHSS &gt; 5)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion non-mild stroke</span>
+<span class="n">non_mild</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">5</span>
+<span class="n">prop_non_mild</span> <span class="o">=</span> <span class="n">non_mild</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion non-mild </span><span class="si">{</span><span class="n">prop_non_mild</span><span class="si">:</span><span class="s1">0.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proportion non-mild 0.41
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restirct to mild stroke</span>
@@ -2613,7 +2643,7 @@ Arrival bin (upper)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_descriptive_45_0.png" src="../_images/01_descriptive_45_0.png" />
+<img alt="../_images/01_descriptive_47_0.png" src="../_images/01_descriptive_47_0.png" />
 </div>
 </div>
 </div>
