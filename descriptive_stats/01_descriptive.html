@@ -690,6 +690,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#queries-on-time-of-arrival-and-nihss-for-patients-who-receive-thrombolysis">
+   Queries on time of arrival and NIHSS for patients who receive thrombolysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-observations">
    General observations
   </a>
@@ -3021,6 +3026,63 @@ Arrival bin (upper)
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/01_descriptive_52_0.png" src="../_images/01_descriptive_52_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="queries-on-time-of-arrival-and-nihss-for-patients-who-receive-thrombolysis">
+<h2>Queries on time of arrival and NIHSS for patients who receive thrombolysis<a class="headerlink" href="#queries-on-time-of-arrival-and-nihss-for-patients-who-receive-thrombolysis" title="Permalink to this headline">¶</a></h2>
+<p>See also later section on comparison of average values for patients who receive thrombolysis and those that do not (though that data is for patients who arrive within 4 hours of known stroke onset)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_thrombolysed</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">]</span>
+<span class="n">thrombolysed</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="c1"># Onset known</span>
+<span class="n">onset_known</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_thrombolysed</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Precise&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">data_thrombolysed</span><span class="p">[</span><span class="s1">&#39;S1OnsetTimeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Best estimate&#39;</span><span class="p">)</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;onset known&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">onset_known</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Arrival within 4 hours</span>
+<span class="n">arrive_4_hours</span> <span class="o">=</span> <span class="n">data_thrombolysed</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;arrive within 4 hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrive_4_hours</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Arrival within 6 hours</span>
+<span class="n">arrive_6_hours</span> <span class="o">=</span> <span class="n">data_thrombolysed</span><span class="p">[</span><span class="s1">&#39;S1OnsetToArrival_min&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">360</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;arrive within 6 hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrive_6_hours</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># NIHSS &gt;5</span>
+<span class="n">nihss_greater_5</span> <span class="o">=</span> <span class="n">data_thrombolysed</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">5</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;nihss 6+&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nihss_greater_5</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">nihss_greater_5_arrival_4_hrs</span> <span class="o">=</span> <span class="n">nihss_greater_5</span> <span class="o">&amp;</span> <span class="n">arrive_4_hours</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;nihss 6+ and arrive in 4 hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nihss_greater_5_arrival_4_hrs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">nihss_greater_5_arrival_6_hrs</span> <span class="o">=</span> <span class="n">nihss_greater_5</span> <span class="o">&amp;</span> <span class="n">arrive_6_hours</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;nihss 6+ and arrive in 6 hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nihss_greater_5_arrival_6_hrs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># NIHSS &gt;10</span>
+<span class="n">nihss_greater_10</span> <span class="o">=</span> <span class="n">data_thrombolysed</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">10</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;nihss 11+&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nihss_greater_10</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">nihss_greater_10_arrival_4_hrs</span> <span class="o">=</span> <span class="n">nihss_greater_10</span> <span class="o">&amp;</span> <span class="n">arrive_4_hours</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;nihss 11+ and arrive in 4 hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nihss_greater_10_arrival_4_hrs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">nihss_greater_10_arrival_6_hrs</span> <span class="o">=</span> <span class="n">nihss_greater_10</span> <span class="o">&amp;</span> <span class="n">arrive_6_hours</span>
+<span class="n">thrombolysed</span><span class="p">[</span><span class="s1">&#39;nihss 11+ and arrive in 6 hours&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nihss_greater_10_arrival_6_hrs</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">thrombolysed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">thrombolysed</span><span class="p">)</span>
+<span class="n">thrombolysed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>onset known                        0.988926
+arrive within 4 hours              0.979045
+arrive within 6 hours              0.987211
+nihss 6+                           0.739252
+nihss 6+ and arrive in 4 hours     0.723330
+nihss 6+ and arrive in 6 hours     0.729520
+nihss 11+                          0.451247
+nihss 11+ and arrive in 4 hours    0.440807
+nihss 11+ and arrive in 6 hours    0.444573
+dtype: float64
+</pre></div>
+</div>
 </div>
 </div>
 </div>
