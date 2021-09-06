@@ -680,6 +680,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-stroke-severity">
+   Analysis of stroke severity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analyse-onset-to-arrival-times">
    Analyse onset-to-arrival times
   </a>
@@ -2366,6 +2371,301 @@ Thrombolysis use (%) for out-of-hospital-onset 11.8
 </div>
 </div>
 </div>
+<div class="section" id="analysis-of-stroke-severity">
+<h2>Analysis of stroke severity<a class="headerlink" href="#analysis-of-stroke-severity" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict to known NIHSS</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">known_NIHSS</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">known_NIHSS</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+<span class="n">counts</span><span class="p">[</span><span class="s1">&#39;cum_sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">])</span>
+<span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>S2NihssArrival</th>
+      <th>cum_sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>14658</td>
+      <td>14658</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>21117</td>
+      <td>35775</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>27521</td>
+      <td>63296</td>
+    </tr>
+    <tr>
+      <th>3.0</th>
+      <td>22765</td>
+      <td>86061</td>
+    </tr>
+    <tr>
+      <th>4.0</th>
+      <td>18955</td>
+      <td>105016</td>
+    </tr>
+    <tr>
+      <th>5.0</th>
+      <td>14686</td>
+      <td>119702</td>
+    </tr>
+    <tr>
+      <th>6.0</th>
+      <td>11783</td>
+      <td>131485</td>
+    </tr>
+    <tr>
+      <th>7.0</th>
+      <td>9334</td>
+      <td>140819</td>
+    </tr>
+    <tr>
+      <th>8.0</th>
+      <td>7519</td>
+      <td>148338</td>
+    </tr>
+    <tr>
+      <th>9.0</th>
+      <td>5987</td>
+      <td>154325</td>
+    </tr>
+    <tr>
+      <th>10.0</th>
+      <td>5322</td>
+      <td>159647</td>
+    </tr>
+    <tr>
+      <th>11.0</th>
+      <td>4675</td>
+      <td>164322</td>
+    </tr>
+    <tr>
+      <th>12.0</th>
+      <td>4102</td>
+      <td>168424</td>
+    </tr>
+    <tr>
+      <th>13.0</th>
+      <td>3649</td>
+      <td>172073</td>
+    </tr>
+    <tr>
+      <th>14.0</th>
+      <td>3513</td>
+      <td>175586</td>
+    </tr>
+    <tr>
+      <th>15.0</th>
+      <td>3292</td>
+      <td>178878</td>
+    </tr>
+    <tr>
+      <th>16.0</th>
+      <td>3190</td>
+      <td>182068</td>
+    </tr>
+    <tr>
+      <th>17.0</th>
+      <td>3171</td>
+      <td>185239</td>
+    </tr>
+    <tr>
+      <th>18.0</th>
+      <td>3058</td>
+      <td>188297</td>
+    </tr>
+    <tr>
+      <th>19.0</th>
+      <td>2953</td>
+      <td>191250</td>
+    </tr>
+    <tr>
+      <th>20.0</th>
+      <td>2747</td>
+      <td>193997</td>
+    </tr>
+    <tr>
+      <th>21.0</th>
+      <td>2484</td>
+      <td>196481</td>
+    </tr>
+    <tr>
+      <th>22.0</th>
+      <td>2316</td>
+      <td>198797</td>
+    </tr>
+    <tr>
+      <th>23.0</th>
+      <td>2056</td>
+      <td>200853</td>
+    </tr>
+    <tr>
+      <th>24.0</th>
+      <td>1955</td>
+      <td>202808</td>
+    </tr>
+    <tr>
+      <th>25.0</th>
+      <td>1673</td>
+      <td>204481</td>
+    </tr>
+    <tr>
+      <th>26.0</th>
+      <td>1483</td>
+      <td>205964</td>
+    </tr>
+    <tr>
+      <th>27.0</th>
+      <td>1204</td>
+      <td>207168</td>
+    </tr>
+    <tr>
+      <th>28.0</th>
+      <td>1040</td>
+      <td>208208</td>
+    </tr>
+    <tr>
+      <th>29.0</th>
+      <td>705</td>
+      <td>208913</td>
+    </tr>
+    <tr>
+      <th>30.0</th>
+      <td>579</td>
+      <td>209492</td>
+    </tr>
+    <tr>
+      <th>31.0</th>
+      <td>439</td>
+      <td>209931</td>
+    </tr>
+    <tr>
+      <th>32.0</th>
+      <td>398</td>
+      <td>210329</td>
+    </tr>
+    <tr>
+      <th>33.0</th>
+      <td>284</td>
+      <td>210613</td>
+    </tr>
+    <tr>
+      <th>34.0</th>
+      <td>247</td>
+      <td>210860</td>
+    </tr>
+    <tr>
+      <th>35.0</th>
+      <td>191</td>
+      <td>211051</td>
+    </tr>
+    <tr>
+      <th>36.0</th>
+      <td>169</td>
+      <td>211220</td>
+    </tr>
+    <tr>
+      <th>37.0</th>
+      <td>139</td>
+      <td>211359</td>
+    </tr>
+    <tr>
+      <th>38.0</th>
+      <td>159</td>
+      <td>211518</td>
+    </tr>
+    <tr>
+      <th>39.0</th>
+      <td>77</td>
+      <td>211595</td>
+    </tr>
+    <tr>
+      <th>40.0</th>
+      <td>146</td>
+      <td>211741</td>
+    </tr>
+    <tr>
+      <th>41.0</th>
+      <td>40</td>
+      <td>211781</td>
+    </tr>
+    <tr>
+      <th>42.0</th>
+      <td>311</td>
+      <td>212092</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;cum_sum&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of all patients&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;NIHSS&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add cumsum to second axis</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span> 
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cumulative sum&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative proportion of all patients&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/nihss_count.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01_descriptive_40_0.png" src="../_images/01_descriptive_40_0.png" />
+</div>
+</div>
+</div>
 <div class="section" id="analyse-onset-to-arrival-times">
 <h2>Analyse onset-to-arrival times<a class="headerlink" href="#analyse-onset-to-arrival-times" title="Permalink to this headline">¶</a></h2>
 <p>All arrivals</p>
@@ -2720,7 +3020,7 @@ Arrival bin (upper)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01_descriptive_49_0.png" src="../_images/01_descriptive_49_0.png" />
+<img alt="../_images/01_descriptive_52_0.png" src="../_images/01_descriptive_52_0.png" />
 </div>
 </div>
 </div>
