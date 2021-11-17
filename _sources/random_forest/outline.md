@@ -23,7 +23,3 @@ This section contains the following notebooks:
 * *Find similar patients who are treated differently within the same hospital*: Within a hospital identify patients where the model misclassified the patients. Then look for the most similar patients who where treated differently.
 
 * *What characterises a patient who is predicted to have high variation in thrombolysis use across different hospitals?*: Explotrs the differences between patients predicted to receive thrombolysis at at least 70% of hospitals, and those that are predicted to receive thrombolysis at at 40 to 70% of hospitals.
-
-
-
-

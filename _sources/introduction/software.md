@@ -17,3 +17,5 @@ All work is performed using Free and Open Source Software in Python (v. 3.8.5, w
 * *Jupyter Lab* (v. 2.2.6): Mixed code and markdown environment for writing and running code. pypi.org/project/jupyterlab/
 
 * *Jupyter Book* (v. 0.10.1): For production of this on-line book of project code and results. pypi.org/project/jupyter-book/
+
+* *Shap* (v. 0.40.0): A model-agnostic method for estimating the contribution of features to a prediction. https://pypi.org/project/shap/

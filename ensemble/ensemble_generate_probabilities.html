@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Ensemble model fitting - generate probabilities &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -709,7 +710,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ensemble-model-fitting-generate-probabilities">
+  <section class="tex2jax_ignore mathjax_ignore" id="ensemble-model-fitting-generate-probabilities">
 <h1>Ensemble model fitting - generate probabilities<a class="headerlink" href="#ensemble-model-fitting-generate-probabilities" title="Permalink to this headline">¶</a></h1>
 <p>Aims:</p>
 <ul class="simple">
@@ -723,7 +724,7 @@
 </ul>
 <p>This notebook runs fits for each type of model and returns the predicted probability of receiving thrombolysis for each model.</p>
 <p>In subsequent notebooks, these individual model outputs will be used as inputs for ensemble models</p>
-<div class="section" id="import-libraries">
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,8 +753,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="set-up-dataframes-for-probabilitiy-outputs">
+</section>
+<section id="set-up-dataframes-for-probabilitiy-outputs">
 <h2>Set up dataframes for probabilitiy outputs<a class="headerlink" href="#set-up-dataframes-for-probabilitiy-outputs" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -763,10 +764,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="standardise-data">
+<section id="standardise-data">
 <h3>Standardise data<a class="headerlink" href="#standardise-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -795,8 +796,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="minmax-scaling">
+</section>
+<section id="minmax-scaling">
 <h3>MinMax scaling<a class="headerlink" href="#minmax-scaling" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,9 +819,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="logistic-regression-model">
+</section>
+</section>
+<section id="logistic-regression-model">
 <h2>Logistic regression model<a class="headerlink" href="#logistic-regression-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -879,8 +880,8 @@ Test accuracy: 0.832
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="random-forests">
+</section>
+<section id="random-forests">
 <h2>Random forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -938,10 +939,10 @@ Test accuracy: 0.842
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="neural-nets-with-embedding">
+</section>
+<section id="neural-nets-with-embedding">
 <h2>Neural nets (with embedding)<a class="headerlink" href="#neural-nets-with-embedding" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="define-net">
+<section id="define-net">
 <h3>Define net<a class="headerlink" href="#define-net" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1017,8 +1018,8 @@ Test accuracy: 0.842
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-model">
+</section>
+<section id="fit-model">
 <h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1147,10 +1148,10 @@ Test accuracy: 0.850
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="add-actual-use-of-thrombolysis">
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="add-actual-use-of-thrombolysis">
 <h1>Add actual use of thrombolysis<a class="headerlink" href="#add-actual-use-of-thrombolysis" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1160,7 +1161,7 @@ Test accuracy: 0.850
 </div>
 </div>
 </div>
-<div class="section" id="save-results">
+<section id="save-results">
 <h2>Save results<a class="headerlink" href="#save-results" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1172,8 +1173,8 @@ Test accuracy: 0.850
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

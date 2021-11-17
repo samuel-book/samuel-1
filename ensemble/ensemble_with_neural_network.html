@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Ensemble combine with a neural network &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -671,10 +672,10 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ensemble-combine-with-a-neural-network">
+  <section class="tex2jax_ignore mathjax_ignore" id="ensemble-combine-with-a-neural-network">
 <h1>Ensemble combine with a neural network<a class="headerlink" href="#ensemble-combine-with-a-neural-network" title="Permalink to this headline">¶</a></h1>
 <p>Aim: To combine output from logistic regression, random forests, and neural network models in a neural network model, with or without original features.</p>
-<div class="section" id="import-libraries">
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -699,8 +700,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-to-normalise-data">
+</section>
+<section id="function-to-normalise-data">
 <h2>Function to normalise data<a class="headerlink" href="#function-to-normalise-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -722,8 +723,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-neural-net">
+</section>
+<section id="define-neural-net">
 <h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -763,8 +764,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-a-model-using-original-training-data-only">
+</section>
+<section id="fit-a-model-using-original-training-data-only">
 <h2>Fit a model using original training data only<a class="headerlink" href="#fit-a-model-using-original-training-data-only" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -840,8 +841,8 @@ Test accuracy: 0.834
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-a-model-using-model-probabilities-only">
+</section>
+<section id="fit-a-model-using-model-probabilities-only">
 <h2>Fit a model using model probabilities only<a class="headerlink" href="#fit-a-model-using-model-probabilities-only" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,8 +912,8 @@ Test accuracy: 0.835
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-a-model-using-original-features-and-model-probabilities">
+</section>
+<section id="fit-a-model-using-original-features-and-model-probabilities">
 <h2>Fit a model using original features and model probabilities<a class="headerlink" href="#fit-a-model-using-original-features-and-model-probabilities" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -996,14 +997,14 @@ Test accuracy: 0.830
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Including in model probability outputs from previous logistic regression, random forests, and neural networks, did not improve accuracy of the model compared to fitting a neural network model just on the original data.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
