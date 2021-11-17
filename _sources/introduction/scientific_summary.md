@@ -174,6 +174,17 @@ Clinical subnet embedding output marking of those patients with a haemorrhagic s
 
 * Using embedding neural networks, similar patients (e.g. haemorrhagic stroke patients, or patients with severe stroke) are located close together in embedding space. Patient embedding may also be use to rank patients in order of suitability for thrombolysis (by consensus across all hospitals). Similarly hospital embedding may be used to rank hospitals by likelihood to use thrombolysis, independent of patient and pathway characteristics.
 
+* Compared with patients where 70% of units would give thrombolysis, those *contentious* patients, where 30-70% of units would give thrombolysis: 
+
+    * Are more likely to have an estimated, rather than precise, onset time
+    * Arrive later
+    * Have longer arrival to scan times
+    * Have a lower NIHSS score
+    * Have greater disability prior to the stroke
+    * Are older
+    * Do not have facial palsy
+    * Have atrial fibrillation
+
 ### Pathway simulation
 
 The model is used to examine the effect, at each hospital and nationally, of making three key changes (alone or in combination) to the stroke pathway:
