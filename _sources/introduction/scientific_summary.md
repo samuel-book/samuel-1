@@ -183,6 +183,7 @@ Clinical subnet embedding output marking of those patients with a haemorrhagic s
     * Have greater disability prior to the stroke
     * Are older
     * Do not have facial palsy
+    * Do not have visual field deficits
     * Have atrial fibrillation
 
 ### Pathway simulation

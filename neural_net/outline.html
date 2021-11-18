@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neural Networks &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -647,11 +646,11 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="neural-networks">
+  <div class="tex2jax_ignore mathjax_ignore section" id="neural-networks">
 <h1>Neural Networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h1>
 <p>This section describes experiments using neural network classifiers to predict whether a patient would, or would not, receive thrombolysis. Data is restricted to admissions within 4 hours of stroke onset (to units that have at least 300 patients, and 10 thrombolysis uses, over three years)</p>
 <p>This section contains the following notebooks:</p>
-<section id="fully-connected-neural-network">
+<div class="section" id="fully-connected-neural-network">
 <h2>Fully connected neural network<a class="headerlink" href="#fully-connected-neural-network" title="Permalink to this headline">¶</a></h2>
 <p>In these notebooks, we use a fully connected neural network, that is all input features are linked to all neurones in the first layer of the network, and subsequently all neurones of a layer connect to all neurones in the next layer.</p>
 <ul class="simple">
@@ -660,8 +659,8 @@
 <li><p><em>Fully connected TensorFlow model - analysis</em>: Analyses the saved models for: 1) Various accuracy scores, 2) Receiver-Operator Characteristic Curve, 3) Sensitivity-Specificity Curve, and 4) model calibration.</p></li>
 <li><p><em>Fully connected TensorFlow model - Learning curve</em>: Analysis the learning curve of the fully connected neural net.</p></li>
 </ul>
-</section>
-<section id="modular-neural-networks">
+</div>
+<div class="section" id="modular-neural-networks">
 <h2>Modular neural networks<a class="headerlink" href="#modular-neural-networks" title="Permalink to this headline">¶</a></h2>
 <p>Modular neural nets split data into three groups: 1) hospital id, 2) patient/clinical characteristics, 3) pathway times/timings. Each subgroup of data is processed by a neural subnet, the output of which may be a vector of any number of values - here we use 1 and 2 values per subnet output. The output from the subnets is combined in an additional layer in the neural network, and that layer outputs a sigmoid probability of receiving thrombolysis. This is called ‘embedding’ of the three subgroups of data.</p>
 <p>When the subnets output a single value, this will condense each of the subgroups down to a single value that will be used in the final layer to determine probability of thrombolysis. This allows, for example, ranking of patients suitability for thrombolysis determined by a consensus view from all hospitals, and similarly allows ranking of hospitals to be ranked by propensity to give thrombolysis, independent of their own patient population. When 2 or more output values are used for each subnet this allows more complex interactions between patients and hospitals, and offers the potential to cluster similar hospitals or patients by location of their output vectors.</p>
@@ -676,10 +675,10 @@
 <li><p><em>Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset</em>: Repeat of above but with 2D subnet output.</p></li>
 <li><p>Investigating the output of neural net embedding subnets - with 2D subnet output*: Repeat of above but with 2D subnet output.</p></li>
 </ul>
-</section>
+</div>
 <div class="toctree-wrapper compound">
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
