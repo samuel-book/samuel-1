@@ -646,8 +646,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#show-hisotogram-and-counts-of-correlations">
-   Show hisotogram and counts of correlations
+  <a class="reference internal nav-link" href="#show-hisotgram-and-counts-of-correlations">
+   Show hisotgram and counts of correlations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -667,6 +667,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -680,7 +685,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="measuring-the-covariance-correlation-between-features">
 <h1>Measuring the covariance/correlation between features<a class="headerlink" href="#measuring-the-covariance-correlation-between-features" title="Permalink to this headline">¶</a></h1>
-<p>In this notebook we measure the correlation between features.</p>
+<p>In this notebook we measure the correlation between features (as we standardise the data, this is equivalent to the correlation bweten features).</p>
 <div class="section" id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has been restricted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
@@ -1161,8 +1166,8 @@
 </div></div></div>
 </div>
 </div>
-<div class="section" id="show-hisotogram-and-counts-of-correlations">
-<h2>Show hisotogram and counts of correlations<a class="headerlink" href="#show-hisotogram-and-counts-of-correlations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="show-hisotgram-and-counts-of-correlations">
+<h2>Show hisotgram and counts of correlations<a class="headerlink" href="#show-hisotgram-and-counts-of-correlations" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogram of covariance/correlation</span>
@@ -2023,6 +2028,18 @@
 </div></div></div>
 </div>
 </div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Most of the features show weak correlation (97.6% of the feature pairs have an absolute correlation of less than 0.5, and fewer than 0.35% of the feature pairs have an absolute correlation o fgreater than 0.75).</p></li>
+<li><p>Perfectly correlated feature pairs ar epresent due to dichotomised coding of some features.</p></li>
+<li><p>Many highly correlated features are due to correlaytions between missing data and the value if data is present. There are some ‘more interesting’ highly correlated data such as:</p>
+<ul>
+<li><p>Right leg and arm weakness is are highly correlated, as are left leg and arm weakness.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
