@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Plotting the relationship between time to treatment and the probability of a good outcome &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -223,6 +224,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/06_distributions.html">
      Stroke pathway timing distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/07_covariance.html">
+     Measuring the covariance/correlation between features
     </a>
    </li>
   </ul>
@@ -666,9 +672,9 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="plotting-the-relationship-between-time-to-treatment-and-the-probability-of-a-good-outcome">
+  <section class="tex2jax_ignore mathjax_ignore" id="plotting-the-relationship-between-time-to-treatment-and-the-probability-of-a-good-outcome">
 <h1>Plotting the relationship between time to treatment and the probability of a good outcome<a class="headerlink" href="#plotting-the-relationship-between-time-to-treatment-and-the-probability-of-a-good-outcome" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aim">
+<section id="aim">
 <h2>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Plot the relationship between time to treatment with Alteplase and the probability of a good outcome, based on Emberson et al. [1]</p></li>
@@ -679,8 +685,8 @@
 <li><p>The baseline probability of a good outcome are taken from the control (untreated) groups in Emberson’s meta-analysis.</p></li>
 </ul>
 <p>[1] Emberson et al. (2014) Effect of treatment delay, age, and stroke severity on the effects of intravenous thrombolysis with alteplase for acute ischaemic stroke: A meta-analysis of individual patient data from randomised trials. The Lancet. 384: 1929–1935</p>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,8 +696,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-outcomes">
+</section>
+<section id="calculate-outcomes">
 <h2>Calculate outcomes<a class="headerlink" href="#calculate-outcomes" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -727,8 +733,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plot-outcomes-as-odds-ratio-and-probability">
+</section>
+<section id="plot-outcomes-as-odds-ratio-and-probability">
 <h2>Plot outcomes as odds ratio and probability<a class="headerlink" href="#plot-outcomes-as-odds-ratio-and-probability" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -771,8 +777,8 @@
 <img alt="../_images/thrombolysis_effect_6_0.png" src="../_images/thrombolysis_effect_6_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="plot-outcomes-as-probability-only">
+</section>
+<section id="plot-outcomes-as-probability-only">
 <h2>Plot outcomes as probability only<a class="headerlink" href="#plot-outcomes-as-probability-only" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,15 +814,15 @@
 <img alt="../_images/thrombolysis_effect_8_0.png" src="../_images/thrombolysis_effect_8_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Probability of a good outcome declines to close to control level over 6 hours.</p></li>
 <li><p>The baseline probability of a good outcome, which is different for different age groups, makes a significant difference to the absolute benefit of thrombolysis (though the odds-ratio of a good outcome is nor dependent on age).</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

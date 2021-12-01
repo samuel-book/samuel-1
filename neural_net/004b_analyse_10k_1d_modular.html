@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Investigating the output of neural net embedding subnets &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -223,6 +224,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/06_distributions.html">
      Stroke pathway timing distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/07_covariance.html">
+     Measuring the covariance/correlation between features
     </a>
    </li>
   </ul>
@@ -742,17 +748,17 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="investigating-the-output-of-neural-net-embedding-subnets">
+  <section class="tex2jax_ignore mathjax_ignore" id="investigating-the-output-of-neural-net-embedding-subnets">
 <h1>Investigating the output of neural net embedding subnets<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To investigate the output of the hospital and clinical subnets of the embedding neural network.</p></li>
 <li><p>To examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hospital models.</p></li>
 <li><p>To examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output</p></li>
 </ul>
-</div>
-<div class="section" id="neural-network-structure">
+</section>
+<section id="neural-network-structure">
 <h2>Neural Network structure<a class="headerlink" href="#neural-network-structure" title="Permalink to this headline">¶</a></h2>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 1D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
 <ol class="simple">
@@ -762,12 +768,12 @@
 </ol>
 <p>The outputs of the three subnet outputs are then passed to a single neuron with sigmoid activation for final output.</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
-</div>
-<div class="section" id="fitting-of-model">
+</section>
+<section id="fitting-of-model">
 <h2>Fitting of model<a class="headerlink" href="#fitting-of-model" title="Permalink to this headline">¶</a></h2>
 <p>The model has been pre-trained (see the notebook <em>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset</em>)</p>
-</div>
-<div class="section" id="load-libraries">
+</section>
+<section id="load-libraries">
 <h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,8 +799,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-to-scale-data">
+</section>
+<section id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <p>Scale input data 0-1 (MinMax scaling).</p>
 <div class="cell docutils container">
@@ -817,8 +823,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-model-outputs-for-test-data">
+</section>
+<section id="get-model-outputs-for-test-data">
 <h2>Get model outputs for test data<a class="headerlink" href="#get-model-outputs-for-test-data" title="Permalink to this headline">¶</a></h2>
 <p>Get prediction probabilities for the test 10k training set. Training data is used only to scale test set X values.</p>
 <p>This prediction run is used to check model, and get accuracy.</p>
@@ -899,8 +905,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
+</section>
+<section id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
 <h2>Get predictions for thrombolysis use of 10k set of patients at each hospital<a class="headerlink" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>Here we ask the counter-factual question - “what treatment would a patient be expected to receive at each of the 132 hospitals?”.</p>
 <p>Hospital is one-hot encoded as input to the hospital subnet. To make a prediction of treatment at different hospitals we change the one-hot encoding of the hospital when making prediction.</p>
@@ -1025,8 +1031,8 @@
 <p>132 rows × 2 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="comparing-hospital-subnet-activation-with-actual-thrombolysis-use-and-predicted-thrombolysis-use-in-10k-set-of-patients-attending-each-hospital">
+</section>
+<section id="comparing-hospital-subnet-activation-with-actual-thrombolysis-use-and-predicted-thrombolysis-use-in-10k-set-of-patients-attending-each-hospital">
 <h2>Comparing hospital subnet activation with actual thrombolysis use and predicted thrombolysis use in 10k set of patients attending each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-actual-thrombolysis-use-and-predicted-thrombolysis-use-in-10k-set-of-patients-attending-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>The hospital subnet outputs a single value (in the range 0-1) for each hospital.</p>
 <p>Here we compare the hospital subnet output for each hospital with:</p>
@@ -1034,7 +1040,7 @@
 <li><p>The actual use of thrombolysis for 10k test-set patients at their own hospital only.</p></li>
 <li><p>The expected use of thrombolysis in the 10k test-set for each hospital. The 10k patient data set is passed through all hospital models (by changing the one-hot hospital encoding).</p></li>
 </ol>
-<div class="section" id="get-hospital-subnet-output">
+<section id="get-hospital-subnet-output">
 <h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">¶</a></h3>
 <p>This code gets the output directly from the hospital subnet in the neural network. We add this to our results DataFrame.</p>
 <div class="cell docutils container">
@@ -1059,8 +1065,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="add-actual-thrombolysis-at-hospitals-in-10k-test-set">
+</section>
+<section id="add-actual-thrombolysis-at-hospitals-in-10k-test-set">
 <h3>Add actual thrombolysis at hospitals in 10k test set<a class="headerlink" href="#add-actual-thrombolysis-at-hospitals-in-10k-test-set" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1186,8 +1192,8 @@
 <p>132 rows × 4 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="show-relationship-between-subnet-output-and-predicted-thrombolysis-use-in-the-10k-patient-set">
+</section>
+<section id="show-relationship-between-subnet-output-and-predicted-thrombolysis-use-in-the-10k-patient-set">
 <h3>Show relationship between subnet output and predicted thrombolysis use in the 10k patient set<a class="headerlink" href="#show-relationship-between-subnet-output-and-predicted-thrombolysis-use-in-the-10k-patient-set" title="Permalink to this headline">¶</a></h3>
 <p>Here we plot the relationship between the hospital subnet output for each hospital and 1) actual thrombolysis use in the test set at each hospital, the predicted thrombolysis use of the whole 10k patient set attended each hospital.</p>
 <div class="cell docutils container">
@@ -1242,12 +1248,12 @@
 <li><p>Hospital subnet output (hospital-level decision-making) explains a significant proportion, but not all, of the inter-hospital variation in use of thrombolysis.</p></li>
 </ol>
 <p>NOTE: Here the subnet activation is inversely proportional to the use of thrombolysis. This may seem counter-intuitive, but it is due to the way neural networks optimise. There is no need for networks to optimise to have direct proportionality throughout the networks; the direction of relationship may be switched at each layer.</p>
-</div>
-</div>
-<div class="section" id="examine-clinical-subnet-output">
+</section>
+</section>
+<section id="examine-clinical-subnet-output">
 <h2>Examine clinical subnet output<a class="headerlink" href="#examine-clinical-subnet-output" title="Permalink to this headline">¶</a></h2>
 <p>In this section we examine the output of the clinical subnet. This subnet is patient-specific, but excludes pathway data (such as day/time of arrival, time since stroke, time of scan, etc).The output is therefore dependent on patient clinical characteristics, but is not dependent on which hospital a patient attended or dependent on pathway data.</p>
-<div class="section" id="get-clincial-subnet-output-for-10k-patients">
+<section id="get-clincial-subnet-output-for-10k-patients">
 <h3>Get clincial subnet output for 10k patients<a class="headerlink" href="#get-clincial-subnet-output-for-10k-patients" title="Permalink to this headline">¶</a></h3>
 <p>This code gets the output directly from the clinical subnet in the neural network. We store this with all patient characteristics (the loaded test set data).</p>
 <div class="cell docutils container">
@@ -1273,8 +1279,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="show-relationship-between-clinical-subnet-output-and-proportion-of-patients-receiving-thrombolysis">
+</section>
+<section id="show-relationship-between-clinical-subnet-output-and-proportion-of-patients-receiving-thrombolysis">
 <h3>Show relationship between clinical subnet output and proportion of patients receiving thrombolysis<a class="headerlink" href="#show-relationship-between-clinical-subnet-output-and-proportion-of-patients-receiving-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <p>Here we test the relationship between the output of the clinical subnet and the actual use of thrombolysis. We do this by binning the output of the clinical subnets into 10 bins (each representing a range of 0.1 in the clinical subnet output), and taking the average use of thrombolysis in that bin.</p>
 <div class="cell docutils container">
@@ -1324,11 +1330,11 @@
 <img alt="../_images/004b_analyse_10k_1d_modular_24_0.png" src="../_images/004b_analyse_10k_1d_modular_24_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="show-some-clinical-subnet-outputs-by-patient-type">
+</section>
+<section id="show-some-clinical-subnet-outputs-by-patient-type">
 <h3>Show some clinical subnet outputs by patient type<a class="headerlink" href="#show-some-clinical-subnet-outputs-by-patient-type" title="Permalink to this headline">¶</a></h3>
 <p>Here we look at the relationships between some clinical features and the clinical subnet output.</p>
-<div class="section" id="show-patient-subnet-output-by-stroke-type">
+<section id="show-patient-subnet-output-by-stroke-type">
 <h4>Show patient_subnet_output by stroke type<a class="headerlink" href="#show-patient-subnet-output-by-stroke-type" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1346,8 +1352,8 @@ Name: patient_subnet_output, dtype: float32
 </div>
 </div>
 <p>Those patients with an infarction (clot) have, on average, a much higher clinical subnet output than those without infarction (bleed, or type-unknown).</p>
-</div>
-<div class="section" id="show-patient-subnet-output-by-age-group">
+</section>
+<section id="show-patient-subnet-output-by-age-group">
 <h4>Show patient_subnet_output by age group<a class="headerlink" href="#show-patient-subnet-output-by-age-group" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1365,8 +1371,8 @@ Name: patient_subnet_output, dtype: float32
 </div>
 </div>
 <p>Those patients aged 80 or over have a little lower clinical subnet output than those aged under 80.</p>
-</div>
-<div class="section" id="show-relationship-between-nihss-arrival-and-clinical-subnet-output">
+</section>
+<section id="show-relationship-between-nihss-arrival-and-clinical-subnet-output">
 <h4>Show relationship between NIHSS arrival and clinical_subnet_output<a class="headerlink" href="#show-relationship-between-nihss-arrival-and-clinical-subnet-output" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1388,8 +1394,8 @@ Name: patient_subnet_output, dtype: float32
 </div>
 </div>
 <p>Clinical subnet output is low for patients with low or high NIHSS on arrival.</p>
-</div>
-<div class="section" id="show-relationship-between-modifed-rankin-scale-and-clinical-subnet-output">
+</section>
+<section id="show-relationship-between-modifed-rankin-scale-and-clinical-subnet-output">
 <h4>Show relationship between modifed Rankin Scale and clinical_subnet_output<a class="headerlink" href="#show-relationship-between-modifed-rankin-scale-and-clinical-subnet-output" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1410,14 +1416,14 @@ Name: patient_subnet_output, dtype: float32
 </div>
 </div>
 <p>Clinical subnet output falls with increasing disability before stroke.</p>
-</div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <p>Using subnets for different types of data increased model accuracy (previously described). But subnets also provide insight into both hospitals and patients. The subnets allow ranking of hospitals in likelihood to use thrombolysis (independent of patients) and allow ranking of patient clinical characteristics in suitability for thrombolysis.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

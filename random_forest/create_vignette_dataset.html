@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Patient level decisions at own hospital, and consensus decisions at other other hospitals &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -223,6 +224,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/06_distributions.html">
      Stroke pathway timing distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/07_covariance.html">
+     Measuring the covariance/correlation between features
     </a>
    </li>
   </ul>
@@ -651,7 +657,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="patient-level-decisions-at-own-hospital-and-consensus-decisions-at-other-other-hospitals">
+  <section class="tex2jax_ignore mathjax_ignore" id="patient-level-decisions-at-own-hospital-and-consensus-decisions-at-other-other-hospitals">
 <h1>Patient level decisions at own hospital, and consensus decisions at other other hospitals<a class="headerlink" href="#patient-level-decisions-at-own-hospital-and-consensus-decisions-at-other-other-hospitals" title="Permalink to this headline">¶</a></h1>
 <p>This notebook creates two outputs:</p>
 <ol class="simple">
@@ -668,7 +674,7 @@
 </ul>
 </li>
 </ol>
-<div class="section" id="import-libraries">
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,8 +698,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-models-and-find-confident-misclassifications">
+</section>
+<section id="fit-models-and-find-confident-misclassifications">
 <h2>Fit models and find confident misclassifications<a class="headerlink" href="#fit-models-and-find-confident-misclassifications" title="Permalink to this headline">¶</a></h2>
 <p>Models are first fitted using k-fold cross-validation. ‘Confident misclassifications’ are patients with a predicted probability of being given thrombolysis (using a model of its own hospital) of &lt;0.1 or &gt;0.9, but where the hospital decided on the opposite. These are taken from test sets only.</p>
 <p>The k-fold splits are also used to predict and record the probability of being given thrombolysis using the test set patients only (which is all patients across the 5 splits). Whether a patient is given thrombolysis or not is predicted from the threshold that matches thrombolysis rate in the test set to the observed rate for that hospital.</p>
@@ -973,8 +979,8 @@ Wall time: 5min 34s
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="combine-consensus-benchmark-and-predicted-outcomes-for-all-patients">
+</section>
+<section id="combine-consensus-benchmark-and-predicted-outcomes-for-all-patients">
 <h2>Combine consensus, benchmark and predicted outcomes for all patients<a class="headerlink" href="#combine-consensus-benchmark-and-predicted-outcomes-for-all-patients" title="Permalink to this headline">¶</a></h2>
 <p>Each patient has the predicted probability of receiving thrombolysis at all hospitals other than the one they actually attended.</p>
 <ul class="simple">
@@ -1416,8 +1422,8 @@ Wall time: 19min 50s
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

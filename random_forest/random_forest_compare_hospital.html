@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Compare level of agreement in clinical decision making between hospitals using Random Forests models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -223,6 +224,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/06_distributions.html">
      Stroke pathway timing distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/07_covariance.html">
+     Measuring the covariance/correlation between features
     </a>
    </li>
   </ul>
@@ -683,15 +689,15 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="compare-level-of-agreement-in-clinical-decision-making-between-hospitals-using-random-forests-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="compare-level-of-agreement-in-clinical-decision-making-between-hospitals-using-random-forests-models">
 <h1>Compare level of agreement in clinical decision making between hospitals using Random Forests models<a class="headerlink" href="#compare-level-of-agreement-in-clinical-decision-making-between-hospitals-using-random-forests-models" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims:<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Quantify the level of agreement between different hospital models on what treatment patients should receive.</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -712,8 +718,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-data">
+</section>
+<section id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <p>Create combined data set by combining cohort train/test</p>
 <div class="cell docutils container">
@@ -730,8 +736,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-previously-saved-models">
+</section>
+<section id="load-previously-saved-models">
 <h2>Load previously saved models<a class="headerlink" href="#load-previously-saved-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -741,8 +747,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="pass-patients-from-each-hospital-through-all-other-hospital-models">
+</section>
+<section id="pass-patients-from-each-hospital-through-all-other-hospital-models">
 <h2>Pass patients from each hospital through all other hospital models<a class="headerlink" href="#pass-patients-from-each-hospital-through-all-other-hospital-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1014,10 +1020,10 @@
 <p>5 rows × 137 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="analyse-results">
+</section>
+<section id="analyse-results">
 <h2>Analyse results<a class="headerlink" href="#analyse-results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="percentage-of-hospitals-agreeing-to-give-thrombolysis">
+<section id="percentage-of-hospitals-agreeing-to-give-thrombolysis">
 <h3>Percentage of hospitals agreeing to give thrombolysis<a class="headerlink" href="#percentage-of-hospitals-agreeing-to-give-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1049,8 +1055,8 @@
 <img alt="../_images/random_forest_compare_hospital_17_0.png" src="../_images/random_forest_compare_hospital_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="proportion-agreeing">
+</section>
+<section id="proportion-agreeing">
 <h3>Proportion agreeing<a class="headerlink" href="#proportion-agreeing" title="Permalink to this headline">¶</a></h3>
 <p>Split patients by:</p>
 <ol class="simple">
@@ -1183,9 +1189,9 @@
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>It is easier to find majority agreement on who not to thrombolyse than who to thrombolyse. For example:</p>
@@ -1196,8 +1202,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Random Forest Classifier - Fitting to all stroke teams together &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -223,6 +224,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../descriptive_stats/06_distributions.html">
      Stroke pathway timing distribution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../descriptive_stats/07_covariance.html">
+     Measuring the covariance/correlation between features
     </a>
    </li>
   </ul>
@@ -725,9 +731,9 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="random-forest-classifier-fitting-to-all-stroke-teams-together">
+  <section class="tex2jax_ignore mathjax_ignore" id="random-forest-classifier-fitting-to-all-stroke-teams-together">
 <h1>Random Forest Classifier - Fitting to all stroke teams together<a class="headerlink" href="#random-forest-classifier-fitting-to-all-stroke-teams-together" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Assess accuracy of a random forests classifier, using k-fold (5-fold) training/test data splits (each data point is present in one and only one of the five test sets). This notebook fits all data in a single model, with hospital ID being a one-hot encoded feature.</p>
 <p>The notebook includes:</p>
@@ -737,8 +743,8 @@
 <li><p>Identify feature importances</p></li>
 <li><p>Performing a learning rate test (relationship between training set size and accuracy)</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -759,8 +765,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="import-data">
+</section>
+<section id="import-data">
 <h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has previously been split into 5 training/test splits.</p>
 <div class="cell tag_remove-output docutils container">
@@ -782,10 +788,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="calculate-accuracy-measures">
+<section id="calculate-accuracy-measures">
 <h3>Calculate accuracy measures<a class="headerlink" href="#calculate-accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -896,8 +902,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+</section>
+<section id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
 <h3>Find model probability threshold to match predicted and actual thrombolysis use<a class="headerlink" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -916,9 +922,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="line-intersect">
+</section>
+</section>
+<section id="line-intersect">
 <h2>Line intersect<a class="headerlink" href="#line-intersect" title="Permalink to this headline">¶</a></h2>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -943,8 +949,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-model-k-fold">
+</section>
+<section id="fit-model-k-fold">
 <h2>Fit model (k-fold)<a class="headerlink" href="#fit-model-k-fold" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1023,10 +1029,10 @@ Run 4, accuracy: 0.847, threshold 0.460
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="results">
+</section>
+<section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="accuracy-measures">
+<section id="accuracy-measures">
 <h3>Accuracy measures<a class="headerlink" href="#accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1443,8 +1449,8 @@ Run 4, accuracy: 0.847, threshold 0.460
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
+</section>
+<section id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
 <h3>Receiver Operator Characteristic and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h3>
 <p>Receiver Operator Characteristic Curve:</p>
 <div class="cell docutils container">
@@ -1560,8 +1566,8 @@ SD AUC: 0.0017
 <img alt="../_images/random_forest_single_fit_27_0.png" src="../_images/random_forest_single_fit_27_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
+</section>
+<section id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1595,8 +1601,8 @@ SD AUC: 0.0017
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="collate-and-save-results">
+</section>
+<section id="collate-and-save-results">
 <h3>Collate and save results<a class="headerlink" href="#collate-and-save-results" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1631,9 +1637,9 @@ SD AUC: 0.0017
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="feature-importances">
+</section>
+</section>
+<section id="feature-importances">
 <h2>Feature Importances<a class="headerlink" href="#feature-importances" title="Permalink to this headline">¶</a></h2>
 <p>Get Random Forest feature importances (average across k-fold results)</p>
 <div class="cell docutils container">
@@ -1846,8 +1852,8 @@ SD AUC: 0.0017
 <img alt="../_images/random_forest_single_fit_37_0.png" src="../_images/random_forest_single_fit_37_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="learning-cvurve">
+</section>
+<section id="learning-cvurve">
 <h2>Learning cvurve<a class="headerlink" href="#learning-cvurve" title="Permalink to this headline">¶</a></h2>
 <p>Examine the relationship between training data size and accuracy.</p>
 <div class="cell docutils container">
@@ -1951,8 +1957,8 @@ SD AUC: 0.0017
 <img alt="../_images/random_forest_single_fit_41_0.png" src="../_images/random_forest_single_fit_41_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</section>
+<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2214,8 +2220,8 @@ Accuracy: 0.924
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Overall accuracy = 84.6% (92.4% for those 59% samples with at least 80% confidence of model)</p></li>
@@ -2235,8 +2241,8 @@ Accuracy: 0.924
 </li>
 <li><p>The model shows good calibration of probability vs. fraction positive</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
