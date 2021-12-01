@@ -1,0 +1,2101 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Measuring the covariance/correlation between features &#8212; SAMueL Stroke Audit Machine Learning</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assessing accuracy of models with stratified k-fold cross-validation" href="../introduction/kfold.html" />
+    <link rel="prev" title="Stroke pathway timing distribution" href="06_distributions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">SAMueL Stroke Audit Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/intro.html">
+   Introduction to SAMueL (Stroke Audit Machine Learning)
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Summary
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/abstract.html">
+   Abstract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/plain_english_short.html">
+   Plain English Summary (short)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/plain_english.html">
+   Plain English Summary (long)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/scientific_summary.html">
+   Scientific Summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../summary_slides/summary_slides.html">
+   Summary slides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/project_team.html">
+   Contact and Project Team
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/stroke_thrombolysis.html">
+   An introduction to stroke and thrombolysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/clinical_audit.html">
+   What is clinical audit?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/ml_intro.html">
+   Introduction to machine learning methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/clinical_pathway_simulation.html">
+   Clinical pathway simulation
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Data and software
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/data.html">
+   Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/software.html">
+   Software
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Descriptive statistics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="outline.html">
+   Outline - what is in this section?
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_descriptive.html">
+     Descriptive analysis of stroke pathway data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_thrombolysis_general.html">
+     Association between patient features on use of thrombolysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_thrombolysis_comparison.html">
+     Comparison of average values for patients who receive thrombolysis and those that do not
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02a_daily_patterns.html">
+     Pathway patterns throughout the day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02b_weekly_patterns.html">
+     Pathway patterns throughout the week
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03a_daily_patterns_single_team.html">
+     Pathway patterns throughout the day in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03b_weekly_patterns_single_team.html">
+     Pathway patterns throughout the week in an example single stroke team
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_distributions.html">
+     Stroke pathway timing distribution
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Measuring the covariance/correlation between features
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/kfold.html">
+   Assessing accuracy of models with stratified k-fold cross-validation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../logistic_regression/outline.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_single_fit.html">
+     Logistic Regression Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../logistic_regression/logistic_regression_hospit_fit_accuracy.html">
+     Logistic Regression Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../random_forest/outline.html">
+   Random Forests
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_single_fit.html">
+     Random Forest Classifier - Fitting to all stroke teams together
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_hospital_fit_accuracy.html">
+     Random Forest Classifier - Fitting hospital-specific models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_train_save_hospital_models.html">
+     Train and save hospital-level models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_hospital.html">
+     Compare level of agreement in clinical decision making between hospitals using Random Forests models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_benchmark_hospitals.html">
+     Benchmark hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_compare_highest_thrombolysing_with_benchmark.html">
+     How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/random_forest_cohort_distance.html">
+     Grouping hospitals by similarities in decision making
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/create_vignette_dataset.html">
+     Patient level decisions at own hospital, and consensus decisions at other other hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/vignettes.html">
+     Thrombolysis hospital vs. benchmark diagrams and patient vignettes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/within_hospital_variability.html">
+     Find similar patients who are treated differently within the same hospital
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../random_forest/characterise_contentious_patients.html">
+     What characterises a patient who is predicted to have high variation in thrombolysis use across different hospitals?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../neural_net/outline.html">
+   Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001a_fully_connected_fit_check_training_time.html">
+     Fully connected TensorFlow model - Check required training epochs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001b_fully_connected_fit.html">
+     Fully connected TensorFlow model - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001c_fully_connect_analyse.html">
+     Fully connected TensorFlow model - analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/001d_learning_curve.html">
+     Fully connected TensorFlow model - Learning curve
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002b_1d_modular_fit.html">
+     Modular TensorFlow model with 1D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/002c_1d_modular_analyse.html">
+     Modular TensorFlow model with 1D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003a_2d_modular_fit.html">
+     Modular TensorFlow model with 2D embedding - Train and save models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/003b_2d_modular_analyse.html">
+     Modular TensorFlow model with 2D embedding - analyse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/004a_generate_1d_nets_for_10k.html">
+     Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/004b_analyse_10k_1d_modular.html">
+     Investigating the output of neural net embedding subnets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/005a_generate_2d_nets_for_10k.html">
+     Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neural_net/005b_analyse_10k_2d_modular.html">
+     Investigating the output of neural net embedding subnets - with 2D subnet output
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ensemble/outline.html">
+   Ensemble Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_generate_probabilities.html">
+     Ensemble model fitting - generate probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/compare_model_outputs.html">
+     Comparison of model outputs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_with_logistic_regression.html">
+     Ensemble combine with logistic regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_with_random_forests.html">
+     Ensemble combine with random forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_with_neural_network.html">
+     Ensemble combine with a neural network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_summary.html">
+     Summary of results from ensemble models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Pathway Simulation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../pathway_sim/outline_model.html">
+   Model building and validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/thrombolysis_effect.html">
+     Plotting the relationship between time to treatment and the probability of a good outcome
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/pathway_code.html">
+     Pathway code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/extract_hospital_performance.html">
+     Extract hospital performance for pathway model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/validation.html">
+     Stroke pathway simulation - validation and calibration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../pathway_sim/outline_scenarios.html">
+   Testing of alternative what-if? scenarios
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_results_generation.html">
+     Stroke pathway simulation - generation of results from alternative scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis.html">
+     Analysis of alternative pathway scenarios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/scenario_analysis_1k_patient_cohort.html">
+     Modelling the same patient population attending all hospitals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/explained_variance_in_thrombolysis.html">
+     How much of the inter-hospital variation in thrombolysis use do in-hospital processes explain
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Qualitative research and PPI
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qual/qual.html">
+   Qualitative research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../qual/ppi.html">
+   Public and Patient Involvement
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Appendicies
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Additional analysis (not in NIHR report)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01a_descriptive_nihss_cutoff.html">
+   Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/descriptive_stats/07_covariance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries-and-data">
+   Import libraries and data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scale-data">
+   Scale data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-covariance-of-scaled-data-correlation">
+   Get covariance of scaled data (correlation)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-hisotogram-and-counts-of-correlations">
+   Show hisotogram and counts of correlations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-highly-correlated-features">
+   Show highly correlated features
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perfectly-correlated-features">
+     Perfectly correlated features
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#highly-correlated-features">
+     Highly correlated features
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="measuring-the-covariance-correlation-between-features">
+<h1>Measuring the covariance/correlation between features<a class="headerlink" href="#measuring-the-covariance-correlation-between-features" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we measure the correlation between features.</p>
+<div class="section" id="import-libraries-and-data">
+<h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
+<p>Data has been restricted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Import data (combine all data)</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_train.csv&#39;</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>S1AgeOnArrival</th>
+      <th>S1OnsetToArrival_min</th>
+      <th>S2RankinBeforeStroke</th>
+      <th>Loc</th>
+      <th>LocQuestions</th>
+      <th>LocCommands</th>
+      <th>BestGaze</th>
+      <th>Visual</th>
+      <th>FacialPalsy</th>
+      <th>MotorArmLeft</th>
+      <th>...</th>
+      <th>S2NewAFDiagnosis_Yes</th>
+      <th>S2NewAFDiagnosis_missing</th>
+      <th>S2StrokeType_Infarction</th>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <th>S2StrokeType_missing</th>
+      <th>S2TIAInLastMonth_No</th>
+      <th>S2TIAInLastMonth_No but</th>
+      <th>S2TIAInLastMonth_Yes</th>
+      <th>S2TIAInLastMonth_missing</th>
+      <th>S2Thrombolysis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>72.5</td>
+      <td>49.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>77.5</td>
+      <td>96.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>77.5</td>
+      <td>77.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>82.5</td>
+      <td>142.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>87.5</td>
+      <td>170.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9995</th>
+      <td>57.5</td>
+      <td>99.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9996</th>
+      <td>87.5</td>
+      <td>159.0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9997</th>
+      <td>67.5</td>
+      <td>142.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9998</th>
+      <td>72.5</td>
+      <td>101.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9999</th>
+      <td>87.5</td>
+      <td>106.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>88928 rows × 100 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="scale-data">
+<h2>Scale data<a class="headerlink" href="#scale-data" title="Permalink to this headline">¶</a></h2>
+<p>After scaling data, the reported covariance will be the correlation between data features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">=</span><span class="n">StandardScaler</span><span class="p">()</span> 
+<span class="n">sc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data_std</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data_std</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_std</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-covariance-of-scaled-data-correlation">
+<h2>Get covariance of scaled data (correlation)<a class="headerlink" href="#get-covariance-of-scaled-data-correlation" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get covariance</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">data_std</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+
+<span class="c1"># Convert from wide to tall</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">cov</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Remove self-correlation</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">cov</span><span class="o">.</span><span class="n">index</span> <span class="o">!=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Add absolute value</span>
+<span class="n">cov</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+
+<span class="c1"># Sort by absolute covariance</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;abs_value&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>abs_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>CongestiveHeartFailure_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_No</th>
+      <td>CongestiveHeartFailure_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>LimbAtaxia</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>S1AdmissionQuarter_Q1</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Not known</th>
+      <td>S1AdmissionQuarter_Q1</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_missing</th>
+      <td>S1OnsetDateType_Best estimate</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>S2NihssArrival</th>
+      <td>S1OnsetTimeType_Not known</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>9900 rows × 3 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="show-hisotogram-and-counts-of-correlations">
+<h2>Show hisotogram and counts of correlations<a class="headerlink" href="#show-hisotogram-and-counts-of-correlations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogram of covariance/correlation</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Correlation&#39;</span><span class="p">)</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;output/covariance.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07_covariance_10_0.png" src="../_images/07_covariance_10_0.png" />
+</div>
+</div>
+<p>Show proportion of feature correlations in key bins</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;0.10&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1 to 0.25&#39;</span><span class="p">,</span> <span class="s1">&#39;0.25 to 0.50&#39;</span><span class="p">,</span> <span class="s1">&#39;0.50 to 0.75&#39;</span><span class="p">,</span> <span class="s1">&#39;0.75 to 0.999&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">counts_df</span><span class="p">[</span><span class="s1">&#39;Proportion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span>
+<span class="n">counts_df</span><span class="p">[</span><span class="s1">&#39;Cumulative Proportion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">counts_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Proportion</th>
+      <th>Cumulative Proportion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;0.10</th>
+      <td>0.891313</td>
+      <td>0.891313</td>
+    </tr>
+    <tr>
+      <th>0.1 to 0.25</th>
+      <td>0.059596</td>
+      <td>0.950909</td>
+    </tr>
+    <tr>
+      <th>0.25 to 0.50</th>
+      <td>0.025455</td>
+      <td>0.976364</td>
+    </tr>
+    <tr>
+      <th>0.50 to 0.75</th>
+      <td>0.012121</td>
+      <td>0.988485</td>
+    </tr>
+    <tr>
+      <th>0.75 to 0.999</th>
+      <td>0.007879</td>
+      <td>0.996364</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.003636</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="show-highly-correlated-features">
+<h2>Show highly correlated features<a class="headerlink" href="#show-highly-correlated-features" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="perfectly-correlated-features">
+<h3>Perfectly correlated features<a class="headerlink" href="#perfectly-correlated-features" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get perfectly correlated data (covariance &gt; 0.999)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.999</span>
+<span class="n">cov</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>abs_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>CongestiveHeartFailure_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>CongestiveHeartFailure_No</th>
+      <td>CongestiveHeartFailure_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>AFAntiplatelet_missing</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>AtrialFibrillation_No</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Best estimate</th>
+      <td>S1OnsetTimeType_Precise</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>AtrialFibrillation_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>AtrialFibrillation_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>AtrialFibrillation_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>AFAntiplatelet_missing</td>
+      <td>1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Precise</th>
+      <td>S1OnsetTimeType_Best estimate</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_No</th>
+      <td>S1ArriveByAmbulance_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_Yes</th>
+      <td>S1ArriveByAmbulance_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>Diabetes_Yes</th>
+      <td>Diabetes_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>Diabetes_No</th>
+      <td>Diabetes_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>Hypertension_No</th>
+      <td>Hypertension_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>Hypertension_Yes</th>
+      <td>Hypertension_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>MoreEqual80y_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_Yes</th>
+      <td>MoreEqual80y_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_Yes</th>
+      <td>StrokeTIA_No</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_No</th>
+      <td>StrokeTIA_Yes</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Male</th>
+      <td>S1Gender_Female</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+    <tr>
+      <th>S1Gender_Female</th>
+      <td>S1Gender_Male</td>
+      <td>-1.000011</td>
+      <td>1.000011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="highly-correlated-features">
+<h3>Highly correlated features<a class="headerlink" href="#highly-correlated-features" title="Permalink to this headline">¶</a></h3>
+<p>Covariance (correlation) between 0.75 and 0.999</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get highly correlated data (covariance between 0.95 and 0.999)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.999</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="n">cov</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>abs_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>-0.998429</td>
+      <td>0.998429</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.998429</td>
+      <td>0.998429</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>-0.998429</td>
+      <td>0.998429</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>-0.998429</td>
+      <td>0.998429</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>-0.998429</td>
+      <td>0.998429</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>-0.998429</td>
+      <td>0.998429</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
+      <td>S2StrokeType_Infarction</td>
+      <td>-0.994021</td>
+      <td>0.994021</td>
+    </tr>
+    <tr>
+      <th>S2StrokeType_Infarction</th>
+      <td>S2StrokeType_Primary Intracerebral Haemorrhage</td>
+      <td>-0.994021</td>
+      <td>0.994021</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>-0.959049</td>
+      <td>0.959049</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.959049</td>
+      <td>0.959049</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>-0.959049</td>
+      <td>0.959049</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>-0.959049</td>
+      <td>0.959049</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>-0.959049</td>
+      <td>0.959049</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>-0.959049</td>
+      <td>0.959049</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>0.957511</td>
+      <td>0.957511</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>0.957511</td>
+      <td>0.957511</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>-0.942349</td>
+      <td>0.942349</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>-0.942349</td>
+      <td>0.942349</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>-0.933874</td>
+      <td>0.933874</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.933874</td>
+      <td>0.933874</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>-0.933874</td>
+      <td>0.933874</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>-0.933874</td>
+      <td>0.933874</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>-0.933874</td>
+      <td>0.933874</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>-0.933874</td>
+      <td>0.933874</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>0.932224</td>
+      <td>0.932224</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>0.932224</td>
+      <td>0.932224</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_missing</th>
+      <td>S2TIAInLastMonth_No</td>
+      <td>-0.903201</td>
+      <td>0.903201</td>
+    </tr>
+    <tr>
+      <th>S2TIAInLastMonth_No</th>
+      <td>S2TIAInLastMonth_missing</td>
+      <td>-0.903201</td>
+      <td>0.903201</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>0.888907</td>
+      <td>0.888907</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>0.888907</td>
+      <td>0.888907</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>-0.877506</td>
+      <td>0.877506</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>-0.877506</td>
+      <td>0.877506</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>-0.877506</td>
+      <td>0.877506</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.877506</td>
+      <td>0.877506</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>-0.877506</td>
+      <td>0.877506</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>-0.877506</td>
+      <td>0.877506</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>0.875832</td>
+      <td>0.875832</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>0.875832</td>
+      <td>0.875832</td>
+    </tr>
+    <tr>
+      <th>MotorLegRight</th>
+      <td>MotorArmRight</td>
+      <td>0.843478</td>
+      <td>0.843478</td>
+    </tr>
+    <tr>
+      <th>MotorArmRight</th>
+      <td>MotorLegRight</td>
+      <td>0.843478</td>
+      <td>0.843478</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>0.836990</td>
+      <td>0.836990</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>0.836990</td>
+      <td>0.836990</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>-0.834198</td>
+      <td>0.834198</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>-0.834198</td>
+      <td>0.834198</td>
+    </tr>
+    <tr>
+      <th>MotorLegLeft</th>
+      <td>MotorArmLeft</td>
+      <td>0.832626</td>
+      <td>0.832626</td>
+    </tr>
+    <tr>
+      <th>MotorArmLeft</th>
+      <td>MotorLegLeft</td>
+      <td>0.832626</td>
+      <td>0.832626</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>-0.822417</td>
+      <td>0.822417</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>-0.822417</td>
+      <td>0.822417</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>0.810829</td>
+      <td>0.810829</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>0.810829</td>
+      <td>0.810829</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>0.804632</td>
+      <td>0.804632</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>0.804632</td>
+      <td>0.804632</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>0.804632</td>
+      <td>0.804632</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>0.804632</td>
+      <td>0.804632</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>0.804632</td>
+      <td>0.804632</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>0.804632</td>
+      <td>0.804632</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>-0.803475</td>
+      <td>0.803475</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>-0.803475</td>
+      <td>0.803475</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>0.785864</td>
+      <td>0.785864</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentDOAC_No</td>
+      <td>0.785864</td>
+      <td>0.785864</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2018</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>-0.780482</td>
+      <td>0.780482</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>S1AdmissionYear_2018</td>
+      <td>-0.780482</td>
+      <td>0.780482</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentVitK_No</td>
+      <td>0.774867</td>
+      <td>0.774867</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_No</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>0.774867</td>
+      <td>0.774867</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>AFAntiplatelet_No</td>
+      <td>-0.773570</td>
+      <td>0.773570</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>AFAntiplatelet_No</td>
+      <td>0.773570</td>
+      <td>0.773570</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_No</th>
+      <td>AFAntiplatelet_No</td>
+      <td>-0.773570</td>
+      <td>0.773570</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>AFAntiplatelet_missing</td>
+      <td>-0.773570</td>
+      <td>0.773570</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>AtrialFibrillation_Yes</td>
+      <td>0.773570</td>
+      <td>0.773570</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>AtrialFibrillation_No</td>
+      <td>-0.773570</td>
+      <td>0.773570</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_White</th>
+      <td>S1Ethnicity_Other</td>
+      <td>-0.760741</td>
+      <td>0.760741</td>
+    </tr>
+    <tr>
+      <th>S1Ethnicity_Other</th>
+      <td>S1Ethnicity_White</td>
+      <td>-0.760741</td>
+      <td>0.760741</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.758236</td>
+      <td>0.758236</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>-0.758236</td>
+      <td>0.758236</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>-0.758236</td>
+      <td>0.758236</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>-0.758236</td>
+      <td>0.758236</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentDOAC_missing</td>
+      <td>-0.758236</td>
+      <td>0.758236</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>-0.758236</td>
+      <td>0.758236</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>0.757204</td>
+      <td>0.757204</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentHeparin_No</th>
+      <td>S2NewAFDiagnosis_No</td>
+      <td>0.757204</td>
+      <td>0.757204</td>
+    </tr>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>MoreEqual80y_No</td>
+      <td>-0.755578</td>
+      <td>0.755578</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>S1AgeOnArrival</td>
+      <td>-0.755578</td>
+      <td>0.755578</td>
+    </tr>
+    <tr>
+      <th>S1AgeOnArrival</th>
+      <td>MoreEqual80y_Yes</td>
+      <td>0.755578</td>
+      <td>0.755578</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_Yes</th>
+      <td>S1AgeOnArrival</td>
+      <td>0.755578</td>
+      <td>0.755578</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_No</th>
+      <td>S2NewAFDiagnosis_missing</td>
+      <td>-0.750172</td>
+      <td>0.750172</td>
+    </tr>
+    <tr>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulent_No</td>
+      <td>-0.750172</td>
+      <td>0.750172</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./descriptive_stats"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="06_distributions.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Stroke pathway timing distribution</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../introduction/kfold.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Assessing accuracy of models with stratified k-fold cross-validation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By SAMueL project team<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
