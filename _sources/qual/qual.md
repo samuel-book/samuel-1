@@ -16,6 +16,18 @@ Specifically the aims were to:
 
 4. Explore how physicians interpret the potential consequences of following changes in pathway suggested by simulation.
 
+## Key findings
+
+Qualitative research demonstrated a varying openness to machine learning and modelling techniques.
+
+1. Broadly, those units with higher thrombolysis use engaged more positively with the research, and those with lower thrombolysis use were more cautious.
+
+2. Clinicians from lower thrombolysing units tended to emphasise differences int their patients as the reason for lower thrombolysis. Those in mid-rate thrombolysis units tended to emphasis access to specialist resources as being key in being able to deliver thrombolysis well. Those in higher thrombolysing units tended to emphasise the work and investment that had gone in to establishing a good thrombolysis pathway.
+
+3. Clinicians wanted to see the machine learning models expanded to predict probability of good outcome and adverse effects of thrombolysis.
+
+4. this being a small study physicians engaged with the machine learning process and outcomes, suggesting ways in which the outputs could be modified for feedback to stroke centres, and utilised to inform thrombolytic decision-making.
+
 ## Data collection
 
 Ethical approval was provided by the Health Research Authority and Health and Care Research Wales (HCRW) 19/HRA/5796.
