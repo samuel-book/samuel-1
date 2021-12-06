@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Thrombolysis hospital vs. benchmark diagrams and patient vignettes &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -702,7 +703,7 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="thrombolysis-hospital-vs-benchmark-diagrams-and-patient-vignettes">
+  <section class="tex2jax_ignore mathjax_ignore" id="thrombolysis-hospital-vs-benchmark-diagrams-and-patient-vignettes">
 <h1>Thrombolysis hospital vs. benchmark diagrams and patient vignettes<a class="headerlink" href="#thrombolysis-hospital-vs-benchmark-diagrams-and-patient-vignettes" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook we present means of comparing use of thrombolysis in a particular hospital to our benchmark set of hospitals. At the hospital level we illustrate the comparison with Graph and Venn diagrams. We then pick individual patients which illustrate something about that hospital, and embellish the SSNAP data with synthetic details in order to provide a discussion vignette for physicians.</p>
 <p>Here we illustrate, though hospital-level diagrams and patient-level vignettes, two example areas of differences in treatment decisions:</p>
@@ -710,7 +711,7 @@
 <li><p>A hospital with lower-than-usual use of thrombolysis in patients with mild stroke</p></li>
 <li><p>A hospital with lower-than-usual use of thrombolysis in patients with prior disability</p></li>
 </ol>
-<div class="section" id="import-libraries">
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -731,8 +732,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-for-venn-diagram-plotting">
+</section>
+<section id="function-for-venn-diagram-plotting">
 <h2>Function for Venn diagram plotting<a class="headerlink" href="#function-for-venn-diagram-plotting" title="Permalink to this headline">¶</a></h2>
 <p>Venn diagrams are plotted using the matplotlib-venn library (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">matplotlib-venn</span></code>).</p>
 <div class="cell docutils container">
@@ -809,8 +810,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-for-decision-graph-plotting">
+</section>
+<section id="function-for-decision-graph-plotting">
 <h2>Function for decision graph plotting<a class="headerlink" href="#function-for-decision-graph-plotting" title="Permalink to this headline">¶</a></h2>
 <p>Decision graph plots are performed using graphviz (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>).</p>
 <div class="cell docutils container">
@@ -865,8 +866,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-data">
+</section>
+<section id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,8 +889,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="identify-confident-misclassifications">
+</section>
+<section id="identify-confident-misclassifications">
 <h2>Identify Confident Misclassifications<a class="headerlink" href="#identify-confident-misclassifications" title="Permalink to this headline">¶</a></h2>
 <p>Identify patients where model has 90% probability of thrombolysis, but patient was not given thrombolysis.</p>
 <div class="cell docutils container">
@@ -2108,7 +2109,7 @@
 <img alt="../_images/vignettes_23_0.png" src="../_images/vignettes_23_0.png" />
 </div>
 </div>
-<div class="section" id="hospital-with-low-treatment-of-patients-with-mild-stroke">
+<section id="hospital-with-low-treatment-of-patients-with-mild-stroke">
 <h3>Hospital with low treatment of patients with mild stroke<a class="headerlink" href="#hospital-with-low-treatment-of-patients-with-mild-stroke" title="Permalink to this headline">¶</a></h3>
 <p>Find a patient from a hospital that has a low thrombolysis rate in patients with minor strokes who had a minor stroke and wasn’t thrombolysed but benchmark hospitals would have.</p>
 <p>Load table of previously calculated use and ratios by stroke severity and prior disability. This table provides use of thrombolysis in mild stroke (NIHSS 0-4) and moderate to sever stroke (NIHSS 16-20), and use in patients with no prior disability (modified Rankin Scale 0-1) and with prior disability (modified Rankin Scale 2+), and the rations between those groups.</p>
@@ -4603,10 +4604,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="hospital-with-low-use-of-thrombolysis-in-patients-with-prior-disability">
+</section>
+<section id="hospital-with-low-use-of-thrombolysis-in-patients-with-prior-disability">
 <h3>Hospital with low use of thrombolysis in patients with prior disability<a class="headerlink" href="#hospital-with-low-use-of-thrombolysis-in-patients-with-prior-disability" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="example-1">
+<section id="example-1">
 <h4>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
 <p>Find patients from a hospital that has a low rate of thrombolysis in patients with prior disability that:</p>
 <ul class="simple">
@@ -6310,8 +6311,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="example-2">
+</section>
+<section id="example-2">
 <h4>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h4>
 <p>Rankin = 4 and NIHSS &lt; 10</p>
 <div class="cell docutils container">
@@ -7782,7 +7783,7 @@
 </table>
 </div></div></div>
 </div>
-<div class="section" id="patient-at-iloc-1">
+<section id="patient-at-iloc-1">
 <h5>Patient at iloc -1<a class="headerlink" href="#patient-at-iloc-1" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
 <li><p>Age: 82.5</p></li>
@@ -7843,11 +7844,11 @@
 <img alt="../_images/vignettes_62_0.png" src="../_images/vignettes_62_0.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>We illustrate methods of visualisation of use of thrombolysis compared with benchmark hospitals.</p></li>
@@ -7855,8 +7856,8 @@
 <li><p>Feedback during workshops with physicians was that the Venn diagrams were difficult to understand; we then added the Graph diagrams as a result</p></li>
 <li><p>The synthetic patient vignettes were popular as a discussion tool at the workshop with physicians.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

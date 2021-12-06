@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -671,17 +672,17 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="modular-tensorflow-model-with-1d-embedding-train-and-save-model-for-10k-patient-subset">
+  <section class="tex2jax_ignore mathjax_ignore" id="modular-tensorflow-model-with-1d-embedding-train-and-save-model-for-10k-patient-subset">
 <h1>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset<a class="headerlink" href="#modular-tensorflow-model-with-1d-embedding-train-and-save-model-for-10k-patient-subset" title="Permalink to this headline">¶</a></h1>
 <p><em>Embedding</em> converts a categorical variable into a projection onto n-dimensional space [1], and has been shown to be an effective way to train neural network when using categorical data, while also allowing a measure of similarity/distance between different values of the categorical data, Here we use embedding for hospital ID. We also convert patient data and pathway data into an embedded vector (this may also be known as <em>encoding</em> the data in a vector with fewer dimensions than the original data set for those groups of features).</p>
 <p>[1] Guo C, &amp; Berkhahn F. (2016) Entity Embeddings of Categorical Variables. arXiv:160406737 [cs] <a class="reference external" href="http://arxiv.org/abs/1604.06737">http://arxiv.org/abs/1604.06737</a></p>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To train and save fully connected models for 10k patient subset</p></li>
 </ul>
-</div>
-<div class="section" id="basic-methodology">
+</section>
+<section id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <p>Models are fitted to previously split training and test data sets.</p>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 1D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
@@ -694,8 +695,8 @@
 <p><img alt="" src="../_images/subnets_1.png" /></p>
 <p>Models are fitted with keras ‘early-stopping’. This monitors accuracy of the test set and stops when there has been no improvement in <em>n</em> epochs (this is the ‘patience’, and is set to 100 epochs here).</p>
 <p>NOTE: In the training charts below you will see that test accuracy is higher than training accuracy. This may seem surprising; it is due to keras returning the accuracy of the training set during training when dropout is used (and no dropout is used for the test set).</p>
-</div>
-<div class="section" id="set-up">
+</section>
+<section id="set-up">
 <h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -734,8 +735,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-to-scale-data">
+</section>
+<section id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <p>In neural networks it is common to to scale input data 0-1 rather than use standardisation (subtracting mean and dividing by standard deviation) of each feature).</p>
 <div class="cell docutils container">
@@ -758,8 +759,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="set-up-neural-net">
+</section>
+<section id="set-up-neural-net">
 <h2>Set up neural net<a class="headerlink" href="#set-up-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,8 +836,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train-model">
+</section>
+<section id="train-model">
 <h2>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -970,8 +971,8 @@
 <img alt="../_images/004a_generate_1d_nets_for_10k_10_1.png" src="../_images/004a_generate_1d_nets_for_10k_10_1.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

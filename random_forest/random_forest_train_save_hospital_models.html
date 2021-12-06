@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Train and save hospital-level models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -678,16 +679,16 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="train-and-save-hospital-level-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="train-and-save-hospital-level-models">
 <h1>Train and save hospital-level models<a class="headerlink" href="#train-and-save-hospital-level-models" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Train models for each hospital.</p></li>
 </ul>
 <p>Note: Models are trained on all data for maximum accuracy. These models are used for counter-factual experiments (what if patient went to another hospital).</p>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,8 +709,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-data">
+</section>
+<section id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <p>Create combined data set by combining cohort train/test</p>
 <div class="cell docutils container">
@@ -724,10 +725,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+<section id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
 <h3>Find model probability threshold to match predicted and actual thrombolysis use<a class="headerlink" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,9 +747,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="train-hospital-level-models">
+</section>
+</section>
+<section id="train-hospital-level-models">
 <h2>Train hospital-level models<a class="headerlink" href="#train-hospital-level-models" title="Permalink to this headline">¶</a></h2>
 <p>Get threshold of classification by using k-fold splits: train hospital level model on k-fold splits, get probabilities of classification for test sets, and use these together to get probability threshold that gives the same net thrombolysis use as the observed data. Then refit on all data for a given hospital, and return that fit and the hospital model.</p>
 <div class="cell docutils container">
@@ -803,8 +804,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train-model-on-each-hospital-and-save-models">
+</section>
+<section id="train-model-on-each-hospital-and-save-models">
 <h2>Train model on each hospital (and save models)<a class="headerlink" href="#train-model-on-each-hospital-and-save-models" title="Permalink to this headline">¶</a></h2>
 <p>Note: train_save is a variable used to avoid retraining models when publishing Jupyter Book. If new saved models are needed change this variable to True</p>
 <div class="cell docutils container">
@@ -836,8 +837,8 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

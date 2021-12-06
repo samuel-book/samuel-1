@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Measuring the covariance/correlation between features &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -683,10 +684,10 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="measuring-the-covariance-correlation-between-features">
+  <section class="tex2jax_ignore mathjax_ignore" id="measuring-the-covariance-correlation-between-features">
 <h1>Measuring the covariance/correlation between features<a class="headerlink" href="#measuring-the-covariance-correlation-between-features" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook we measure the correlation between features.</p>
-<div class="section" id="import-libraries-and-data">
+<section id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has been restricted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
 <div class="cell docutils container">
@@ -1025,8 +1026,8 @@
 <p>88928 rows × 100 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="scale-data">
+</section>
+<section id="scale-data">
 <h2>Scale data<a class="headerlink" href="#scale-data" title="Permalink to this headline">¶</a></h2>
 <p>After scaling data, the reported covariance will be the correlation between data features.</p>
 <div class="cell docutils container">
@@ -1039,8 +1040,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-covariance-of-scaled-data-correlation">
+</section>
+<section id="get-covariance-of-scaled-data-correlation">
 <h2>Get covariance of scaled data (correlation)<a class="headerlink" href="#get-covariance-of-scaled-data-correlation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1074,6 +1075,20 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;missing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+
+<span class="c1"># Remove duplicate pairs of features</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">cov</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">combination</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]]</span>
+    <span class="n">combination</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">cov</span><span class="p">[</span><span class="s1">&#39;pair&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;pair&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pair&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Sort by r-squared</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;r-squared&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1108,48 +1123,54 @@
       <th>abs_value</th>
       <th>r-squared</th>
       <th>missing</th>
+      <th>pair</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>AFAnticoagulentHeparin_missing</th>
       <td>AFAnticoagulentDOAC_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>1.0000</td>
+      <td>1.0000</td>
       <td>1.0</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulentHep...</td>
     </tr>
     <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulentHeparin_missing</td>
+      <th>Hypertension_Yes</th>
+      <td>Hypertension_No</td>
+      <td>-1.0000</td>
+      <td>1.0000</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
+      <td>False</td>
+      <td>Hypertension_No-Hypertension_Yes</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_missing</th>
       <td>AFAnticoagulentVitK_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulentDOAC_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>1.0000</td>
+      <td>1.0000</td>
       <td>1.0</td>
       <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-AFAnticoagulent...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_missing</th>
       <td>AFAnticoagulentVitK_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <td>1.0000</td>
+      <td>1.0000</td>
       <td>1.0</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulentVit...</td>
+    </tr>
+    <tr>
+      <th>S1ArriveByAmbulance_Yes</th>
+      <td>S1ArriveByAmbulance_No</td>
+      <td>-1.0000</td>
+      <td>1.0000</td>
+      <td>1.0</td>
+      <td>False</td>
+      <td>S1ArriveByAmbulance_No-S1ArriveByAmbulance_Yes</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1158,50 +1179,56 @@
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>S1ArriveByAmbulance_missing</th>
-      <td>LimbAtaxia</td>
+      <th>Hypertension_No</th>
+      <td>S1OnsetInHospital_Yes</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S1ArriveByAmbulance_missing</th>
-      <td>S1AdmissionQuarter_Q1</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>True</td>
+      <td>False</td>
+      <td>Hypertension_No-S1OnsetInHospital_Yes</td>
     </tr>
     <tr>
       <th>S1OnsetTimeType_Not known</th>
-      <td>S1AdmissionQuarter_Q1</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1ArriveByAmbulance_missing</th>
-      <td>S1OnsetDateType_Best estimate</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>S1OnsetTimeType_Not known</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>Hypertension_No</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
       <td>0.0</td>
       <td>False</td>
+      <td>Hypertension_No-S1OnsetTimeType_Not known</td>
+    </tr>
+    <tr>
+      <th>S2BrainImagingTime_min</th>
+      <td>Hypertension_No</td>
+      <td>0.0066</td>
+      <td>0.0066</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>Hypertension_No-S2BrainImagingTime_min</td>
+    </tr>
+    <tr>
+      <th>Hypertension_No</th>
+      <td>S2NihssArrival</td>
+      <td>-0.0009</td>
+      <td>0.0009</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>Hypertension_No-S2NihssArrival</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_Yes</th>
+      <td>Visual</td>
+      <td>-0.0056</td>
+      <td>0.0056</td>
+      <td>0.0</td>
+      <td>False</td>
+      <td>StrokeTIA_Yes-Visual</td>
     </tr>
   </tbody>
 </table>
-<p>9900 rows × 5 columns</p>
+<p>4950 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1212,8 +1239,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="show-histogram-and-counts-of-correlations">
+</section>
+<section id="show-histogram-and-counts-of-correlations">
 <h2>Show histogram and counts of correlations<a class="headerlink" href="#show-histogram-and-counts-of-correlations" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1312,10 +1339,10 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="show-highly-correlated-features">
+</section>
+<section id="show-highly-correlated-features">
 <h2>Show highly correlated features<a class="headerlink" href="#show-highly-correlated-features" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="perfectly-correlated-features">
+<section id="perfectly-correlated-features">
 <h3>Perfectly correlated features<a class="headerlink" href="#perfectly-correlated-features" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1349,6 +1376,7 @@
       <th>abs_value</th>
       <th>r-squared</th>
       <th>missing</th>
+      <th>pair</th>
     </tr>
   </thead>
   <tbody>
@@ -1359,150 +1387,7 @@
       <td>1.0</td>
       <td>1.0</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulentDOAC_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>Diabetes_Yes</th>
-      <td>Diabetes_No</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>MoreEqual80y_Yes</th>
-      <td>MoreEqual80y_No</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>Diabetes_No</th>
-      <td>Diabetes_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>MoreEqual80y_No</th>
-      <td>MoreEqual80y_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_Yes</th>
-      <td>AtrialFibrillation_No</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_Yes</th>
-      <td>AFAntiplatelet_missing</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_missing</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_No</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_missing</th>
-      <td>AtrialFibrillation_No</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_No</th>
-      <td>AFAntiplatelet_missing</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>StrokeTIA_Yes</th>
-      <td>StrokeTIA_No</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>StrokeTIA_No</th>
-      <td>StrokeTIA_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>Hypertension_No</th>
-      <td>Hypertension_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulentHep...</td>
     </tr>
     <tr>
       <th>Hypertension_Yes</th>
@@ -1511,46 +1396,25 @@
       <td>1.0</td>
       <td>1.0</td>
       <td>False</td>
+      <td>Hypertension_No-Hypertension_Yes</td>
     </tr>
     <tr>
-      <th>S1OnsetTimeType_Best estimate</th>
-      <td>S1OnsetTimeType_Precise</td>
-      <td>-1.0</td>
+      <th>AFAnticoagulentHeparin_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>False</td>
+      <td>1.0</td>
+      <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-AFAnticoagulent...</td>
     </tr>
     <tr>
-      <th>S1OnsetTimeType_Precise</th>
-      <td>S1OnsetTimeType_Best estimate</td>
-      <td>-1.0</td>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulentVitK_missing</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>CongestiveHeartFailure_No</th>
-      <td>CongestiveHeartFailure_Yes</td>
-      <td>-1.0</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>CongestiveHeartFailure_Yes</th>
-      <td>CongestiveHeartFailure_No</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1ArriveByAmbulance_No</th>
-      <td>S1ArriveByAmbulance_Yes</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>False</td>
+      <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulentVit...</td>
     </tr>
     <tr>
       <th>S1ArriveByAmbulance_Yes</th>
@@ -1559,6 +1423,25 @@
       <td>1.0</td>
       <td>1.0</td>
       <td>False</td>
+      <td>S1ArriveByAmbulance_No-S1ArriveByAmbulance_Yes</td>
+    </tr>
+    <tr>
+      <th>MoreEqual80y_No</th>
+      <td>MoreEqual80y_Yes</td>
+      <td>-1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>False</td>
+      <td>MoreEqual80y_No-MoreEqual80y_Yes</td>
+    </tr>
+    <tr>
+      <th>Diabetes_Yes</th>
+      <td>Diabetes_No</td>
+      <td>-1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>False</td>
+      <td>Diabetes_No-Diabetes_Yes</td>
     </tr>
     <tr>
       <th>S1Gender_Male</th>
@@ -1567,21 +1450,68 @@
       <td>1.0</td>
       <td>1.0</td>
       <td>False</td>
+      <td>S1Gender_Female-S1Gender_Male</td>
     </tr>
     <tr>
-      <th>S1Gender_Female</th>
-      <td>S1Gender_Male</td>
+      <th>CongestiveHeartFailure_Yes</th>
+      <td>CongestiveHeartFailure_No</td>
       <td>-1.0</td>
       <td>1.0</td>
       <td>1.0</td>
       <td>False</td>
+      <td>CongestiveHeartFailure_No-CongestiveHeartFailu...</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>AtrialFibrillation_No</td>
+      <td>-1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>False</td>
+      <td>AtrialFibrillation_No-AtrialFibrillation_Yes</td>
+    </tr>
+    <tr>
+      <th>StrokeTIA_No</th>
+      <td>StrokeTIA_Yes</td>
+      <td>-1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>False</td>
+      <td>StrokeTIA_No-StrokeTIA_Yes</td>
+    </tr>
+    <tr>
+      <th>AtrialFibrillation_Yes</th>
+      <td>AFAntiplatelet_missing</td>
+      <td>-1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>True</td>
+      <td>AFAntiplatelet_missing-AtrialFibrillation_Yes</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_missing</th>
+      <td>AtrialFibrillation_No</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>True</td>
+      <td>AFAntiplatelet_missing-AtrialFibrillation_No</td>
+    </tr>
+    <tr>
+      <th>S1OnsetTimeType_Precise</th>
+      <td>S1OnsetTimeType_Best estimate</td>
+      <td>-1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>False</td>
+      <td>S1OnsetTimeType_Best estimate-S1OnsetTimeType_...</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="highly-correlated-features">
+</section>
+<section id="highly-correlated-features">
 <h3>Highly correlated features<a class="headerlink" href="#highly-correlated-features" title="Permalink to this headline">¶</a></h3>
 <p>R-squared between 0.5 and 0.999</p>
 <div class="cell docutils container">
@@ -1617,6 +1547,7 @@
       <th>abs_value</th>
       <th>r-squared</th>
       <th>missing</th>
+      <th>pair</th>
     </tr>
   </thead>
   <tbody>
@@ -1627,38 +1558,7 @@
       <td>0.9984</td>
       <td>0.9969</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>-0.9984</td>
-      <td>0.9984</td>
-      <td>0.9969</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>AFAnticoagulentDOAC_missing</td>
-      <td>-0.9984</td>
-      <td>0.9984</td>
-      <td>0.9969</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>-0.9984</td>
-      <td>0.9984</td>
-      <td>0.9969</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>-0.9984</td>
-      <td>0.9984</td>
-      <td>0.9969</td>
-      <td>True</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulentHepar...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_missing</th>
@@ -1667,6 +1567,16 @@
       <td>0.9984</td>
       <td>0.9969</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulentHep...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulentHeparin_No</td>
+      <td>-0.9984</td>
+      <td>0.9984</td>
+      <td>0.9969</td>
+      <td>True</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulentVitK_...</td>
     </tr>
     <tr>
       <th>S2StrokeType_Infarction</th>
@@ -1675,38 +1585,7 @@
       <td>0.9940</td>
       <td>0.9881</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
-      <td>S2StrokeType_Infarction</td>
-      <td>-0.9940</td>
-      <td>0.9940</td>
-      <td>0.9881</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>AFAnticoagulentVitK_No</td>
-      <td>-0.9590</td>
-      <td>0.9590</td>
-      <td>0.9198</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>-0.9590</td>
-      <td>0.9590</td>
-      <td>0.9198</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>AFAnticoagulentVitK_No</td>
-      <td>-0.9590</td>
-      <td>0.9590</td>
-      <td>0.9198</td>
-      <td>True</td>
+      <td>S2StrokeType_Infarction-S2StrokeType_Primary I...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_missing</th>
@@ -1715,6 +1594,7 @@
       <td>0.9590</td>
       <td>0.9198</td>
       <td>True</td>
+      <td>AFAnticoagulentVitK_No-AFAnticoagulentVitK_mis...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_No</th>
@@ -1723,6 +1603,7 @@
       <td>0.9590</td>
       <td>0.9198</td>
       <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-AFAnticoagulent...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_No</th>
@@ -1731,14 +1612,7 @@
       <td>0.9590</td>
       <td>0.9198</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>0.9575</td>
-      <td>0.9575</td>
-      <td>0.9168</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulentVit...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_No</th>
@@ -1747,6 +1621,7 @@
       <td>0.9575</td>
       <td>0.9168</td>
       <td>False</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulentVitK_No</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -1755,54 +1630,7 @@
       <td>0.9423</td>
       <td>0.8880</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>-0.9423</td>
-      <td>0.9423</td>
-      <td>0.8880</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>-0.9339</td>
-      <td>0.9339</td>
-      <td>0.8721</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>-0.9339</td>
-      <td>0.9339</td>
-      <td>0.8721</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>-0.9339</td>
-      <td>0.9339</td>
-      <td>0.8721</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>-0.9339</td>
-      <td>0.9339</td>
-      <td>0.8721</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>-0.9339</td>
-      <td>0.9339</td>
-      <td>0.8721</td>
-      <td>True</td>
+      <td>S2NewAFDiagnosis_No-S2NewAFDiagnosis_missing</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_No</th>
@@ -1811,6 +1639,25 @@
       <td>0.9339</td>
       <td>0.8721</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentDOAC_mis...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentVitK_missing</td>
+      <td>-0.9339</td>
+      <td>0.9339</td>
+      <td>0.8721</td>
+      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentVitK_mis...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentDOAC_No</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.9339</td>
+      <td>0.9339</td>
+      <td>0.8721</td>
+      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentHeparin_...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_No</th>
@@ -1819,22 +1666,7 @@
       <td>0.9322</td>
       <td>0.8690</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>0.9322</td>
-      <td>0.9322</td>
-      <td>0.8690</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S2TIAInLastMonth_missing</th>
-      <td>S2TIAInLastMonth_No</td>
-      <td>-0.9032</td>
-      <td>0.9032</td>
-      <td>0.8158</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentHeparin_No</td>
     </tr>
     <tr>
       <th>S2TIAInLastMonth_No</th>
@@ -1843,6 +1675,7 @@
       <td>0.9032</td>
       <td>0.8158</td>
       <td>True</td>
+      <td>S2TIAInLastMonth_No-S2TIAInLastMonth_missing</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_No</th>
@@ -1851,22 +1684,7 @@
       <td>0.8889</td>
       <td>0.7902</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>0.8889</td>
-      <td>0.8889</td>
-      <td>0.7902</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>-0.8775</td>
-      <td>0.8775</td>
-      <td>0.7700</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentVitK_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_missing</th>
@@ -1875,14 +1693,7 @@
       <td>0.8775</td>
       <td>0.7700</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>-0.8775</td>
-      <td>0.8775</td>
-      <td>0.7700</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -1891,30 +1702,16 @@
       <td>0.8775</td>
       <td>0.7700</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>-0.8775</td>
-      <td>0.8775</td>
-      <td>0.7700</td>
-      <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-S1AdmissionYear...</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
-      <td>AFAnticoagulentDOAC_missing</td>
+      <td>AFAnticoagulentVitK_missing</td>
       <td>-0.8775</td>
       <td>0.8775</td>
       <td>0.7700</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>0.8758</td>
-      <td>0.8758</td>
-      <td>0.7671</td>
-      <td>False</td>
+      <td>AFAnticoagulentVitK_missing-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -1923,6 +1720,7 @@
       <td>0.8758</td>
       <td>0.7671</td>
       <td>False</td>
+      <td>AFAnticoagulentHeparin_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>MotorLegRight</th>
@@ -1931,22 +1729,7 @@
       <td>0.8435</td>
       <td>0.7115</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorArmRight</th>
-      <td>MotorLegRight</td>
-      <td>0.8435</td>
-      <td>0.8435</td>
-      <td>0.7115</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>AFAnticoagulentVitK_No</td>
-      <td>0.8370</td>
-      <td>0.8370</td>
-      <td>0.7006</td>
-      <td>False</td>
+      <td>MotorArmRight-MotorLegRight</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_No</th>
@@ -1955,6 +1738,7 @@
       <td>0.8370</td>
       <td>0.7006</td>
       <td>False</td>
+      <td>AFAnticoagulentVitK_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_No</th>
@@ -1963,14 +1747,7 @@
       <td>0.8342</td>
       <td>0.6959</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>-0.8342</td>
-      <td>0.8342</td>
-      <td>0.6959</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-S2NewAFDiagnosis_missing</td>
     </tr>
     <tr>
       <th>MotorArmLeft</th>
@@ -1979,22 +1756,7 @@
       <td>0.8326</td>
       <td>0.6933</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorLegLeft</th>
-      <td>MotorArmLeft</td>
-      <td>0.8326</td>
-      <td>0.8326</td>
-      <td>0.6933</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>AFAnticoagulentVitK_No</td>
-      <td>-0.8224</td>
-      <td>0.8224</td>
-      <td>0.6764</td>
-      <td>True</td>
+      <td>MotorArmLeft-MotorLegLeft</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_No</th>
@@ -2003,14 +1765,7 @@
       <td>0.8224</td>
       <td>0.6764</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>0.8108</td>
-      <td>0.8108</td>
-      <td>0.6574</td>
-      <td>False</td>
+      <td>AFAnticoagulentVitK_No-S2NewAFDiagnosis_missing</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -2019,6 +1774,7 @@
       <td>0.8108</td>
       <td>0.6574</td>
       <td>False</td>
+      <td>AFAnticoagulentDOAC_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_missing</th>
@@ -2027,30 +1783,7 @@
       <td>0.8046</td>
       <td>0.6474</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>0.8046</td>
-      <td>0.8046</td>
-      <td>0.6474</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>AFAnticoagulentDOAC_missing</td>
-      <td>0.8046</td>
-      <td>0.8046</td>
-      <td>0.6474</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>0.8046</td>
-      <td>0.8046</td>
-      <td>0.6474</td>
-      <td>True</td>
+      <td>AFAnticoagulentVitK_missing-S2NewAFDiagnosis_m...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_missing</th>
@@ -2059,14 +1792,16 @@
       <td>0.8046</td>
       <td>0.6474</td>
       <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-S2NewAFDiagnosi...</td>
     </tr>
     <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>S2NewAFDiagnosis_missing</td>
+      <th>S2NewAFDiagnosis_missing</th>
+      <td>AFAnticoagulentDOAC_missing</td>
       <td>0.8046</td>
       <td>0.8046</td>
       <td>0.6474</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-S2NewAFDiagnosis_m...</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_missing</th>
@@ -2075,14 +1810,7 @@
       <td>0.8035</td>
       <td>0.6456</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>S2NewAFDiagnosis_missing</td>
-      <td>-0.8035</td>
-      <td>0.8035</td>
-      <td>0.6456</td>
-      <td>True</td>
+      <td>AFAnticoagulentHeparin_No-S2NewAFDiagnosis_mis...</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -2091,22 +1819,7 @@
       <td>0.7859</td>
       <td>0.6176</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7859</td>
-      <td>0.7859</td>
-      <td>0.6176</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>-0.7805</td>
-      <td>0.7805</td>
-      <td>0.6092</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -2115,14 +1828,7 @@
       <td>0.7805</td>
       <td>0.6092</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7749</td>
-      <td>0.7749</td>
-      <td>0.6004</td>
-      <td>False</td>
+      <td>S1AdmissionYear_2018-S2NewAFDiagnosis_missing</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -2131,30 +1837,7 @@
       <td>0.7749</td>
       <td>0.6004</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_No</th>
-      <td>AtrialFibrillation_No</td>
-      <td>-0.7736</td>
-      <td>0.7736</td>
-      <td>0.5984</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_No</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>0.7736</td>
-      <td>0.7736</td>
-      <td>0.5984</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_No</th>
-      <td>AFAntiplatelet_No</td>
-      <td>-0.7736</td>
-      <td>0.7736</td>
-      <td>0.5984</td>
-      <td>False</td>
+      <td>AFAnticoagulentVitK_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>AFAntiplatelet_No</th>
@@ -2163,22 +1846,25 @@
       <td>0.7736</td>
       <td>0.5984</td>
       <td>True</td>
+      <td>AFAntiplatelet_No-AFAntiplatelet_missing</td>
     </tr>
     <tr>
-      <th>AtrialFibrillation_Yes</th>
-      <td>AFAntiplatelet_No</td>
-      <td>0.7736</td>
-      <td>0.7736</td>
-      <td>0.5984</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_missing</th>
+      <th>AtrialFibrillation_No</th>
       <td>AFAntiplatelet_No</td>
       <td>-0.7736</td>
       <td>0.7736</td>
       <td>0.5984</td>
-      <td>True</td>
+      <td>False</td>
+      <td>AFAntiplatelet_No-AtrialFibrillation_No</td>
+    </tr>
+    <tr>
+      <th>AFAntiplatelet_No</th>
+      <td>AtrialFibrillation_Yes</td>
+      <td>0.7736</td>
+      <td>0.7736</td>
+      <td>0.5984</td>
+      <td>False</td>
+      <td>AFAntiplatelet_No-AtrialFibrillation_Yes</td>
     </tr>
     <tr>
       <th>S1Ethnicity_White</th>
@@ -2187,54 +1873,7 @@
       <td>0.7607</td>
       <td>0.5787</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1Ethnicity_Other</th>
-      <td>S1Ethnicity_White</td>
-      <td>-0.7607</td>
-      <td>0.7607</td>
-      <td>0.5787</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>-0.7582</td>
-      <td>0.7582</td>
-      <td>0.5749</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_No</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>-0.7582</td>
-      <td>0.7582</td>
-      <td>0.5749</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>-0.7582</td>
-      <td>0.7582</td>
-      <td>0.5749</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>-0.7582</td>
-      <td>0.7582</td>
-      <td>0.5749</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_No</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>-0.7582</td>
-      <td>0.7582</td>
-      <td>0.5749</td>
-      <td>True</td>
+      <td>S1Ethnicity_Other-S1Ethnicity_White</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -2243,14 +1882,25 @@
       <td>0.7582</td>
       <td>0.5749</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
-      <th>AFAnticoagulentHeparin_No</th>
+      <th>S2NewAFDiagnosis_No</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>-0.7582</td>
+      <td>0.7582</td>
+      <td>0.5749</td>
+      <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-S2NewAFDiagnosi...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
       <td>S2NewAFDiagnosis_No</td>
-      <td>0.7572</td>
-      <td>0.7572</td>
-      <td>0.5734</td>
-      <td>False</td>
+      <td>-0.7582</td>
+      <td>0.7582</td>
+      <td>0.5749</td>
+      <td>True</td>
+      <td>AFAnticoagulentVitK_missing-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -2259,6 +1909,7 @@
       <td>0.7572</td>
       <td>0.5734</td>
       <td>False</td>
+      <td>AFAnticoagulentHeparin_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>MoreEqual80y_Yes</th>
@@ -2267,22 +1918,7 @@
       <td>0.7556</td>
       <td>0.5709</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AgeOnArrival</th>
-      <td>MoreEqual80y_Yes</td>
-      <td>0.7556</td>
-      <td>0.7556</td>
-      <td>0.5709</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AgeOnArrival</th>
-      <td>MoreEqual80y_No</td>
-      <td>-0.7556</td>
-      <td>0.7556</td>
-      <td>0.5709</td>
-      <td>False</td>
+      <td>MoreEqual80y_Yes-S1AgeOnArrival</td>
     </tr>
     <tr>
       <th>MoreEqual80y_No</th>
@@ -2291,6 +1927,7 @@
       <td>0.7556</td>
       <td>0.5709</td>
       <td>False</td>
+      <td>MoreEqual80y_No-S1AgeOnArrival</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_missing</th>
@@ -2299,22 +1936,7 @@
       <td>0.7502</td>
       <td>0.5628</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>S2NewAFDiagnosis_missing</td>
-      <td>-0.7502</td>
-      <td>0.7502</td>
-      <td>0.5628</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_No</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>0.7357</td>
-      <td>0.7357</td>
-      <td>0.5413</td>
-      <td>False</td>
+      <td>AFAnticoagulent_No-S2NewAFDiagnosis_missing</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -2323,6 +1945,7 @@
       <td>0.7357</td>
       <td>0.5413</td>
       <td>False</td>
+      <td>S1AdmissionYear_2018-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>S1OnsetDateType_Precise</th>
@@ -2331,22 +1954,7 @@
       <td>0.7267</td>
       <td>0.5281</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1OnsetDateType_Best estimate</th>
-      <td>S1OnsetDateType_Precise</td>
-      <td>-0.7267</td>
-      <td>0.7267</td>
-      <td>0.5281</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>AFAnticoagulent_No</td>
-      <td>0.7212</td>
-      <td>0.7212</td>
-      <td>0.5202</td>
-      <td>False</td>
+      <td>S1OnsetDateType_Best estimate-S1OnsetDateType_...</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -2355,6 +1963,7 @@
       <td>0.7212</td>
       <td>0.5202</td>
       <td>False</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -2363,46 +1972,7 @@
       <td>0.7149</td>
       <td>0.5111</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>-0.7149</td>
-      <td>0.7149</td>
-      <td>0.5111</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>0.7093</td>
-      <td>0.7093</td>
-      <td>0.5030</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>0.7093</td>
-      <td>0.7093</td>
-      <td>0.5030</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>0.7093</td>
-      <td>0.7093</td>
-      <td>0.5030</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AFAnticoagulentDOAC_missing</td>
-      <td>0.7093</td>
-      <td>0.7093</td>
-      <td>0.5030</td>
-      <td>True</td>
+      <td>AFAnticoagulent_missing-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_missing</th>
@@ -2411,14 +1981,25 @@
       <td>0.7093</td>
       <td>0.5030</td>
       <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-AFAnticoagulent...</td>
     </tr>
     <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AFAnticoagulentHeparin_missing</td>
+      <th>AFAnticoagulentDOAC_missing</th>
+      <td>AFAnticoagulent_missing</td>
       <td>0.7093</td>
       <td>0.7093</td>
       <td>0.5030</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulent_mi...</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulentVitK_missing</th>
+      <td>AFAnticoagulent_missing</td>
+      <td>0.7093</td>
+      <td>0.7093</td>
+      <td>0.5030</td>
+      <td>True</td>
+      <td>AFAnticoagulentVitK_missing-AFAnticoagulent_mi...</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -2427,14 +2008,7 @@
       <td>0.7092</td>
       <td>0.5030</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7092</td>
-      <td>0.7092</td>
-      <td>0.5030</td>
-      <td>False</td>
+      <td>AFAnticoagulent_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_No</th>
@@ -2443,14 +2017,7 @@
       <td>0.7080</td>
       <td>0.5012</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>-0.7080</td>
-      <td>0.7080</td>
-      <td>0.5012</td>
-      <td>True</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulent_missing</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_missing</th>
@@ -2459,22 +2026,7 @@
       <td>0.7035</td>
       <td>0.4949</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>-0.7035</td>
-      <td>0.7035</td>
-      <td>0.4949</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulent_No</td>
-      <td>0.6979</td>
-      <td>0.6979</td>
-      <td>0.4871</td>
-      <td>False</td>
+      <td>AFAnticoagulent_No-AFAnticoagulent_missing</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -2483,6 +2035,7 @@
       <td>0.6979</td>
       <td>0.4871</td>
       <td>False</td>
+      <td>AFAnticoagulentVitK_No-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>BestLanguage</th>
@@ -2491,14 +2044,7 @@
       <td>0.6979</td>
       <td>0.4870</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>LocQuestions</th>
-      <td>BestLanguage</td>
-      <td>0.6979</td>
-      <td>0.6979</td>
-      <td>0.4870</td>
-      <td>False</td>
+      <td>BestLanguage-LocQuestions</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2507,14 +2053,7 @@
       <td>0.6795</td>
       <td>0.4617</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>ExtinctionInattention</th>
-      <td>S2NihssArrival</td>
-      <td>0.6795</td>
-      <td>0.6795</td>
-      <td>0.4617</td>
-      <td>False</td>
+      <td>ExtinctionInattention-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_No</th>
@@ -2523,14 +2062,7 @@
       <td>0.6763</td>
       <td>0.4574</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AFAnticoagulentVitK_No</td>
-      <td>-0.6763</td>
-      <td>0.6763</td>
-      <td>0.4574</td>
-      <td>True</td>
+      <td>AFAnticoagulentVitK_No-AFAnticoagulent_missing</td>
     </tr>
     <tr>
       <th>BestGaze</th>
@@ -2539,14 +2071,7 @@
       <td>0.6756</td>
       <td>0.4564</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>BestGaze</td>
-      <td>0.6756</td>
-      <td>0.6756</td>
-      <td>0.4564</td>
-      <td>False</td>
+      <td>BestGaze-S2NihssArrival</td>
     </tr>
     <tr>
       <th>BestLanguage</th>
@@ -2555,22 +2080,7 @@
       <td>0.6743</td>
       <td>0.4547</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>BestLanguage</td>
-      <td>0.6743</td>
-      <td>0.6743</td>
-      <td>0.4547</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>AFAnticoagulent_No</td>
-      <td>0.6694</td>
-      <td>0.6694</td>
-      <td>0.4480</td>
-      <td>False</td>
+      <td>BestLanguage-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -2579,6 +2089,7 @@
       <td>0.6694</td>
       <td>0.4480</td>
       <td>False</td>
+      <td>AFAnticoagulent_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_No</th>
@@ -2587,22 +2098,7 @@
       <td>0.6636</td>
       <td>0.4403</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>0.6636</td>
-      <td>0.6636</td>
-      <td>0.4403</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>AFAnticoagulent_No</td>
-      <td>-0.6622</td>
-      <td>0.6622</td>
-      <td>0.4386</td>
-      <td>True</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -2611,14 +2107,7 @@
       <td>0.6622</td>
       <td>0.4386</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>-0.6622</td>
-      <td>0.6622</td>
-      <td>0.4386</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_missing</th>
@@ -2627,30 +2116,16 @@
       <td>0.6622</td>
       <td>0.4386</td>
       <td>True</td>
+      <td>AFAnticoagulentVitK_missing-AFAnticoagulent_No</td>
     </tr>
     <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
+      <th>AFAnticoagulentHeparin_missing</th>
       <td>AFAnticoagulent_No</td>
       <td>-0.6622</td>
       <td>0.6622</td>
       <td>0.4386</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>-0.6622</td>
-      <td>0.6622</td>
-      <td>0.4386</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>LocQuestions</th>
-      <td>LocCommands</td>
-      <td>0.6576</td>
-      <td>0.6576</td>
-      <td>0.4325</td>
-      <td>False</td>
+      <td>AFAnticoagulentHeparin_missing-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>LocCommands</th>
@@ -2659,6 +2134,7 @@
       <td>0.6576</td>
       <td>0.4325</td>
       <td>False</td>
+      <td>LocCommands-LocQuestions</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2667,14 +2143,7 @@
       <td>0.6560</td>
       <td>0.4303</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>LocCommands</th>
-      <td>S2NihssArrival</td>
-      <td>0.6560</td>
-      <td>0.6560</td>
-      <td>0.4303</td>
-      <td>False</td>
+      <td>LocCommands-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_missing</th>
@@ -2683,38 +2152,7 @@
       <td>0.6560</td>
       <td>0.4303</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>-0.6560</td>
-      <td>0.6560</td>
-      <td>0.4303</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_missing</th>
-      <td>AFAnticoagulent_Yes</td>
-      <td>-0.6516</td>
-      <td>0.6516</td>
-      <td>0.4245</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_Yes</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>0.6516</td>
-      <td>0.6516</td>
-      <td>0.4245</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_Yes</th>
-      <td>AFAntiplatelet_missing</td>
-      <td>-0.6516</td>
-      <td>0.6516</td>
-      <td>0.4245</td>
-      <td>True</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulent_missing</td>
     </tr>
     <tr>
       <th>AtrialFibrillation_Yes</th>
@@ -2723,14 +2161,7 @@
       <td>0.6516</td>
       <td>0.4245</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_No</th>
-      <td>AFAnticoagulent_Yes</td>
-      <td>-0.6516</td>
-      <td>0.6516</td>
-      <td>0.4245</td>
-      <td>False</td>
+      <td>AFAnticoagulent_Yes-AtrialFibrillation_Yes</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_Yes</th>
@@ -2739,6 +2170,16 @@
       <td>0.6516</td>
       <td>0.4245</td>
       <td>False</td>
+      <td>AFAnticoagulent_Yes-AtrialFibrillation_No</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_Yes</th>
+      <td>AFAntiplatelet_missing</td>
+      <td>-0.6516</td>
+      <td>0.6516</td>
+      <td>0.4245</td>
+      <td>True</td>
+      <td>AFAnticoagulent_Yes-AFAntiplatelet_missing</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2747,22 +2188,7 @@
       <td>0.6493</td>
       <td>0.4216</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorLegRight</th>
-      <td>S2NihssArrival</td>
-      <td>0.6493</td>
-      <td>0.6493</td>
-      <td>0.4216</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1OnsetDateType_Precise</th>
-      <td>S1OnsetDateType_Stroke during sleep</td>
-      <td>-0.6469</td>
-      <td>0.6469</td>
-      <td>0.4185</td>
-      <td>False</td>
+      <td>MotorLegRight-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S1OnsetDateType_Stroke during sleep</th>
@@ -2771,6 +2197,7 @@
       <td>0.6469</td>
       <td>0.4185</td>
       <td>False</td>
+      <td>S1OnsetDateType_Precise-S1OnsetDateType_Stroke...</td>
     </tr>
     <tr>
       <th>LocQuestions</th>
@@ -2779,22 +2206,7 @@
       <td>0.6357</td>
       <td>0.4041</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>LocQuestions</td>
-      <td>0.6357</td>
-      <td>0.6357</td>
-      <td>0.4041</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>LocCommands</td>
-      <td>0.6345</td>
-      <td>0.6345</td>
-      <td>0.4026</td>
-      <td>False</td>
+      <td>LocQuestions-S2NihssArrival</td>
     </tr>
     <tr>
       <th>LocCommands</th>
@@ -2803,6 +2215,7 @@
       <td>0.6345</td>
       <td>0.4026</td>
       <td>False</td>
+      <td>BestLanguage-LocCommands</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_missing</th>
@@ -2811,14 +2224,7 @@
       <td>0.6305</td>
       <td>0.3976</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_missing</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>0.6305</td>
-      <td>0.6305</td>
-      <td>0.3976</td>
-      <td>True</td>
+      <td>AFAnticoagulent_missing-S2NewAFDiagnosis_missing</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2827,14 +2233,7 @@
       <td>0.6212</td>
       <td>0.3858</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorArmRight</th>
-      <td>S2NihssArrival</td>
-      <td>0.6212</td>
-      <td>0.6212</td>
-      <td>0.3858</td>
-      <td>False</td>
+      <td>MotorArmRight-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_Yes</th>
@@ -2843,22 +2242,7 @@
       <td>0.6013</td>
       <td>0.3615</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_No</th>
-      <td>AFAnticoagulent_Yes</td>
-      <td>0.6013</td>
-      <td>0.6013</td>
-      <td>0.3615</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>Visual</td>
-      <td>0.5986</td>
-      <td>0.5986</td>
-      <td>0.3583</td>
-      <td>False</td>
+      <td>AFAnticoagulent_Yes-AFAntiplatelet_No</td>
     </tr>
     <tr>
       <th>Visual</th>
@@ -2867,6 +2251,7 @@
       <td>0.5986</td>
       <td>0.3583</td>
       <td>False</td>
+      <td>S2NihssArrival-Visual</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_missing</th>
@@ -2875,22 +2260,7 @@
       <td>0.5942</td>
       <td>0.3530</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_No</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>-0.5942</td>
-      <td>0.5942</td>
-      <td>0.3530</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>Dysarthria</td>
-      <td>0.5840</td>
-      <td>0.5840</td>
-      <td>0.3410</td>
-      <td>False</td>
+      <td>AFAnticoagulent_missing-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>Dysarthria</th>
@@ -2899,6 +2269,7 @@
       <td>0.5840</td>
       <td>0.3410</td>
       <td>False</td>
+      <td>Dysarthria-S2NihssArrival</td>
     </tr>
     <tr>
       <th>BestGaze</th>
@@ -2907,14 +2278,7 @@
       <td>0.5732</td>
       <td>0.3286</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>ExtinctionInattention</th>
-      <td>BestGaze</td>
-      <td>0.5732</td>
-      <td>0.5732</td>
-      <td>0.3286</td>
-      <td>False</td>
+      <td>BestGaze-ExtinctionInattention</td>
     </tr>
     <tr>
       <th>Visual</th>
@@ -2923,14 +2287,7 @@
       <td>0.5626</td>
       <td>0.3165</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>ExtinctionInattention</th>
-      <td>Visual</td>
-      <td>0.5626</td>
-      <td>0.5626</td>
-      <td>0.3165</td>
-      <td>False</td>
+      <td>ExtinctionInattention-Visual</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2939,22 +2296,7 @@
       <td>0.5568</td>
       <td>0.3100</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>Loc</th>
-      <td>S2NihssArrival</td>
-      <td>0.5568</td>
-      <td>0.5568</td>
-      <td>0.3100</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>FacialPalsy</th>
-      <td>S2NihssArrival</td>
-      <td>0.5548</td>
-      <td>0.5548</td>
-      <td>0.3078</td>
-      <td>False</td>
+      <td>Loc-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2963,14 +2305,7 @@
       <td>0.5548</td>
       <td>0.3078</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorLegLeft</th>
-      <td>S2NihssArrival</td>
-      <td>0.5507</td>
-      <td>0.5507</td>
-      <td>0.3033</td>
-      <td>False</td>
+      <td>FacialPalsy-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2979,6 +2314,7 @@
       <td>0.5507</td>
       <td>0.3033</td>
       <td>False</td>
+      <td>MotorLegLeft-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -2987,14 +2323,7 @@
       <td>0.5503</td>
       <td>0.3028</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>Sensory</th>
-      <td>S2NihssArrival</td>
-      <td>0.5503</td>
-      <td>0.5503</td>
-      <td>0.3028</td>
-      <td>False</td>
+      <td>S2NihssArrival-Sensory</td>
     </tr>
     <tr>
       <th>Visual</th>
@@ -3003,54 +2332,7 @@
       <td>0.5442</td>
       <td>0.2961</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>BestGaze</th>
-      <td>Visual</td>
-      <td>0.5442</td>
-      <td>0.5442</td>
-      <td>0.2961</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_missing</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>0.5441</td>
-      <td>0.5441</td>
-      <td>0.2960</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_missing</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>0.5441</td>
-      <td>0.5441</td>
-      <td>0.2960</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2016</th>
-      <td>AFAnticoagulentHeparin_missing</td>
-      <td>0.5441</td>
-      <td>0.5441</td>
-      <td>0.2960</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2016</th>
-      <td>AFAnticoagulentVitK_missing</td>
-      <td>0.5441</td>
-      <td>0.5441</td>
-      <td>0.2960</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_missing</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>0.5441</td>
-      <td>0.5441</td>
-      <td>0.2960</td>
-      <td>True</td>
+      <td>BestGaze-Visual</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -3059,14 +2341,25 @@
       <td>0.5441</td>
       <td>0.2960</td>
       <td>True</td>
+      <td>AFAnticoagulentDOAC_missing-S1AdmissionYear_2016</td>
     </tr>
     <tr>
-      <th>AFAnticoagulentHeparin_No</th>
+      <th>AFAnticoagulentVitK_missing</th>
       <td>S1AdmissionYear_2016</td>
-      <td>-0.5432</td>
-      <td>0.5432</td>
-      <td>0.2951</td>
-      <td>False</td>
+      <td>0.5441</td>
+      <td>0.5441</td>
+      <td>0.2960</td>
+      <td>True</td>
+      <td>AFAnticoagulentVitK_missing-S1AdmissionYear_2016</td>
+    </tr>
+    <tr>
+      <th>S1AdmissionYear_2016</th>
+      <td>AFAnticoagulentHeparin_missing</td>
+      <td>0.5441</td>
+      <td>0.5441</td>
+      <td>0.2960</td>
+      <td>True</td>
+      <td>AFAnticoagulentHeparin_missing-S1AdmissionYear...</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -3075,14 +2368,7 @@
       <td>0.5432</td>
       <td>0.2951</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>MotorArmRight</td>
-      <td>0.5239</td>
-      <td>0.5239</td>
-      <td>0.2745</td>
-      <td>False</td>
+      <td>AFAnticoagulentHeparin_No-S1AdmissionYear_2016</td>
     </tr>
     <tr>
       <th>MotorArmRight</th>
@@ -3091,6 +2377,7 @@
       <td>0.5239</td>
       <td>0.2745</td>
       <td>False</td>
+      <td>BestLanguage-MotorArmRight</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -3099,46 +2386,7 @@
       <td>0.5217</td>
       <td>0.2722</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5217</td>
-      <td>0.5217</td>
-      <td>0.2722</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AFAntiplatelet_missing</td>
-      <td>0.5171</td>
-      <td>0.5171</td>
-      <td>0.2674</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>-0.5171</td>
-      <td>0.5171</td>
-      <td>0.2674</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_missing</th>
-      <td>AtrialFibrillation_No</td>
-      <td>0.5171</td>
-      <td>0.5171</td>
-      <td>0.2674</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_missing</th>
-      <td>AFAnticoagulent_missing</td>
-      <td>0.5171</td>
-      <td>0.5171</td>
-      <td>0.2674</td>
-      <td>True</td>
+      <td>AFAnticoagulentVitK_No-S1AdmissionYear_2016</td>
     </tr>
     <tr>
       <th>AtrialFibrillation_Yes</th>
@@ -3147,14 +2395,25 @@
       <td>0.5171</td>
       <td>0.2674</td>
       <td>True</td>
+      <td>AFAnticoagulent_missing-AtrialFibrillation_Yes</td>
     </tr>
     <tr>
-      <th>AtrialFibrillation_No</th>
-      <td>AFAnticoagulent_missing</td>
+      <th>AFAnticoagulent_missing</th>
+      <td>AtrialFibrillation_No</td>
       <td>0.5171</td>
       <td>0.5171</td>
       <td>0.2674</td>
       <td>True</td>
+      <td>AFAnticoagulent_missing-AtrialFibrillation_No</td>
+    </tr>
+    <tr>
+      <th>AFAnticoagulent_missing</th>
+      <td>AFAntiplatelet_missing</td>
+      <td>0.5171</td>
+      <td>0.5171</td>
+      <td>0.2674</td>
+      <td>True</td>
+      <td>AFAnticoagulent_missing-AFAntiplatelet_missing</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -3163,14 +2422,7 @@
       <td>0.5080</td>
       <td>0.2581</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5080</td>
-      <td>0.5080</td>
-      <td>0.2581</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_No-S1AdmissionYear_2016</td>
     </tr>
     <tr>
       <th>ExtinctionInattention</th>
@@ -3179,30 +2431,7 @@
       <td>0.5072</td>
       <td>0.2573</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>Sensory</th>
-      <td>ExtinctionInattention</td>
-      <td>0.5072</td>
-      <td>0.5072</td>
-      <td>0.2573</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S2TIAInLastMonth_missing</th>
-      <td>StrokeTIA_Yes</td>
-      <td>-0.5056</td>
-      <td>0.5056</td>
-      <td>0.2556</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>S2TIAInLastMonth_missing</th>
-      <td>StrokeTIA_No</td>
-      <td>0.5056</td>
-      <td>0.5056</td>
-      <td>0.2556</td>
-      <td>True</td>
+      <td>ExtinctionInattention-Sensory</td>
     </tr>
     <tr>
       <th>StrokeTIA_No</th>
@@ -3211,22 +2440,16 @@
       <td>0.5056</td>
       <td>0.2556</td>
       <td>True</td>
+      <td>S2TIAInLastMonth_missing-StrokeTIA_No</td>
     </tr>
     <tr>
-      <th>StrokeTIA_Yes</th>
-      <td>S2TIAInLastMonth_missing</td>
+      <th>S2TIAInLastMonth_missing</th>
+      <td>StrokeTIA_Yes</td>
       <td>-0.5056</td>
       <td>0.5056</td>
       <td>0.2556</td>
       <td>True</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>MotorLegRight</td>
-      <td>0.5052</td>
-      <td>0.5052</td>
-      <td>0.2553</td>
-      <td>False</td>
+      <td>S2TIAInLastMonth_missing-StrokeTIA_Yes</td>
     </tr>
     <tr>
       <th>MotorLegRight</th>
@@ -3235,14 +2458,7 @@
       <td>0.5052</td>
       <td>0.2553</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>S1AdmissionYear_2017</td>
-      <td>-0.5026</td>
-      <td>0.5026</td>
-      <td>0.2526</td>
-      <td>False</td>
+      <td>BestLanguage-MotorLegRight</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2017</th>
@@ -3251,6 +2467,7 @@
       <td>0.5026</td>
       <td>0.2526</td>
       <td>False</td>
+      <td>S1AdmissionYear_2017-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -3259,14 +2476,7 @@
       <td>0.5002</td>
       <td>0.2502</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2017</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5002</td>
-      <td>0.5002</td>
-      <td>0.2502</td>
-      <td>False</td>
+      <td>S1AdmissionYear_2016-S1AdmissionYear_2017</td>
     </tr>
   </tbody>
 </table>
@@ -3306,6 +2516,7 @@
       <th>abs_value</th>
       <th>r-squared</th>
       <th>missing</th>
+      <th>pair</th>
     </tr>
   </thead>
   <tbody>
@@ -3316,22 +2527,7 @@
       <td>0.9940</td>
       <td>0.9881</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
-      <td>S2StrokeType_Infarction</td>
-      <td>-0.9940</td>
-      <td>0.9940</td>
-      <td>0.9881</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>0.9575</td>
-      <td>0.9575</td>
-      <td>0.9168</td>
-      <td>False</td>
+      <td>S2StrokeType_Infarction-S2StrokeType_Primary I...</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_No</th>
@@ -3340,6 +2536,7 @@
       <td>0.9575</td>
       <td>0.9168</td>
       <td>False</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulentVitK_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_No</th>
@@ -3348,14 +2545,7 @@
       <td>0.9322</td>
       <td>0.8690</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>0.9322</td>
-      <td>0.9322</td>
-      <td>0.8690</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentHeparin_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulentDOAC_No</th>
@@ -3364,22 +2554,7 @@
       <td>0.8889</td>
       <td>0.7902</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulentDOAC_No</td>
-      <td>0.8889</td>
-      <td>0.8889</td>
-      <td>0.7902</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>0.8758</td>
-      <td>0.8758</td>
-      <td>0.7671</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulentVitK_No</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -3388,6 +2563,7 @@
       <td>0.8758</td>
       <td>0.7671</td>
       <td>False</td>
+      <td>AFAnticoagulentHeparin_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>MotorLegRight</th>
@@ -3396,22 +2572,7 @@
       <td>0.8435</td>
       <td>0.7115</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorArmRight</th>
-      <td>MotorLegRight</td>
-      <td>0.8435</td>
-      <td>0.8435</td>
-      <td>0.7115</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>AFAnticoagulentVitK_No</td>
-      <td>0.8370</td>
-      <td>0.8370</td>
-      <td>0.7006</td>
-      <td>False</td>
+      <td>MotorArmRight-MotorLegRight</td>
     </tr>
     <tr>
       <th>AFAnticoagulentVitK_No</th>
@@ -3420,6 +2581,7 @@
       <td>0.8370</td>
       <td>0.7006</td>
       <td>False</td>
+      <td>AFAnticoagulentVitK_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>MotorArmLeft</th>
@@ -3428,22 +2590,7 @@
       <td>0.8326</td>
       <td>0.6933</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorLegLeft</th>
-      <td>MotorArmLeft</td>
-      <td>0.8326</td>
-      <td>0.8326</td>
-      <td>0.6933</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>0.8108</td>
-      <td>0.8108</td>
-      <td>0.6574</td>
-      <td>False</td>
+      <td>MotorArmLeft-MotorLegLeft</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -3452,6 +2599,7 @@
       <td>0.8108</td>
       <td>0.6574</td>
       <td>False</td>
+      <td>AFAnticoagulentDOAC_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -3460,22 +2608,7 @@
       <td>0.7859</td>
       <td>0.6176</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7859</td>
-      <td>0.7859</td>
-      <td>0.6176</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7749</td>
-      <td>0.7749</td>
-      <td>0.6004</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -3484,22 +2617,7 @@
       <td>0.7749</td>
       <td>0.6004</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_No</th>
-      <td>AtrialFibrillation_No</td>
-      <td>-0.7736</td>
-      <td>0.7736</td>
-      <td>0.5984</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_No</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>0.7736</td>
-      <td>0.7736</td>
-      <td>0.5984</td>
-      <td>False</td>
+      <td>AFAnticoagulentVitK_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>AtrialFibrillation_No</th>
@@ -3508,14 +2626,16 @@
       <td>0.7736</td>
       <td>0.5984</td>
       <td>False</td>
+      <td>AFAntiplatelet_No-AtrialFibrillation_No</td>
     </tr>
     <tr>
-      <th>AtrialFibrillation_Yes</th>
-      <td>AFAntiplatelet_No</td>
+      <th>AFAntiplatelet_No</th>
+      <td>AtrialFibrillation_Yes</td>
       <td>0.7736</td>
       <td>0.7736</td>
       <td>0.5984</td>
       <td>False</td>
+      <td>AFAntiplatelet_No-AtrialFibrillation_Yes</td>
     </tr>
     <tr>
       <th>S1Ethnicity_White</th>
@@ -3524,22 +2644,7 @@
       <td>0.7607</td>
       <td>0.5787</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1Ethnicity_Other</th>
-      <td>S1Ethnicity_White</td>
-      <td>-0.7607</td>
-      <td>0.7607</td>
-      <td>0.5787</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7572</td>
-      <td>0.7572</td>
-      <td>0.5734</td>
-      <td>False</td>
+      <td>S1Ethnicity_Other-S1Ethnicity_White</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -3548,6 +2653,7 @@
       <td>0.7572</td>
       <td>0.5734</td>
       <td>False</td>
+      <td>AFAnticoagulentHeparin_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>MoreEqual80y_Yes</th>
@@ -3556,22 +2662,7 @@
       <td>0.7556</td>
       <td>0.5709</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AgeOnArrival</th>
-      <td>MoreEqual80y_Yes</td>
-      <td>0.7556</td>
-      <td>0.7556</td>
-      <td>0.5709</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AgeOnArrival</th>
-      <td>MoreEqual80y_No</td>
-      <td>-0.7556</td>
-      <td>0.7556</td>
-      <td>0.5709</td>
-      <td>False</td>
+      <td>MoreEqual80y_Yes-S1AgeOnArrival</td>
     </tr>
     <tr>
       <th>MoreEqual80y_No</th>
@@ -3580,14 +2671,7 @@
       <td>0.7556</td>
       <td>0.5709</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NewAFDiagnosis_No</th>
-      <td>S1AdmissionYear_2018</td>
-      <td>0.7357</td>
-      <td>0.7357</td>
-      <td>0.5413</td>
-      <td>False</td>
+      <td>MoreEqual80y_No-S1AgeOnArrival</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2018</th>
@@ -3596,6 +2680,7 @@
       <td>0.7357</td>
       <td>0.5413</td>
       <td>False</td>
+      <td>S1AdmissionYear_2018-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>S1OnsetDateType_Precise</th>
@@ -3604,22 +2689,7 @@
       <td>0.7267</td>
       <td>0.5281</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1OnsetDateType_Best estimate</th>
-      <td>S1OnsetDateType_Precise</td>
-      <td>-0.7267</td>
-      <td>0.7267</td>
-      <td>0.5281</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>AFAnticoagulent_No</td>
-      <td>0.7212</td>
-      <td>0.7212</td>
-      <td>0.5202</td>
-      <td>False</td>
+      <td>S1OnsetDateType_Best estimate-S1OnsetDateType_...</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -3628,6 +2698,7 @@
       <td>0.7212</td>
       <td>0.5202</td>
       <td>False</td>
+      <td>AFAnticoagulentDOAC_No-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>S2NewAFDiagnosis_No</th>
@@ -3636,22 +2707,7 @@
       <td>0.7092</td>
       <td>0.5030</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>S2NewAFDiagnosis_No</td>
-      <td>0.7092</td>
-      <td>0.7092</td>
-      <td>0.5030</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>AFAnticoagulent_No</td>
-      <td>0.6979</td>
-      <td>0.6979</td>
-      <td>0.4871</td>
-      <td>False</td>
+      <td>AFAnticoagulent_No-S2NewAFDiagnosis_No</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -3660,6 +2716,7 @@
       <td>0.6979</td>
       <td>0.4871</td>
       <td>False</td>
+      <td>AFAnticoagulentVitK_No-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>BestLanguage</th>
@@ -3668,14 +2725,7 @@
       <td>0.6979</td>
       <td>0.4870</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>LocQuestions</th>
-      <td>BestLanguage</td>
-      <td>0.6979</td>
-      <td>0.6979</td>
-      <td>0.4870</td>
-      <td>False</td>
+      <td>BestLanguage-LocQuestions</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -3684,14 +2734,7 @@
       <td>0.6795</td>
       <td>0.4617</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>ExtinctionInattention</th>
-      <td>S2NihssArrival</td>
-      <td>0.6795</td>
-      <td>0.6795</td>
-      <td>0.4617</td>
-      <td>False</td>
+      <td>ExtinctionInattention-S2NihssArrival</td>
     </tr>
     <tr>
       <th>BestGaze</th>
@@ -3700,14 +2743,7 @@
       <td>0.6756</td>
       <td>0.4564</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>BestGaze</td>
-      <td>0.6756</td>
-      <td>0.6756</td>
-      <td>0.4564</td>
-      <td>False</td>
+      <td>BestGaze-S2NihssArrival</td>
     </tr>
     <tr>
       <th>BestLanguage</th>
@@ -3716,22 +2752,7 @@
       <td>0.6743</td>
       <td>0.4547</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>BestLanguage</td>
-      <td>0.6743</td>
-      <td>0.6743</td>
-      <td>0.4547</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>AFAnticoagulent_No</td>
-      <td>0.6694</td>
-      <td>0.6694</td>
-      <td>0.4480</td>
-      <td>False</td>
+      <td>BestLanguage-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_No</th>
@@ -3740,6 +2761,7 @@
       <td>0.6694</td>
       <td>0.4480</td>
       <td>False</td>
+      <td>AFAnticoagulent_No-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>AFAnticoagulentHeparin_No</th>
@@ -3748,22 +2770,7 @@
       <td>0.6636</td>
       <td>0.4403</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_No</th>
-      <td>AFAnticoagulentHeparin_No</td>
-      <td>0.6636</td>
-      <td>0.6636</td>
-      <td>0.4403</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>LocQuestions</th>
-      <td>LocCommands</td>
-      <td>0.6576</td>
-      <td>0.6576</td>
-      <td>0.4325</td>
-      <td>False</td>
+      <td>AFAnticoagulentHeparin_No-AFAnticoagulent_No</td>
     </tr>
     <tr>
       <th>LocCommands</th>
@@ -3772,6 +2779,7 @@
       <td>0.6576</td>
       <td>0.4325</td>
       <td>False</td>
+      <td>LocCommands-LocQuestions</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -3780,22 +2788,7 @@
       <td>0.6560</td>
       <td>0.4303</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>LocCommands</th>
-      <td>S2NihssArrival</td>
-      <td>0.6560</td>
-      <td>0.6560</td>
-      <td>0.4303</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_Yes</th>
-      <td>AtrialFibrillation_Yes</td>
-      <td>0.6516</td>
-      <td>0.6516</td>
-      <td>0.4245</td>
-      <td>False</td>
+      <td>LocCommands-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AtrialFibrillation_Yes</th>
@@ -3804,14 +2797,7 @@
       <td>0.6516</td>
       <td>0.4245</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AtrialFibrillation_No</th>
-      <td>AFAnticoagulent_Yes</td>
-      <td>-0.6516</td>
-      <td>0.6516</td>
-      <td>0.4245</td>
-      <td>False</td>
+      <td>AFAnticoagulent_Yes-AtrialFibrillation_Yes</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_Yes</th>
@@ -3820,6 +2806,7 @@
       <td>0.6516</td>
       <td>0.4245</td>
       <td>False</td>
+      <td>AFAnticoagulent_Yes-AtrialFibrillation_No</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -3828,22 +2815,7 @@
       <td>0.6493</td>
       <td>0.4216</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorLegRight</th>
-      <td>S2NihssArrival</td>
-      <td>0.6493</td>
-      <td>0.6493</td>
-      <td>0.4216</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S1OnsetDateType_Precise</th>
-      <td>S1OnsetDateType_Stroke during sleep</td>
-      <td>-0.6469</td>
-      <td>0.6469</td>
-      <td>0.4185</td>
-      <td>False</td>
+      <td>MotorLegRight-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S1OnsetDateType_Stroke during sleep</th>
@@ -3852,6 +2824,7 @@
       <td>0.6469</td>
       <td>0.4185</td>
       <td>False</td>
+      <td>S1OnsetDateType_Precise-S1OnsetDateType_Stroke...</td>
     </tr>
     <tr>
       <th>LocQuestions</th>
@@ -3860,22 +2833,7 @@
       <td>0.6357</td>
       <td>0.4041</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>LocQuestions</td>
-      <td>0.6357</td>
-      <td>0.6357</td>
-      <td>0.4041</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>LocCommands</td>
-      <td>0.6345</td>
-      <td>0.6345</td>
-      <td>0.4026</td>
-      <td>False</td>
+      <td>LocQuestions-S2NihssArrival</td>
     </tr>
     <tr>
       <th>LocCommands</th>
@@ -3884,6 +2842,7 @@
       <td>0.6345</td>
       <td>0.4026</td>
       <td>False</td>
+      <td>BestLanguage-LocCommands</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -3892,14 +2851,7 @@
       <td>0.6212</td>
       <td>0.3858</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorArmRight</th>
-      <td>S2NihssArrival</td>
-      <td>0.6212</td>
-      <td>0.6212</td>
-      <td>0.3858</td>
-      <td>False</td>
+      <td>MotorArmRight-S2NihssArrival</td>
     </tr>
     <tr>
       <th>AFAnticoagulent_Yes</th>
@@ -3908,22 +2860,7 @@
       <td>0.6013</td>
       <td>0.3615</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAntiplatelet_No</th>
-      <td>AFAnticoagulent_Yes</td>
-      <td>0.6013</td>
-      <td>0.6013</td>
-      <td>0.3615</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>Visual</td>
-      <td>0.5986</td>
-      <td>0.5986</td>
-      <td>0.3583</td>
-      <td>False</td>
+      <td>AFAnticoagulent_Yes-AFAntiplatelet_No</td>
     </tr>
     <tr>
       <th>Visual</th>
@@ -3932,14 +2869,7 @@
       <td>0.5986</td>
       <td>0.3583</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>Dysarthria</td>
-      <td>0.5840</td>
-      <td>0.5840</td>
-      <td>0.3410</td>
-      <td>False</td>
+      <td>S2NihssArrival-Visual</td>
     </tr>
     <tr>
       <th>Dysarthria</th>
@@ -3948,6 +2878,7 @@
       <td>0.5840</td>
       <td>0.3410</td>
       <td>False</td>
+      <td>Dysarthria-S2NihssArrival</td>
     </tr>
     <tr>
       <th>BestGaze</th>
@@ -3956,14 +2887,7 @@
       <td>0.5732</td>
       <td>0.3286</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>ExtinctionInattention</th>
-      <td>BestGaze</td>
-      <td>0.5732</td>
-      <td>0.5732</td>
-      <td>0.3286</td>
-      <td>False</td>
+      <td>BestGaze-ExtinctionInattention</td>
     </tr>
     <tr>
       <th>Visual</th>
@@ -3972,14 +2896,7 @@
       <td>0.5626</td>
       <td>0.3165</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>ExtinctionInattention</th>
-      <td>Visual</td>
-      <td>0.5626</td>
-      <td>0.5626</td>
-      <td>0.3165</td>
-      <td>False</td>
+      <td>ExtinctionInattention-Visual</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -3988,22 +2905,7 @@
       <td>0.5568</td>
       <td>0.3100</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>Loc</th>
-      <td>S2NihssArrival</td>
-      <td>0.5568</td>
-      <td>0.5568</td>
-      <td>0.3100</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>FacialPalsy</th>
-      <td>S2NihssArrival</td>
-      <td>0.5548</td>
-      <td>0.5548</td>
-      <td>0.3078</td>
-      <td>False</td>
+      <td>Loc-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -4012,14 +2914,7 @@
       <td>0.5548</td>
       <td>0.3078</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>MotorLegLeft</th>
-      <td>S2NihssArrival</td>
-      <td>0.5507</td>
-      <td>0.5507</td>
-      <td>0.3033</td>
-      <td>False</td>
+      <td>FacialPalsy-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -4028,6 +2923,7 @@
       <td>0.5507</td>
       <td>0.3033</td>
       <td>False</td>
+      <td>MotorLegLeft-S2NihssArrival</td>
     </tr>
     <tr>
       <th>S2NihssArrival</th>
@@ -4036,14 +2932,7 @@
       <td>0.5503</td>
       <td>0.3028</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>Sensory</th>
-      <td>S2NihssArrival</td>
-      <td>0.5503</td>
-      <td>0.5503</td>
-      <td>0.3028</td>
-      <td>False</td>
+      <td>S2NihssArrival-Sensory</td>
     </tr>
     <tr>
       <th>Visual</th>
@@ -4052,22 +2941,7 @@
       <td>0.5442</td>
       <td>0.2961</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>BestGaze</th>
-      <td>Visual</td>
-      <td>0.5442</td>
-      <td>0.5442</td>
-      <td>0.2961</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentHeparin_No</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5432</td>
-      <td>0.5432</td>
-      <td>0.2951</td>
-      <td>False</td>
+      <td>BestGaze-Visual</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -4076,14 +2950,7 @@
       <td>0.5432</td>
       <td>0.2951</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>MotorArmRight</td>
-      <td>0.5239</td>
-      <td>0.5239</td>
-      <td>0.2745</td>
-      <td>False</td>
+      <td>AFAnticoagulentHeparin_No-S1AdmissionYear_2016</td>
     </tr>
     <tr>
       <th>MotorArmRight</th>
@@ -4092,6 +2959,7 @@
       <td>0.5239</td>
       <td>0.2745</td>
       <td>False</td>
+      <td>BestLanguage-MotorArmRight</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -4100,14 +2968,7 @@
       <td>0.5217</td>
       <td>0.2722</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentVitK_No</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5217</td>
-      <td>0.5217</td>
-      <td>0.2722</td>
-      <td>False</td>
+      <td>AFAnticoagulentVitK_No-S1AdmissionYear_2016</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -4116,14 +2977,7 @@
       <td>0.5080</td>
       <td>0.2581</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulentDOAC_No</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5080</td>
-      <td>0.5080</td>
-      <td>0.2581</td>
-      <td>False</td>
+      <td>AFAnticoagulentDOAC_No-S1AdmissionYear_2016</td>
     </tr>
     <tr>
       <th>ExtinctionInattention</th>
@@ -4132,22 +2986,7 @@
       <td>0.5072</td>
       <td>0.2573</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>Sensory</th>
-      <td>ExtinctionInattention</td>
-      <td>0.5072</td>
-      <td>0.5072</td>
-      <td>0.2573</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>MotorLegRight</td>
-      <td>0.5052</td>
-      <td>0.5052</td>
-      <td>0.2553</td>
-      <td>False</td>
+      <td>ExtinctionInattention-Sensory</td>
     </tr>
     <tr>
       <th>MotorLegRight</th>
@@ -4156,14 +2995,7 @@
       <td>0.5052</td>
       <td>0.2553</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2018</th>
-      <td>S1AdmissionYear_2017</td>
-      <td>-0.5026</td>
-      <td>0.5026</td>
-      <td>0.2526</td>
-      <td>False</td>
+      <td>BestLanguage-MotorLegRight</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2017</th>
@@ -4172,6 +3004,7 @@
       <td>0.5026</td>
       <td>0.2526</td>
       <td>False</td>
+      <td>S1AdmissionYear_2017-S1AdmissionYear_2018</td>
     </tr>
     <tr>
       <th>S1AdmissionYear_2016</th>
@@ -4180,22 +3013,15 @@
       <td>0.5002</td>
       <td>0.2502</td>
       <td>False</td>
-    </tr>
-    <tr>
-      <th>S1AdmissionYear_2017</th>
-      <td>S1AdmissionYear_2016</td>
-      <td>-0.5002</td>
-      <td>0.5002</td>
-      <td>0.2502</td>
-      <td>False</td>
+      <td>S1AdmissionYear_2016-S1AdmissionYear_2017</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Most of the features show weak correlation (96% of feature pairs have an R-squared of less than 0.1)</p></li>
@@ -4207,8 +3033,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
