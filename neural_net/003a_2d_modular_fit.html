@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Modular TensorFlow model with 2D embedding - Train and save models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -671,17 +672,17 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="modular-tensorflow-model-with-2d-embedding-train-and-save-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="modular-tensorflow-model-with-2d-embedding-train-and-save-models">
 <h1>Modular TensorFlow model with 2D embedding - Train and save models<a class="headerlink" href="#modular-tensorflow-model-with-2d-embedding-train-and-save-models" title="Permalink to this headline">¶</a></h1>
 <p><em>Embedding</em> converts a categorical variable into a projection onto n-dimensional space [1], and has been shown to be an effective way to train neural network when using categorical data, while also allowing a measure of similarity/distance between different values of the categorical data, Here we use embedding for hospital ID. We also convert patient data and pathway data into an embedded vector (this may also be known as <em>encoding</em> the data in a vector with fewer dimensions than the original data set for those groups of features).</p>
 <p>[1] Guo C, &amp; Berkhahn F. (2016) Entity Embeddings of Categorical Variables. arXiv:160406737 [cs] <a class="reference external" href="http://arxiv.org/abs/1604.06737">http://arxiv.org/abs/1604.06737</a></p>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To train and save fully connected models for the 5-fold training/test data sets</p></li>
 </ul>
-</div>
-<div class="section" id="basic-methodology">
+</section>
+<section id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <p>Models are fitted to previously split training and test data sets.</p>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to two values output. The subnets created are for:</p>
@@ -710,8 +711,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-modules">
+</section>
+<section id="load-modules">
 <h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -734,8 +735,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-to-scale-data-minmax-scaling">
+</section>
+<section id="function-to-scale-data-minmax-scaling">
 <h2>Function to scale data (minmax scaling)<a class="headerlink" href="#function-to-scale-data-minmax-scaling" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -757,8 +758,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-neural-net">
+</section>
+<section id="define-neural-net">
 <h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,8 +835,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-models">
+</section>
+<section id="fit-models">
 <h2>Fit models<a class="headerlink" href="#fit-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -993,8 +994,8 @@
 <img alt="../_images/003a_2d_modular_fit_10_9.png" src="../_images/003a_2d_modular_fit_10_9.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
