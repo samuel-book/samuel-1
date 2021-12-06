@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What characterises a patient who is predicted to have high variation in thrombolysis use across different hospitals? &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -772,7 +771,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="what-characterises-a-patient-who-is-predicted-to-have-high-variation-in-thrombolysis-use-across-different-hospitals">
+  <div class="tex2jax_ignore mathjax_ignore section" id="what-characterises-a-patient-who-is-predicted-to-have-high-variation-in-thrombolysis-use-across-different-hospitals">
 <h1>What characterises a patient who is predicted to have high variation in thrombolysis use across different hospitals?<a class="headerlink" href="#what-characterises-a-patient-who-is-predicted-to-have-high-variation-in-thrombolysis-use-across-different-hospitals" title="Permalink to this headline">¶</a></h1>
 <p>We categorise patients based on the proportion of hospitals that are predicted to give them thrombolysis</p>
 <ul class="simple">
@@ -790,7 +789,7 @@
 </div>
 </div>
 </div>
-<section id="import-libraries">
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -816,8 +815,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-data">
+</div>
+<div class="section" id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,8 +828,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-pre-trained-models">
+</div>
+<div class="section" id="load-pre-trained-models">
 <h2>Load pre-trained models<a class="headerlink" href="#load-pre-trained-models" title="Permalink to this headline">¶</a></h2>
 <p>These models are Random Forest models trained for each hopsital, calibrated so that each hopsital has a unique threshold for classification, that gives the expected thrombolysis use at that hopsital.</p>
 <div class="cell docutils container">
@@ -842,8 +841,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="pass-10k-test-cohort-through-all-hospital-models">
+</div>
+<div class="section" id="pass-10k-test-cohort-through-all-hospital-models">
 <h2>Pass 10K test cohort through all hospital models<a class="headerlink" href="#pass-10k-test-cohort-through-all-hospital-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -880,8 +879,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="identify-contentious-patients">
+</div>
+<div class="section" id="identify-contentious-patients">
 <h2>Identify contentious patients<a class="headerlink" href="#identify-contentious-patients" title="Permalink to this headline">¶</a></h2>
 <p>We categorise patients based on the proportion of hospitals that are predicted to give them thrombolysis</p>
 <ul class="simple">
@@ -904,10 +903,10 @@
 </div>
 </div>
 </div>
-</section>
-<section id="characterise-contentious-patients">
+</div>
+<div class="section" id="characterise-contentious-patients">
 <h2>Characterise contentious patients<a class="headerlink" href="#characterise-contentious-patients" title="Permalink to this headline">¶</a></h2>
-<section id="onset-to-arrival">
+<div class="section" id="onset-to-arrival">
 <h3>Onset to arrival<a class="headerlink" href="#onset-to-arrival" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -932,8 +931,8 @@ Not Thrombolysed: Mean = 124, StdDev = 55
 </div>
 </div>
 </div>
-</section>
-<section id="nihss">
+</div>
+<div class="section" id="nihss">
 <h3>NIHSS<a class="headerlink" href="#nihss" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -958,7 +957,7 @@ Not Thrombolysed: Mean = 5.9, StdDev = 6.8
 </div>
 </div>
 </div>
-<section id="nihss-components">
+<div class="section" id="nihss-components">
 <h4>NIHSS components<a class="headerlink" href="#nihss-components" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1189,8 +1188,8 @@ D = 0.19, p = 0.0
 </div>
 </div>
 </div>
-</section>
-<section id="nihss-binned-by-value">
+</div>
+<div class="section" id="nihss-binned-by-value">
 <h4>NIHSS binned by value<a class="headerlink" href="#nihss-binned-by-value" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1413,9 +1412,9 @@ D = 0.19, p = 0.0
 <img alt="../_images/characterise_contentious_patients_31_0.png" src="../_images/characterise_contentious_patients_31_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="rankin-before-stroke">
+</div>
+</div>
+<div class="section" id="rankin-before-stroke">
 <h3>Rankin before stroke<a class="headerlink" href="#rankin-before-stroke" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1440,7 +1439,7 @@ Not Thrombolysed: Mean = 1.21, StdDev = 1.49
 </div>
 </div>
 </div>
-<section id="rankin-distributions">
+<div class="section" id="rankin-distributions">
 <h4>Rankin distributions<a class="headerlink" href="#rankin-distributions" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1514,9 +1513,9 @@ Not Thrombolysed: Mean = 1.21, StdDev = 1.49
 <img alt="../_images/characterise_contentious_patients_37_0.png" src="../_images/characterise_contentious_patients_37_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="age">
+</div>
+</div>
+<div class="section" id="age">
 <h3>Age<a class="headerlink" href="#age" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1541,8 +1540,8 @@ Not Thrombolysed: Mean = 76.2, StdDev = 14.1
 </div>
 </div>
 </div>
-</section>
-<section id="scan-time">
+</div>
+<div class="section" id="scan-time">
 <h3>Scan time<a class="headerlink" href="#scan-time" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1567,8 +1566,8 @@ Not Thrombolysed: Mean = 153.0, StdDev = 901.6
 </div>
 </div>
 </div>
-</section>
-<section id="onset-known-type">
+</div>
+<div class="section" id="onset-known-type">
 <h3>Onset known type<a class="headerlink" href="#onset-known-type" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1608,12 +1607,12 @@ Not Thrombolysed: Mean = 153.0, StdDev = 901.6
 <img alt="../_images/characterise_contentious_patients_43_0.png" src="../_images/characterise_contentious_patients_43_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="predicting-which-patients-will-be-contentious-or-agreed-thrombolyse-no-thrombolyse">
+</div>
+</div>
+<div class="section" id="predicting-which-patients-will-be-contentious-or-agreed-thrombolyse-no-thrombolyse">
 <h2>Predicting which patients will be contentious, or agreed thrombolyse/no-thrombolyse<a class="headerlink" href="#predicting-which-patients-will-be-contentious-or-agreed-thrombolyse-no-thrombolyse" title="Permalink to this headline">¶</a></h2>
 <p>We fit a Random Forest classifier to predict which patients will be in each category, and then can use feature importances and Shapley values to understand which features drive categorisation.</p>
-<section id="classify-into-groups">
+<div class="section" id="classify-into-groups">
 <h3>Classify into groups<a class="headerlink" href="#classify-into-groups" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1653,8 +1652,8 @@ Prop agree not thrombolyse: 0.598
 </div>
 </div>
 </div>
-</section>
-<section id="accuracy-measurement">
+</div>
+<div class="section" id="accuracy-measurement">
 <h3>Accuracy measurement<a class="headerlink" href="#accuracy-measurement" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1763,8 +1762,8 @@ Prop agree not thrombolyse: 0.598
 </div>
 </div>
 </div>
-</section>
-<section id="define-funtion-to-fit-classification-predictor-model">
+</div>
+<div class="section" id="define-funtion-to-fit-classification-predictor-model">
 <h3>Define funtion to fit classification predictor model<a class="headerlink" href="#define-funtion-to-fit-classification-predictor-model" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1797,8 +1796,8 @@ Prop agree not thrombolyse: 0.598
 </div>
 </div>
 </div>
-</section>
-<section id="model-that-distinguishes-agreed-thrombolysed-vs-contentious">
+</div>
+<div class="section" id="model-that-distinguishes-agreed-thrombolysed-vs-contentious">
 <h3>Model that distinguishes agreed thrombolysed vs contentious<a class="headerlink" href="#model-that-distinguishes-agreed-thrombolysed-vs-contentious" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1838,8 +1837,8 @@ dtype: float64
 </div>
 </div>
 </div>
-</section>
-<section id="show-feature-imporatances-for-contentious-vs-thrombolysed">
+</div>
+<div class="section" id="show-feature-imporatances-for-contentious-vs-thrombolysed">
 <h3>Show feature imporatances for contentious vs thrombolysed<a class="headerlink" href="#show-feature-imporatances-for-contentious-vs-thrombolysed" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1998,8 +1997,8 @@ dtype: float64
 <img alt="../_images/characterise_contentious_patients_58_0.png" src="../_images/characterise_contentious_patients_58_0.png" />
 </div>
 </div>
-</section>
-<section id="get-improvement-in-roc-auc-with-increasing-number-of-features">
+</div>
+<div class="section" id="get-improvement-in-roc-auc-with-increasing-number-of-features">
 <h3>Get improvement in ROC AUC with increasing number of features<a class="headerlink" href="#get-improvement-in-roc-auc-with-increasing-number-of-features" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2119,8 +2118,8 @@ dtype: float64
 <img alt="../_images/characterise_contentious_patients_62_0.png" src="../_images/characterise_contentious_patients_62_0.png" />
 </div>
 </div>
-</section>
-<section id="shap-bee-swarm-plot">
+</div>
+<div class="section" id="shap-bee-swarm-plot">
 <h3>Shap bee swarm plot<a class="headerlink" href="#shap-bee-swarm-plot" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2204,9 +2203,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="observations">
+</div>
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <p>Compared with patients where 70% of units would give thrombolysis, those <em>contentious</em> patients, where 30-70% of units would give thrombolysis:</p>
 <ul class="simple">
@@ -2220,8 +2219,8 @@ dtype: float64
 <li><p>Do not have visual field deficits</p></li>
 <li><p>Have atrial fibrillation</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

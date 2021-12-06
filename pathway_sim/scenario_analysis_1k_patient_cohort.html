@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modelling the same patient population attending all hospitals &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -672,7 +671,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="modelling-the-same-patient-population-attending-all-hospitals">
+  <div class="tex2jax_ignore mathjax_ignore section" id="modelling-the-same-patient-population-attending-all-hospitals">
 <h1>Modelling the same patient population attending all hospitals<a class="headerlink" href="#modelling-the-same-patient-population-attending-all-hospitals" title="Permalink to this headline">¶</a></h1>
 <p>Aim:</p>
 <ul class="simple">
@@ -686,7 +685,7 @@
 </ul>
 <p>The proportion of arrivals eligible for thrombolysis is set to the predicted 10k cohort rate for each hospital (adjusted to give thrombolysis use in those patients scanned within 4 hours of stroke onset).</p>
 <p>The simulation model passes through 100 x 1k patient cohorts through each hospital model.</p>
-<section id="load-libraries">
+<div class="section" id="load-libraries">
 <h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -698,8 +697,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-data">
+</div>
+<div class="section" id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,8 +958,8 @@
 <p>132 rows × 15 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="collate-key-results">
+</div>
+<div class="section" id="collate-key-results">
 <h2>Collate key results<a class="headerlink" href="#collate-key-results" title="Permalink to this headline">¶</a></h2>
 <p>Collate key results together in a DataFrame.</p>
 <div class="cell docutils container">
@@ -1142,8 +1141,8 @@
 <p>1188 rows × 7 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="summary-stats">
+</div>
+<div class="section" id="summary-stats">
 <h2>Summary stats<a class="headerlink" href="#summary-stats" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1223,8 +1222,8 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="plot-results">
+</div>
+<div class="section" id="plot-results">
 <h2>Plot results<a class="headerlink" href="#plot-results" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1286,8 +1285,8 @@
 <img alt="../_images/scenario_analysis_1k_patient_cohort_12_0.png" src="../_images/scenario_analysis_1k_patient_cohort_12_0.png" />
 </div>
 </div>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>In this experiment we fix the patient population, so that all hospitals in the model see the same patients, and pass those patients through each hospital model using that hospital’s pathway characteristics and decision model.</p></li>
@@ -1296,8 +1295,8 @@
 <li><p>As should be expected, the mean and distribution of the cohort thrombolysis use per hospital is very similar to the actual mean and distribution of thrombolysis use.</p></li>
 <li><p>There is a tendency for lower thrombolysing units to do better with a standard cohort, and those with higher thrombolysis rates to do worse. So there is a general observation that hospitals with high thrombolysis use do so partly because they have a more thrombolysable population, and vice versa.</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

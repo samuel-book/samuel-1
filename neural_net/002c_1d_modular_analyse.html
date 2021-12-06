@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modular TensorFlow model with 1D embedding - analyse &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -711,14 +710,14 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="modular-tensorflow-model-with-1d-embedding-analyse">
+  <div class="tex2jax_ignore mathjax_ignore section" id="modular-tensorflow-model-with-1d-embedding-analyse">
 <h1>Modular TensorFlow model with 1D embedding - analyse<a class="headerlink" href="#modular-tensorflow-model-with-1d-embedding-analyse" title="Permalink to this headline">¶</a></h1>
 <p><em>Embedding</em> converts a categorical variable into a projection onto n-dimensional space [1], and has been shown to be an effective way to train neural network when using categorical data, while also allowing a measure of similarity/distance between different values of the categorical data, Here we use embedding for hospital ID. We also convert patient data and pathway data into an embedded vector (this may also be known as <em>encoding</em> the data in a vector with fewer dimensions than the original data set for those groups of features).</p>
 <p>[1] Guo C, &amp; Berkhahn F. (2016) Entity Embeddings of Categorical Variables. arXiv:160406737 [cs] <a class="reference external" href="http://arxiv.org/abs/1604.06737">http://arxiv.org/abs/1604.06737</a></p>
 <p>Pre-trained models from 002b_1d_modular_fit.ipynb</p>
 <p>Model are fitted to previously split training and test data sets.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="aims">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="aims">
 <h1>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h1>
 <p>Test performance of model using subnets for:</p>
 <ol class="simple">
@@ -729,7 +728,7 @@
 <p>The three subnet outputs are then past to a single neuron with sigmoid activation for final output.</p>
 <p>Note: In this experiment the output of each subnet is a vector with a single value (a 1D output), but the model is structured to allow for more neurons(dimensions) for each subnet, e.g. to allow for encoding of hospitals that allow more complex interactions with patients (which may also have &gt;1 dimension output).</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
-<section id="import-libraries">
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -770,8 +769,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="import-data">
+</div>
+<div class="section" id="import-data">
 <h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,8 +784,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-function-to-scale-data">
+</div>
+<div class="section" id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,8 +807,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-function-for-accuracy">
+</div>
+<div class="section" id="define-function-for-accuracy">
 <h2>Define function for accuracy<a class="headerlink" href="#define-function-for-accuracy" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -918,8 +917,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-function-for-line-intersect">
+</div>
+<div class="section" id="define-function-for-line-intersect">
 <h2>Define function for line intersect<a class="headerlink" href="#define-function-for-line-intersect" title="Permalink to this headline">¶</a></h2>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -944,8 +943,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="use-trained-models-to-predict-outcome-of-test-data-sets">
+</div>
+<div class="section" id="use-trained-models-to-predict-outcome-of-test-data-sets">
 <h2>Use trained models to predict outcome of test data sets<a class="headerlink" href="#use-trained-models-to-predict-outcome-of-test-data-sets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1297,8 +1296,8 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves">
+</div>
+<div class="section" id="receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves">
 <h2>Receiver Operator Characteristic (ROC) Curve and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-roc-curve-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h2>
 <p>Calculate areas of ROC curves.</p>
 <div class="cell docutils container">
@@ -1426,7 +1425,7 @@ SD AUC: 0.0011
 <img alt="../_images/002c_1d_modular_analyse_22_0.png" src="../_images/002c_1d_modular_analyse_22_0.png" />
 </div>
 </div>
-<section id="identify-cross-over-of-sensitivity-and-specificity">
+<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1460,9 +1459,9 @@ SD AUC: 0.0011
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="collate-and-save-results">
+</div>
+</div>
+<div class="section" id="collate-and-save-results">
 <h2>Collate and save results<a class="headerlink" href="#collate-and-save-results" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1497,8 +1496,8 @@ SD AUC: 0.0011
 </div>
 </div>
 </div>
-</section>
-<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</div>
+<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1760,8 +1759,8 @@ Accuracy: 0.905
 </div>
 </div>
 </div>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Overall accuracy = 85.5% (90.5% for those 65% samples with at least 80% confidence of model)</p></li>
@@ -1769,8 +1768,8 @@ Accuracy: 0.905
 <li><p>The model can achieve 84.5% sensitivity and specificity simultaneously</p></li>
 <li><p>ROC AUC = 0.921</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

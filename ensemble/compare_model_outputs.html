@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comparison of model outputs &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -687,7 +686,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="comparison-of-model-outputs">
+  <div class="tex2jax_ignore mathjax_ignore section" id="comparison-of-model-outputs">
 <h1>Comparison of model outputs<a class="headerlink" href="#comparison-of-model-outputs" title="Permalink to this headline">¶</a></h1>
 <p>Aims:</p>
 <ul class="simple">
@@ -695,7 +694,7 @@
 <li><p>Compare classifications between logistic regression, random forests, and neural networks</p></li>
 <li><p>Compare classifications between logistic regression, random forests neural networks, and actual classification (whether thrombolysis was given).</p></li>
 </ul>
-<section id="import-libraries">
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,8 +710,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-data">
+</div>
+<div class="section" id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -722,8 +721,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-the-cutoff-for-classification">
+</div>
+<div class="section" id="define-the-cutoff-for-classification">
 <h2>Define the cutoff for classification<a class="headerlink" href="#define-the-cutoff-for-classification" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,8 +731,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-function-to-set-the-colour-for-each-point-on-the-plot">
+</div>
+<div class="section" id="define-function-to-set-the-colour-for-each-point-on-the-plot">
 <h2>Define function to set the colour for each point on the plot<a class="headerlink" href="#define-function-to-set-the-colour-for-each-point-on-the-plot" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,8 +760,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="compare-probabilties">
+</div>
+<div class="section" id="compare-probabilties">
 <h2>Compare probabilties<a class="headerlink" href="#compare-probabilties" title="Permalink to this headline">¶</a></h2>
 <p>Colour the points depending on whether the two models agree in their prediction.</p>
 <div class="cell docutils container">
@@ -828,8 +827,8 @@
 <img alt="../_images/compare_model_outputs_10_0.png" src="../_images/compare_model_outputs_10_0.png" />
 </div>
 </div>
-</section>
-<section id="compare-classification">
+</div>
+<div class="section" id="compare-classification">
 <h2>Compare classification<a class="headerlink" href="#compare-classification" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,8 +894,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="plot-confusion-matrix">
+</div>
+<div class="section" id="plot-confusion-matrix">
 <h2>Plot confusion matrix<a class="headerlink" href="#plot-confusion-matrix" title="Permalink to this headline">¶</a></h2>
 <p>Create function that returns the classification of each column based on the cutoff used for classification</p>
 <div class="cell docutils container">
@@ -1024,8 +1023,8 @@ Invert the y axis so that it has the same order as the scatter plots above (i.e.
 <img alt="../_images/compare_model_outputs_31_0.png" src="../_images/compare_model_outputs_31_0.png" />
 </div>
 </div>
-</section>
-<section id="confusion-matrix-for-models-vs-actual">
+</div>
+<div class="section" id="confusion-matrix-for-models-vs-actual">
 <h2>Confusion matrix for models vs actual<a class="headerlink" href="#confusion-matrix-for-models-vs-actual" title="Permalink to this headline">¶</a></h2>
 <p>Add the column of data “actual” to the df_prediction dataframe</p>
 <div class="cell docutils container">
@@ -1152,15 +1151,15 @@ Invert the y axis so that it has the same order as the scatter plots above (i.e.
 <img alt="../_images/compare_model_outputs_38_0.png" src="../_images/compare_model_outputs_38_0.png" />
 </div>
 </div>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>There is high agreement in prediction between different model types, with random forests and neural networks having the highest agreement.</p></li>
 <li><p>There is greater agreement between the different model types than between the models and reality.</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
