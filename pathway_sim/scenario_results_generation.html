@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stroke pathway simulation - generation of results from alternative scenarios &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -481,6 +480,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="base_parameters.html">
+     Base model parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="validation.html">
      Stroke pathway simulation - validation and calibration
     </a>
@@ -704,7 +708,7 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="stroke-pathway-simulation-generation-of-results-from-alternative-scenarios">
+  <div class="tex2jax_ignore mathjax_ignore section" id="stroke-pathway-simulation-generation-of-results-from-alternative-scenarios">
 <h1>Stroke pathway simulation - generation of results from alternative scenarios<a class="headerlink" href="#stroke-pathway-simulation-generation-of-results-from-alternative-scenarios" title="Permalink to this headline">¶</a></h1>
 <p>This notebook runs alternative pathway simulations, with adjusted pathway parameters. The scenarios are:</p>
 <ol class="simple">
@@ -718,7 +722,7 @@
 <li><p>Combine <em>Speed</em>, <em>Onset-known</em> and <em>Benchmark</em></p></li>
 </ol>
 <p>Results are saved for each hospital and scenario. Detailed analysis will be performed in subsequent notebooks</p>
-<section id="import-libraries-and-data">
+<div class="section" id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -735,10 +739,10 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-results-of-alternative-scenarios">
+</div>
+<div class="section" id="get-results-of-alternative-scenarios">
 <h2>Get results of alternative scenarios<a class="headerlink" href="#get-results-of-alternative-scenarios" title="Permalink to this headline">¶</a></h2>
-<section id="base-scenario">
+<div class="section" id="base-scenario">
 <h3>Base scenario<a class="headerlink" href="#base-scenario" title="Permalink to this headline">¶</a></h3>
 <p>The base scenario uses the hospitals’ recorded pathway statistics in SSNAP (same as validation notebook)</p>
 <div class="cell docutils container">
@@ -752,8 +756,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="speed-30-minute-arrival-to-needle">
+</div>
+<div class="section" id="speed-30-minute-arrival-to-needle">
 <h3>Speed (30 minute arrival to needle)<a class="headerlink" href="#speed-30-minute-arrival-to-needle" title="Permalink to this headline">¶</a></h3>
 <p>The adjusted speed scenario sets 95% of patients having a scan within 4 hours of arrival, and all patients have 15 minutes arrival to scan and 15 minutes scan to needle.</p>
 <div class="cell docutils container">
@@ -784,8 +788,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="known-onset">
+</div>
+<div class="section" id="known-onset">
 <h3>Known onset<a class="headerlink" href="#known-onset" title="Permalink to this headline">¶</a></h3>
 <p>Set the proportion of patients with a known onset time of stroke to the national upper quartile if currently less than the national upper quartile (leave any greater than the upper national quartile at their current level).</p>
 <div class="cell docutils container">
@@ -821,8 +825,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="use-benchmark-thrombolysis">
+</div>
+<div class="section" id="use-benchmark-thrombolysis">
 <h3>Use benchmark thrombolysis<a class="headerlink" href="#use-benchmark-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <p>The benchmark thrombolysis rate takes the likelihood to give thrombolysis for patients scanned within 4 hours of onset from the majority vote of the 30 hospitals with the highest predicted thrombolysis use in a standard 10k cohort set of patients. These are from Random Forests models.</p>
 <p>See Random Forests notebooks: <em>Benchmark hospitals</em> and <em>How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?</em></p>
@@ -863,8 +867,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="combine-speed-and-onset-known">
+</div>
+<div class="section" id="combine-speed-and-onset-known">
 <h3>Combine speed and onset known<a class="headerlink" href="#combine-speed-and-onset-known" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>95% patients have scan within 4 hours of arrival</p></li>
@@ -912,9 +916,9 @@
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="combine-speed-and-benchmark">
+</div>
+</div>
+<div class="section" id="combine-speed-and-benchmark">
 <h2>Combine speed and benchmark<a class="headerlink" href="#combine-speed-and-benchmark" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>95% patients have scan within 4 hours of arrival</p></li>
@@ -956,8 +960,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="combine-onset-known-and-benchmark">
+</div>
+<div class="section" id="combine-onset-known-and-benchmark">
 <h2>Combine onset-known and benchmark<a class="headerlink" href="#combine-onset-known-and-benchmark" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Proportion of patients with known stroke onset time set to upper quartile if currently lower</p></li>
@@ -1002,8 +1006,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="combine-speed-onset-known-and-benchmark">
+</div>
+<div class="section" id="combine-speed-onset-known-and-benchmark">
 <h2>Combine speed, onset-known, and benchmark<a class="headerlink" href="#combine-speed-onset-known-and-benchmark" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>95% patients have scan within 4 hours of arrival</p></li>
@@ -1057,8 +1061,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="same-patient-characteristics-to-all-hospitals">
+</div>
+<div class="section" id="same-patient-characteristics-to-all-hospitals">
 <h2>Same patient characteristics to all hospitals<a class="headerlink" href="#same-patient-characteristics-to-all-hospitals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1998,8 +2002,8 @@
 <p>132 rows × 16 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="save-results">
+</div>
+<div class="section" id="save-results">
 <h2>Save results<a class="headerlink" href="#save-results" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2009,8 +2013,8 @@
 </div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

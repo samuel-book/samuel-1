@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fully connected TensorFlow model - Train and save models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -481,6 +480,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/base_parameters.html">
+     Base model parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/validation.html">
      Stroke pathway simulation - validation and calibration
     </a>
@@ -677,15 +681,15 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="fully-connected-tensorflow-model-train-and-save-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="fully-connected-tensorflow-model-train-and-save-models">
 <h1>Fully connected TensorFlow model - Train and save models<a class="headerlink" href="#fully-connected-tensorflow-model-train-and-save-models" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To train and save fully connected models for the 5-fold training/test data sets</p></li>
 </ul>
-</section>
-<section id="basic-methodology">
+</div>
+<div class="section" id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Models are fitted to previously split training and test data sets.</p></li>
@@ -705,8 +709,8 @@
 <li><p>Dropout layer</p></li>
 <li><p>Output layer (single sigmoid activation)</p></li>
 </ul>
-</section>
-<section id="import-libraries">
+</div>
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -724,8 +728,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-modules">
+</div>
+<div class="section" id="load-modules">
 <h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,8 +752,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="function-to-scale-data-minmax-scaling">
+</div>
+<div class="section" id="function-to-scale-data-minmax-scaling">
 <h2>Function to scale data (minmax scaling)<a class="headerlink" href="#function-to-scale-data-minmax-scaling" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -771,8 +775,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-neural-net">
+</div>
+<div class="section" id="define-neural-net">
 <h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,8 +816,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="fit-models">
+</div>
+<div class="section" id="fit-models">
 <h2>Fit models<a class="headerlink" href="#fit-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -901,8 +905,8 @@ Model 4: Accuracy train 0.857 Accuracy test 0.842
 </div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

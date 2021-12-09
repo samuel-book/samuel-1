@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Association between patient features on use of thrombolysis &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -481,6 +480,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../pathway_sim/base_parameters.html">
+     Base model parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../pathway_sim/validation.html">
      Stroke pathway simulation - validation and calibration
     </a>
@@ -719,9 +723,9 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="association-between-patient-features-on-use-of-thrombolysis">
+  <div class="tex2jax_ignore mathjax_ignore section" id="association-between-patient-features-on-use-of-thrombolysis">
 <h1>Association between patient features on use of thrombolysis<a class="headerlink" href="#association-between-patient-features-on-use-of-thrombolysis" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Examine thrombolysis use (in all arrivals, and the subset of those who arrive within 4 hours of known onset) according to:</p>
 <ul class="simple">
@@ -736,8 +740,8 @@
 <p>Examine thrombolysis use in the absence and presence of co-morbidities.</p>
 <p>Note: The association of particular features with use of thrombolysis does not imply that these relationships are causal.</p>
 <p>Examine reasons given for not giving thrombolysis.</p>
-</section>
-<section id="import-libraries-and-data">
+</div>
+<div class="section" id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has been resticted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
 <div class="cell docutils container">
@@ -767,8 +771,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+</div>
+<div class="section" id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
 <h2>Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients<a class="headerlink" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -804,8 +808,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset">
+</div>
+<div class="section" id="get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset">
 <h2>Get out-of-hopsital stroke onset arrivals within 4 hours of known stroke onset<a class="headerlink" href="#get-out-of-hopsital-stroke-onset-arrivals-within-4-hours-of-known-stroke-onset" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -820,10 +824,10 @@
 </div>
 </div>
 </div>
-</section>
-<section id="breakdown-of-thrombolysis-use-by-feature">
+</div>
+<div class="section" id="breakdown-of-thrombolysis-use-by-feature">
 <h2>Breakdown of thrombolysis use by feature<a class="headerlink" href="#breakdown-of-thrombolysis-use-by-feature" title="Permalink to this headline">¶</a></h2>
-<section id="rankin-before-stroke">
+<div class="section" id="rankin-before-stroke">
 <h3>Rankin before stroke<a class="headerlink" href="#rankin-before-stroke" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -938,8 +942,8 @@
 <img alt="../_images/04_thrombolysis_general_12_0.png" src="../_images/04_thrombolysis_general_12_0.png" />
 </div>
 </div>
-</section>
-<section id="stroke-severity">
+</div>
+<div class="section" id="stroke-severity">
 <h3>Stroke severity<a class="headerlink" href="#stroke-severity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1236,8 +1240,8 @@
 <img alt="../_images/04_thrombolysis_general_16_0.png" src="../_images/04_thrombolysis_general_16_0.png" />
 </div>
 </div>
-</section>
-<section id="gender">
+</div>
+<div class="section" id="gender">
 <h3>Gender<a class="headerlink" href="#gender" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1305,8 +1309,8 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="ethnicity">
+</div>
+<div class="section" id="ethnicity">
 <h3>Ethnicity<a class="headerlink" href="#ethnicity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1389,8 +1393,8 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="age-group">
+</div>
+<div class="section" id="age-group">
 <h3>Age group<a class="headerlink" href="#age-group" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1564,8 +1568,8 @@
 <img alt="../_images/04_thrombolysis_general_26_0.png" src="../_images/04_thrombolysis_general_26_0.png" />
 </div>
 </div>
-</section>
-<section id="onset-known">
+</div>
+<div class="section" id="onset-known">
 <h3>Onset known<a class="headerlink" href="#onset-known" title="Permalink to this headline">¶</a></h3>
 <p>Get fractions for each onset type</p>
 <div class="cell docutils container">
@@ -1657,8 +1661,8 @@ Name: StrokeTeam, dtype: float64
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="arrival-by-ambulance">
+</div>
+<div class="section" id="arrival-by-ambulance">
 <h3>Arrival by ambulance<a class="headerlink" href="#arrival-by-ambulance" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1739,8 +1743,8 @@ Name: StrokeTeam, dtype: float64
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="thrombolysis-use-by-comorbidities">
+</div>
+<div class="section" id="thrombolysis-use-by-comorbidities">
 <h3>Thrombolysis use by comorbidities<a class="headerlink" href="#thrombolysis-use-by-comorbidities" title="Permalink to this headline">¶</a></h3>
 <p>Only examine effect of comorbidity on thrombolysis use of those arriving within 4 hours of known onset.</p>
 <p>Analyse by comorbidity ‘Yes’ or ‘No’. Ignore ‘No but’.</p>
@@ -1883,9 +1887,9 @@ Name: StrokeTeam, dtype: float64
 <img alt="../_images/04_thrombolysis_general_38_0.png" src="../_images/04_thrombolysis_general_38_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="reasons-for-not-giving-thrombolysis">
+</div>
+</div>
+<div class="section" id="reasons-for-not-giving-thrombolysis">
 <h2>Reasons for not giving thrombolysis<a class="headerlink" href="#reasons-for-not-giving-thrombolysis" title="Permalink to this headline">¶</a></h2>
 <p>Reasons given for not using thrombolysis (more than one may be ticked for each patient).</p>
 <p>Only examine reasons for those arriving within 4 hours of known onset.</p>
@@ -1948,8 +1952,8 @@ dtype: float64
 <img alt="../_images/04_thrombolysis_general_41_0.png" src="../_images/04_thrombolysis_general_41_0.png" />
 </div>
 </div>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>Disability before stroke:</em> The higher the level of disability before stroke (as described by the modified Rankin Scale) the lower the use of thrombolysis. As a percentage of all out-of-hospital onset arrivals, thrombolysis use drops from 14.2% in those with no disability before stroke to 4.3% of those with a modified Rankin Scale of 5. As a percentage of out-of-hospital onset arrivals arriving within 4 hours of known stroke onset,  thrombolysis use drops from 34.9% in those with no disability before stroke to 9.8% of those with a modified Rankin Scale of 5.</p></li>
@@ -1962,8 +1966,8 @@ dtype: float64
 <li><p><em>Presence of co-morbidities</em>: The presence or absence of co-co-morbidities can be a strong indicator of the use of thrombolysis. For example those on anticoagulant therapies receive thrombolysis less than those who do not, but those on anti-platelet therapies receive it more.</p></li>
 <li><p><em>Stated reasons for not giving thrombolysis:</em>: Haemorrhagic stroke or a stroke that is too mild/sever are the most common causes (each present in 22% of those not treated). An improving condition is given as the reason for no treatment in 17% of non-treated patients. It is noteworthy that patient refusal is given as a reason for non-treatment in only 0.9% of untreated patients</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
