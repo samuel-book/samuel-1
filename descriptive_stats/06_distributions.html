@@ -763,10 +763,8 @@
 <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">481</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">onset_to_arrival</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Onset to arrival (mins)&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of patients&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Onset to arrival&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
 
 <span class="c1"># Subplot 2: Histogram of arrival to scan</span>
 
@@ -779,9 +777,8 @@
 <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">481</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">arrival_to_scan</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Arrival to scan (mins)&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of patients&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Arrival to scan&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Subplot 2: Histogram of scan to needle</span>
 
@@ -792,10 +789,8 @@
 <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">scan_to_needle</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Scan to needle (mins)&#39;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of patients&#39;</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scan to needle&#39;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
 
 <span class="c1"># Save and show</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1017,16 +1012,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution    chi_square  p_value
-3      lognorm   1045.429203      0.0
-5     pearson3   2733.457960      0.0
-2        gamma   2733.537108      0.0
-0         beta   2779.466554      0.0
-9  weibull_max   4223.923118      0.0
-8  weibull_min   5253.431211      0.0
-6       triang   9527.744736      0.0
-4         norm  18851.022544      0.0
-7      uniform  38850.174403      0.0
-1        expon  51645.542977      0.0
+3      lognorm    913.458152      0.0
+5     pearson3   2638.139962      0.0
+2        gamma   2638.157425      0.0
+9  weibull_max   4254.659947      0.0
+8  weibull_min   5160.544206      0.0
+6       triang   9114.152301      0.0
+4         norm  18775.858420      0.0
+7      uniform  38120.927402      0.0
+1        expon  51718.034236      0.0
+0         beta  64761.386652      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_11_1.png" src="../_images/06_distributions_11_1.png" />
@@ -1049,16 +1044,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm    1144.708796      0.0
-1        expon    2165.007927      0.0
-5     pearson3    3965.934823      0.0
-8  weibull_min    3980.110875      0.0
-0         beta    4174.294144      0.0
-2        gamma    5685.567469      0.0
-9  weibull_max   25435.682790      0.0
-4         norm   59322.174233      0.0
-6       triang   64104.205539      0.0
-7      uniform  112570.700834      0.0
+3      lognorm    1049.245175      0.0
+8  weibull_min    2324.281283      0.0
+1        expon    2359.439086      0.0
+5     pearson3    3749.452982      0.0
+2        gamma    3922.775328      0.0
+0         beta    4652.542285      0.0
+9  weibull_max   26233.976369      0.0
+6       triang   56174.761885      0.0
+4         norm   60651.483303      0.0
+7      uniform  113031.621484      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_13_1.png" src="../_images/06_distributions_13_1.png" />
@@ -1079,16 +1074,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distributions sorted by goodness of fit:
 ----------------------------------------
   Distribution     chi_square  p_value
-3      lognorm      46.032864      0.0
-0         beta     470.506798      0.0
-5     pearson3     550.822451      0.0
-8  weibull_min    2514.967506      0.0
-4         norm   25175.135246      0.0
-1        expon   26105.141731      0.0
-9  weibull_max   42400.680577      0.0
-6       triang  157342.350517      0.0
-7      uniform  196793.337000      0.0
-2        gamma  647516.851838      0.0
+3      lognorm      96.655978      0.0
+5     pearson3     556.709683      0.0
+0         beta     649.232775      0.0
+8  weibull_min    2155.745363      0.0
+9  weibull_max    2794.257647      0.0
+1        expon   21239.984412      0.0
+4         norm   27519.140201      0.0
+6       triang  154843.454429      0.0
+7      uniform  195254.938614      0.0
+2        gamma  659433.410326      0.0
 </pre></div>
 </div>
 <img alt="../_images/06_distributions_15_1.png" src="../_images/06_distributions_15_1.png" />
