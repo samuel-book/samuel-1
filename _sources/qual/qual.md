@@ -26,7 +26,7 @@ Qualitative research demonstrated a varying openness to machine learning and mod
 
 3. Clinicians wanted to see the machine learning models expanded to predict probability of good outcome and adverse effects of thrombolysis.
 
-4. this being a small study physicians engaged with the machine learning process and outcomes, suggesting ways in which the outputs could be modified for feedback to stroke centres, and utilised to inform thrombolytic decision-making.
+4. Despite this being a small study physicians engaged with the machine learning process and outcomes, suggesting ways in which the outputs could be modified for feedback to stroke centres, and utilised to inform thrombolytic decision-making.
 
 ## Data collection
 

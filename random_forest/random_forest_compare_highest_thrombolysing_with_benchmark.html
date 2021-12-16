@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate? &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -721,16 +720,16 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="how-would-thrombolysis-use-change-if-clinical-decisions-were-made-by-hospitals-with-the-highest-current-thrombolysis-rate">
+  <div class="tex2jax_ignore mathjax_ignore section" id="how-would-thrombolysis-use-change-if-clinical-decisions-were-made-by-hospitals-with-the-highest-current-thrombolysis-rate">
 <h1>How would thrombolysis use change if clinical decisions were made by hospitals with the highest current thrombolysis rate?<a class="headerlink" href="#how-would-thrombolysis-use-change-if-clinical-decisions-were-made-by-hospitals-with-the-highest-current-thrombolysis-rate" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Investigate changes in thrombolysis use (for patients arriving within 4 hours of known onset) if the decision to thrombolyse is made by the 30 hospitals with the highest current thrombolysis rate.</p></li>
 <li><p>Compare this to changes in thrombolysis use when the decision is made by a benchmark set of hospitals (those 30 hospitals which have the highest predicted thrombolysis use in a standard cohort of patients; see separate notebook)</p></li>
 </ul>
-</section>
-<section id="import-libraries">
+</div>
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,7 +759,7 @@
 </div>
 </div>
 </div>
-<section id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
+<div class="section" id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
 <h3>Load pre-trained hospital models into dictionary <code class="docutils literal notranslate"><span class="pre">hospital2model</span></code><a class="headerlink" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model" title="Permalink to this headline">¶</a></h3>
 <p>keys = hospitals</p>
 <p>values = trained_classifier, threshold, patients, outcomes</p>
@@ -772,9 +771,9 @@
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="load-data">
+</div>
+</div>
+<div class="section" id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <p>Create combined data set by combining cohort train/test</p>
 <div class="cell docutils container">
@@ -791,8 +790,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="find-30-hospitals-with-highest-thrombolysis-rate">
+</div>
+<div class="section" id="find-30-hospitals-with-highest-thrombolysis-rate">
 <h2>Find 30 hospitals with highest thrombolysis rate<a class="headerlink" href="#find-30-hospitals-with-highest-thrombolysis-rate" title="Permalink to this headline">¶</a></h2>
 <p>These are the hospitals with highest actual thrombolysis use.</p>
 <div class="cell docutils container">
@@ -838,8 +837,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="put-patients-from-all-other-hospitals-through-top-hospitals">
+</div>
+<div class="section" id="put-patients-from-all-other-hospitals-through-top-hospitals">
 <h2>Put patients from all other hospitals through top hospitals<a class="headerlink" href="#put-patients-from-all-other-hospitals-through-top-hospitals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,7 +876,7 @@
 </div>
 </div>
 </div>
-<section id="add-majority-outcome">
+<div class="section" id="add-majority-outcome">
 <h3>Add majority outcome<a class="headerlink" href="#add-majority-outcome" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -901,8 +900,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="find-new-thrombolysis-rates">
+</div>
+<div class="section" id="find-new-thrombolysis-rates">
 <h3>Find new thrombolysis rates<a class="headerlink" href="#find-new-thrombolysis-rates" title="Permalink to this headline">¶</a></h3>
 <p>Find thrombolysis use rates for each hospital if the decision to thrombolyse for their patients was made by a majority vote of 30 hospitals with the current highest thrombolysis use.</p>
 <div class="cell docutils container">
@@ -1037,8 +1036,8 @@
 <p>132 rows × 4 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="plot">
+</div>
+<div class="section" id="plot">
 <h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1120,8 +1119,8 @@
 <img alt="../_images/random_forest_compare_highest_thrombolysing_with_benchmark_22_0.png" src="../_images/random_forest_compare_highest_thrombolysing_with_benchmark_22_0.png" />
 </div>
 </div>
-</section>
-<section id="calculated-weighted-average">
+</div>
+<div class="section" id="calculated-weighted-average">
 <h3>Calculated weighted average<a class="headerlink" href="#calculated-weighted-average" title="Permalink to this headline">¶</a></h3>
 <p>Weight thrombolysis by admission numbers</p>
 <div class="cell docutils container">
@@ -1154,17 +1153,17 @@ Ratio of top 30 deiciions to base rate: 1.108
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="observations">
+</div>
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>When the decision to thrombolyse is made by a majority vote of the top thrombolysing hospitals, the overall thrombolysis rate increases from 29.5% to 32.7%.</p></li>
 <li><p>The change in thrombolysis use is significantly smaller than if the comparator hospitals are those 30 hospitals which have the highest predicted thrombolysis use in a standard cohort of patients (where thrombolysis use is predicted to rise to 36.9%).</p></li>
 <li><p>The thrombolysis rate does not increase in all hospitals.</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

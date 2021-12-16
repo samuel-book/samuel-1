@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Measuring the covariance/correlation between features &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -699,10 +698,10 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="measuring-the-covariance-correlation-between-features">
+  <div class="tex2jax_ignore mathjax_ignore section" id="measuring-the-covariance-correlation-between-features">
 <h1>Measuring the covariance/correlation between features<a class="headerlink" href="#measuring-the-covariance-correlation-between-features" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook we measure the correlation between features.</p>
-<section id="import-libraries-and-data">
+<div class="section" id="import-libraries-and-data">
 <h2>Import libraries and data<a class="headerlink" href="#import-libraries-and-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has been restricted to stroke teams with at least 300 admissions, with at least 10 patients receiving thrombolysis, over three years.</p>
 <div class="cell docutils container">
@@ -1041,8 +1040,8 @@
 <p>88928 rows × 100 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="scale-data">
+</div>
+<div class="section" id="scale-data">
 <h2>Scale data<a class="headerlink" href="#scale-data" title="Permalink to this headline">¶</a></h2>
 <p>After scaling data, the reported covariance will be the correlation between data features.</p>
 <div class="cell docutils container">
@@ -1055,8 +1054,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-covariance-of-scaled-data-correlation">
+</div>
+<div class="section" id="get-covariance-of-scaled-data-correlation">
 <h2>Get covariance of scaled data (correlation)<a class="headerlink" href="#get-covariance-of-scaled-data-correlation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1254,8 +1253,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="show-histogram-and-counts-of-correlations">
+</div>
+<div class="section" id="show-histogram-and-counts-of-correlations">
 <h2>Show histogram and counts of correlations<a class="headerlink" href="#show-histogram-and-counts-of-correlations" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1354,10 +1353,10 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="show-highly-correlated-features">
+</div>
+<div class="section" id="show-highly-correlated-features">
 <h2>Show highly correlated features<a class="headerlink" href="#show-highly-correlated-features" title="Permalink to this headline">¶</a></h2>
-<section id="perfectly-correlated-features">
+<div class="section" id="perfectly-correlated-features">
 <h3>Perfectly correlated features<a class="headerlink" href="#perfectly-correlated-features" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1525,8 +1524,8 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="highly-correlated-features">
+</div>
+<div class="section" id="highly-correlated-features">
 <h3>Highly correlated features<a class="headerlink" href="#highly-correlated-features" title="Permalink to this headline">¶</a></h3>
 <p>R-squared between 0.5 and 0.999</p>
 <div class="cell docutils container">
@@ -3034,9 +3033,9 @@
 </table>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="observations">
+</div>
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Most of the features show weak correlation (96% of feature pairs have an R-squared of less than 0.1)</p></li>
@@ -3048,8 +3047,8 @@
 </ul>
 </li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

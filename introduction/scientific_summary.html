@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scientific Summary &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -804,32 +803,32 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="scientific-summary">
+  <div class="tex2jax_ignore mathjax_ignore section" id="scientific-summary">
 <h1>Scientific Summary<a class="headerlink" href="#scientific-summary" title="Permalink to this headline">¶</a></h1>
-<section id="background">
+<div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
-<section id="stroke">
+<div class="section" id="stroke">
 <h3>Stroke<a class="headerlink" href="#stroke" title="Permalink to this headline">¶</a></h3>
 <p>Stroke is a medical condition where blood flow to an area of the brain has been interrupted, causing cell death. Stroke may be broadly categorised into two types: ischaemic, due to an arterial blockage, and haemorrhagic, due to bleeding. Stroke is a major cause of adult long-term disability and is a major burden on healthcare services. It was estimated that in 2010, there were 5.9 million deaths and 33 million stroke survivors worldwide. Eighty five thousand people are hospitalized with stroke each year in England, Wales and Northern Ireland. Over the last 25 years stroke was the leading cause of lost disability-adjusted life years, which combine mortality and disability burdens.</p>
-</section>
-<section id="intravenous-thrombolysis-ivt">
+</div>
+<div class="section" id="intravenous-thrombolysis-ivt">
 <h3>Intravenous Thrombolysis (IVT)<a class="headerlink" href="#intravenous-thrombolysis-ivt" title="Permalink to this headline">¶</a></h3>
 <p>Intravenous thrombolysis (IVT) is a form of ‘clot-busting’ therapy developed to treat ischaemic stroke by removing or reducing the blood clot impairing blood flow in the brain.
 For ischaemic strokes, IVT is an effective treatment for the management of acute stroke if given soon (within 4 hours) after stroke onset, and is recommended for use in many parts of the world including Europe.</p>
 <p>Based on expert clinical opinion, the Sentinel Stroke National Audit Programme Report, the NHS long term plan, and the specification of the Integrated Stroke Delivery Networks all provide a target of 20% of stroke patients receiving thrombolysis. Currently 11%-12% of patients in England and Wales receive thrombolysis, with significant inter-hospital variability (per-hospital thrombolysis use ranges from 2% to 25%).</p>
 <p>Use of thrombolysis is therefore lower than target, and highly variable between hospitals.</p>
-</section>
-<section id="clinical-audit">
+</div>
+<div class="section" id="clinical-audit">
 <h3>Clinical audit<a class="headerlink" href="#clinical-audit" title="Permalink to this headline">¶</a></h3>
 <p>NHS England describes clinical audit in the following way:</p>
 <p><em>“Clinical audit is a way to find out if healthcare is being provided in line with standards and lets care providers and patients know where their service is doing well, and where there could be improvements. The aim is to allow quality improvement to take place where it will be most helpful and will improve outcomes for patients…”</em></p>
 <p>The national audit covering stroke is the Sentinel Stroke National Audit Programme (SSNAP). SSNAP collects longitudinal data on the processes and outcomes of stroke care up to 6 months post-stroke for more than 90% of stroke admissions to acute hospitals in England, Wales and Northern Ireland. Every year data from approximately 85 000 patients are collected. SSNAP publishes quarterly and yearly analysis of results.</p>
-</section>
-</section>
-<section id="objectives">
+</div>
+</div>
+<div class="section" id="objectives">
 <h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
 <p>We seek to enhance the national stroke audit by providing further analysis of the thrombolysis pathway at each hospital, identifying areas which would most improve the clinical benefit of thrombolysis, allowing quality improvement to focus down on the most influential aspect.</p>
-<section id="modelling-of-the-stroke-thrombolysis-pathway">
+<div class="section" id="modelling-of-the-stroke-thrombolysis-pathway">
 <h3>Modelling of the stroke thrombolysis pathway<a class="headerlink" href="#modelling-of-the-stroke-thrombolysis-pathway" title="Permalink to this headline">¶</a></h3>
 <p>We model three aspects of the thrombolysis pathway:</p>
 <ol class="simple">
@@ -837,39 +836,39 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p><em>Determination of stroke onset time</em>: what would be the effect of changing the proportion of patients with determined stroke onset time?</p></li>
 <li><p><em>Clinical decision making</em>: what would be the effect of treating patients according to decisions made at a benchmark set of hospitals?</p></li>
 </ol>
-</section>
-<section id="qualitative-research">
+</div>
+<div class="section" id="qualitative-research">
 <h3>Qualitative research<a class="headerlink" href="#qualitative-research" title="Permalink to this headline">¶</a></h3>
 <p>In addition to the modelling work, the project had a qualitative research arm, with the objective of understanding clinicians’ attitudes to use of modelling and machine learning applied to the national stroke audit.</p>
-</section>
-</section>
-<section id="methods">
+</div>
+</div>
+<div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
-<section id="data">
+<div class="section" id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>Data was retrieved for 246,676 emergency stroke admissions to acute stroke teams in England and Wales between 2016 and 2018 (three full years). Data used is for units which have at least 300 emergency stroke admissions with at least 10 patients receiving thrombolysis in the three years.</p>
-</section>
-<section id="modelling-clinical-decision-making">
+</div>
+<div class="section" id="modelling-clinical-decision-making">
 <h3>Modelling clinical-decision making<a class="headerlink" href="#modelling-clinical-decision-making" title="Permalink to this headline">¶</a></h3>
 <p>We modelled clinical decision making, whether a patient is predicted to receive thrombolysis or not, by using machine-learning methods. Machine learning methods investigated were logistic regression, random forests, and neural nets. All models were constructed in Python.</p>
-</section>
-<section id="modelling-the-stroke-pathway">
+</div>
+<div class="section" id="modelling-the-stroke-pathway">
 <h3>Modelling the stroke pathway<a class="headerlink" href="#modelling-the-stroke-pathway" title="Permalink to this headline">¶</a></h3>
 <p>We modelled the stroke pathway using Monte-Carlo simulation, sampling process times from distributions mimicking process speed at each hospital. The model was constructed in Python.</p>
-</section>
-<section id="availability-of-model-code">
+</div>
+<div class="section" id="availability-of-model-code">
 <h3>Availability of model code<a class="headerlink" href="#availability-of-model-code" title="Permalink to this headline">¶</a></h3>
 <p>All code used in the project is available at <a class="reference external" href="https://samuel-book.github.io/samuel-1/">https://samuel-book.github.io/samuel-1/</a></p>
-</section>
-<section id="id1">
+</div>
+<div class="section" id="id1">
 <h3>Qualitative research<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>During the project we undertook interviews with groups and single clinicians. These were both face-to-face and via video. Due to Covid-19, interviews moved to entirely being remote during the project.</p>
 <p>During the interviews, we collected data about physicians’ backgrounds, their attitudes to thrombolysis and their understanding of variance, their perspectives on machine learning, and potential loci for the implementation of machine learning feedback (within and beyond SSNAP), established the physicians’ views on possible unintended consequences, which may result from changing the acute stroke pathway, and potential means of mitigation.</p>
-</section>
-</section>
-<section id="results">
+</div>
+</div>
+<div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<section id="general-descriptive-statistics">
+<div class="section" id="general-descriptive-statistics">
 <h3>General descriptive statistics<a class="headerlink" href="#general-descriptive-statistics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>94.7% of patients have an out-of-hospital stroke onset.</p></li>
@@ -883,8 +882,8 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>30% of those who receive a scan within 4 hours of known stroke onset receive thrombolysis.</p></li>
 <li><p>The average scan-to-needle time is 40 minutes, the average arrival-to-needle time is 63 minutes, and the average onset-to-needle time is 158 minutes.</p></li>
 </ul>
-</section>
-<section id="inter-hospital-variation">
+</div>
+<div class="section" id="inter-hospital-variation">
 <h3>Inter-hospital variation<a class="headerlink" href="#inter-hospital-variation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Thrombolysis use varies from 1.5% to 24.3% of all patients, and 7.3% to 49.7% of patients arriving within 4 hours of known stroke onset.</p></li>
@@ -896,16 +895,16 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>The proportion of patients aged 80+ varies from 29% to 58%.</p></li>
 <li><p>The average NIHSS (stroke severity) ranges from 6.1 to 11.7.</p></li>
 </ul>
-</section>
-<section id="effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis">
+</div>
+<div class="section" id="effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis">
 <h3>Effect of time and day and day of week on use of thrombolysis<a class="headerlink" href="#effect-of-time-and-day-and-day-of-week-on-use-of-thrombolysis" title="Permalink to this headline">¶</a></h3>
 <p>Nationally, there is a significant fall in use of thrombolysis for arrivals between 3am and 6am (with about 6% receiving thrombolysis, compared with 11% to 13% in other periods during the day), but the number of arrivals in this period is only about 3% of all arrivals.</p>
 <p>Nationally there is a small effect of day of week, with thrombolysis use ranging from 11.2% to 12.6% by day of week (increasing Monday through to Sunday).</p>
-</section>
-<section id="machine-learning-for-clinical-decision-making">
+</div>
+<div class="section" id="machine-learning-for-clinical-decision-making">
 <h3>Machine learning for clinical decision making<a class="headerlink" href="#machine-learning-for-clinical-decision-making" title="Permalink to this headline">¶</a></h3>
 <p>Machine learning, predicting use of thrombolysis, was performed on the 40% of patients arriving within 4 hours of known stroke onset; these are the patients with a chance of receiving thrombolysis.</p>
-<section id="machine-learning-performance">
+<div class="section" id="machine-learning-performance">
 <h4>Machine learning performance<a class="headerlink" href="#machine-learning-performance" title="Permalink to this headline">¶</a></h4>
 <p>Machine learning accuracy was assessed using stratified k-fold cross-validation.</p>
 <table class="colwidths-auto table">
@@ -959,8 +958,8 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>Accuracy of models increased with training set size up to about 30k training set examples.</p></li>
 <li><p>All random forest and neural network models were well calibrated, meaning that 9 out of 10 people with a predicted 90% probability of receiving thrombolysis would receive thrombolysis.</p></li>
 </ul>
-</section>
-<section id="comparing-decisions-between-hospitals">
+</div>
+<div class="section" id="comparing-decisions-between-hospitals">
 <h4>Comparing decisions between hospitals<a class="headerlink" href="#comparing-decisions-between-hospitals" title="Permalink to this headline">¶</a></h4>
 <p>For most modelling (e.g. inclusion in stroke pathway model) we have chosen to use hospital-level random forests models. Though accuracy is a little lower than the best models, these models are easier for people to understand and have strong hospital independence. When comparing predicted decisions between hospitals:</p>
 <ul class="simple">
@@ -968,12 +967,10 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>A comparison of a hospital’s likelihood to give thrombolysis may be made by passing the a standard 10k patient cohort set through all hospitals. This evaluates likelihood to give thrombolysis independently from hospitals own local patient populations.</p></li>
 <li><p>A <em>benchmark</em> set of hospitals was created by passing the same 10k patient cohort set through all hospitals, and selecting the 30 hospitals with the highest thrombolysis use. If all thrombolysis decisions were made by a majority vote of these hospitals then thrombolysis use (in those arriving within 4 hours of known stroke onset) would be expected to increase from 29.5% to 36.9%. <a class="reference internal" href="#fig-benchmark"><span class="std std-numref">Figure 5</span></a> shows a comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals.</p></li>
 </ul>
-<figure class="align-default" id="fig-benchmark">
+<div class="figure align-default" id="fig-benchmark">
 <a class="reference internal image-reference" href="../_images/benchmark_thrombolysis.jpg"><img alt="../_images/benchmark_thrombolysis.jpg" src="../_images/benchmark_thrombolysis.jpg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.</span><a class="headerlink" href="#fig-benchmark" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of current thrombolysis rate at each hospital and the predicted thrombolysis rate if decisions were made according to the majority vote of the 30 benchmark hospitals. Thrombolysis rate is predicted for patients arriving within 4 hours of known stroke onset. The solid circle shows the current thrombolysis use, and the bar shows the thrombolysis use predicted by majority vote of the benchmark hospitals. The red points are those hospitals that are in the top 30 of hospitals when cohort thrombolysis use is predicted, with other hospitals coloured blue.</span><a class="headerlink" href="#fig-benchmark" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>Models may be used to identify two types of patients (and patient vignettes may be constructed to illustrate particular types of patients):</p>
 <ul>
@@ -982,12 +979,10 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 </ul>
 </li>
 </ul>
-<figure class="align-default" id="fig-embedding">
+<div class="figure align-default" id="fig-embedding">
 <a class="reference internal image-reference" href="../_images/embedding.jpg"><img alt="../_images/embedding.jpg" src="../_images/embedding.jpg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Clinical subnet embedding output marking of those patients with a haemorrhagic stroke (red) as opposed to a non-haemorrhagic stroke (blue).</span><a class="headerlink" href="#fig-embedding" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Clinical subnet embedding output marking of those patients with a haemorrhagic stroke (red) as opposed to a non-haemorrhagic stroke (blue).</span><a class="headerlink" href="#fig-embedding" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>Hospitals may be grouped by comparison of what proportion of patients would be expected to have the same thrombolysis decision.</p></li>
 <li><p>Using embedding neural networks, similar patients (e.g. haemorrhagic stroke patients, or patients with severe stroke) are located close together in embedding space. Patient embedding may also be use to rank patients in order of suitability for thrombolysis (by consensus across all hospitals). Similarly hospital embedding may be used to rank hospitals by likelihood to use thrombolysis, independent of patient and pathway characteristics.</p></li>
@@ -1005,9 +1000,9 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 </ul>
 </li>
 </ul>
-</section>
-</section>
-<section id="pathway-simulation">
+</div>
+</div>
+<div class="section" id="pathway-simulation">
 <h3>Pathway simulation<a class="headerlink" href="#pathway-simulation" title="Permalink to this headline">¶</a></h3>
 <p>The model is used to examine the effect, at each hospital and nationally, of making three key changes (alone or in combination) to the stroke pathway:</p>
 <ol class="simple">
@@ -1019,31 +1014,25 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <ul class="simple">
 <li><p>The model predicts current thrombolysis use with high accuracy (<a class="reference internal" href="#fig-validation"><span class="std std-numref">Figure 7</span></a>, R-squared of 0.979, mean absolute difference in thrombolysis use of 0.5 percentage points).</p></li>
 </ul>
-<figure class="align-default" id="fig-validation">
+<div class="figure align-default" id="fig-validation">
 <a class="reference internal image-reference" href="../_images/validation.jpg"><img alt="../_images/validation.jpg" src="../_images/validation.jpg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Modelled vs actual thrombolysis use at each hospital.</span><a class="headerlink" href="#fig-validation" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Modelled vs actual thrombolysis use at each hospital.</span><a class="headerlink" href="#fig-validation" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>Combining the three changes suggests that thrombolysis use could potentially be increased from 11.6% to 18.3% of all emergency admissions, and the clinical benefit increased from 9.4 to 17.6 additional good outcomes per 1,000 admissions. The average drivers in improvement in thrombolysis use are benchmark decisions &gt; determining stroke onset &gt; speed, while the average drivers in improvement in outcomes are speed &gt; benchmark decisions &gt; determining stroke onset.</p></li>
 <li><p><a class="reference internal" href="#fig-pathway-net"><span class="std std-numref">Figure 8</span></a> shows the net effect of changes at all hospitals:</p></li>
 </ul>
-<figure class="align-default" id="fig-pathway-net">
+<div class="figure align-default" id="fig-pathway-net">
 <a class="reference internal image-reference" href="../_images/scenarios.jpg"><img alt="../_images/scenarios.jpg" src="../_images/scenarios.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers.</span><a class="headerlink" href="#fig-pathway-net" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Net national changes in thrombolysis use (left) or clinical benefit (right) by changing aspects of the stroke pathway (speed of stoke pathway, determining stroke onset time, and using benchmark decisions). Results show effects across all 132 English stroke units, with averages weighted by admission numbers.</span><a class="headerlink" href="#fig-pathway-net" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p><a class="reference internal" href="#fig-pathway-dist"><span class="std std-numref">Figure 9</span></a> shows the distribution of use of, and benefit from, thrombolysis before and after all the modelled changes. It is noteworthy that there is still significant variation between hospitals, but that the distributions have been shifted.</p></li>
 </ul>
-<figure class="align-default" id="fig-pathway-dist">
+<div class="figure align-default" id="fig-pathway-dist">
 <a class="reference internal image-reference" href="../_images/distribution.jpg"><img alt="../_images/distribution.jpg" src="../_images/distribution.jpg" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.</span><a class="headerlink" href="#fig-pathway-dist" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Histograms for changes in distribution in thrombolysis use (left) or clinical benefit (right) by combining changes to speed (95% of patients have 15 minutes arrival-to-scan and 15 minute scan-to-treatment, with other patients not being scanned within 4 hours of arrival), determining stroke onset time (to the national upper quartile if currently lower), and using benchmark decisions. The unshaded histogram shows the current base-case use of, and benefit from, thrombolysis, and the grey shaded histogram shows the predictions with all changes.</span><a class="headerlink" href="#fig-pathway-dist" title="Permalink to this image">¶</a></p>
+</div>
 <ul class="simple">
 <li><p>The model identifies the changes that make most difference at each hospital, and may be used to provide a target use of thrombolysis that is tailored to each hospital.</p></li>
 </ul>
@@ -1053,8 +1042,8 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>Within the hospitals, the largest contributor to inter-hospital differences in thrombolysis use is differences in decision making around thrombolysis, then speed, then determination of stroke onset time.</p></li>
 <li><p>If all hospitals treated a standard set of patients, reflecting national averages in patient population characteristics, hospitals that currently have a lower thrombolysis rate would tend to give more thrombolysis, and those with higher thrombolysis rates would tend to give less thrombolysis. But this explains only about half of the differences between low and high thrombolysing units.</p></li>
 </ul>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3>Qualitative research<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Qualitative research demonstrated a varying openness to machine learning and modelling techniques.</p></li>
@@ -1062,23 +1051,23 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>Clinicians wanted to see the machine learning models expanded to predict probability of good outcome and adverse effects of thrombolysis.</p></li>
 <li><p>Despite this being a small study physicians engaged with the machine learning process and outcomes, suggesting ways in which the outputs could be modified for feedback to stroke centres, and utilised to inform thrombolytic decision-making.</p></li>
 </ul>
-</section>
-</section>
-<section id="limitations">
+</div>
+</div>
+<div class="section" id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
 <p>Models may only be built using data available in SSNAP. Not all factors affecting use of thrombolysis are contained in SSNAP data; the model therefore provides information on patterns of thrombolysis use in hospitals, but is not suitable for, or intended for, a decision aid to thrombolysis.</p>
-</section>
-<section id="conclusion">
+</div>
+<div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>Using modelling and machine learning we identify potential for reaching close to the 20% target of thrombolysis use, and doubling clinical benefit from thrombolysis.</p>
-<section id="implications-for-healthcare">
+<div class="section" id="implications-for-healthcare">
 <h3>Implications for healthcare<a class="headerlink" href="#implications-for-healthcare" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Realistically achievable thrombolysis use depends on local patient populations, so a universal target of 20% across all hospitals may over-estimate what is achievable at some hospitals, while under-estimating what is achievable at other hospitals. Local agreed targets may be more appropriate.</p></li>
 <li><p>The tools develop have the potential to add further depth of analysis to the national stroke audit outputs, and may be transferable to other national clinical audits.</p></li>
 </ul>
-</section>
-<section id="recommendations-for-further-research">
+</div>
+<div class="section" id="recommendations-for-further-research">
 <h3>Recommendations for further research<a class="headerlink" href="#recommendations-for-further-research" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Expand machine learning to predict probability of good outcome, and probability of adverse effects of thrombolysis.</p></li>
@@ -1087,13 +1076,13 @@ For ischaemic strokes, IVT is an effective treatment for the management of acute
 <li><p>Include organisational features (from the national stroke audit organisational audit) in machine learning models.</p></li>
 <li><p>Develop more methods to explain machine learning models (and the biases that have been learned), so that people could see what was driving model overall and individual predictions. For example, incorporate Shapley values in model outputs. Include design of a web portal for drilling down into hospital models in more detail.</p></li>
 </ol>
-</section>
-</section>
-<section id="funding">
+</div>
+</div>
+<div class="section" id="funding">
 <h2>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h2>
 <p>This project was funded by the National Institute for Health Research (NIHR) HS&amp;DR programme (Reference Number: 17/99/89) and will be published in full in Health Services and Delivery Research Journal; Vol. XX, No. XX. See the NIHR Journals Library website for further project information.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
