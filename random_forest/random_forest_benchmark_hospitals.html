@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Benchmark hospitals &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -718,9 +719,9 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="benchmark-hospitals">
+  <section class="tex2jax_ignore mathjax_ignore" id="benchmark-hospitals">
 <h1>Benchmark hospitals<a class="headerlink" href="#benchmark-hospitals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Predict thrombolysis decisions for a 10k cohort of patients at all hospitals</p></li>
@@ -728,8 +729,8 @@
 <li><p>Predict decision of those benchmark set of hospitals for all patients at each hospital. Use a majority vote to classify as whether the patient would receive thrombolysis or not.</p></li>
 <li><p>Compare actual thrombolysis use with thrombolysis use if decisions made by majority vote of benchmark hospitals.</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,8 +753,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
+</section>
+<section id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
 <h2>Load pre-trained hospital models into dictionary <em>hospital2model</em><a class="headerlink" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model" title="Permalink to this headline">¶</a></h2>
 <p>keys = hospitals</p>
 <p>values = trained_classifier, threshold, patients, outcomes</p>
@@ -766,8 +767,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="import-10k-cohort">
+</section>
+<section id="import-10k-cohort">
 <h2>Import 10k cohort<a class="headerlink" href="#import-10k-cohort" title="Permalink to this headline">¶</a></h2>
 <p>10k cohort all arrive at hospital within 4 hours of known stroke onset</p>
 <div class="cell docutils container">
@@ -777,8 +778,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="pass-cohort-through-all-hospital-models">
+</section>
+<section id="pass-cohort-through-all-hospital-models">
 <h2>Pass cohort through all hospital models<a class="headerlink" href="#pass-cohort-through-all-hospital-models" title="Permalink to this headline">¶</a></h2>
 <p>Allow for new analysis or used loaded resulkts from previous analysis.</p>
 <div class="cell docutils container">
@@ -1133,7 +1134,7 @@
 <p>10000 rows × 132 columns</p>
 </div></div></div>
 </div>
-<div class="section" id="summarise-results">
+<section id="summarise-results">
 <h3>Summarise results<a class="headerlink" href="#summarise-results" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1328,9 +1329,9 @@
 <img alt="../_images/random_forest_benchmark_hospitals_15_0.png" src="../_images/random_forest_benchmark_hospitals_15_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="take-majority-decision-of-benchmark-hospitals">
+</section>
+</section>
+<section id="take-majority-decision-of-benchmark-hospitals">
 <h2>Take majority decision of benchmark hospitals<a class="headerlink" href="#take-majority-decision-of-benchmark-hospitals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1395,7 +1396,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="repeat-analysis-just-for-patients-scanned-within-4-hours-of-onset">
+<section id="repeat-analysis-just-for-patients-scanned-within-4-hours-of-onset">
 <h3>Repeat analysis just for patients scanned within 4 hours of onset<a class="headerlink" href="#repeat-analysis-just-for-patients-scanned-within-4-hours-of-onset" title="Permalink to this headline">¶</a></h3>
 <p>This value is used in the pathway simulation model.</p>
 <div class="cell docutils container">
@@ -1636,8 +1637,8 @@
 <p>5 rows × 33 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="create-summary-pivot-table">
+</section>
+<section id="create-summary-pivot-table">
 <h3>Create summary pivot table<a class="headerlink" href="#create-summary-pivot-table" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1871,8 +1872,8 @@
 <img alt="../_images/random_forest_benchmark_hospitals_27_0.png" src="../_images/random_forest_benchmark_hospitals_27_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="calculated-weighted-average">
+</section>
+<section id="calculated-weighted-average">
 <h3>Calculated weighted average<a class="headerlink" href="#calculated-weighted-average" title="Permalink to this headline">¶</a></h3>
 <p>Weight thrombolysis by admission numbers</p>
 <div class="cell docutils container">
@@ -1922,17 +1923,17 @@ Benchmark thrombolysis ratio onset-to-scan of 4 hrs: 1.250
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>A ‘benchmark’ set of hospitals was created by identifying those 30 hospitals with the highest predicted thrombolysis use in a set cohort of patients.</p></li>
 <li><p>The benchmark hospitals were not necessarily the top thrombolysing hospitals given their own patient populations.</p></li>
 <li><p>If decision to treat were made according to a majority vote of the benchmark set of hospitals then thrombolysis use (in those arriving within 4 hours of known stroke onset) would be expected to increase from 29.5% to 36.9%.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

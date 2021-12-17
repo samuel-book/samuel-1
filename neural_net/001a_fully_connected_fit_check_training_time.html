@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Fully connected TensorFlow model - Check required training epochs &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -691,15 +692,15 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="fully-connected-tensorflow-model-check-required-training-epochs">
+  <section class="tex2jax_ignore mathjax_ignore" id="fully-connected-tensorflow-model-check-required-training-epochs">
 <h1>Fully connected TensorFlow model - Check required training epochs<a class="headerlink" href="#fully-connected-tensorflow-model-check-required-training-epochs" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Ascertain how many training epochs are needed to train a fully connected TensorFlow neural net. This will be used in future training.</p></li>
 </ul>
-</div>
-<div class="section" id="basic-methodology">
+</section>
+<section id="basic-methodology">
 <h2>Basic methodology<a class="headerlink" href="#basic-methodology" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Models are fitted to previously split training and test data sets.</p></li>
@@ -727,8 +728,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-modules">
+</section>
+<section id="load-modules">
 <h2>Load modules<a class="headerlink" href="#load-modules" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -751,8 +752,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-to-scale-data-minmax-scaling">
+</section>
+<section id="function-to-scale-data-minmax-scaling">
 <h2>Function to scale data (minmax scaling)<a class="headerlink" href="#function-to-scale-data-minmax-scaling" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -774,8 +775,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-neural-net">
+</section>
+<section id="define-neural-net">
 <h2>Define neural net<a class="headerlink" href="#define-neural-net" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -815,8 +816,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-models">
+</section>
+<section id="fit-models">
 <h2>Fit models<a class="headerlink" href="#fit-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,16 +957,16 @@
 <img alt="../_images/001a_fully_connected_fit_check_training_time_11_0.png" src="../_images/001a_fully_connected_fit_check_training_time_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Training set accuracy continues to increase throughout the training period of the experiment.</p></li>
 <li><p>Test set accuracy rises, plateaus, and then declines over the training period of the experiment. The plateau occurs between approximately 25 and 70 epochs.</p></li>
 <li><p>A training period of 30 epochs (mini-batch size 32) may be used in future experiments using this model structure.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
