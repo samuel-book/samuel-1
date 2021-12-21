@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logistic Regression Classifier - Fitting hospital-specific models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -736,9 +735,9 @@
         
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-classifier-fitting-hospital-specific-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="logistic-regression-classifier-fitting-hospital-specific-models">
 <h1>Logistic Regression Classifier - Fitting hospital-specific models<a class="headerlink" href="#logistic-regression-classifier-fitting-hospital-specific-models" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Assess accuracy of a logistic regression classifier, using k-fold (5-fold) training/test data splits (each data point is present in one and only one of the five test sets). This notebook fits models to each hospital independently.</p>
 <p>The notebook includes:</p>
@@ -746,8 +745,8 @@
 <li><p>A range of accuracy scores</p></li>
 <li><p>Receiver operating characteristic (ROC) and Sensitivity-Specificity Curves</p></li>
 </ul>
-</section>
-<section id="import-libraries">
+</div>
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,8 +767,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="load-train-and-test-set-data">
+</div>
+<div class="section" id="load-train-and-test-set-data">
 <h2>Load train and test set data<a class="headerlink" href="#load-train-and-test-set-data" title="Permalink to this headline">¶</a></h2>
 <p>K-fold train/test split has previously been performed. Train/test data is stratified by hospital and thrombolysis.</p>
 <div class="cell docutils container">
@@ -788,10 +787,10 @@
 </div>
 </div>
 </div>
-</section>
-<section id="functions">
+</div>
+<div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<section id="standardise-data">
+<div class="section" id="standardise-data">
 <h3>Standardise data<a class="headerlink" href="#standardise-data" title="Permalink to this headline">¶</a></h3>
 <p>Standardisation subtracts the mean and divides by the standard deviation, for each feature. Here we use the sklearn built-in method for standardisation.</p>
 <div class="cell docutils container">
@@ -821,8 +820,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+</div>
+<div class="section" id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
 <h3>Find model probability threshold to match predicted and actual thrombolysis use<a class="headerlink" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -841,8 +840,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="calculate-accuracy-measures">
+</div>
+<div class="section" id="calculate-accuracy-measures">
 <h3>Calculate accuracy measures<a class="headerlink" href="#calculate-accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -953,8 +952,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="line-intersect">
+</div>
+<div class="section" id="line-intersect">
 <h3>Line intersect<a class="headerlink" href="#line-intersect" title="Permalink to this headline">¶</a></h3>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -979,9 +978,9 @@
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="fit-hospital-specific-models">
+</div>
+</div>
+<div class="section" id="fit-hospital-specific-models">
 <h2>Fit hospital-specific models<a class="headerlink" href="#fit-hospital-specific-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1068,10 +1067,10 @@
 </div>
 </div>
 </div>
-</section>
-<section id="results">
+</div>
+<div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<section id="accuracy-measures">
+<div class="section" id="accuracy-measures">
 <h3>Accuracy measures<a class="headerlink" href="#accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1489,8 +1488,8 @@
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
+</div>
+<div class="section" id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
 <h3>Receiver Operator Characteristic and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h3>
 <p>Receiver Operator Characteristic Curve:</p>
 <div class="cell docutils container">
@@ -1610,8 +1609,8 @@ SD AUC: 0.0034
 <img alt="../_images/logistic_regression_hospit_fit_accuracy_29_0.png" src="../_images/logistic_regression_hospit_fit_accuracy_29_0.png" />
 </div>
 </div>
-</section>
-<section id="identify-cross-over-of-sensitivity-and-specificity">
+</div>
+<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1645,9 +1644,9 @@ SD AUC: 0.0034
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</div>
+</div>
+<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1911,8 +1910,8 @@ Accuracy: 0.762
 </div>
 </div>
 </div>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fitting at a single hospital level gave an accuracy of 77.5% (c.f. 83.2% for a single model), and a ROC AUC of 0.815 (c.f. 0.904 for a single fit model)</p></li>
@@ -1921,8 +1920,8 @@ Accuracy: 0.762
 <li><p>ROC ACUC = 0.815</p></li>
 <li><p>The model showed poorer calibration than a single model</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
