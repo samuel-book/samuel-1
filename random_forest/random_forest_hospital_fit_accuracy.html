@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Random Forest Classifier - Fitting hospital-specific models &#8212; SAMueL Stroke Audit Machine Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -122,6 +123,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/project_team.html">
    Contact and Project Team
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/videos.html">
+   YouTube videos
   </a>
  </li>
 </ul>
@@ -735,9 +741,9 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="random-forest-classifier-fitting-hospital-specific-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="random-forest-classifier-fitting-hospital-specific-models">
 <h1>Random Forest Classifier - Fitting hospital-specific models<a class="headerlink" href="#random-forest-classifier-fitting-hospital-specific-models" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
+<section id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Assess accuracy of a random forest classifier, using k-fold (5-fold) training/test data splits (each data point is present in one and only one of the five test sets). This notebook fits models to each hospital independently.</p>
 <p>The notebook includes:</p>
@@ -745,8 +751,8 @@
 <li><p>A range of accuracy scores</p></li>
 <li><p>Receiver operating characteristic (ROC) and Sensitivity-Specificity Curves</p></li>
 </ul>
-</div>
-<div class="section" id="import-libraries">
+</section>
+<section id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -766,8 +772,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-train-and-test-set-data">
+</section>
+<section id="load-train-and-test-set-data">
 <h2>Load train and test set data<a class="headerlink" href="#load-train-and-test-set-data" title="Permalink to this headline">¶</a></h2>
 <p>K-fold train/test split has previously been performed. Train/test data is stratified by hospital and thrombolysis.</p>
 <div class="cell docutils container">
@@ -786,10 +792,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+<section id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
 <h3>Find model probability threshold to match predicted and actual thrombolysis use<a class="headerlink" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,8 +814,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-accuracy-measures">
+</section>
+<section id="calculate-accuracy-measures">
 <h3>Calculate accuracy measures<a class="headerlink" href="#calculate-accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -920,8 +926,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="line-intersect">
+</section>
+<section id="line-intersect">
 <h3>Line intersect<a class="headerlink" href="#line-intersect" title="Permalink to this headline">¶</a></h3>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -946,9 +952,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="fit-hospital-specific-models">
+</section>
+</section>
+<section id="fit-hospital-specific-models">
 <h2>Fit hospital-specific models<a class="headerlink" href="#fit-hospital-specific-models" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1035,10 +1041,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="results">
+</section>
+<section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="accuracy-measures">
+<section id="accuracy-measures">
 <h3>Accuracy measures<a class="headerlink" href="#accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,8 +1462,8 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
+</section>
+<section id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
 <h3>Receiver Operator Characteristic and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h3>
 <p>Receiver Operator Characteristic Curve:</p>
 <div class="cell docutils container">
@@ -1577,8 +1583,8 @@ SD AUC: 0.0020
 <img alt="../_images/random_forest_hospital_fit_accuracy_27_0.png" src="../_images/random_forest_hospital_fit_accuracy_27_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
+</section>
+<section id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1612,8 +1618,8 @@ SD AUC: 0.0020
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="learning-curves">
+</section>
+<section id="learning-curves">
 <h3>Learning Curves<a class="headerlink" href="#learning-curves" title="Permalink to this headline">¶</a></h3>
 <p>Examine the relationship between training data size and accuracy</p>
 <div class="cell docutils container">
@@ -1765,9 +1771,9 @@ SD AUC: 0.0020
 <img alt="../_images/random_forest_hospital_fit_accuracy_36_0.png" src="../_images/random_forest_hospital_fit_accuracy_36_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</section>
+</section>
+<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2030,16 +2036,16 @@ Accuracy: 0.919
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fitting at a single hospital level gave an accuracy of 81.4% (c.f. 84.6% for a single model), and a ROC AUC of 0.854 (c.f. 0.914 for a single fit model)</p></li>
 <li><p>Accuracy was 91.9% for the 48% of samples with at least 80% confidence of model</p></li>
 <li><p>The model can achieve 78.1% sensitivity and specificity simultaneously</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
