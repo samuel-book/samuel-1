@@ -85,7 +85,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
-   Introduction to SAMueL (Stroke Audit Machine Learning)
+   Introduction to SAMueL-1 (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
@@ -854,7 +854,7 @@
 <span class="sd">    13) false positive rate: proportion of false +ves in true -ve patients</span>
 <span class="sd">    14) false negative rate: proportion of false -ves in true +ve patients</span>
 <span class="sd">    15) true positive rate: Same as recall</span>
-<span class="sd">    16) true negative rate</span>
+<span class="sd">    16) true negative rate: Same as specificity</span>
 <span class="sd">    17) positive predictive value: chance of true +ve if test +ve</span>
 <span class="sd">    18) negative predictive value: chance of true -ve if test -ve</span>
 <span class="sd">    </span>
@@ -877,6 +877,8 @@
     <span class="n">false_positives</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_positives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">observed_positives</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
     
     <span class="n">true_negatives</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_negatives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">observed_negatives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">false_negatives</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted_negatives</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">observed_negatives</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
     
     <span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">observed</span><span class="p">)</span>
     
@@ -904,10 +906,10 @@
     <span class="n">true_negative_rate</span> <span class="o">=</span> <span class="n">specificity</span>
     
     <span class="n">positive_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span> 
-                                 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_positives</span><span class="p">))</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_positives</span><span class="p">)))</span>
     
     <span class="n">negative_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">/</span> 
-                                  <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_negatives</span><span class="p">))</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_negatives</span><span class="p">)))</span>
     
     <span class="c1"># Create dictionary for results, and add results</span>
     <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -1292,24 +1294,24 @@
     <tr>
       <th>positive_predictive_value</th>
       <td>5.0</td>
-      <td>0.749936</td>
-      <td>0.011751</td>
-      <td>0.738104</td>
-      <td>0.742525</td>
-      <td>0.747431</td>
-      <td>0.753239</td>
-      <td>0.768381</td>
+      <td>0.748160</td>
+      <td>0.006558</td>
+      <td>0.736804</td>
+      <td>0.748504</td>
+      <td>0.750963</td>
+      <td>0.751435</td>
+      <td>0.753096</td>
     </tr>
     <tr>
       <th>negative_predictive_value</th>
       <td>5.0</td>
-      <td>0.894178</td>
-      <td>0.005111</td>
-      <td>0.885051</td>
-      <td>0.896018</td>
-      <td>0.896345</td>
-      <td>0.896626</td>
-      <td>0.896849</td>
+      <td>0.895149</td>
+      <td>0.004028</td>
+      <td>0.890828</td>
+      <td>0.892647</td>
+      <td>0.894347</td>
+      <td>0.896698</td>
+      <td>0.901227</td>
     </tr>
   </tbody>
 </table>

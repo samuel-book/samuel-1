@@ -85,7 +85,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
-   Introduction to SAMueL (Stroke Audit Machine Learning)
+   Introduction to SAMueL-1 (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
@@ -875,7 +875,7 @@
 <span class="sd">    13) false positive rate: proportion of false +ves in true -ve patients</span>
 <span class="sd">    14) false negative rate: proportion of false -ves in true +ve patients</span>
 <span class="sd">    15) true positive rate: Same as recall</span>
-<span class="sd">    16) true negative rate</span>
+<span class="sd">    16) true negative rate: Same as specificity</span>
 <span class="sd">    17) positive predictive value: chance of true +ve if test +ve</span>
 <span class="sd">    18) negative predictive value: chance of true -ve if test -ve</span>
 <span class="sd">    </span>
@@ -927,10 +927,10 @@
     <span class="n">true_negative_rate</span> <span class="o">=</span> <span class="n">specificity</span>
     
     <span class="n">positive_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span> 
-                                 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_positives</span><span class="p">))</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_positives</span><span class="p">)))</span>
     
     <span class="n">negative_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">/</span> 
-                                  <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_negatives</span><span class="p">))</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_negatives</span><span class="p">)))</span>
     
     <span class="c1"># Create dictionary for results, and add results</span>
     <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -1270,7 +1270,7 @@ Run 4, accuracy: 0.833, threshold 0.470
     <tr>
       <th>positive_predictive_value</th>
       <td>0.716435</td>
-      <td>0.718881</td>
+      <td>0.718744</td>
       <td>0.712571</td>
       <td>0.717607</td>
       <td>0.718120</td>
@@ -1278,7 +1278,7 @@ Run 4, accuracy: 0.833, threshold 0.470
     <tr>
       <th>negative_predictive_value</th>
       <td>0.881213</td>
-      <td>0.882062</td>
+      <td>0.882132</td>
       <td>0.879627</td>
       <td>0.881790</td>
       <td>0.881813</td>
@@ -1372,8 +1372,8 @@ Run 4, accuracy: 0.833, threshold 0.470
       <td>0.283277</td>
       <td>0.716723</td>
       <td>0.881301</td>
-      <td>0.716723</td>
-      <td>0.881301</td>
+      <td>0.716695</td>
+      <td>0.881315</td>
     </tr>
     <tr>
       <th>std</th>
@@ -1393,8 +1393,8 @@ Run 4, accuracy: 0.833, threshold 0.470
       <td>0.002485</td>
       <td>0.002485</td>
       <td>0.000986</td>
-      <td>0.002485</td>
-      <td>0.000986</td>
+      <td>0.002456</td>
+      <td>0.001000</td>
     </tr>
     <tr>
       <th>min</th>
@@ -1498,8 +1498,8 @@ Run 4, accuracy: 0.833, threshold 0.470
       <td>0.287429</td>
       <td>0.718881</td>
       <td>0.882062</td>
-      <td>0.718881</td>
-      <td>0.882062</td>
+      <td>0.718744</td>
+      <td>0.882132</td>
     </tr>
   </tbody>
 </table>
@@ -2035,9 +2035,6 @@ Sort by absolute value of weight.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/logistic_regression_single_fit_43_0.png" src="../_images/logistic_regression_single_fit_43_0.png" />
-</div>
 </div>
 </section>
 <section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
@@ -2107,112 +2104,6 @@ Sort by absolute value of weight.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>confidence</th>
-      <th>fraction_positive</th>
-      <th>fraction_correct</th>
-      <th>fraction_results</th>
-    </tr>
-    <tr>
-      <th>bin</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0.1</th>
-      <td>0.019171</td>
-      <td>0.016898</td>
-      <td>0.983102</td>
-      <td>0.413334</td>
-    </tr>
-    <tr>
-      <th>0.2</th>
-      <td>0.147242</td>
-      <td>0.141325</td>
-      <td>0.858675</td>
-      <td>0.096426</td>
-    </tr>
-    <tr>
-      <th>0.3</th>
-      <td>0.248821</td>
-      <td>0.238344</td>
-      <td>0.761656</td>
-      <td>0.076781</td>
-    </tr>
-    <tr>
-      <th>0.4</th>
-      <td>0.349045</td>
-      <td>0.341080</td>
-      <td>0.658920</td>
-      <td>0.071136</td>
-    </tr>
-    <tr>
-      <th>0.5</th>
-      <td>0.450110</td>
-      <td>0.453552</td>
-      <td>0.546448</td>
-      <td>0.066065</td>
-    </tr>
-    <tr>
-      <th>0.6</th>
-      <td>0.549273</td>
-      <td>0.566846</td>
-      <td>0.566846</td>
-      <td>0.064974</td>
-    </tr>
-    <tr>
-      <th>0.7</th>
-      <td>0.650030</td>
-      <td>0.666892</td>
-      <td>0.666892</td>
-      <td>0.062151</td>
-    </tr>
-    <tr>
-      <th>0.8</th>
-      <td>0.749249</td>
-      <td>0.781425</td>
-      <td>0.781425</td>
-      <td>0.059700</td>
-    </tr>
-    <tr>
-      <th>0.9</th>
-      <td>0.849119</td>
-      <td>0.846543</td>
-      <td>0.846543</td>
-      <td>0.057282</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>0.935467</td>
-      <td>0.893996</td>
-      <td>0.893996</td>
-      <td>0.032150</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Plot results:</p>
 <div class="cell docutils container">
@@ -2277,9 +2168,6 @@ Sort by absolute value of weight.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/logistic_regression_single_fit_48_0.png" src="../_images/logistic_regression_single_fit_48_0.png" />
-</div>
 </div>
 <p>Get accuracy of model when model is at least 80% confident</p>
 <div class="cell docutils container">
@@ -2291,13 +2179,6 @@ Sort by absolute value of weight.</p>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;For samples with at least 80</span><span class="si">% c</span><span class="s1">onfidence:&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proportion of all samples: </span><span class="si">{</span><span class="n">frac</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For samples with at least 80% confidence:
-Proportion of all samples: 0.599
-Accuracy: 0.896
 </pre></div>
 </div>
 </div>

@@ -85,7 +85,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../introduction/intro.html">
-   Introduction to SAMueL (Stroke Audit Machine Learning)
+   Introduction to SAMueL-1 (Stroke Audit Machine Learning)
   </a>
  </li>
 </ul>
@@ -838,7 +838,7 @@
 <span class="sd">    13) false positive rate: proportion of false +ves in true -ve patients</span>
 <span class="sd">    14) false negative rate: proportion of false -ves in true +ve patients</span>
 <span class="sd">    15) true positive rate: Same as recall</span>
-<span class="sd">    16) true negative rate</span>
+<span class="sd">    16) true negative rate: Same as specificity</span>
 <span class="sd">    17) positive predictive value: chance of true +ve if test +ve</span>
 <span class="sd">    18) negative predictive value: chance of true -ve if test -ve</span>
 <span class="sd">    </span>
@@ -890,10 +890,10 @@
     <span class="n">true_negative_rate</span> <span class="o">=</span> <span class="n">specificity</span>
     
     <span class="n">positive_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span> 
-                                 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_positives</span><span class="p">))</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_positives</span><span class="p">)))</span>
     
     <span class="n">negative_predictive_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">/</span> 
-                                  <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observed_negatives</span><span class="p">))</span>
+                            <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">true_negatives</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">false_negatives</span><span class="p">)))</span>
     
     <span class="c1"># Create dictionary for results, and add results</span>
     <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -1233,19 +1233,19 @@ Run 4, accuracy: 0.847, threshold 0.460
     </tr>
     <tr>
       <th>positive_predictive_value</th>
-      <td>0.740430</td>
-      <td>0.743434</td>
-      <td>0.739048</td>
-      <td>0.743712</td>
-      <td>0.745527</td>
+      <td>0.737761</td>
+      <td>0.732833</td>
+      <td>0.735545</td>
+      <td>0.743145</td>
+      <td>0.740034</td>
     </tr>
     <tr>
       <th>negative_predictive_value</th>
-      <td>0.889749</td>
-      <td>0.886371</td>
-      <td>0.888720</td>
-      <td>0.892399</td>
-      <td>0.890192</td>
+      <td>0.891099</td>
+      <td>0.891779</td>
+      <td>0.890496</td>
+      <td>0.892683</td>
+      <td>0.892972</td>
     </tr>
   </tbody>
 </table>
@@ -1336,8 +1336,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.257570</td>
       <td>0.742430</td>
       <td>0.889486</td>
-      <td>0.742430</td>
-      <td>0.889486</td>
+      <td>0.737864</td>
+      <td>0.891806</td>
     </tr>
     <tr>
       <th>std</th>
@@ -1357,8 +1357,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.002631</td>
       <td>0.002631</td>
       <td>0.002199</td>
-      <td>0.002631</td>
-      <td>0.002199</td>
+      <td>0.003978</td>
+      <td>0.001042</td>
     </tr>
     <tr>
       <th>min</th>
@@ -1378,8 +1378,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.254473</td>
       <td>0.739048</td>
       <td>0.886371</td>
-      <td>0.739048</td>
-      <td>0.886371</td>
+      <td>0.732833</td>
+      <td>0.890496</td>
     </tr>
     <tr>
       <th>25%</th>
@@ -1399,8 +1399,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.256288</td>
       <td>0.740430</td>
       <td>0.888720</td>
-      <td>0.740430</td>
-      <td>0.888720</td>
+      <td>0.735545</td>
+      <td>0.891099</td>
     </tr>
     <tr>
       <th>50%</th>
@@ -1420,8 +1420,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.256566</td>
       <td>0.743434</td>
       <td>0.889749</td>
-      <td>0.743434</td>
-      <td>0.889749</td>
+      <td>0.737761</td>
+      <td>0.891779</td>
     </tr>
     <tr>
       <th>75%</th>
@@ -1441,8 +1441,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.259570</td>
       <td>0.743712</td>
       <td>0.890192</td>
-      <td>0.743712</td>
-      <td>0.890192</td>
+      <td>0.740034</td>
+      <td>0.892683</td>
     </tr>
     <tr>
       <th>max</th>
@@ -1462,8 +1462,8 @@ Run 4, accuracy: 0.847, threshold 0.460
       <td>0.260952</td>
       <td>0.745527</td>
       <td>0.892399</td>
-      <td>0.745527</td>
-      <td>0.892399</td>
+      <td>0.743145</td>
+      <td>0.892972</td>
     </tr>
   </tbody>
 </table>
