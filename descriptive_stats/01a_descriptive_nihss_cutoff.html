@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy) &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,29 +31,34 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Acknowledgements" href="../introduction/acknowledgements.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -88,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Summary
  </span>
@@ -130,7 +134,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -157,7 +161,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Data and software
  </span>
@@ -174,7 +178,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -238,7 +242,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -452,8 +456,13 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../shap/outline.html">
+   Explaining machine learning models with Shapley values
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -539,7 +548,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Qualitative research and PPI
  </span>
@@ -556,7 +565,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendicies
  </span>
@@ -568,7 +577,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Additional analysis (not in NIHR report)
  </span>
@@ -625,7 +634,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -643,7 +652,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -690,10 +699,60 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+   Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-to-known-nihss">
+   Restrict to known NIHSS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restrict-to-known-onset-within-6-hours">
+   Restrict to known onset within 6 hours
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iterate-through-nihss-cutoff">
+   Iterate through NIHSS cutoff
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-performance-of-race">
+   Appendix - performance of RACE
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-of-patient-counts">
+     Analysis of patient counts
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="using-nihss-to-select-large-artey-occulsion-stroke-patients-most-suitable-for-thrombectomy">
+  <div class="tex2jax_ignore mathjax_ignore section" id="using-nihss-to-select-large-artey-occulsion-stroke-patients-most-suitable-for-thrombectomy">
 <h1>Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy)<a class="headerlink" href="#using-nihss-to-select-large-artey-occulsion-stroke-patients-most-suitable-for-thrombectomy" title="Permalink to this headline">¶</a></h1>
 <p>Clinical assessment of stroke has been proposed as a method of selecting patients for transfer directly to comprehensive stroke centres which provide both thrombectomy and thrombolysis. Use of NIHSS has been shown to have the best performance of all clinical tests for prediction of large arety occlusion [1], though NIHSS is not easily or quickly performed pre-hospital, so simpler tests have been proposed, with RACE having the best performance [1], and being based on, and having been shown to be well correlated with, NIHSS [2,3].</p>
 <p>In this experiement we look at how NIHSS predicts use of of thrombolysis, alongside publsihed results for NIHSS predicting the presence of large artery occlusion [4].</p>
@@ -715,7 +774,7 @@
 </div>
 </div>
 </div>
-<section id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
+<div class="section" id="restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients">
 <h2>Restrict original data to hospitals with at least 300 admissions + 10 thrombolysis patients<a class="headerlink" href="#restrict-original-data-to-hospitals-with-at-least-300-admissions-10-thrombolysis-patients" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,8 +807,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="restrict-to-known-nihss">
+</div>
+<div class="section" id="restrict-to-known-nihss">
 <h2>Restrict to known NIHSS<a class="headerlink" href="#restrict-to-known-nihss" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,8 +819,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="restrict-to-known-onset-within-6-hours">
+</div>
+<div class="section" id="restrict-to-known-onset-within-6-hours">
 <h2>Restrict to known onset within 6 hours<a class="headerlink" href="#restrict-to-known-onset-within-6-hours" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -777,8 +836,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="iterate-through-nihss-cutoff">
+</div>
+<div class="section" id="iterate-through-nihss-cutoff">
 <h2>Iterate through NIHSS cutoff<a class="headerlink" href="#iterate-through-nihss-cutoff" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1049,15 +1108,15 @@
 <img alt="../_images/01a_descriptive_nihss_cutoff_10_0.png" src="../_images/01a_descriptive_nihss_cutoff_10_0.png" />
 </div>
 </div>
-</section>
-<section id="appendix-performance-of-race">
+</div>
+<div class="section" id="appendix-performance-of-race">
 <h2>Appendix - performance of RACE<a class="headerlink" href="#appendix-performance-of-race" title="Permalink to this headline">¶</a></h2>
 <p>The detailed performance of RACE test is described at <a class="reference external" href="http://racescale.org/2015/08/03/scale-validation/">http://racescale.org/2015/08/03/scale-validation/</a></p>
 <p>(From chart, NIHSS = 2.34 RACE)</p>
 <p><img alt="" src="../_images/race_nihss.png" /></p>
 <p><img alt="" src="../_images/race_bar.png" /></p>
 <p><img alt="" src="../_images/race_sens_spec.png" /></p>
-<section id="analysis-of-patient-counts">
+<div class="section" id="analysis-of-patient-counts">
 <h3>Analysis of patient counts<a class="headerlink" href="#analysis-of-patient-counts" title="Permalink to this headline">¶</a></h3>
 <p>Note: Quotes sensiyivity and specificity in paper exclude some of these patients from the analysis of sensitivity and specifict presented above (n=320 vs n=357 here).</p>
 <p>Patient counts by RACE Score:</p>
@@ -1312,9 +1371,9 @@
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1338,45 +1397,35 @@
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="../introduction/acknowledgements.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Acknowledgements</p>
-            </div>
-        </a>
-    </div>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../introduction/acknowledgements.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Acknowledgements</p>
+        </div>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By SAMueL project team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By SAMueL project team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

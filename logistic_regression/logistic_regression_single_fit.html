@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logistic Regression Classifier - Fitting to all stroke teams together &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,30 +31,35 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Logistic Regression Classifier - Fitting hospital-specific models" href="logistic_regression_hospit_fit_accuracy.html" />
     <link rel="prev" title="Logistic Regression" href="outline.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -89,7 +93,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Summary
  </span>
@@ -131,7 +135,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -158,7 +162,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Data and software
  </span>
@@ -175,7 +179,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -239,7 +243,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -453,8 +457,13 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../shap/outline.html">
+   Explaining machine learning models with Shapley values
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -540,7 +549,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Qualitative research and PPI
  </span>
@@ -557,7 +566,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendicies
  </span>
@@ -569,7 +578,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Additional analysis (not in NIHR report)
  </span>
@@ -626,7 +635,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -644,7 +653,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -753,12 +762,124 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Logistic Regression Classifier - Fitting to all stroke teams together</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-data">
+   Import data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardise-data">
+     Standardise data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculate-accuracy-measures">
+     Calculate accuracy measures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+     Find model probability threshold to match predicted and actual thrombolysis use
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-intersect">
+     Line intersect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fit-model-k-fold">
+   Fit model (k-fold)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accuracy-measures">
+     Accuracy measures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receiver-operator-characteristic-and-sensitivity-specificity-curves">
+     Receiver Operator Characteristic and Sensitivity-Specificity Curves
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identify-cross-over-of-sensitivity-and-specificity">
+     Identify cross-over of sensitivity and specificity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collate-and-save-results">
+     Collate and save results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-weights">
+   Feature Weights
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-cvurve">
+   Learning cvurve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+   Calibration and assessment of accuracy when model has high confidence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-classifier-fitting-to-all-stroke-teams-together">
+  <div class="tex2jax_ignore mathjax_ignore section" id="logistic-regression-classifier-fitting-to-all-stroke-teams-together">
 <h1>Logistic Regression Classifier - Fitting to all stroke teams together<a class="headerlink" href="#logistic-regression-classifier-fitting-to-all-stroke-teams-together" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <p>Assess accuracy of a logistic regression classifier, using k-fold (5-fold) training/test data splits (each data point is present in one and only one of the five test sets). This notebook fits all data in a single model, with hospital ID being a one-hot encoded feature.</p>
 <p>The notebook includes:</p>
@@ -768,8 +889,8 @@
 <li><p>Identify feature weights (model coefficients)</p></li>
 <li><p>Performing a learning rate test (relationship between training set size and accuracy)</p></li>
 </ul>
-</section>
-<section id="import-libraries">
+</div>
+<div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -791,8 +912,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="import-data">
+</div>
+<div class="section" id="import-data">
 <h2>Import data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
 <p>Data has previously been split into 5 training/test splits.</p>
 <div class="cell tag_remove-output docutils container">
@@ -814,10 +935,10 @@
 </div>
 </div>
 </div>
-</section>
-<section id="functions">
+</div>
+<div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<section id="standardise-data">
+<div class="section" id="standardise-data">
 <h3>Standardise data<a class="headerlink" href="#standardise-data" title="Permalink to this headline">¶</a></h3>
 <p>Standardisation subtracts the mean and divides by the standard deviation, for each feature. Here we use the sklearn built-in method for standardisation.</p>
 <div class="cell docutils container">
@@ -847,8 +968,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="calculate-accuracy-measures">
+</div>
+<div class="section" id="calculate-accuracy-measures">
 <h3>Calculate accuracy measures<a class="headerlink" href="#calculate-accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,8 +1080,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
+</div>
+<div class="section" id="find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use">
 <h3>Find model probability threshold to match predicted and actual thrombolysis use<a class="headerlink" href="#find-model-probability-threshold-to-match-predicted-and-actual-thrombolysis-use" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -979,8 +1100,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="line-intersect">
+</div>
+<div class="section" id="line-intersect">
 <h3>Line intersect<a class="headerlink" href="#line-intersect" title="Permalink to this headline">¶</a></h3>
 <p>Used to find point of sensitivity-specificity curve where sensitivity = specificity.</p>
 <div class="cell docutils container">
@@ -1005,9 +1126,9 @@
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="fit-model-k-fold">
+</div>
+</div>
+<div class="section" id="fit-model-k-fold">
 <h2>Fit model (k-fold)<a class="headerlink" href="#fit-model-k-fold" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1085,10 +1206,10 @@ Run 4, accuracy: 0.833, threshold 0.470
 </div>
 </div>
 </div>
-</section>
-<section id="results">
+</div>
+<div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<section id="accuracy-measures">
+<div class="section" id="accuracy-measures">
 <h3>Accuracy measures<a class="headerlink" href="#accuracy-measures" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1505,8 +1626,8 @@ Run 4, accuracy: 0.833, threshold 0.470
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
+</div>
+<div class="section" id="receiver-operator-characteristic-and-sensitivity-specificity-curves">
 <h3>Receiver Operator Characteristic and Sensitivity-Specificity Curves<a class="headerlink" href="#receiver-operator-characteristic-and-sensitivity-specificity-curves" title="Permalink to this headline">¶</a></h3>
 <p>Receiver Operator Characteristic Curve:</p>
 <div class="cell docutils container">
@@ -1621,8 +1742,8 @@ SD AUC: 0.0014
 <img alt="../_images/logistic_regression_single_fit_29_0.png" src="../_images/logistic_regression_single_fit_29_0.png" />
 </div>
 </div>
-</section>
-<section id="identify-cross-over-of-sensitivity-and-specificity">
+</div>
+<div class="section" id="identify-cross-over-of-sensitivity-and-specificity">
 <h3>Identify cross-over of sensitivity and specificity<a class="headerlink" href="#identify-cross-over-of-sensitivity-and-specificity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1656,8 +1777,8 @@ SD AUC: 0.0014
 </div>
 </div>
 </div>
-</section>
-<section id="collate-and-save-results">
+</div>
+<div class="section" id="collate-and-save-results">
 <h3>Collate and save results<a class="headerlink" href="#collate-and-save-results" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1692,9 +1813,9 @@ SD AUC: 0.0014
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="feature-weights">
+</div>
+</div>
+<div class="section" id="feature-weights">
 <h2>Feature Weights<a class="headerlink" href="#feature-weights" title="Permalink to this headline">¶</a></h2>
 <p>Get Logistic Regression weights (average across k-fold results).
 Sort by absolute value of weight.</p>
@@ -1935,8 +2056,8 @@ Sort by absolute value of weight.</p>
 <img alt="../_images/logistic_regression_single_fit_39_0.png" src="../_images/logistic_regression_single_fit_39_0.png" />
 </div>
 </div>
-</section>
-<section id="learning-cvurve">
+</div>
+<div class="section" id="learning-cvurve">
 <h2>Learning cvurve<a class="headerlink" href="#learning-cvurve" title="Permalink to this headline">¶</a></h2>
 <p>Examine the relationship between training data size and accuracy.</p>
 <div class="cell docutils container">
@@ -2036,8 +2157,8 @@ Sort by absolute value of weight.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
+</div>
+<div class="section" id="calibration-and-assessment-of-accuracy-when-model-has-high-confidence">
 <h2>Calibration and assessment of accuracy when model has high confidence<a class="headerlink" href="#calibration-and-assessment-of-accuracy-when-model-has-high-confidence" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2183,8 +2304,8 @@ Sort by absolute value of weight.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Overall accuracy = 83.2% (89.6% for those 60% samples with at least 80% confidence of model)</p></li>
@@ -2203,8 +2324,8 @@ Sort by absolute value of weight.</p>
 </li>
 <li><p>The model shows good calibration of probability vs. fraction positive, without need of additional calibration</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2228,54 +2349,42 @@ Sort by absolute value of weight.</p>
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="outline.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Logistic Regression</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="outline.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Logistic Regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="logistic_regression_hospit_fit_accuracy.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistic Regression Classifier - Fitting hospital-specific models</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="logistic_regression_hospit_fit_accuracy.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Logistic Regression Classifier - Fitting hospital-specific models</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By SAMueL project team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By SAMueL project team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

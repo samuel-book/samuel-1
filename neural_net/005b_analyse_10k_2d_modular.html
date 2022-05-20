@@ -4,12 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Investigating the output of neural net embedding subnets - with 2D subnet output &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,32 +31,37 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ensemble Models" href="../ensemble/outline.html" />
     <link rel="prev" title="Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset" href="005a_generate_2d_nets_for_10k.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -91,7 +95,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Summary
  </span>
@@ -133,7 +137,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -160,7 +164,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Data and software
  </span>
@@ -177,7 +181,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Descriptive statistics
  </span>
@@ -241,7 +245,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Machine Learning
  </span>
@@ -455,8 +459,13 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../shap/outline.html">
+   Explaining machine learning models with Shapley values
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Pathway Simulation
  </span>
@@ -542,7 +551,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Qualitative research and PPI
  </span>
@@ -559,7 +568,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendicies
  </span>
@@ -571,7 +580,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Additional analysis (not in NIHR report)
  </span>
@@ -628,7 +637,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -646,7 +655,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -745,20 +754,122 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Investigating the output of neural net embedding subnets - with 2D subnet output</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-network-structure">
+   Neural Network structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fitting-of-model">
+   Fitting of model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-libraries">
+   Load libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-function-to-scale-data">
+   Define function to scale data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-model-outputs-for-test-data">
+   Get model outputs for test data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
+   Get predictions for thrombolysis use of 10k set of patients at each hospital
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-subnet-outputs">
+   Get subnet outputs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-hospital-subnet-output">
+     Get hospital subnet output
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-patient-subnet-output">
+     Get patient subnet output
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-pathway-subnet-output">
+     Get pathway subnet output
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
+   Comparing hospital subnet activation with thrombolysis use at each hospital
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
+   Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-by-stroke-type">
+     Analysis by stroke type
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarise-patients-in-corners-of-chart">
+   Summarise patients in corners of chart
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
+  <div class="tex2jax_ignore mathjax_ignore section" id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
 <h1>Investigating the output of neural net embedding subnets - with 2D subnet output<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output" title="Permalink to this headline">¶</a></h1>
-<section id="aims">
+<div class="section" id="aims">
 <h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>To investigate the output of the hospital and clinical subnets of the embedding neural network.</p></li>
 <li><p>To examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hopsital moodels.</p></li>
 <li><p>To examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output</p></li>
 </ul>
-</section>
-<section id="neural-network-structure">
+</div>
+<div class="section" id="neural-network-structure">
 <h2>Neural Network structure<a class="headerlink" href="#neural-network-structure" title="Permalink to this headline">¶</a></h2>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
 <ol class="simple">
@@ -768,12 +879,12 @@
 </ol>
 <p>The outputs of the three subnet outputs are then passed to a single neuron with sigmoid activation for final output.</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
-</section>
-<section id="fitting-of-model">
+</div>
+<div class="section" id="fitting-of-model">
 <h2>Fitting of model<a class="headerlink" href="#fitting-of-model" title="Permalink to this headline">¶</a></h2>
 <p>The model has been pretrained (see the notebook <em>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset</em>)</p>
-</section>
-<section id="load-libraries">
+</div>
+<div class="section" id="load-libraries">
 <h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,8 +911,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="define-function-to-scale-data">
+</div>
+<div class="section" id="define-function-to-scale-data">
 <h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
 <p>Scale input data 0-1 (MinMax scaling).</p>
 <div class="cell docutils container">
@@ -824,8 +935,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-model-outputs-for-test-data">
+</div>
+<div class="section" id="get-model-outputs-for-test-data">
 <h2>Get model outputs for test data<a class="headerlink" href="#get-model-outputs-for-test-data" title="Permalink to this headline">¶</a></h2>
 <p>Get prediction probabilities for the test 10k training set. Training data is used only to scale test set X values.</p>
 <p>This prediction run is used to check model, and get accuracy.</p>
@@ -911,8 +1022,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
+</div>
+<div class="section" id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
 <h2>Get predictions for thrombolysis use of 10k set of patients at each hospital<a class="headerlink" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>Here we ask the counter-factual question - “what treatment would a patient be expected to receive at each of the 132 hospitals?”.</p>
 <p>Hospital is one-hot encoded as input to the hospital subnet. To make a prediction of treatment at different hospitals we change the one-hot encoding of the hospital when making prediction.</p>
@@ -1357,10 +1468,10 @@
 <p>10000 rows × 104 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="get-subnet-outputs">
+</div>
+<div class="section" id="get-subnet-outputs">
 <h2>Get subnet outputs<a class="headerlink" href="#get-subnet-outputs" title="Permalink to this headline">¶</a></h2>
-<section id="get-hospital-subnet-output">
+<div class="section" id="get-hospital-subnet-output">
 <h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1388,8 +1499,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-patient-subnet-output">
+</div>
+<div class="section" id="get-patient-subnet-output">
 <h3>Get patient subnet output<a class="headerlink" href="#get-patient-subnet-output" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1430,8 +1541,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="get-pathway-subnet-output">
+</div>
+<div class="section" id="get-pathway-subnet-output">
 <h3>Get pathway subnet output<a class="headerlink" href="#get-pathway-subnet-output" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1780,9 +1891,9 @@
 <p>10000 rows × 110 columns</p>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
+</div>
+</div>
+<div class="section" id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
 <h2>Comparing hospital subnet activation with thrombolysis use at each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital" title="Permalink to this headline">¶</a></h2>
 <p>The hospital subnet outputs a single value (in the range 0-1) for each hospital.</p>
 <p>Here we compare the hospital subnet output for each hospital with:</p>
@@ -1818,8 +1929,8 @@
 </div>
 </div>
 <p>In this output, all hospitals appear to sit on <span class="math notranslate nohighlight">\(x=0\)</span> or <span class="math notranslate nohighlight">\(y=1\)</span>, with use of thrombolysis in the hospital increasing along the <span class="math notranslate nohighlight">\(y\)</span> axis and then the <span class="math notranslate nohighlight">\(x\)</span> axis.</p>
-</section>
-<section id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
+</div>
+<div class="section" id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
 <h2>Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient<a class="headerlink" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1922,7 +2033,7 @@
 <p>The patients most likely to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of thrombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clinical subnet output.</p>
 <p>Patients appear to cluster mostly towards the edges of the plot.</p>
 <p>In the following analysis, we will look at the characteristics of patients in different parts of the scatter plot.</p>
-<section id="analysis-by-stroke-type">
+<div class="section" id="analysis-by-stroke-type">
 <h3>Analysis by stroke type<a class="headerlink" href="#analysis-by-stroke-type" title="Permalink to this headline">¶</a></h3>
 <p>Plot the location of stroke type by haemorrhage (red) or infarction (blue).</p>
 <div class="cell docutils container">
@@ -1960,9 +2071,9 @@
 </div>
 </div>
 <p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similarity between patients (driven by reasons to give or not give thrombolysis).</p>
-</section>
-</section>
-<section id="summarise-patients-in-corners-of-chart">
+</div>
+</div>
+<div class="section" id="summarise-patients-in-corners-of-chart">
 <h2>Summarise patients in corners of chart<a class="headerlink" href="#summarise-patients-in-corners-of-chart" title="Permalink to this headline">¶</a></h2>
 <p>Summarise key characteristics of patients in the four corners of the chart.</p>
 <div class="cell docutils container">
@@ -2187,12 +2298,12 @@
 <li><p><em>High x and low y</em>: Largely non-thrombolysed patients with haemorrhagic stroke.</p></li>
 <li><p><em>High x and high y</em>: Largely non-thrombolysed patients with infarction stroke and very mild stroke.</p></li>
 </ul>
-</section>
-<section id="observations">
+</div>
+<div class="section" id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <p>2D clinical subnet analysis allows leads to potentially useful embedding/encoding of patients whereby similar patients are clustered together.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2216,54 +2327,42 @@
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="005a_generate_2d_nets_for_10k.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="005a_generate_2d_nets_for_10k.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modular TensorFlow model with 2D embedding - Train and save model for 10k patient subset</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../ensemble/outline.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ensemble Models</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../ensemble/outline.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Ensemble Models</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By SAMueL project team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By SAMueL project team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
