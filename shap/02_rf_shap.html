@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model building and validation" href="../pathway_sim/outline_model.html" />
+    <link rel="next" title="Explaining random forest model predictions with Shapley values" href="03_xgb_shap.html" />
     <link rel="prev" title="Explaining logistic regression model predictions with Shapley values" href="01_log_reg_shap.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -477,6 +477,11 @@ const thebe_selector_output = ".output, .cell_output"
      Explaining random forest model predictions with Shapley values
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_xgb_shap.html">
+     Explaining random forest model predictions with Shapley values
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -845,7 +850,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Here we provide an example of using shap with random forests.</p>
 <div class="section" id="note-on-shap-version-0-40">
 <h2>Note on shap version 0.40:<a class="headerlink" href="#note-on-shap-version-0-40" title="Permalink to this headline">¶</a></h2>
-<p>There is a bug in the waterfall plot where <code class="docutils literal notranslate"><span class="pre">show=False</span></code> (required to save plot) fails. To correct this find the <code class="docutils literal notranslate"><span class="pre">_waterfall.py</span></code> file in the shap library (e.g. in <code class="docutils literal notranslate"><span class="pre">anaconda/envs/samuel/lib/python3.8/site-packages/shap/plots</span></code>, and search/replace all <code class="docutils literal notranslate"><span class="pre">pl.</span></code> to <code class="docutils literal notranslate"><span class="pre">.plt</span></code>.</p>
+<p>There is a bug in the waterfall plot where <code class="docutils literal notranslate"><span class="pre">show=False</span></code> (required to save plot) fails. To correct this find the <code class="docutils literal notranslate"><span class="pre">_waterfall.py</span></code> file in the shap library (e.g. in <code class="docutils literal notranslate"><span class="pre">anaconda/envs/samuel2/lib/python3.8/site-packages/shap/plots</span></code>, and search/replace all <code class="docutils literal notranslate"><span class="pre">pl.</span></code> to <code class="docutils literal notranslate"><span class="pre">.plt</span></code>.</p>
 </div>
 <div class="section" id="load-packages">
 <h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this headline">¶</a></h2>
@@ -872,7 +877,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>We will use the first train/test split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_loc</span> <span class="o">=</span> <span class="s1">&#39;../data/kfold_5fold/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_loc</span> <span class="o">=</span> <span class="s1">&#39;../../data/sam_1/kfold_5fold/&#39;</span>
 
 <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_loc</span> <span class="o">+</span> <span class="s1">&#39;train_0.csv&#39;</span><span class="p">)</span>
 <span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_loc</span> <span class="o">+</span> <span class="s1">&#39;test_0.csv&#39;</span><span class="p">)</span>
@@ -923,7 +928,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.846
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.845
 </pre></div>
 </div>
 </div>
@@ -941,8 +946,9 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="k">if</span> <span class="n">calculate_shap_values</span><span class="p">:</span>
 
     <span class="c1"># Set up explainer using typical feature values from training set</span>
-    <span class="c1"># Note: Use a X_train.sample of 100-1000 for this if explainer too slow</span>
-    <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
+    <span class="c1"># Note: Use a sample of 100-1000 for this if explainer too slow</span>
+    <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">model_output</span><span class="o">=</span><span class="s2">&quot;probability&quot;</span><span class="p">)</span>
 
     <span class="c1"># Get Shapley values along with base and features</span>
     <span class="n">shap_values_extended</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -964,7 +970,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|===================| 35568/35572 [83:31&lt;00:00]        
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|=========           | 15525/35518 [42:27&lt;54:40]       
 </pre></div>
 </div>
 </div>
@@ -993,83 +999,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>importance</th>
-      <th>rank</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>S2BrainImagingTime_min</th>
-      <td>0.107852</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>0.085656</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>S2StrokeType_Infarction</th>
-      <td>0.059720</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
-      <td>0.059039</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>S1OnsetToArrival_min</th>
-      <td>0.041528</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>S1OnsetTimeType_Best estimate</th>
-      <td>0.032674</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>S2RankinBeforeStroke</th>
-      <td>0.024997</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>S1OnsetTimeType_Precise</th>
-      <td>0.023097</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>FacialPalsy</th>
-      <td>0.022954</td>
-      <td>9.0</td>
-    </tr>
-    <tr>
-      <th>S1AgeOnArrival</th>
-      <td>0.022755</td>
-      <td>10.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>When looking for the most influential Shap values we use the mean of the absolute Shap values for each feature.</p>
 <div class="cell docutils container">
@@ -1080,105 +1009,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mean_shap</th>
-      <th>abs_mean_shap</th>
-      <th>mean_abs_shap</th>
-      <th>rank</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>S2NihssArrival</th>
-      <td>0.012719</td>
-      <td>0.012719</td>
-      <td>0.066221</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>S2BrainImagingTime_min</th>
-      <td>0.003637</td>
-      <td>0.003637</td>
-      <td>0.061222</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>S2StrokeType_Primary Intracerebral Haemorrhage</th>
-      <td>0.008248</td>
-      <td>0.008248</td>
-      <td>0.045063</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>S2StrokeType_Infarction</th>
-      <td>0.007752</td>
-      <td>0.007752</td>
-      <td>0.043979</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>S1OnsetTimeType_Best estimate</th>
-      <td>0.001411</td>
-      <td>0.001411</td>
-      <td>0.032831</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>S1OnsetTimeType_Precise</th>
-      <td>0.001404</td>
-      <td>0.001404</td>
-      <td>0.025024</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>S2RankinBeforeStroke</th>
-      <td>-0.000688</td>
-      <td>0.000688</td>
-      <td>0.024424</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>BestLanguage</th>
-      <td>0.004458</td>
-      <td>0.004458</td>
-      <td>0.017335</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>AFAnticoagulent_Yes</th>
-      <td>0.000679</td>
-      <td>0.000679</td>
-      <td>0.016721</td>
-      <td>9.0</td>
-    </tr>
-    <tr>
-      <th>S1OnsetToArrival_min</th>
-      <td>-0.001848</td>
-      <td>0.001848</td>
-      <td>0.016467</td>
-      <td>10.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Get intersection between top 10 weights and top 10 Shap values.</p>
 <div class="cell docutils container">
@@ -1187,23 +1017,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of intersection values = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intersection</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Intersecting values:&#39;</span><span class="p">)</span>
 <span class="n">intersection</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of intersection values = 8
-
-Intersecting values:
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;S2BrainImagingTime_min&#39;,
- &#39;S2NihssArrival&#39;,
- &#39;S2StrokeType_Infarction&#39;,
- &#39;S2StrokeType_Primary Intracerebral Haemorrhage&#39;,
- &#39;S1OnsetToArrival_min&#39;,
- &#39;S1OnsetTimeType_Best estimate&#39;,
- &#39;S2RankinBeforeStroke&#39;,
- &#39;S1OnsetTimeType_Precise&#39;]
 </pre></div>
 </div>
 </div>
@@ -1223,9 +1036,6 @@ Intersecting values:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_rf_shap_18_0.png" src="../_images/02_rf_shap_18_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="plot-most-influential-features">
@@ -1238,9 +1048,6 @@ Intersecting values:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_rf_shap_20_0.png" src="../_images/02_rf_shap_20_0.png" />
 </div>
 </div>
 </div>
@@ -1261,9 +1068,6 @@ Intersecting values:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_rf_shap_22_0.png" src="../_images/02_rf_shap_22_0.png" />
 </div>
 </div>
 </div>
@@ -1292,9 +1096,6 @@ Intersecting values:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_rf_shap_26_0.png" src="../_images/02_rf_shap_26_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1309,12 +1110,6 @@ Intersecting values:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The base value is 0.24
-</pre></div>
-</div>
-<img alt="../_images/02_rf_shap_27_1.png" src="../_images/02_rf_shap_27_1.png" />
-</div>
 </div>
 <p>An example with high probability of receiving thrombolysis.</p>
 <div class="cell docutils container">
@@ -1326,9 +1121,6 @@ Intersecting values:
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_rf_shap_29_0.png" src="../_images/02_rf_shap_29_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1344,12 +1136,6 @@ Intersecting values:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The base value is 0.24
-</pre></div>
-</div>
-<img alt="../_images/02_rf_shap_30_1.png" src="../_images/02_rf_shap_30_1.png" />
-</div>
 </div>
 </div>
 <div class="section" id="show-the-relationship-between-feature-value-and-shap-value-for-top-5-influential-features">
@@ -1363,13 +1149,6 @@ Intersecting values:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_rf_shap_32_0.png" src="../_images/02_rf_shap_32_0.png" />
-<img alt="../_images/02_rf_shap_32_1.png" src="../_images/02_rf_shap_32_1.png" />
-<img alt="../_images/02_rf_shap_32_2.png" src="../_images/02_rf_shap_32_2.png" />
-<img alt="../_images/02_rf_shap_32_3.png" src="../_images/02_rf_shap_32_3.png" />
-<img alt="../_images/02_rf_shap_32_4.png" src="../_images/02_rf_shap_32_4.png" />
-</div>
 </div>
 <p>Examine <code class="docutils literal notranslate"><span class="pre">S2BrainImagingTime_min</span></code> in range 0-400 minutes.</p>
 <div class="cell docutils container">
@@ -1381,12 +1160,6 @@ Intersecting values:
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 400.0)
-</pre></div>
-</div>
-<img alt="../_images/02_rf_shap_34_1.png" src="../_images/02_rf_shap_34_1.png" />
 </div>
 </div>
 </div>
@@ -1425,10 +1198,10 @@ Intersecting values:
             <p class="prev-next-title">Explaining logistic regression model predictions with Shapley values</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../pathway_sim/outline_model.html" title="next page">
+    <a class='right-next' id="next-link" href="03_xgb_shap.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model building and validation</p>
+        <p class="prev-next-title">Explaining random forest model predictions with Shapley values</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
