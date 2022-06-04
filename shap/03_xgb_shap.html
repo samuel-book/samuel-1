@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Explaining random forest model predictions with Shapley values &#8212; SAMueL Stroke Audit Machine Learning 1</title>
+    <title>Explaining XG Boost model predictions with Shapley values &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -479,7 +479,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Explaining random forest model predictions with Shapley values
+     Explaining XG Boost model predictions with Shapley values
     </a>
    </li>
   </ul>
@@ -801,7 +801,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Explaining random forest model predictions with Shapley values</h1>
+                <h1>Explaining XG Boost model predictions with Shapley values</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -924,14 +924,14 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="explaining-random-forest-model-predictions-with-shapley-values">
-<h1>Explaining random forest model predictions with Shapley values<a class="headerlink" href="#explaining-random-forest-model-predictions-with-shapley-values" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="explaining-xg-boost-model-predictions-with-shapley-values">
+<h1>Explaining XG Boost model predictions with Shapley values<a class="headerlink" href="#explaining-xg-boost-model-predictions-with-shapley-values" title="Permalink to this headline">¶</a></h1>
 <p>Shapley values provide an estimate of how much any particular feature influences the model decision. When Shapley values are averaged they provide a measure of the overall influence of a feature.</p>
 <p>Shapley values may be used across model types, and so provide a model-agnostic measure of a feature’s influence. This means that the influence of features may be compared across model types, and it allows black box models like neural networks to be explained, at least in part.</p>
 <p>For more on Shapley values in general see Chris Molner’s excellent book chapter:</p>
 <p><a class="reference external" href="https://christophm.github.io/interpretable-ml-book/shapley.html">https://christophm.github.io/interpretable-ml-book/shapley.html</a></p>
 <p>More information on the shap library, inclusiong lots of useful examples may be found at: <a class="reference external" href="https://shap.readthedocs.io/en/latest/index.html">https://shap.readthedocs.io/en/latest/index.html</a></p>
-<p>Here we provide an example of using shap with random forests.</p>
+<p>Here we provide an example of using shap with XG Boost.</p>
 <div class="section" id="note-on-shap-version-0-40">
 <h2>Note on shap version 0.40:<a class="headerlink" href="#note-on-shap-version-0-40" title="Permalink to this headline">¶</a></h2>
 <p>There is a bug in the waterfall plot where <code class="docutils literal notranslate"><span class="pre">show=False</span></code> (required to save plot) fails. To correct this find the <code class="docutils literal notranslate"><span class="pre">_waterfall.py</span></code> file in the shap library (e.g. in <code class="docutils literal notranslate"><span class="pre">anaconda/envs/samuel2/lib/python3.8/site-packages/shap/plots</span></code>, and search/replace all <code class="docutils literal notranslate"><span class="pre">pl.</span></code> to <code class="docutils literal notranslate"><span class="pre">.plt</span></code>.</p>
