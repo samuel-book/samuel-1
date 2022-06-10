@@ -120,9 +120,9 @@ Machine learning accuracy was assessed using stratified k-fold cross-validation.
 | Model\*                                    | Accuracy (%) | ROC-AUC | Max Sens=Spec (%) [1] |
 |--------------------------------------------|--------------|---------|-----------------------|
 | Logistic regression single model           | 83.2         | 0.904   | 82.0                  |
-| Logistic regression hospital-level models  | 77.5         | 0.815   | 74.0                  |
+| Logistic regression hospital-level models  | 82.6         | 0.870   | 78.9                  |
 | Random forest single model                 | 84.6         | 0.914   | 83.7                  |
-| Random forest hospital-level models        | 81.4         | 0.854   | 78.1                  |
+| Random forest hospital-level models        | 84.3         | 0.906   | 83.2                  |
 | Fully-connected neural net single model    | 84.4         | 0.913   | 83.3                  |
 | 1D Embedding neural net single model       | 85.5         | 0.921   | 84.5                  |
 
@@ -130,7 +130,7 @@ Machine learning accuracy was assessed using stratified k-fold cross-validation.
 
 [1] The maximum value where sensitivity matches specificity.
 
-* Machine learning models ranged from 78% to 86% accuracy depending on model type. The model with the highest accuracy, by a small margin, was a neural network using three *embedding layers* for hospital ID, clinical features of the patients, and pathway timings. 
+* Machine learning models ranged from 83% to 86% accuracy depending on model type. The model with the highest accuracy, by a small margin, was a neural network using three *embedding layers* for hospital ID, clinical features of the patients, and pathway timings. 
 
 * There is high agreement between model types. Logistic regression (single fit), random forests (single fit), and neural networks (single fit, 1D embedding) agree classification on 87% of patients. Neural networks and random forests agree on 93% of patients.
 
