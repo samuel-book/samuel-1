@@ -120,7 +120,7 @@ Machine learning accuracy was assessed using stratified k-fold cross-validation.
 | Model\*                                    | Accuracy (%) | ROC-AUC | Max Sens=Spec (%) [1] |
 |--------------------------------------------|--------------|---------|-----------------------|
 | Logistic regression single model           | 83.2         | 0.904   | 82.0                  |
-| Logistic regression hospital-level models  | 82.6         | 0.870   | 78.9                  |
+| Logistic regression hospital-level models  | 80.6         | 0.870   | 78.9                  |
 | Random forest single model                 | 84.6         | 0.914   | 83.7                  |
 | Random forest hospital-level models        | 84.3         | 0.906   | 83.2                  |
 | Fully-connected neural net single model    | 84.4         | 0.913   | 83.3                  |
