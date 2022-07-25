@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Analysis of pre-stroke modified Rankin Scale &#8212; SAMueL Stroke Audit Machine Learning 1</title>
+    <title>Analysis of stroke type and pre-stroke modified Rankin Scale by age &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Analysis of stroke type and pre-stroke modified Rankin Scale by age" href="09_breakdown_mrs_nihss_by_age.html" />
+    <link rel="next" title="Analysis of pre-stroke modified Rankin Scale" href="08_prestroke_mrs.html" />
+    <link rel="prev" title="Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy)" href="01a_descriptive_nihss_cutoff.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -583,13 +584,13 @@ const thebe_selector_output = ".output, .cell_output"
    Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy)
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_breakdown_mrs_nihss_by_age.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Analysis of stroke type and pre-stroke modified Rankin Scale by age
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_prestroke_mrs.html">
    Analysis of pre-stroke modified Rankin Scale
   </a>
  </li>
@@ -634,7 +635,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/descriptive_stats/08_prestroke_mrs.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/descriptive_stats/09_breakdown_mrs_nihss_by_age.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -665,18 +666,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-distribution-of-mrs-before-stroke-for-all-patients">
-   Get distribution of mRS before stroke for all patients
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-distribution-of-mrs-before-stroke-by-stroke-type">
-   Get distribution of mRS before stroke by stroke type
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mrs-for-ischaemic-stroke-by-stroke-severity">
-   mRS for ischaemic stroke, by stroke severity
+  <a class="reference internal nav-link" href="#show-mrs-by-age">
+   Show mRS by age
   </a>
  </li>
 </ul>
@@ -689,7 +680,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Analysis of pre-stroke modified Rankin Scale</h1>
+                <h1>Analysis of stroke type and pre-stroke modified Rankin Scale by age</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -700,18 +691,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-distribution-of-mrs-before-stroke-for-all-patients">
-   Get distribution of mRS before stroke for all patients
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-distribution-of-mrs-before-stroke-by-stroke-type">
-   Get distribution of mRS before stroke by stroke type
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mrs-for-ischaemic-stroke-by-stroke-severity">
-   mRS for ischaemic stroke, by stroke severity
+  <a class="reference internal nav-link" href="#show-mrs-by-age">
+   Show mRS by age
   </a>
  </li>
 </ul>
@@ -723,15 +704,11 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-pre-stroke-modified-rankin-scale">
-<h1>Analysis of pre-stroke modified Rankin Scale<a class="headerlink" href="#analysis-of-pre-stroke-modified-rankin-scale" title="Permalink to this headline">¶</a></h1>
-<p>Distributions of mRS (modified Rankin Scale) are shown for:</p>
-<ul class="simple">
-<li><p>All patients</p></li>
-<li><p>Ischaemic and haemorrhagic stroke</p></li>
-<li><p>Ischaemic patients with NIHSS of 0-10 (surrogate for non large vessel occlusions)</p></li>
-<li><p>Ischaemic patients with NIHSS of 11+ (surrogate for large vessel occlusions)</p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-stroke-type-and-pre-stroke-modified-rankin-scale-by-age">
+<h1>Analysis of stroke type and pre-stroke modified Rankin Scale by age<a class="headerlink" href="#analysis-of-stroke-type-and-pre-stroke-modified-rankin-scale-by-age" title="Permalink to this headline">¶</a></h1>
+<p>The proportion of stroke types (haemorrhagic, nlvo ischaemic, lvo ischaemic) are shown by age.</p>
+<p>NIHSS of 0-10, and 11+, are taken as surrogates of nlvo and lvo respectively.</p>
+<p>The average mRS (modified Rankin Scale) is shown by age.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
@@ -749,90 +726,52 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="get-distribution-of-mrs-before-stroke-for-all-patients">
-<h2>Get distribution of mRS before stroke for all patients<a class="headerlink" href="#get-distribution-of-mrs-before-stroke-for-all-patients" title="Permalink to this headline">¶</a></h2>
+<p>Get occurance of ischaemic and haemorrgahic by age</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span><span class="p">,</span> <span class="n">division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">S1AgeOnArrival</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+    <span class="n">minage</span><span class="p">,</span> <span class="n">maxage</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    
+    <span class="n">minage</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">minage</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span>
+    <span class="n">maxage</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">maxage</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    
+    <span class="n">ages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="n">minage</span><span class="p">,</span><span class="n">maxage</span><span class="p">]))</span>
+    
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ages</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mRS&#39;</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">results</span>
+<span class="c1"># Censor data to 40-100</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">]</span> <span class="o">&lt;</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># Remove unknown stroke stype or NIHSS</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add row for counting</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>all</th>
-    </tr>
-    <tr>
-      <th>mRS</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.533043</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.156302</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.107781</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.121422</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.063581</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.017870</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
-</div>
-<div class="section" id="get-distribution-of-mrs-before-stroke-by-stroke-type">
-<h2>Get distribution of mRS before stroke by stroke type<a class="headerlink" href="#get-distribution-of-mrs-before-stroke-by-stroke-type" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Infarction</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span>
-<span class="n">count</span><span class="p">,</span> <span class="n">division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;infarction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Age midpoint&#39;</span>
 
-<span class="c1"># Haemorrhage</span>
+<span class="c1"># Count all by age </span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get ischaemic strokes</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;infarction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get haemorrhagic stroke</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Primary Intracerebral Haemorrhage&#39;</span>
-<span class="n">count</span><span class="p">,</span> <span class="n">division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
+
+<span class="c1"># Calculate proportion haemorrhagic</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_haemorrhage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span>
 
 <span class="c1"># Show results</span>
 <span class="n">results</span>
@@ -861,9 +800,11 @@ const thebe_selector_output = ".output, .cell_output"
       <th>all</th>
       <th>infarction</th>
       <th>haemorrhage</th>
+      <th>prop_haemorrhage</th>
     </tr>
     <tr>
-      <th>mRS</th>
+      <th>Age midpoint</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -871,61 +812,97 @@ const thebe_selector_output = ".output, .cell_output"
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0.533043</td>
-      <td>0.534923</td>
-      <td>0.521374</td>
+      <th>52.5</th>
+      <td>9334</td>
+      <td>8346</td>
+      <td>988</td>
+      <td>0.105850</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>0.156302</td>
-      <td>0.157958</td>
-      <td>0.144905</td>
+      <th>57.5</th>
+      <td>12394</td>
+      <td>11235</td>
+      <td>1159</td>
+      <td>0.093513</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>0.107781</td>
-      <td>0.108075</td>
-      <td>0.106007</td>
+      <th>62.5</th>
+      <td>15967</td>
+      <td>14359</td>
+      <td>1608</td>
+      <td>0.100708</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>0.121422</td>
-      <td>0.119199</td>
-      <td>0.137272</td>
+      <th>67.5</th>
+      <td>21406</td>
+      <td>19130</td>
+      <td>2276</td>
+      <td>0.106325</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>0.063581</td>
-      <td>0.062649</td>
-      <td>0.068735</td>
+      <th>72.5</th>
+      <td>28421</td>
+      <td>25049</td>
+      <td>3372</td>
+      <td>0.118645</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>0.017870</td>
-      <td>0.017196</td>
-      <td>0.021706</td>
+      <th>77.5</th>
+      <td>33288</td>
+      <td>29138</td>
+      <td>4150</td>
+      <td>0.124670</td>
+    </tr>
+    <tr>
+      <th>82.5</th>
+      <td>37404</td>
+      <td>32638</td>
+      <td>4766</td>
+      <td>0.127420</td>
+    </tr>
+    <tr>
+      <th>87.5</th>
+      <td>32585</td>
+      <td>28577</td>
+      <td>4008</td>
+      <td>0.123001</td>
+    </tr>
+    <tr>
+      <th>92.5</th>
+      <td>18260</td>
+      <td>16298</td>
+      <td>1962</td>
+      <td>0.107448</td>
+    </tr>
+    <tr>
+      <th>97.5</th>
+      <td>5489</td>
+      <td>5014</td>
+      <td>475</td>
+      <td>0.086537</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="mrs-for-ischaemic-stroke-by-stroke-severity">
-<h2>mRS for ischaemic stroke, by stroke severity<a class="headerlink" href="#mrs-for-ischaemic-stroke-by-stroke-severity" title="Permalink to this headline">¶</a></h2>
+<p>Add breakdown of ischaemic strokes by nLVO (NIHSS 0-10) and LVO (NIHSS 11+)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NIHSS 0-10 is a surrogate for non large vessel occlusions</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span> 
-<span class="n">count</span><span class="p">,</span> <span class="n">division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
 
 <span class="c1"># NIHSS 11+ is a surrogate for non large vessel occlusions</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span>
-<span class="n">count</span><span class="p">,</span> <span class="n">division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span>
+
+<span class="c1"># Calculate proportions</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_nlvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_lvo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span>
+
+<span class="c1"># Check proportions add up</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;checksum&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_haemorrhage&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_nlvo&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_lvo&#39;</span><span class="p">]</span>
 
 <span class="c1"># Show results</span>
 <span class="n">results</span>
@@ -954,11 +931,19 @@ const thebe_selector_output = ".output, .cell_output"
       <th>all</th>
       <th>infarction</th>
       <th>haemorrhage</th>
+      <th>prop_haemorrhage</th>
       <th>nlvo</th>
       <th>lvo</th>
+      <th>prop_nlvo</th>
+      <th>prop_lvo</th>
+      <th>checksum</th>
     </tr>
     <tr>
-      <th>mRS</th>
+      <th>Age midpoint</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -968,100 +953,197 @@ const thebe_selector_output = ".output, .cell_output"
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0.533043</td>
-      <td>0.534923</td>
-      <td>0.521374</td>
-      <td>0.582881</td>
-      <td>0.417894</td>
+      <th>52.5</th>
+      <td>9334</td>
+      <td>8346</td>
+      <td>988</td>
+      <td>0.105850</td>
+      <td>7188</td>
+      <td>1158</td>
+      <td>0.770088</td>
+      <td>0.124063</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>0.156302</td>
-      <td>0.157958</td>
-      <td>0.144905</td>
-      <td>0.162538</td>
-      <td>0.142959</td>
+      <th>57.5</th>
+      <td>12394</td>
+      <td>11235</td>
+      <td>1159</td>
+      <td>0.093513</td>
+      <td>9668</td>
+      <td>1567</td>
+      <td>0.780055</td>
+      <td>0.126432</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>0.107781</td>
-      <td>0.108075</td>
-      <td>0.106007</td>
-      <td>0.103440</td>
-      <td>0.118430</td>
+      <th>62.5</th>
+      <td>15967</td>
+      <td>14359</td>
+      <td>1608</td>
+      <td>0.100708</td>
+      <td>12197</td>
+      <td>2162</td>
+      <td>0.763888</td>
+      <td>0.135404</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>0.121422</td>
-      <td>0.119199</td>
-      <td>0.137272</td>
-      <td>0.102223</td>
-      <td>0.164211</td>
+      <th>67.5</th>
+      <td>21406</td>
+      <td>19130</td>
+      <td>2276</td>
+      <td>0.106325</td>
+      <td>16022</td>
+      <td>3108</td>
+      <td>0.748482</td>
+      <td>0.145193</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>0.063581</td>
-      <td>0.062649</td>
-      <td>0.068735</td>
-      <td>0.041973</td>
-      <td>0.113775</td>
+      <th>72.5</th>
+      <td>28421</td>
+      <td>25049</td>
+      <td>3372</td>
+      <td>0.118645</td>
+      <td>20452</td>
+      <td>4597</td>
+      <td>0.719609</td>
+      <td>0.161747</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>0.017870</td>
-      <td>0.017196</td>
-      <td>0.021706</td>
-      <td>0.006945</td>
-      <td>0.042731</td>
+      <th>77.5</th>
+      <td>33288</td>
+      <td>29138</td>
+      <td>4150</td>
+      <td>0.124670</td>
+      <td>22826</td>
+      <td>6312</td>
+      <td>0.685713</td>
+      <td>0.189618</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>82.5</th>
+      <td>37404</td>
+      <td>32638</td>
+      <td>4766</td>
+      <td>0.127420</td>
+      <td>24391</td>
+      <td>8247</td>
+      <td>0.652096</td>
+      <td>0.220484</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>87.5</th>
+      <td>32585</td>
+      <td>28577</td>
+      <td>4008</td>
+      <td>0.123001</td>
+      <td>19777</td>
+      <td>8800</td>
+      <td>0.606936</td>
+      <td>0.270063</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>92.5</th>
+      <td>18260</td>
+      <td>16298</td>
+      <td>1962</td>
+      <td>0.107448</td>
+      <td>10305</td>
+      <td>5993</td>
+      <td>0.564348</td>
+      <td>0.328204</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>97.5</th>
+      <td>5489</td>
+      <td>5014</td>
+      <td>475</td>
+      <td>0.086537</td>
+      <td>2873</td>
+      <td>2141</td>
+      <td>0.523410</td>
+      <td>0.390053</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p>Plot results</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
-<span class="n">width</span> <span class="o">=</span> <span class="mf">0.17</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">index</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">width</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">],</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">],</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">],</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;nLVO (NIHSS 0-10&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">],</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO (NIHSS 11+)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of patients&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;mRS before stroke&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/mrs_before_by_stroke_type.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/08_prestroke_mrs_8_0.png" src="../_images/08_prestroke_mrs_8_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
-<span class="n">width</span> <span class="o">=</span> <span class="mf">0.17</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">index</span>
-<span class="c1">#ax.plot(results[&#39;all&#39;], label=&#39;all&#39;)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;nLVO (NIHSS 0-10&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LVO (NIHSS 11+)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_haemorrhage&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_nlvo&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;infarction: nlvo (NIHSS 0-10)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;prop_lvo&#39;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;infarction: lvo (NIHSS 11+)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of patients&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of patients&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;mRS before stroke&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/mrs_before_by_stroke_type.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/stroke_type_by_age.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/08_prestroke_mrs_9_0.png" src="../_images/08_prestroke_mrs_9_0.png" />
+<img alt="../_images/09_breakdown_mrs_nihss_by_age_8_0.png" src="../_images/09_breakdown_mrs_nihss_by_age_8_0.png" />
+</div>
+</div>
+<div class="section" id="show-mrs-by-age">
+<h2>Show mRS by age<a class="headerlink" href="#show-mrs-by-age" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">mrs_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Age midpoint&#39;</span>
+<span class="c1"># Get prestroke mRS for all patients</span>
+<span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get prestroke mRS for haemorrgagic patients</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Primary Intracerebral Haemorrhage&#39;</span>
+<span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get prestroke mRS for nlvo patients</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get prestroke mRS for lvo patients</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">]</span> <span class="o">=</span> \
+    <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Age_midpoint&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;haemorrhage&#39;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;haemorrhagic&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;nlvo&#39;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;infarction: nlvo (NIHSS 0-10)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mrs_results</span><span class="p">[</span><span class="s1">&#39;lvo&#39;</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;infarction: lvo (NIHSS 10+)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mean mRS before stroke&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./output/mrs_by_age.jpg&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/09_breakdown_mrs_nihss_by_age_11_0.png" src="../_images/09_breakdown_mrs_nihss_by_age_11_0.png" />
 </div>
 </div>
 </div>
@@ -1092,12 +1174,19 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="09_breakdown_mrs_nihss_by_age.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01a_descriptive_nihss_cutoff.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Analysis of stroke type and pre-stroke modified Rankin Scale by age</p>
+            <p class="prev-next-title">Using NIHSS to select large artey occulsion stroke patients (most suitable for thrombectomy)</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="08_prestroke_mrs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analysis of pre-stroke modified Rankin Scale</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
