@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Find similar patients who are treated differently within the same hospital &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/intro.html">
-   Introduction to SAMueL-1 (Stroke Audit Machine Learning)
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/intro.html">
+                    Introduction to SAMueL-1 (Stroke Audit Machine Learning)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Summary
  </span>
@@ -604,12 +619,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -617,61 +637,128 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/random_forest/within_hospital_variability.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/random_forest/within_hospital_variability.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aims">
    Aims
@@ -821,12 +908,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Find similar patients who are treated differently within the same hospital</h1>
@@ -992,23 +1078,24 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="find-similar-patients-who-are-treated-differently-within-the-same-hospital">
-<h1>Find similar patients who are treated differently within the same hospital<a class="headerlink" href="#find-similar-patients-who-are-treated-differently-within-the-same-hospital" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
-<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="find-similar-patients-who-are-treated-differently-within-the-same-hospital">
+<h1>Find similar patients who are treated differently within the same hospital<a class="headerlink" href="#find-similar-patients-who-are-treated-differently-within-the-same-hospital" title="Permalink to this headline">#</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Investigate the number of misclassifications within a hospital</p></li>
 <li><p>Define a similarity measure using the decision tree structure of a random forest classifier</p></li>
 <li><p>For patients with a predicted outcome different to their true outcome, find similar patients that were treated differently</p></li>
 </ul>
-</div>
-<div class="section" id="code">
-<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h2>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -1031,9 +1118,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
-<h3>Load pre-trained hospital models into dictionary <code class="docutils literal notranslate"><span class="pre">hospital2model</span></code><a class="headerlink" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="load-pre-trained-hospital-models-into-dictionary-hospital2model">
+<h3>Load pre-trained hospital models into dictionary <code class="docutils literal notranslate"><span class="pre">hospital2model</span></code><a class="headerlink" href="#load-pre-trained-hospital-models-into-dictionary-hospital2model" title="Permalink to this headline">#</a></h3>
 <p>keys = hospitals</p>
 <p>values = trained_classifier, threshold, patients, outcomes</p>
 <p>Note: patients is a numpy array.</p>
@@ -1046,9 +1133,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="select-a-hospital-for-investigation">
-<h3>Select a hospital for investigation<a class="headerlink" href="#select-a-hospital-for-investigation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="select-a-hospital-for-investigation">
+<h3>Select a hospital for investigation<a class="headerlink" href="#select-a-hospital-for-investigation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hospital2model</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span>
@@ -1062,9 +1149,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-test-cohort-and-extract-hospital-patients">
-<h3>Load test cohort and extract hospital patients<a class="headerlink" href="#load-test-cohort-and-extract-hospital-patients" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="load-test-cohort-and-extract-hospital-patients">
+<h3>Load test cohort and extract hospital patients<a class="headerlink" href="#load-test-cohort-and-extract-hospital-patients" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cohort</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/10k_training_test/cohort_10000_test.csv&#39;</span><span class="p">)</span>
@@ -1248,13 +1335,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>5 rows × 101 columns</p>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="misclassifications">
-<h2>Misclassifications<a class="headerlink" href="#misclassifications" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="misclassifications">
+<h2>Misclassifications<a class="headerlink" href="#misclassifications" title="Permalink to this headline">#</a></h2>
 <p>If a patient is misclassified by the hospital model for the hospital that they attended, this suggests there is a patient in the data set used to train the model that is similar yet was treated differently</p>
-<div class="section" id="find-misclassified-patients-in-test-cohort">
-<h3>Find misclassified patients in test cohort<a class="headerlink" href="#find-misclassified-patients-in-test-cohort" title="Permalink to this headline">¶</a></h3>
+<section id="find-misclassified-patients-in-test-cohort">
+<h3>Find misclassified patients in test cohort<a class="headerlink" href="#find-misclassified-patients-in-test-cohort" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forest</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hospital2model</span><span class="p">[</span><span class="n">hospital</span><span class="p">]</span>
@@ -1286,9 +1373,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="posterior-probability-distribution">
-<h3>Posterior probability distribution<a class="headerlink" href="#posterior-probability-distribution" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="posterior-probability-distribution">
+<h3>Posterior probability distribution<a class="headerlink" href="#posterior-probability-distribution" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probs</span> <span class="o">=</span> <span class="n">y_prob</span><span class="p">[</span><span class="n">misclassified</span><span class="p">]</span>
@@ -1303,10 +1390,10 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="../_images/within_hospital_variability_19_0.png" src="../_images/within_hospital_variability_19_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="similarity-metric">
-<h2>Similarity Metric<a class="headerlink" href="#similarity-metric" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="similarity-metric">
+<h2>Similarity Metric<a class="headerlink" href="#similarity-metric" title="Permalink to this headline">#</a></h2>
 <p>When a decision tree is fit to the training data, each internal node in the tree will be split into two further nodes based on the feature that maximises the information gain (or minimises the entropy). Once a split results in two nodes that are pure (only containing samples from a single class) no further information gain is possible: the two nodes are leaves, representing the ends of two paths through the tree. As each patient can take only one path through the decision tree, and all patients start in the same node (the root node), we can use these paths to find the similarity between any pair of patients:</p>
 <p><span class="math notranslate nohighlight">\(S(i,j) = \frac{P(i,j)}{\sqrt{P(i)P(j)}}\)</span>.</p>
 <p>Here, <span class="math notranslate nohighlight">\(S(i,j)\)</span> represents the similarity between patient <span class="math notranslate nohighlight">\(i\)</span> and patient <span class="math notranslate nohighlight">\(j\)</span> as a function of each patient’s path, <span class="math notranslate nohighlight">\(P\)</span>, through the decision tree, where <span class="math notranslate nohighlight">\(P(i)\)</span> correspond to the path length of patient <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(P(j)\)</span> the path length of <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(P(i,j)\)</span> the length of the shared path of <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
@@ -1315,10 +1402,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>where <span class="math notranslate nohighlight">\(H_n\)</span> is the entropy at node <span class="math notranslate nohighlight">\(n\)</span> and the information gain at each split has been weighted by <span class="math notranslate nohighlight">\(X_{n+1}\)</span>, the total number of patients that move from node <span class="math notranslate nohighlight">\(n\)</span> to node <span class="math notranslate nohighlight">\(n+1\)</span>.</p>
 <p>From the second equation it is clear that if patients <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> take exactly the same path through the decision tree their path lengths are equal: <span class="math notranslate nohighlight">\(P(i) = P(j) = P(i,j)\)</span>. Substituting this into the first equation it is clear that if two patients take identical paths the similarity between them is one. Conversely, if patients <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> diverge at the root node (<span class="math notranslate nohighlight">\(n=1\)</span>), their shared path contains only this node: <span class="math notranslate nohighlight">\(P(i,j) = 0\)</span> and hence the similarity between them is equal to zero.</p>
 <p>As a random forest is composed of many decision trees, for each pair of patients we take the distance between them as the average over all trees in the forest. Using this measure of similarity, for each patient in each hospital we found the most similar patients that are treated differently.</p>
-<div class="section" id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="node-weights">
-<h4>Node weights<a class="headerlink" href="#node-weights" title="Permalink to this headline">¶</a></h4>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
+<section id="node-weights">
+<h4>Node weights<a class="headerlink" href="#node-weights" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_information_gain</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">estimator</span><span class="p">):</span>
@@ -1474,9 +1561,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="caclulate-similarity">
-<h4>Caclulate Similarity<a class="headerlink" href="#caclulate-similarity" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="caclulate-similarity">
+<h4>Caclulate Similarity<a class="headerlink" href="#caclulate-similarity" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_similar_patients_tree</span><span class="p">(</span><span class="n">patient</span><span class="p">,</span> <span class="n">test_set</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
@@ -1567,10 +1654,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="example-hospital">
-<h3>Example hospital<a class="headerlink" href="#example-hospital" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="example-hospital">
+<h3>Example hospital<a class="headerlink" href="#example-hospital" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forest</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">train_patients</span><span class="p">,</span> <span class="n">train_outcomes</span> <span class="o">=</span> <span class="n">hospital2model</span><span class="p">[</span><span class="n">hospital</span><span class="p">]</span>
@@ -1597,9 +1684,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="pairwise-similarity">
-<h3>Pairwise similarity<a class="headerlink" href="#pairwise-similarity" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pairwise-similarity">
+<h3>Pairwise similarity<a class="headerlink" href="#pairwise-similarity" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_patients</span> <span class="o">=</span> <span class="n">test_patients_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
@@ -1657,12 +1744,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="most-similar-patients-with-a-different-outcome">
-<h2>Most similar patients with a different outcome<a class="headerlink" href="#most-similar-patients-with-a-different-outcome" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="identify-patients-with-a-predicted-outcome-different-to-their-true-outcome">
-<h3>Identify patients with a predicted outcome different to their true outcome<a class="headerlink" href="#identify-patients-with-a-predicted-outcome-different-to-their-true-outcome" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="most-similar-patients-with-a-different-outcome">
+<h2>Most similar patients with a different outcome<a class="headerlink" href="#most-similar-patients-with-a-different-outcome" title="Permalink to this headline">#</a></h2>
+<section id="identify-patients-with-a-predicted-outcome-different-to-their-true-outcome">
+<h3>Identify patients with a predicted outcome different to their true outcome<a class="headerlink" href="#identify-patients-with-a-predicted-outcome-different-to-their-true-outcome" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_outcome</span> <span class="o">=</span> <span class="n">forest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_patients</span><span class="p">)</span>
@@ -1699,9 +1786,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set">
-<h3>For each patient, find 5 most similar patients with a different outcome in training set<a class="headerlink" href="#for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set">
+<h3>For each patient, find 5 most similar patients with a different outcome in training set<a class="headerlink" href="#for-each-patient-find-5-most-similar-patients-with-a-different-outcome-in-training-set" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -1742,9 +1829,9 @@ Wall time: 7.32 s
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-feature-importances-for-hospital">
-<h3>Get feature importances for hospital<a class="headerlink" href="#get-feature-importances-for-hospital" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="get-feature-importances-for-hospital">
+<h3>Get feature importances for hospital<a class="headerlink" href="#get-feature-importances-for-hospital" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;StrokeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;S2Thrombolysis&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
@@ -1753,10 +1840,10 @@ Wall time: 7.32 s
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="example-where-thrombolysis-was-not-given-when-expected">
-<h2>Example where thrombolysis was not given when expected<a class="headerlink" href="#example-where-thrombolysis-was-not-given-when-expected" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-where-thrombolysis-was-not-given-when-expected">
+<h2>Example where thrombolysis was not given when expected<a class="headerlink" href="#example-where-thrombolysis-was-not-given-when-expected" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_of_interest</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1764,8 +1851,8 @@ Wall time: 7.32 s
 </div>
 </div>
 </div>
-<div class="section" id="create-dataframe-for-patient">
-<h3>Create dataframe for patient<a class="headerlink" href="#create-dataframe-for-patient" title="Permalink to this headline">¶</a></h3>
+<section id="create-dataframe-for-patient">
+<h3>Create dataframe for patient<a class="headerlink" href="#create-dataframe-for-patient" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">patient</span><span class="p">,</span> <span class="n">similar_patients</span> <span class="o">=</span> <span class="n">most_similar</span><span class="p">[</span><span class="n">patient_of_interest</span><span class="p">]</span>
@@ -1799,9 +1886,9 @@ Wall time: 7.32 s
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sort-dataframe-according-to-feature-importance">
-<h3>Sort dataframe according to feature importance<a class="headerlink" href="#sort-dataframe-according-to-feature-importance" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sort-dataframe-according-to-feature-importance">
+<h3>Sort dataframe according to feature importance<a class="headerlink" href="#sort-dataframe-according-to-feature-importance" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_df</span> <span class="o">=</span> <span class="n">patient_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1944,9 +2031,9 @@ Wall time: 7.32 s
 <p>99 rows × 6 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="rescale">
-<h3>Rescale<a class="headerlink" href="#rescale" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="rescale">
+<h3>Rescale<a class="headerlink" href="#rescale" title="Permalink to this headline">#</a></h3>
 <p>As some features, such as stroke to arrival time and age, have a much larger range than other features, we rescale them so that all features can be visualised on one axis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2005,9 +2092,9 @@ Wall time: 7.32 s
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plot">
-<h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="plot">
+<h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rescaled_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span>  <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
@@ -2058,10 +2145,10 @@ Wall time: 7.32 s
 <img alt="../_images/within_hospital_variability_65_0.png" src="../_images/within_hospital_variability_65_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="example-where-thrombolysis-was-given-when-not-expected">
-<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#example-where-thrombolysis-was-given-when-not-expected" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="example-where-thrombolysis-was-given-when-not-expected">
+<h2>Example where thrombolysis was given when not expected<a class="headerlink" href="#example-where-thrombolysis-was-given-when-not-expected" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patient_of_interest</span> <span class="o">=</span> <span class="mi">1</span>
@@ -2310,16 +2397,16 @@ Wall time: 7.32 s
 <img alt="../_images/within_hospital_variability_73_0.png" src="../_images/within_hospital_variability_73_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="observations">
-<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Misclassifications indicate that there is variability in clinical decision making within a hospital</p></li>
 <li><p>We can use the structure of the Random Forest classifier to define a similarity metric</p></li>
 <li><p>For patients that are incorrectly classified, we can find similar patients that were treated differently, further demonstrating variation in decision making within a hospital</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2343,9 +2430,11 @@ Wall time: 7.32 s
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="vignettes.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2361,24 +2450,28 @@ Wall time: 7.32 s
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By SAMueL project team<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By SAMueL project team<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

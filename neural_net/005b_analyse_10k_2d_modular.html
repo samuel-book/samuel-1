@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Investigating the output of neural net embedding subnets - with 2D subnet output &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/intro.html">
-   Introduction to SAMueL-1 (Stroke Audit Machine Learning)
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/intro.html">
+                    Introduction to SAMueL-1 (Stroke Audit Machine Learning)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Summary
  </span>
@@ -604,12 +619,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -617,61 +637,128 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/neural_net/005b_analyse_10k_2d_modular.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/neural_net/005b_analyse_10k_2d_modular.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aims">
    Aims
@@ -758,12 +845,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Investigating the output of neural net embedding subnets - with 2D subnet output</h1>
@@ -866,21 +952,22 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
-<h1>Investigating the output of neural net embedding subnets - with 2D subnet output<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="aims">
-<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output">
+<h1>Investigating the output of neural net embedding subnets - with 2D subnet output<a class="headerlink" href="#investigating-the-output-of-neural-net-embedding-subnets-with-2d-subnet-output" title="Permalink to this headline">#</a></h1>
+<section id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>To investigate the output of the hospital and clinical subnets of the embedding neural network.</p></li>
 <li><p>To examine the link between hospital subnet output and use of thrombolysis in hospitals - both the actual thrombolysis use, and the predicted thrombolysis use of a 10k set of patients passed through all hopsital moodels.</p></li>
 <li><p>To examine the link between the patient clinical feature subnet output and the use of thrombolysis, and the link between patient features and the clinical feature subnet output</p></li>
 </ul>
-</div>
-<div class="section" id="neural-network-structure">
-<h2>Neural Network structure<a class="headerlink" href="#neural-network-structure" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="neural-network-structure">
+<h2>Neural Network structure<a class="headerlink" href="#neural-network-structure" title="Permalink to this headline">#</a></h2>
 <p>The model contains three subnets that take portions of the data. The output of these subnets is an n-dimensional vector. In this case the output is a 2D vector, that is each subnet is reduced to a single value output. The subnets created are for:</p>
 <ol class="simple">
 <li><p><em>Patient clinical data</em>: Age, gender, ethnicity, disability before stroke, stroke scale data. Pass through one hidden layer (with 2x neurons as input features) and then to single neuron with sigmoid activation.</p></li>
@@ -889,13 +976,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <p>The outputs of the three subnet outputs are then passed to a single neuron with sigmoid activation for final output.</p>
 <p><img alt="" src="../_images/subnets_1.png" /></p>
-</div>
-<div class="section" id="fitting-of-model">
-<h2>Fitting of model<a class="headerlink" href="#fitting-of-model" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fitting-of-model">
+<h2>Fitting of model<a class="headerlink" href="#fitting-of-model" title="Permalink to this headline">#</a></h2>
 <p>The model has been pretrained (see the notebook <em>Modular TensorFlow model with 1D embedding - Train and save model for 10k patient subset</em>)</p>
-</div>
-<div class="section" id="load-libraries">
-<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="load-libraries">
+<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turn warnings off to keep notebook tidy</span>
@@ -921,9 +1008,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-function-to-scale-data">
-<h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="define-function-to-scale-data">
+<h2>Define function to scale data<a class="headerlink" href="#define-function-to-scale-data" title="Permalink to this headline">#</a></h2>
 <p>Scale input data 0-1 (MinMax scaling).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -945,9 +1032,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-model-outputs-for-test-data">
-<h2>Get model outputs for test data<a class="headerlink" href="#get-model-outputs-for-test-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="get-model-outputs-for-test-data">
+<h2>Get model outputs for test data<a class="headerlink" href="#get-model-outputs-for-test-data" title="Permalink to this headline">#</a></h2>
 <p>Get prediction probabilities for the test 10k training set. Training data is used only to scale test set X values.</p>
 <p>This prediction run is used to check model, and get accuracy.</p>
 <div class="cell docutils container">
@@ -1032,9 +1119,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
-<h2>Get predictions for thrombolysis use of 10k set of patients at each hospital<a class="headerlink" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital">
+<h2>Get predictions for thrombolysis use of 10k set of patients at each hospital<a class="headerlink" href="#get-predictions-for-thrombolysis-use-of-10k-set-of-patients-at-each-hospital" title="Permalink to this headline">#</a></h2>
 <p>Here we ask the counter-factual question - “what treatment would a patient be expected to receive at each of the 132 hospitals?”.</p>
 <p>Hospital is one-hot encoded as input to the hospital subnet. To make a prediction of treatment at different hospitals we change the one-hot encoding of the hospital when making prediction.</p>
 <p>For each hospital we pass through the 10k test set, and record the proportion of the patients receiving thrombolysis at that hospital.</p>
@@ -1478,11 +1565,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p>10000 rows × 104 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="get-subnet-outputs">
-<h2>Get subnet outputs<a class="headerlink" href="#get-subnet-outputs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="get-hospital-subnet-output">
-<h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="get-subnet-outputs">
+<h2>Get subnet outputs<a class="headerlink" href="#get-subnet-outputs" title="Permalink to this headline">#</a></h2>
+<section id="get-hospital-subnet-output">
+<h3>Get hospital subnet output<a class="headerlink" href="#get-hospital-subnet-output" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1509,9 +1596,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-patient-subnet-output">
-<h3>Get patient subnet output<a class="headerlink" href="#get-patient-subnet-output" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="get-patient-subnet-output">
+<h3>Get patient subnet output<a class="headerlink" href="#get-patient-subnet-output" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get patient subnet output</span>
@@ -1551,9 +1638,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="get-pathway-subnet-output">
-<h3>Get pathway subnet output<a class="headerlink" href="#get-pathway-subnet-output" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="get-pathway-subnet-output">
+<h3>Get pathway subnet output<a class="headerlink" href="#get-pathway-subnet-output" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get patient subnet output</span>
@@ -1901,10 +1988,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>10000 rows × 110 columns</p>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
-<h2>Comparing hospital subnet activation with thrombolysis use at each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital">
+<h2>Comparing hospital subnet activation with thrombolysis use at each hospital<a class="headerlink" href="#comparing-hospital-subnet-activation-with-thrombolysis-use-at-each-hospital" title="Permalink to this headline">#</a></h2>
 <p>The hospital subnet outputs a single value (in the range 0-1) for each hospital.</p>
 <p>Here we compare the hospital subnet output for each hospital with:</p>
 <ol class="simple">
@@ -1939,9 +2026,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>In this output, all hospitals appear to sit on <span class="math notranslate nohighlight">\(x=0\)</span> or <span class="math notranslate nohighlight">\(y=1\)</span>, with use of thrombolysis in the hospital increasing along the <span class="math notranslate nohighlight">\(y\)</span> axis and then the <span class="math notranslate nohighlight">\(x\)</span> axis.</p>
-</div>
-<div class="section" id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
-<h2>Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient<a class="headerlink" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient">
+<h2>Comparing clinical subnet activation with the number of hospitals that are predicted to give thrombolysis to each patient<a class="headerlink" href="#comparing-clinical-subnet-activation-with-the-number-of-hospitals-that-are-predicted-to-give-thrombolysis-to-each-patient" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
@@ -2043,8 +2130,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The patients most likely to be given thrombolysis are those in the top left of the scatter plot (<span class="math notranslate nohighlight">\(x\)</span> close to 0, and <span class="math notranslate nohighlight">\(y\)</span> close to 1. Predicted use of thrombolysis falls as a function of distance from that corner. Use of thrombolysis will also be effected by pathway data, but this scatter plot shows a dominant effect of clinical subnet output.</p>
 <p>Patients appear to cluster mostly towards the edges of the plot.</p>
 <p>In the following analysis, we will look at the characteristics of patients in different parts of the scatter plot.</p>
-<div class="section" id="analysis-by-stroke-type">
-<h3>Analysis by stroke type<a class="headerlink" href="#analysis-by-stroke-type" title="Permalink to this headline">¶</a></h3>
+<section id="analysis-by-stroke-type">
+<h3>Analysis by stroke type<a class="headerlink" href="#analysis-by-stroke-type" title="Permalink to this headline">#</a></h3>
 <p>Plot the location of stroke type by haemorrhage (red) or infarction (blue).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2081,10 +2168,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>We observe that haemorrhagic stroke patients are clustered in one corner of the chart, suggesting that clinical subnet output may be used to compare similarity between patients (driven by reasons to give or not give thrombolysis).</p>
-</div>
-</div>
-<div class="section" id="summarise-patients-in-corners-of-chart">
-<h2>Summarise patients in corners of chart<a class="headerlink" href="#summarise-patients-in-corners-of-chart" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="summarise-patients-in-corners-of-chart">
+<h2>Summarise patients in corners of chart<a class="headerlink" href="#summarise-patients-in-corners-of-chart" title="Permalink to this headline">#</a></h2>
 <p>Summarise key characteristics of patients in the four corners of the chart.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2308,12 +2395,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><em>High x and low y</em>: Largely non-thrombolysed patients with haemorrhagic stroke.</p></li>
 <li><p><em>High x and high y</em>: Largely non-thrombolysed patients with infarction stroke and very mild stroke.</p></li>
 </ul>
-</div>
-<div class="section" id="observations">
-<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
 <p>2D clinical subnet analysis allows leads to potentially useful embedding/encoding of patients whereby similar patients are clustered together.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2337,9 +2424,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="005a_generate_2d_nets_for_10k.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2355,24 +2444,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By SAMueL project team<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By SAMueL project team<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

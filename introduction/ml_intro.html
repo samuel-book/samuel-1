@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Introduction to machine learning methods &#8212; SAMueL Stroke Audit Machine Learning 1</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -88,14 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction to SAMueL-1 (Stroke Audit Machine Learning)
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to SAMueL-1 (Stroke Audit Machine Learning)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Summary
  </span>
@@ -604,12 +619,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -617,61 +637,117 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/introduction/ml_intro.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/introduction/ml_intro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistic-regression">
    Logistic regression
@@ -694,12 +770,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Introduction to machine learning methods</h1>
@@ -738,14 +813,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-machine-learning-methods">
-<h1>Introduction to machine learning methods<a class="headerlink" href="#introduction-to-machine-learning-methods" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-machine-learning-methods">
+<h1>Introduction to machine learning methods<a class="headerlink" href="#introduction-to-machine-learning-methods" title="Permalink to this headline">#</a></h1>
 <p>The machine methods we use for SAMueL belong to a methods class known as <em>supervised machine learning binomial classification</em>. The models learn to predict a binomial classification (that is there are two alternative possible classification) - in our case, whether a patient is predicted to receive thrombolysis or not. The models learn classification by being provided with a training set of examples, each of which is labelled (received thrombolysis or not). After training, the model is tested on an independent set of examples that is not used for training the model.</p>
-<div class="section" id="logistic-regression">
-<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
+<section id="logistic-regression">
+<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h2>
 <p>Logistic Regression is a probabilistic model, meaning it assigns a class probability to each data point. Probabilities are calculated using a logistic function:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -753,40 +829,46 @@ f(x) = \frac{1}{1 + e^{-x}}
 \]</div>
 <p>Here, <span class="math notranslate nohighlight">\(x\)</span> is a linear combination of the variables of each data point, i.e. <span class="math notranslate nohighlight">\(a + bx_1 + cx_2 + ..\)</span>, where <span class="math notranslate nohighlight">\(x_1\)</span> is the value of one variable, <span class="math notranslate nohighlight">\(x_2\)</span> the value of another, etc. The function <span class="math notranslate nohighlight">\(f\)</span> maps <span class="math notranslate nohighlight">\(x\)</span> to a value between 0 and 1, which may be viewed as a class probability. If the class probability is greater than the decision threshold, the data point is classified as belonging to class 1 (thrombolysis). For probabilities less than the threshold, it is placed in class 0 (no thrombolysis).</p>
 <p>During training, the logistic regression uses the examples in the training data to find the values of the coefficients in <span class="math notranslate nohighlight">\(x\)</span> (<span class="math notranslate nohighlight">\(a\)</span>,<span class="math notranslate nohighlight">\(b\)</span>,<span class="math notranslate nohighlight">\(c\)</span>…) that lead to the highest possible accuracy in the training data. The values of these parameters determine the importance of each variable for the classification, and therefore the decision making process. A variable with a larger coefficient (positive or negative) is more important when predicting whether or not a patient will receive thrombolysis.</p>
-</div>
-<div class="section" id="random-forest">
-<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">#</a></h2>
 <p>A random forest is an example of an ensemble algorithm: the outcome (whether or not a patient is thrombolysed) is decided by a majority vote of other algorithms. In the case of a random forest, these ‘other algorithms’ are decision trees (each of which is trained on a random subset of examples, and a random subset of features). A random forest is an ensemble of decision trees. Each tree is considered a <em>weak learner</em>, but the collection of trees together form a robust classifier that is less prone to over-fitting than a single full decision tree.</p>
 <p>We can think of a decision tree as similar to a flow chart. In <a class="reference internal" href="#tree-fig"><span class="std std-numref">Figure 11</span></a> below we can see that a decision tree is comprised of a set of nodes and branches. The node at the top of the tree is called the <em>root node</em> and the nodes at the bottom are <em>leaf nodes</em>. Every node in the tree, except for the leaf nodes, splits into two branches leading to two nodes that are further down the tree. A path through the decision tree always starts at the root node. Each step in the path involves moving along a branch to a node lower down the tree. The path ends at a leaf node where there are no further branches to move along. Leaf nodes will each have a particular classification (e.g. receives thrombolysis, or does not receive thrombolysis).</p>
-<div class="figure align-default" id="tree-fig">
+<figure class="align-default" id="tree-fig">
 <a class="reference internal image-reference" href="../_images/decision_tree.gv.png"><img alt="../_images/decision_tree.gv.png" src="../_images/decision_tree.gv.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Example of the structure of a decision tree with nodes (ovals) and branches (arrows). The root node (red) is always at the top of the tree. A path through the tree starts at the root node, moves downwards through internal nodes (yellow) and ends at a leaf node (green).</span><a class="headerlink" href="#tree-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Example of the structure of a decision tree with nodes (ovals) and branches (arrows). The root node (red) is always at the top of the tree. A path through the tree starts at the root node, moves downwards through internal nodes (yellow) and ends at a leaf node (green).</span><a class="headerlink" href="#tree-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The path taken through a tree is determined by the rules associated with each node. The decision tree learns these rules during the training process. The goal of the training process is to find rules for each node such that a leaf node contains samples from one class only: the leaf node a patient ends up in determines the predicted outcome of the decision tree.</p>
 <p>Specifically, given some training data (variables and outcomes), the decision tree algorithm will find the variable that is most discriminative (provides the best separation of data based on the outcome). This variable will be used for the root node. The rule for the root node consists of this variable and a threshold value. For any data point, if the value of the variable is less than or equal to the threshold value at the root node, the data point will take the left branch and if it is greater than the threshold value it will take the right branch. The process of finding the most discriminative feature and a threshold value is repeated to determine the rules of the internal nodes lower down the tree. Once all data points in a node have the same outcome, that node is a leaf node, representing the end of a path through a tree. Once all paths through the tree end in a leaf node the training process is complete.</p>
 <p>As a random forest is an ensemble of decision trees, during training the algorithm will select a random sample of the training data with replacement and train a decision tree using this sample. Each tree is trained on a subset of all features. This process is repeated many times, the exact number being a parameter of the algorithm corresponding to the number of decision trees in the random forest.</p>
 <p>The resulting random forest is a classifier that can be used to determine whether a data point belongs to class 0 (not thrombolysed) or class 1 (thrombolysed). The path of the data point through every decision tree ends in a leaf node. If there are 100 decision trees in the random forest, and the data point’s path ends in a leaf node with class 0 in 30 of the decision trees and a leaf node of class 1 in 70, the random forest takes the majority outcome and classifies the data point as belonging to class 1 (thrombolysed) with a probability of 0.7 (70/100: number of trees voting class 1 / total number of trees).</p>
-</div>
-<div class="section" id="neural-networks">
-<h2>Neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="neural-networks">
+<h2>Neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">#</a></h2>
 <p>The basic building block of neural networks is the perceptron (<a class="reference internal" href="#perceptron-fig"><span class="std std-numref">Figure 12</span></a>). Each feature (including a constant/bias feature which usually has the value of one) has an associated weight. The product of each feature multiplied by its weight is summed. The sum is then passed to an activation function. The activation function may leave the input unchanged (often used for a regression output). May use a step function (whereby if the sum of weighted features is less than 0 the output is zero, and if the sum of weighted features is equal to or more than 0 the output is one), a logistic function (converting the input into a number between zero or one), or other functions. The weights are optimised during the learning process in order to minimise the inaccuracy (loss) of the model. Commonly optimising is performed according to a variant of stochastic gradient descent, where a an example is chosen at random (stochastic), the inaccuracy (loss) is calculated, and the weights are moved a little in the direction which reduced the loss (gradient descent). This learning process is repeated until the model converges on minimum loss.</p>
-<div class="figure align-default" id="perceptron-fig">
+<figure class="align-default" id="perceptron-fig">
 <a class="reference internal image-reference" href="../_images/perceptron.png"><img alt="../_images/perceptron.png" src="../_images/perceptron.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Schematic of a perceptron. Each feature (including a constant) is multiplied by an individual weight for that feature. These features.weights are summed, and the output passed to an activation function (a simple activation function is a step function whereby if the sum of weighted features is less than 0 the output is zero, and if the sum of weighted features is equal to or more than 0 the output is one).</span><a class="headerlink" href="#perceptron-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Schematic of a perceptron. Each feature (including a constant) is multiplied by an individual weight for that feature. These features.weights are summed, and the output passed to an activation function (a simple activation function is a step function whereby if the sum of weighted features is less than 0 the output is zero, and if the sum of weighted features is equal to or more than 0 the output is one).</span><a class="headerlink" href="#perceptron-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>A neural network is composed of a network of perceptrons, and sometimes is called a multi-layer-perceptron (<a class="reference internal" href="#neuralnet-fig"><span class="std std-numref">Figure 13</span></a>). Input features are connected to multiple perceptrons (or neurons) each of which performs a weighted sum of feature.weights and passes the output through an activation function. The most common activation function used within the network is the rectified linear unit (ReLU). Using ReLU , if the weighted sum of inputs is less than zero, the output is zero, and if the weighted sum of inputs is greater than zero then the output is equal to the weighted sum of inputs. This simple function is computationally efficient and is enough for the neural network to mimic non-linear functions. The outputs from a layer in the network are passed as inputs to the next layer. The layers may be of any number of neurones, and may vary between layers (though it is most common now to have the same number of neurons in all layers apart from the final layer). The final layer has an activation function depending on the purpose of network. For example, a regressor network will often leave the weighted sum in the final layer unchanged. A binomial classification network will commonly use logistic/sigmoid activation in the final layer (usually with a single neurone in the output layer), and a multi-class network will often use softmax activation where there are as many output neurones as there are classes, and each will have an output equivalent to a probability of 0-1.</p>
-<div class="figure align-default" id="neuralnet-fig">
+<figure class="align-default" id="neuralnet-fig">
 <a class="reference internal image-reference" href="../_images/net.png"><img alt="../_images/net.png" src="../_images/net.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">An example neural network. In this ‘fully connected’ neural network there are as many perceptrons in each layer as there are features (in practice this number may be changed). Each feature is connected to all perceptrons in the first hidden layer, each with its own associated weight.</span><a class="headerlink" href="#neuralnet-fig" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">An example neural network. In this ‘fully connected’ neural network there are as many perceptrons in each layer as there are features (in practice this number may be changed). Each feature is connected to all perceptrons in the first hidden layer, each with its own associated weight.</span><a class="headerlink" href="#neuralnet-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#neuralnet-fig"><span class="std std-numref">Figure 13</span></a> shows a fully connected network where all neurons in a layer are connected to all neurons in the next layer. There are many variations on this, and later we will discuss embedding layers which are used in this project.</p>
 <p>Training a neural network is similar to a perceptron, using methods based on stochastic gradient descent. The additional component in neural network is back-propagation of loss, which distributes loss through the network according to how much individual neurons contribute to the overall loss.</p>
-</div>
-<div class="section" id="combining-clinical-pathway-simulation-and-clinical-decision-making">
-<h2>Combining clinical pathway simulation and clinical decision making<a class="headerlink" href="#combining-clinical-pathway-simulation-and-clinical-decision-making" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="combining-clinical-pathway-simulation-and-clinical-decision-making">
+<h2>Combining clinical pathway simulation and clinical decision making<a class="headerlink" href="#combining-clinical-pathway-simulation-and-clinical-decision-making" title="Permalink to this headline">#</a></h2>
 <p>Traditional clinical pathway simulation mimics a process, using times and decisions sampled from appropriate distributions. In this project we combine simulation with machine learning, by using probabilities of receiving thrombolysis derived from machine learning models (‘replacing’ the decision-making in one hospital with a majority vote of a standard set of benchmark hospital decision models).</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -810,9 +892,11 @@ f(x) = \frac{1}{1 + e^{-x}}
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="clinical_audit.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -828,24 +912,28 @@ f(x) = \frac{1}{1 + e^{-x}}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By SAMueL project team<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By SAMueL project team<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
