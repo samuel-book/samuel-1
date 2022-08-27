@@ -1457,6 +1457,52 @@ title="Print to PDF"
 <img alt="../_images/04_thrombolysis_general_16_0.png" src="../_images/04_thrombolysis_general_16_0.png" />
 </div>
 </div>
+<p>Show thrombolysis use by NIHSS cutoff of 0-10 or 11+</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All arrivals</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">thrombolisis_use</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Thrombolysis use in NIHSS 0-10, all arrivals: </span><span class="si">{</span><span class="n">thrombolisis_use</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">11</span>
+<span class="n">thrombolisis_use</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Thrombolysis use in NIHSS 11+, all arrivals: </span><span class="si">{</span><span class="n">thrombolisis_use</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Thrombolysis use in NIHSS 0-10, all arrivals: 0.086
+Thrombolysis use in NIHSS 11+, all arrivals: 0.231
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4 Hour arrivals</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_4hr</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data_4hr</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">thrombolisis_use</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Thrombolysis use in NIHSS 0-10, 4 hour arrivals: </span><span class="si">{</span><span class="n">thrombolisis_use</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">11</span>
+<span class="n">thrombolisis_use</span> <span class="o">=</span> <span class="n">data_4hr</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;thrombolysis_given&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Thrombolysis use in NIHSS 11+, 4 hour arrivals: </span><span class="si">{</span><span class="n">thrombolisis_use</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Thrombolysis use in NIHSS 0-10, 4 hour arrivals: 0.245
+Thrombolysis use in NIHSS 11+, 4 hour arrivals: 0.412
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="gender">
 <h3>Gender<a class="headerlink" href="#gender" title="Permalink to this headline">#</a></h3>
@@ -1782,7 +1828,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_thrombolysis_general_26_0.png" src="../_images/04_thrombolysis_general_26_0.png" />
+<img alt="../_images/04_thrombolysis_general_29_0.png" src="../_images/04_thrombolysis_general_29_0.png" />
 </div>
 </div>
 </section>
@@ -2107,7 +2153,7 @@ Name: StrokeTeam, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_thrombolysis_general_38_0.png" src="../_images/04_thrombolysis_general_38_0.png" />
+<img alt="../_images/04_thrombolysis_general_41_0.png" src="../_images/04_thrombolysis_general_41_0.png" />
 </div>
 </div>
 </section>
@@ -2173,7 +2219,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_thrombolysis_general_41_0.png" src="../_images/04_thrombolysis_general_41_0.png" />
+<img alt="../_images/04_thrombolysis_general_44_0.png" src="../_images/04_thrombolysis_general_44_0.png" />
 </div>
 </div>
 </section>
