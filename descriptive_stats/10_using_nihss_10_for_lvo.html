@@ -895,16 +895,16 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span>
 <span class="n">data_infaction</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">prop_lvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_infaction</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">prop_lvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_infaction</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent infarction with NIHSS 0-10: </span><span class="si">{</span><span class="n">prop_nlvo</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent infarction with NIHSS 11+: </span><span class="si">{</span><span class="n">prop_lvo</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent infarction with NIHSS 0-10: 74.9
-Percent infarction with NIHSS 11+: 25.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent infarction with NIHSS 0-10: 77.2
+Percent infarction with NIHSS 11+: 22.8
 </pre></div>
 </div>
 </div>
@@ -946,16 +946,16 @@ Percent infarction with NIHSS 11+: 25.1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span>
 <span class="n">data_infaction</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">prop_lvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_infaction</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">prop_lvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_infaction</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent infarction with NIHSS 0-10: </span><span class="si">{</span><span class="n">prop_nlvo</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent infarction with NIHSS 11+: </span><span class="si">{</span><span class="n">prop_lvo</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent infarction with NIHSS 0-10: 67.4
-Percent infarction with NIHSS 11+: 32.6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent infarction with NIHSS 0-10: 70.5
+Percent infarction with NIHSS 11+: 29.5
 </pre></div>
 </div>
 </div>
@@ -997,16 +997,16 @@ Percent infarction with NIHSS 11+: 32.6
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span>
 <span class="n">data_infaction</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">prop_lvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">prop_nlvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_infaction</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">prop_lvo</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_infaction</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent infarction with NIHSS 0-10: </span><span class="si">{</span><span class="n">prop_nlvo</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent infarction with NIHSS 11+: </span><span class="si">{</span><span class="n">prop_lvo</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">0.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent infarction with NIHSS 0-10: 65.7
-Percent infarction with NIHSS 11+: 34.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Percent infarction with NIHSS 0-10: 68.9
+Percent infarction with NIHSS 11+: 31.1
 </pre></div>
 </div>
 </div>
@@ -1039,14 +1039,14 @@ Percent infarction with NIHSS 11+: 34.3
 <td><p>85.9</p></td>
 </tr>
 <tr class="row-odd"><td><p>Proportion ischaemic with NIHSS 0-10</p></td>
-<td><p>74.9</p></td>
-<td><p>67.4</p></td>
-<td><p>65.7</p></td>
+<td><p>77.2</p></td>
+<td><p>70.5</p></td>
+<td><p>68.9</p></td>
 </tr>
 <tr class="row-even"><td><p>Proportion ischaemic with NIHSS 11+</p></td>
-<td><p>25.1</p></td>
-<td><p>32.6</p></td>
-<td><p>34.3</p></td>
+<td><p>22.8</p></td>
+<td><p>29.5</p></td>
+<td><p>31.1</p></td>
 </tr>
 </tbody>
 </table>

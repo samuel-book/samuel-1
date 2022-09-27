@@ -1007,7 +1007,11 @@ title="Print to PDF"
 <h2>mRS for ischaemic stroke, by stroke severity<a class="headerlink" href="#mrs-for-ischaemic-stroke-by-stroke-severity" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NIHSS 0-10 is a surrogate for non large vessel occlusions</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter data</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2StrokeType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Infarction&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="c1"># NIHSS 0-10 is a surrogate for non large vessel occlusions</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;S2NihssArrival&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">11</span> 
 <span class="n">count</span><span class="p">,</span> <span class="n">division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
     <span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;S2RankinBeforeStroke&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
@@ -1064,48 +1068,48 @@ title="Print to PDF"
       <td>0.533043</td>
       <td>0.534923</td>
       <td>0.521374</td>
-      <td>0.582881</td>
-      <td>0.417894</td>
+      <td>0.582771</td>
+      <td>0.407796</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.156302</td>
       <td>0.157958</td>
       <td>0.144905</td>
-      <td>0.162538</td>
-      <td>0.142959</td>
+      <td>0.163513</td>
+      <td>0.143538</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.107781</td>
       <td>0.108075</td>
       <td>0.106007</td>
-      <td>0.103440</td>
-      <td>0.118430</td>
+      <td>0.103988</td>
+      <td>0.120133</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.121422</td>
       <td>0.119199</td>
       <td>0.137272</td>
-      <td>0.102223</td>
-      <td>0.164211</td>
+      <td>0.101109</td>
+      <td>0.166050</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0.063581</td>
       <td>0.062649</td>
       <td>0.068735</td>
-      <td>0.041973</td>
-      <td>0.113775</td>
+      <td>0.041796</td>
+      <td>0.118023</td>
     </tr>
     <tr>
       <th>5</th>
       <td>0.017870</td>
       <td>0.017196</td>
       <td>0.021706</td>
-      <td>0.006945</td>
-      <td>0.042731</td>
+      <td>0.006822</td>
+      <td>0.044460</td>
     </tr>
   </tbody>
 </table>
